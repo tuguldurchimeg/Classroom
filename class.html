@@ -13,27 +13,25 @@
 <body>
     <header>
         <a href="index.html">
-            <i id="logo" alt="Home logo button"></i>
+            <i id="logo"></i>
         </a>
         
         <a href="#user-popup" class="profile-button">
-            <i id="profile-button" alt="Profile button"></i>
+            <i id="profile-button"></i>
         </a>
 
         <nav class="user-menu" id="user-popup">
             <ul>
                 <li>
-                    <a href="profile.html">
-                        <button>21B1NUM1402</button>
-                    </a>
+                    <a href="user.html">21B1NUM1402</a>
                 </li>
                 <li>
-                    <a href="profile.html">
+                    <a href="user.html">
                         <span id="reserved-classes">Захиалсан ангиуд</span>
                     </a>
                 </li>
                 <li>
-                    <a href="profile.html">
+                    <a href="user.html">
                         <span id="liked-classes">Дуртай ангиуд</span>
                     </a>
                 </li>
@@ -54,7 +52,7 @@
                     <span id="room">407</span>
                 </h2>
                                 
-                <img src="" alt="class image" class="class-img">
+                <img src="assets/class.jpg" alt="class image" class="class-img">
             </article>
 
             <nav class="main-info">
@@ -74,30 +72,20 @@
         </section>
 
         <section class="reservation">
-            <menu class="reserve-option">
-                <ul>
+            <menu class="reserve-option">      
                     <li><button id="byDay">Өдрөөр</button></li>
                     <li><button id="byWeek">7 хоногоор</button></li>
-                </ul>
             </menu>
     
             <section class="reserve-byDay">
                 <button class="calendar"></button>
                 <span class="available-times">
-                    <button id="time1">
-                        <time datetime="16:00">16:00</time>
-                    </button>
-                    <button id="time2">
-                        <time datetime="16:45">16:45</time>
-                    </button>
-                    <button id="time3">
-                        <time datetime="17:40">17:40</time>
-                    </button>
-                    <button id="time4">
-                        <time datetime="18:25">18:25</time>
-                    </button>
+                    <button><time datetime="16:00">16:00</time></button>
+                    <button><time datetime="16:45">16:45</time></button>
+                    <button><time datetime="17:40">17:40</time></button>
+                    <button><time datetime="18:25">18:25</time></button>
                 </span>
-                <form action="" class="reserve-form">
+                <form class="reserve-form">
                     <ul>
                         <li>
                             <label for="purposes" id="purpose">Ашиглах зорилго</label>
@@ -111,11 +99,11 @@
                             </select>
                         </li>
                         <li>
-                            <label for="description" id="description">Нэмэлт тайлбар</label>
+                            <label for="description" id="description-label">Нэмэлт тайлбар</label>
                             <textarea id="description" name="description" minlength="5" maxlength="40" required></textarea>
                         </li>
                         <li>
-                            <label for="people" id="people">Хэдэн хүн?</label>
+                            <label for="people" id="people-label">Хэдэн хүн?</label>
                             <input type="number" name="people to use" id="people" max="50" min="2">
                         </li>
                         <li>
@@ -136,70 +124,54 @@
                     <nav class="week1">
                         <ul>
                             <li class="day01">
-                                <span id="date">
+                                <span">
                                     <span>Да</span>
                                     <time datetime="03-04">03-04</time>
                                 </span>
                                 <ul>
-                                    <li id="time1">
-                                        <button><time datetime="16:00">16:00</time></button>
-                                    </li>
+                                    <li><button><time datetime="16:00">16:00</time></button></li>
                                 </ul>
                             </li>
                             <li class="day02">
-                                <span id="date">
+                                <span>
                                     <span>Мя</span>
                                     <time datetime="03-05">03-05</time>
                                 </span>
                                 <ul>
-                                    <li id="time1">
-                                        <button><time datetime="16:00">16:00</time></button>
-                                    </li>
-                                    <li id="time2">
-                                        <button><time datetime="16:00">16:00</time></button>
-                                    </li>
+                                    <li><button><time datetime="16:00">16:00</time></button></li>
+                                    <li><button><time datetime="16:00">16:00</time></button></li>
                                 </ul>
                             </li>
                             <li class="day03">
-                                <span id="date">
+                                <span>
                                     <span>Лх</span>
                                     <time datetime="03-06">03-06</time>
                                 </span>
                                 <ul>
-                                    <li id="time1">
+                                    <li>
                                         <button><time datetime="16:00">16:00</time></button>
                                     </li>
                                 </ul>
                             </li>
                             <li class="day04">
-                                <span id="date">
+                                <span>
                                     <span>Пү</span>
                                     <time datetime="03-07">03-07</time>
                                 </span>
                                 <ul>
-                                    <li id="time1">
-                                        <button><time datetime="16:00">16:00</time></button>
-                                    </li>
-                                    <li id="time2">
-                                        <button><time datetime="16:00">16:00</time></button>
-                                    </li>
-                                    <li id="time3">
-                                        <button><time datetime="16:00">16:00</time></button>
-                                    </li>
-                                    <li id="time4">
-                                        <button><time datetime="16:00">16:00</time></button>
-                                    </li>
+                                    <li><button><time datetime="16:00">16:00</time></button></li>
+                                    <li><button><time datetime="16:00">16:00</time></button></li>
+                                    <li><button><time datetime="16:00">16:00</time></button></li>
+                                    <li><button><time datetime="16:00">16:00</time></button></li>
                                 </ul>
                             </li>
                             <li class="day05">
-                                <span id="date">
+                                <span>
                                     <span>Ба</span>
                                     <time datetime="03-08">03-08</time>
                                 </span>
                                 <ul>
-                                    <li id="time1">
-                                        <button><time datetime="16:00">16:00</time></button>
-                                    </li>
+                                    <li><button><time datetime="16:00">16:00</time></button></li>
                                 </ul>
                             </li>
                         </ul>
@@ -207,77 +179,59 @@
                     <nav class="week2">
                         <ul>
                             <li class="day01">
-                                <span id="date">
+                                <span>
                                     <span>Да</span>
                                     <time datetime="03-11">03-11</time>
                                 </span>
                                 <ul>
-                                    <li id="time1">
-                                        <button><time datetime="16:00">16:00</time></button>
-                                    </li>
+                                    <li><button><time datetime="16:00">16:00</time></button></li>
                                 </ul>
                             </li>
                             <li class="day02">
-                                <span id="date">
+                                <span>
                                     <span>Мя</span>
                                     <time datetime="03-12">03-12</time>
                                 </span>
                                 <ul>
-                                    <li id="time1">
-                                        <button><time datetime="16:00">16:00</time></button>
-                                    </li>
-                                    <li id="time2">
-                                        <button><time datetime="16:00">16:00</time></button>
-                                    </li>
+                                    <li><button><time datetime="16:00">16:00</time></button></li>
+                                    <li><button><time datetime="16:00">16:00</time></button></li>
                                 </ul>
                             </li>
                             <li class="day03">
-                                <span id="date">
+                                <span>
                                     <span>Лх</span>
                                     <time datetime="03-13">03-13</time>
                                 </span>
                                 <ul>
-                                    <li id="time1">
-                                        <button><time datetime="16:00">16:00</time></button>>
-                                    </li>
+                                    <li><button><time datetime="16:00">16:00</time></button>></li>
                                 </ul>
                             </li>
                             <li class="day04">
-                                <span id="date">
+                                <span>
                                     <span>Пү</span>
                                     <time datetime="03-14">03-14</time>
                                 </span>
                                 <ul>
-                                    <li id="time1">
-                                        <button><time datetime="16:00">16:00</time></button>
-                                    </li>
-                                    <li id="time2">
-                                        <button><time datetime="16:00">16:00</time></button>
-                                    </li>
-                                    <li id="time3">
-                                        <button><time datetime="16:00">16:00</time></button>
-                                    </li>
-                                    <li id="time4">
-                                        <button><time datetime="16:00">16:00</time></button>
-                                    </li>
+                                    <li><button><time datetime="16:00">16:00</time></button></li>
+                                    <li><button><time datetime="16:00">16:00</time></button></li>
+                                    <li><button><time datetime="16:00">16:00</time></button></li>
+                                    <li><button><time datetime="16:00">16:00</time></button></li>
                                 </ul>
                             </li>
                             <li class="day05">
-                                <span id="date">
+                                <span>
                                     <span>Ба</span>
                                     <time datetime="03-15">03-15</time>
                                 </span>
                                 <ul>
-                                    <li id="time1">
-                                        <button><time datetime="16:00">16:00</time></button>
-                                    </li>
+                                    <li><button><time datetime="16:00">16:00</time></button></li>
                                 </ul>
                             </li>
                         </ul>
                     </nav>
                 </section>
                 <button class="calendar">Calendar</button>
-                <form action="" class="reserve-form">
+                <form class="reserve-form">
                     <ul>
                         <li>
                             <label for="purposes" id="purpose">Ашиглах зорилго</label>
@@ -291,11 +245,11 @@
                             </select>
                         </li>
                         <li>
-                            <label for="description" id="description">Нэмэлт тайлбар</label>
+                            <label for="description" id="description-label">Нэмэлт тайлбар</label>
                             <textarea id="description" name="description" minlength="5" maxlength="40" required></textarea>
                         </li>
                         <li>
-                            <label for="people" id="people">Хэдэн хүн?</label>
+                            <label for="people" id="people-label">Хэдэн хүн?</label>
                             <input type="number" name="people to use" id="people" max="50" min="2">
                         </li>
                         <li>
@@ -319,13 +273,14 @@
                 <li class="class1">
                     <a href="class.html">
                         <article id="">
-                            <img src="" alt="class1 image" class="c1-img">
+                            <img src="assets/class.jpg" alt="class1 image" class="c1-img">
                             <span class="c1-title">
                                 <span id="c1-building">1</span>
                                 <span id="c1-room">407</span>
                             </span>
                             <span id="c1-type">Лекц</span>
                             <span id="c1-capacity">55</span>
+                            <i id="projector"></i>
                             <progress max="5" value="3.8" id="c1-rating"></progress>
                         </article>
                     </a>
@@ -333,13 +288,14 @@
                 <li class="class2">
                     <a href="class.html">
                         <article id="">
-                            <img src="" alt="class2 image" class="c2-img">
+                            <img src="assets/class.jpg" alt="class2 image" class="c2-img">
                             <span class="c2-title">
                                 <span id="c2-building">1</span>
                                 <span id="c2-room">407</span>
                             </span>
                             <span id="c2-type">Лекц</span>
                             <span id="c2-capacity">55</span>
+                            <i id="projector"></i>
                             <progress max="5" value="3.8" id="c2-rating"></progress>
                         </article>
                     </a>
@@ -347,13 +303,14 @@
                 <li class="class3">
                     <a href="class.html">
                         <article id="">
-                            <img src="" alt="class3 image" class="c3-img">
+                            <img src="assets/class.jpg" alt="class3 image" class="c3-img">
                             <span class="c3-title">
                                 <span id="c3-building">1</span>
                                 <span id="c3-room">407</span>
                             </span>
                             <span id="c3-type">Лекц</span>
                             <span id="c3-capacity">55</span>
+                            <i id="projector"></i>
                             <progress max="5" value="3.8" id="c3-rating"></progress>
                         </article>
                     </a>
@@ -361,13 +318,14 @@
                 <li class="class4">
                     <a href="">
                         <article id="">
-                            <img src="" alt="class4 image" class="class4-img">
+                            <img src="assets/class.jpg" alt="class4 image" class="class4-img">
                             <span class="c4-title">
                                 <span id="c4-building">1</span>
                                 <span id="c4-room">407</span>
                             </span>
                             <span id="c4-type">Лекц</span>
                             <span id="c4-capacity">55</span>
+                            <i id="projector"></i>
                             <progress max="5" value="3.8" id="c4-rating"></progress>
                         </article>
                     </a>
