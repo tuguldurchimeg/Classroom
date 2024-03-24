@@ -26,19 +26,13 @@
                     <a href="user.html">21B1NUM1402</a>
                 </li>
                 <li>
-                    <a href="user.html">
-                        <span id="reserved-classes">Захиалсан ангиуд</span>
-                    </a>
+                    <a href="user.html"><span id="reserved-classes">Захиалсан ангиуд</span></a>
                 </li>
                 <li>
-                    <a href="user.html">
-                        <span id="liked-classes">Дуртай ангиуд</span>
-                    </a>
+                    <a href="user.html"><span id="liked-classes">Дуртай ангиуд</span></a>
                 </li>
                 <li>
-                    <a href="contact.html">
-                        <span id="contact">Холбогдох</span>
-                    </a>
+                    <a href="contact.html"><span id="contact">Холбогдох</span></a>
                 </li>
             </ul>
         </nav>
@@ -88,7 +82,7 @@
                 <form class="reserve-form">
                     <ul>
                         <li>
-                            <label for="purposes" id="purpose">Ашиглах зорилго</label>
+                            <label for="purposes">Ашиглах зорилго</label>
                             <select name="name" id="purposes" required>
                                 <option value="">Сонгоно уу!</option>
                                 <option value="клуб">Клубын уулзалт</option>
@@ -99,20 +93,20 @@
                             </select>
                         </li>
                         <li>
-                            <label for="description" id="description-label">Нэмэлт тайлбар</label>
+                            <label for="description">Нэмэлт тайлбар</label>
                             <textarea id="description" name="description" minlength="5" maxlength="40" required></textarea>
                         </li>
                         <li>
-                            <label for="people" id="people-label">Хэдэн хүн?</label>
-                            <input type="number" name="people to use" id="people" max="50" min="2">
+                            <label for="people">Хэдэн хүн?</label>
+                            <input type="number" name="people to use" id="people" max="50" min="2" required>
                         </li>
                         <li>
-                            <label for="phone-number" id="phone">Утас</label>
-                            <input type="tel" id="phone-number" name="phone" pattern="[0-9]{4}-[0-9]{4}" required>
+                            <label for="phone-number">Утас</label>
+                            <input type="tel" class="phone-number" name="phone" pattern="[0-9]{4}-[0-9]{4}" required>
                         </li>
                         <li>
-                            <label for="phone-number2" id="phone2">Утас 2</label>
-                            <input type="tel" id="phone-number2" name="phone" pattern="[0-9]{4}-[0-9]{4}" required>
+                            <label for="phone-number2">Утас 2</label>
+                            <input type="tel" class="phone-number" name="phone" pattern="[0-9]{4}-[0-9]{4}" required>
                         </li>
                     </ul>
                     <input type="submit" value="Захиалах" />
@@ -121,9 +115,9 @@
 
             <section class="reserve-byWeek">
                 <section class="available-days">
-                    <nav class="week1">
+                    <nav class="week" id ="week1">
                         <ul>
-                            <li class="day01">
+                            <li class="day">
                                 <span">
                                     <span>Да</span>
                                     <time datetime="03-04">03-04</time>
@@ -132,7 +126,7 @@
                                     <li><button><time datetime="16:00">16:00</time></button></li>
                                 </ul>
                             </li>
-                            <li class="day02">
+                            <li class="day">
                                 <span>
                                     <span>Мя</span>
                                     <time datetime="03-05">03-05</time>
@@ -142,7 +136,7 @@
                                     <li><button><time datetime="16:00">16:00</time></button></li>
                                 </ul>
                             </li>
-                            <li class="day03">
+                            <li class="day">
                                 <span>
                                     <span>Лх</span>
                                     <time datetime="03-06">03-06</time>
@@ -153,7 +147,7 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li class="day04">
+                            <li class="day">
                                 <span>
                                     <span>Пү</span>
                                     <time datetime="03-07">03-07</time>
@@ -165,7 +159,7 @@
                                     <li><button><time datetime="16:00">16:00</time></button></li>
                                 </ul>
                             </li>
-                            <li class="day05">
+                            <li class="day">
                                 <span>
                                     <span>Ба</span>
                                     <time datetime="03-08">03-08</time>
@@ -176,9 +170,9 @@
                             </li>
                         </ul>
                     </nav>
-                    <nav class="week2">
+                    <nav class="week" id ="week1">
                         <ul>
-                            <li class="day01">
+                            <li class="day">
                                 <span>
                                     <span>Да</span>
                                     <time datetime="03-11">03-11</time>
@@ -187,7 +181,7 @@
                                     <li><button><time datetime="16:00">16:00</time></button></li>
                                 </ul>
                             </li>
-                            <li class="day02">
+                            <li class="day">
                                 <span>
                                     <span>Мя</span>
                                     <time datetime="03-12">03-12</time>
@@ -197,7 +191,7 @@
                                     <li><button><time datetime="16:00">16:00</time></button></li>
                                 </ul>
                             </li>
-                            <li class="day03">
+                            <li class="day">
                                 <span>
                                     <span>Лх</span>
                                     <time datetime="03-13">03-13</time>
@@ -206,7 +200,7 @@
                                     <li><button><time datetime="16:00">16:00</time></button>></li>
                                 </ul>
                             </li>
-                            <li class="day04">
+                            <li class="day">
                                 <span>
                                     <span>Пү</span>
                                     <time datetime="03-14">03-14</time>
@@ -218,7 +212,7 @@
                                     <li><button><time datetime="16:00">16:00</time></button></li>
                                 </ul>
                             </li>
-                            <li class="day05">
+                            <li class="day">
                                 <span>
                                     <span>Ба</span>
                                     <time datetime="03-15">03-15</time>
@@ -245,20 +239,20 @@
                             </select>
                         </li>
                         <li>
-                            <label for="description" id="description-label">Нэмэлт тайлбар</label>
+                            <label for="description">Нэмэлт тайлбар</label>
                             <textarea id="description" name="description" minlength="5" maxlength="40" required></textarea>
                         </li>
                         <li>
-                            <label for="people" id="people-label">Хэдэн хүн?</label>
-                            <input type="number" name="people to use" id="people" max="50" min="2">
+                            <label for="people">Хэдэн хүн?</label>
+                            <input type="number" name="people to use" max="50" min="2" required>
                         </li>
                         <li>
-                            <label for="phone-number" id="phone">Утас</label>
-                            <input type="tel" id="phone-number" name="phone" pattern="[0-9]{4}-[0-9]{4}" required>
+                            <label for="phone-number">Утас</label>
+                            <input type="tel" class="phone-number" name="phone" pattern="[0-9]{4}-[0-9]{4}" required>
                         </li>
                         <li>
-                            <label for="phone-number2" id="phone2">Утас 2</label>
-                            <input type="tel" id="phone-number2" name="phone" pattern="[0-9]{4}-[0-9]{4}" required>
+                            <label for="phone-number" id="phone2">Утас 2</label>
+                            <input type="tel" class="phone-number" name="phone2" pattern="[0-9]{4}-[0-9]{4}" required>
                         </li>
                     </ul>
                     <input type="submit" value="Захиалах" />
@@ -272,7 +266,7 @@
             <ul>
                 <li class="class1">
                     <a href="class.html">
-                        <article id="">
+                        <article id="class1">
                             <img src="assets/class.jpg" alt="class1 image" class="c1-img">
                             <span class="c1-title">
                                 <span id="c1-building">1</span>
@@ -280,14 +274,14 @@
                             </span>
                             <span id="c1-type">Лекц</span>
                             <span id="c1-capacity">55</span>
-                            <i id="projector"></i>
+                            <i id="c1-projector"></i>
                             <progress max="5" value="3.8" id="c1-rating"></progress>
                         </article>
                     </a>
                 </li>
                 <li class="class2">
                     <a href="class.html">
-                        <article id="">
+                        <article id="class2">
                             <img src="assets/class.jpg" alt="class2 image" class="c2-img">
                             <span class="c2-title">
                                 <span id="c2-building">1</span>
@@ -295,14 +289,14 @@
                             </span>
                             <span id="c2-type">Лекц</span>
                             <span id="c2-capacity">55</span>
-                            <i id="projector"></i>
+                            <i id="c2-projector"></i>
                             <progress max="5" value="3.8" id="c2-rating"></progress>
                         </article>
                     </a>
                 </li>
                 <li class="class3">
                     <a href="class.html">
-                        <article id="">
+                        <article id="class3">
                             <img src="assets/class.jpg" alt="class3 image" class="c3-img">
                             <span class="c3-title">
                                 <span id="c3-building">1</span>
@@ -310,14 +304,14 @@
                             </span>
                             <span id="c3-type">Лекц</span>
                             <span id="c3-capacity">55</span>
-                            <i id="projector"></i>
+                            <i id="c3-projector"></i>
                             <progress max="5" value="3.8" id="c3-rating"></progress>
                         </article>
                     </a>
                 </li>
                 <li class="class4">
                     <a href="">
-                        <article id="">
+                        <article id="class4">
                             <img src="assets/class.jpg" alt="class4 image" class="class4-img">
                             <span class="c4-title">
                                 <span id="c4-building">1</span>
@@ -325,7 +319,7 @@
                             </span>
                             <span id="c4-type">Лекц</span>
                             <span id="c4-capacity">55</span>
-                            <i id="projector"></i>
+                            <i id="c4-projector"></i>
                             <progress max="5" value="3.8" id="c4-rating"></progress>
                         </article>
                     </a>
