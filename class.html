@@ -36,11 +36,7 @@
     <main>
         <section class="class-info">
             <article>
-                <h2 class="class-title">
-                    <span>1</span>
-                    <span>407</span>
-                </h2>
-                                
+                <h2 class="class-title">1-407</h2>                          
                 <img src="assets/class.jpg" alt="class image" class="class-img">
             </article>
 
@@ -88,8 +84,8 @@
                 <form class="reserve-form">
                     <ul>
                         <li>
-                            <label>Ашиглах зорилго</label>
-                            <select name="purpose" required>
+                            <label for="purpose1">Ашиглах зорилго</label>
+                            <select name="purpose" id="purpose1" required>
                                 <option value="">Сонгоно уу!</option>
                                 <option value="клуб">Клубын уулзалт</option>
                                 <option value="хурал">Хурал, цуглаан</option>
@@ -99,20 +95,20 @@
                             </select>
                         </li>
                         <li>
-                            <label>Нэмэлт тайлбар</label>
-                            <textarea name="description" minlength="5" maxlength="40" required></textarea>
+                            <label for="description1">Нэмэлт тайлбар</label>
+                            <textarea name="description" id="description1" minlength="5" maxlength="40" required></textarea>
                         </li>
                         <li>
-                            <label>Хэдэн хүн?</label>
-                            <input type="number" name="people" max="50" min="2" required>
+                            <label for="people1">Хэдэн хүн?</label>
+                            <input type="number" id="people1" name="people" max="50" min="2" required>
                         </li>
                         <li>
-                            <label>Утас</label>
-                            <input type="tel" class="phone-number" name="phone" pattern="[0-9]{4}-[0-9]{4}" required>
+                            <label for="phone-number1">Утас</label>
+                            <input type="tel" class="phone-number" id="phone-number1" name="phone" pattern="[0-9]{4}-[0-9]{4}" required>
                         </li>
                         <li>
-                            <label>Утас 2</label>
-                            <input type="tel" class="phone-number" name="phone" pattern="[0-9]{4}-[0-9]{4}" required>
+                            <label for="phone-number2">Утас 2</label>
+                            <input type="tel" class="phone-number" id="phone-number2" name="phone" pattern="[0-9]{4}-[0-9]{4}" required>
                         </li>
                     </ul>
                     <input type="submit" value="Захиалах" />
@@ -232,8 +228,8 @@
                 <form class="reserve-form">
                     <ul>
                         <li>
-                            <label>Ашиглах зорилго</label>
-                            <select name="purpose" required>
+                            <label for="purpose1">Ашиглах зорилго</label>
+                            <select name="purpose" id="purpose1" required>
                                 <option value="">Сонгоно уу!</option>
                                 <option value="клуб">Клубын уулзалт</option>
                                 <option value="хурал">Хурал, цуглаан</option>
@@ -243,20 +239,20 @@
                             </select>
                         </li>
                         <li>
-                            <label>Нэмэлт тайлбар</label>
-                            <textarea name="description" minlength="5" maxlength="40" required></textarea>
+                            <label for="description2">Нэмэлт тайлбар</label>
+                            <textarea name="description" id="description2" minlength="5" maxlength="40" required></textarea>
                         </li>
                         <li>
-                            <label>Хэдэн хүн?</label>
-                            <input type="number" name="people" max="50" min="2" required>
+                            <label for="people2">Хэдэн хүн?</label>
+                            <input type="number" id="people2" name="people" max="50" min="2" required>
                         </li>
                         <li>
-                            <label>Утас</label>
-                            <input type="tel" class="phone-number" name="phone" pattern="[0-9]{4}-[0-9]{4}" required>
+                            <label for="phone-number3">Утас</label>
+                            <input type="tel" class="phone-number" id="phone-number3" name="phone" pattern="[0-9]{4}-[0-9]{4}" required>
                         </li>
                         <li>
-                            <label>Утас 2</label>
-                            <input type="tel" class="phone-number" name="phone2" pattern="[0-9]{4}-[0-9]{4}" required>
+                            <label for="phone-number4">Утас 2</label>
+                            <input type="tel" class="phone-number" id="phone-number4" name="phone" pattern="[0-9]{4}-[0-9]{4}" required>
                         </li>
                     </ul>
                     <input type="submit" value="Захиалах" />
@@ -268,63 +264,75 @@
     <aside class="similar-class">
         <section class="classes">
             <ul>
-                <li class="class-section">
+                <li>
                     <a href="class.html">
-                        <article>
+                        <article class="class-section">
                             <img src="assets/class.jpg" alt="class1 image" class="c1-img">
-                            <span>
-                                <span>1</span>
-                                <span>407</span>
+                            <span>1-407</span>
                             </span>
                             <span>Лекц</span>
                             <span>55</span>
-                            <i></i>
-                            <progress max="5" value="3.8"></progress>
+                            <span class="rating-icon">
+                                <i id="rating1"></i>
+                                <i id="rating2"></i>
+                                <i id="rating3"></i>
+                                <i id="rating4"></i>
+                                <i id="rating5"></i>
+                            </span>
                         </article>
                     </a>
                 </li>
-                <li class="class-section">
+                <li>
                     <a href="class.html">
-                        <article>
+                        <article class="class-section">
                             <img src="assets/class.jpg" alt="class1 image" class="c1-img">
-                            <span>
-                                <span>1</span>
-                                <span>407</span>
+                            <span>1-407</span>
                             </span>
                             <span>Лекц</span>
                             <span>55</span>
-                            <i></i>
-                            <progress max="5" value="3.8"></progress>
+                            <span class="rating-icon">
+                                <i id="rating1"></i>
+                                <i id="rating2"></i>
+                                <i id="rating3"></i>
+                                <i id="rating4"></i>
+                                <i id="rating5"></i>
+                            </span>
                         </article>
                     </a>
                 </li>
-                <li class="class-section">
+                <li>
                     <a href="class.html">
-                        <article>
+                        <article class="class-section">
                             <img src="assets/class.jpg" alt="class1 image" class="c1-img">
-                            <span>
-                                <span>1</span>
-                                <span>407</span>
+                            <span>1-407</span>
                             </span>
                             <span>Лекц</span>
                             <span>55</span>
-                            <i></i>
-                            <progress max="5" value="3.8"></progress>
+                            <span class="rating-icon">
+                                <i id="rating1"></i>
+                                <i id="rating2"></i>
+                                <i id="rating3"></i>
+                                <i id="rating4"></i>
+                                <i id="rating5"></i>
+                            </span>
                         </article>
                     </a>
                 </li>
-                <li class="class-section">
+                <li>
                     <a href="class.html">
-                        <article>
+                        <article class="class-section">
                             <img src="assets/class.jpg" alt="class1 image" class="c1-img">
-                            <span>
-                                <span>1</span>
-                                <span>407</span>
+                            <span>1-407</span>
                             </span>
                             <span>Лекц</span>
                             <span>55</span>
-                            <i></i>
-                            <progress max="5" value="3.8"></progress>
+                            <span class="rating-icon">
+                                <i id="rating1"></i>
+                                <i id="rating2"></i>
+                                <i id="rating3"></i>
+                                <i id="rating4"></i>
+                                <i id="rating5"></i>
+                            </span>
                         </article>
                     </a>
                 </li>
