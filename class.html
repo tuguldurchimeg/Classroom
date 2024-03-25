@@ -62,6 +62,17 @@
                         <i id="projector-off"></i>
                     </li>
                 </ul>
+            </nav>
+            <nav>
+                <h6 class="rating-title">Үнэлгээ</h6>
+                <span class="rate">3.8</span>
+                <span class="rate-turul">
+                    <span>Агаар</span>
+                    <span>Тохижилт</span>
+                    <span>NUM-Wifi</span>
+                    <span>Залгуур</span>
+                </span>
+                <button class="add-rating">Санал<i class="add-icon"></i></button>       
             </nav>            
         </section>
 
@@ -72,7 +83,7 @@
             </menu>
     
             <section class="reserve-byDay">
-                <button class="calendar"></button>
+                <button class="calendar">Calendar</button>
                 <span class="available-times">
                     <button><time datetime="16:00">16:00</time></button>
                     <button><time datetime="16:45">16:45</time></button>
@@ -82,8 +93,8 @@
                 <form class="reserve-form">
                     <ul>
                         <li>
-                            <label for="purposes">Ашиглах зорилго</label>
-                            <select name="name" id="purposes" required>
+                            <label>Ашиглах зорилго</label>
+                            <select name="purpose" required>
                                 <option value="">Сонгоно уу!</option>
                                 <option value="клуб">Клубын уулзалт</option>
                                 <option value="хурал">Хурал, цуглаан</option>
@@ -93,19 +104,19 @@
                             </select>
                         </li>
                         <li>
-                            <label for="description">Нэмэлт тайлбар</label>
-                            <textarea id="description" name="description" minlength="5" maxlength="40" required></textarea>
+                            <label>Нэмэлт тайлбар</label>
+                            <textarea name="description" minlength="5" maxlength="40" required></textarea>
                         </li>
                         <li>
-                            <label for="people">Хэдэн хүн?</label>
-                            <input type="number" name="people to use" id="people" max="50" min="2" required>
+                            <label>Хэдэн хүн?</label>
+                            <input type="number" name="people" max="50" min="2" required>
                         </li>
                         <li>
-                            <label for="phone-number">Утас</label>
+                            <label>Утас</label>
                             <input type="tel" class="phone-number" name="phone" pattern="[0-9]{4}-[0-9]{4}" required>
                         </li>
                         <li>
-                            <label for="phone-number2">Утас 2</label>
+                            <label>Утас 2</label>
                             <input type="tel" class="phone-number" name="phone" pattern="[0-9]{4}-[0-9]{4}" required>
                         </li>
                     </ul>
@@ -118,7 +129,7 @@
                     <nav class="week" id ="week1">
                         <ul>
                             <li class="day">
-                                <span">
+                                <span>
                                     <span>Да</span>
                                     <time datetime="03-04">03-04</time>
                                 </span>
@@ -142,9 +153,7 @@
                                     <time datetime="03-06">03-06</time>
                                 </span>
                                 <ul>
-                                    <li>
-                                        <button><time datetime="16:00">16:00</time></button>
-                                    </li>
+                                    <li><button><time datetime="16:00">16:00</time></button></li>
                                 </ul>
                             </li>
                             <li class="day">
@@ -170,7 +179,7 @@
                             </li>
                         </ul>
                     </nav>
-                    <nav class="week" id ="week1">
+                    <nav class="week" id ="week2">
                         <ul>
                             <li class="day">
                                 <span>
@@ -228,8 +237,8 @@
                 <form class="reserve-form">
                     <ul>
                         <li>
-                            <label for="purposes" id="purpose">Ашиглах зорилго</label>
-                            <select name="name" id="purposes" required>
+                            <label>Ашиглах зорилго</label>
+                            <select name="purpose" required>
                                 <option value="">Сонгоно уу!</option>
                                 <option value="клуб">Клубын уулзалт</option>
                                 <option value="хурал">Хурал, цуглаан</option>
@@ -239,19 +248,19 @@
                             </select>
                         </li>
                         <li>
-                            <label for="description">Нэмэлт тайлбар</label>
-                            <textarea id="description" name="description" minlength="5" maxlength="40" required></textarea>
+                            <label>Нэмэлт тайлбар</label>
+                            <textarea name="description" minlength="5" maxlength="40" required></textarea>
                         </li>
                         <li>
-                            <label for="people">Хэдэн хүн?</label>
-                            <input type="number" name="people to use" max="50" min="2" required>
+                            <label>Хэдэн хүн?</label>
+                            <input type="number" name="people" max="50" min="2" required>
                         </li>
                         <li>
-                            <label for="phone-number">Утас</label>
+                            <label>Утас</label>
                             <input type="tel" class="phone-number" name="phone" pattern="[0-9]{4}-[0-9]{4}" required>
                         </li>
                         <li>
-                            <label for="phone-number" id="phone2">Утас 2</label>
+                            <label>Утас 2</label>
                             <input type="tel" class="phone-number" name="phone2" pattern="[0-9]{4}-[0-9]{4}" required>
                         </li>
                     </ul>
