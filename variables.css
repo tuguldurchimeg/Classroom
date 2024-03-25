@@ -1,0 +1,255 @@
+:root {
+	--color-text: rgba(0,0,0,1);
+	--color-white: rgba(255,255,255,1);
+	--color-primary: rgba(109,186,69,1);
+	--color-accent: rgba(172,233,141,1);
+	--color-background: linear-gradient(to bottom, rgba(232,232,245,0.909) 0%,rgba(244,251,243,0.958) 100%);
+	--color-border: rgba(194,194,194,1);
+	--color-black: rgba(0,0,0,1);
+	--color-light-grey: rgba(171,171,171,1);
+	--color-dark-grey: rgba(122,125,125,1);
+	--color-light-text: rgba(129,129,129,1);
+}
+.text-style-display {
+	font-size: 4.5rem;
+	font-family: Montserrat;
+	font-weight: 800;
+	font-style: normal;
+	line-height: 120%;
+	text-decoration: none;
+	text-transform: none;
+}
+.text-style-heading-1 {
+	font-size: 3.5rem;
+	font-family: Montserrat;
+	font-weight: 700;
+	font-style: normal;
+	line-height: 120%;
+	text-decoration: none;
+	text-transform: none;
+}
+.text-style-heading-2 {
+	font-size: 3rem;
+	font-family: Montserrat;
+	font-weight: 700;
+	font-style: normal;
+	line-height: 120%;
+	text-decoration: none;
+	text-transform: none;
+}
+.text-style-heading-3 {
+	font-size: 2.5rem;
+	font-family: Montserrat;
+	font-weight: 700;
+	font-style: normal;
+	line-height: 120%;
+	text-decoration: none;
+	text-transform: none;
+}
+.text-style-heading-4 {
+	font-size: 2rem;
+	font-family: Montserrat;
+	font-weight: 700;
+	font-style: normal;
+	line-height: 130%;
+	text-decoration: none;
+	text-transform: none;
+}
+.text-style-heading-5 {
+	font-size: 1.5rem;
+	font-family: Montserrat;
+	font-weight: 700;
+	font-style: normal;
+	line-height: 140%;
+	text-decoration: none;
+	text-transform: none;
+}
+.text-style-heading-6 {
+	font-size: 1.25rem;
+	font-family: Montserrat;
+	font-weight: 700;
+	font-style: normal;
+	line-height: 140%;
+	text-decoration: none;
+	text-transform: none;
+}
+.text-style-large-extra-bold {
+	font-size: 1.25rem;
+	font-family: Montserrat;
+	font-weight: 800;
+	font-style: normal;
+	line-height: 150%;
+	text-decoration: none;
+	text-transform: none;
+}
+.text-style-large-bold {
+	font-size: 1.25rem;
+	font-family: Montserrat;
+	font-weight: 700;
+	font-style: normal;
+	line-height: 150%;
+	text-decoration: none;
+	text-transform: none;
+}
+.text-style-large-semi-bold {
+	font-size: 1.25rem;
+	font-family: Montserrat;
+	font-weight: 600;
+	font-style: normal;
+	line-height: 150%;
+	text-decoration: none;
+	text-transform: none;
+}
+.text-style-large-medium {
+	font-size: 1.25rem;
+	font-family: Montserrat;
+	font-weight: 500;
+	font-style: normal;
+	line-height: 150%;
+	text-decoration: none;
+	text-transform: none;
+}
+.text-style-large-normal {
+	font-size: 1.25rem;
+	font-family: Montserrat;
+	font-weight: 400;
+	font-style: normal;
+	line-height: 150%;
+	text-decoration: none;
+	text-transform: none;
+}
+.text-style-large-light {
+	font-size: 1.25rem;
+	font-family: Montserrat;
+	font-weight: 300;
+	font-style: normal;
+	line-height: 150%;
+	text-decoration: none;
+	text-transform: none;
+}
+.text-style-medium-extra-bold {
+	font-size: 1.125rem;
+	font-family: Montserrat;
+	font-weight: 700;
+	font-style: normal;
+	line-height: 150%;
+	text-decoration: none;
+	text-transform: none;
+}
+.text-style-medium-bold {
+	font-size: 1.125rem;
+	font-family: Montserrat;
+	font-weight: 700;
+	font-style: normal;
+	line-height: 150%;
+	text-decoration: none;
+	text-transform: none;
+}
+.text-style-medium-semi-bold {
+	font-size: 1.125rem;
+	font-family: Montserrat;
+	font-weight: 600;
+	font-style: normal;
+	line-height: 150%;
+	text-decoration: none;
+	text-transform: none;
+}
+.text-style-medium-medium {
+	font-size: 1.125rem;
+	font-family: Montserrat;
+	font-weight: 500;
+	font-style: normal;
+	line-height: 150%;
+	text-decoration: none;
+	text-transform: none;
+}
+.text-style-medium-normal {
+	font-size: 1.125rem;
+	font-family: Montserrat;
+	font-weight: 400;
+	font-style: normal;
+	line-height: 150%;
+	text-decoration: none;
+	text-transform: none;
+}
+.text-style-medium-light {
+	font-size: 1.125rem;
+	font-family: Montserrat;
+	font-weight: 300;
+	font-style: normal;
+	line-height: 150%;
+	text-decoration: none;
+	text-transform: none;
+}
+.text-style-regular-extra-bold {
+	font-size: 1rem;
+	font-family: Montserrat;
+	font-weight: 800;
+	font-style: normal;
+	line-height: 150%;
+	text-decoration: none;
+	text-transform: none;
+}
+.text-style-regular-bold {
+	font-size: 1rem;
+	font-family: Montserrat;
+	font-weight: 700;
+	font-style: normal;
+	line-height: 150%;
+	text-decoration: none;
+	text-transform: none;
+}
+.text-style-regular-semi-bold {
+	font-size: 1rem;
+	font-family: Montserrat;
+	font-weight: 600;
+	font-style: normal;
+	line-height: 150%;
+	text-decoration: none;
+	text-transform: none;
+}
+.text-style-regular-medium {
+	font-size: 1rem;
+	font-family: Montserrat;
+	font-weight: 500;
+	font-style: normal;
+	line-height: 150%;
+	text-decoration: none;
+	text-transform: none;
+}
+.text-style-regular-normal {
+	font-size: 1rem;
+	font-family: Montserrat;
+	font-weight: 400;
+	font-style: normal;
+	line-height: 150%;
+	text-decoration: none;
+	text-transform: none;
+}
+.text-style-regular-light {
+	font-size: 1rem;
+	font-family: Montserrat;
+	font-weight: 300;
+	font-style: normal;
+	line-height: 150%;
+	text-decoration: none;
+	text-transform: none;
+}
+.text-style-small-extra-bold {
+	font-size: 0.875rem;
+	font-family: Montserrat;
+	font-weight: 800;
+	font-style: normal;
+	line-height: 150%;
+	text-decoration: none;
+	text-transform: none;
+}
+.text-style-small-bold {
+	font-size: 0.875rem;
+	font-family: Montserrat;
+	font-weight: 700;
+	font-style: normal;
+	line-height: 150%;
+	text-decoration: none;
+	text-transform: none;
+}
