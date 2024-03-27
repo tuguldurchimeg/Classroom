@@ -21,20 +21,45 @@ html{
 .class-section-1 {
    width: 297px;
    height: 172px;
+   position:absolute;
 }
 
-.class-section1 > article{
+.class-section-1 > article{
    position:relative;
    height: 170px;
-   background-color: var(--white);
+   background-color: var(--color-white);
    border-radius: 20px;
    border: 1px solid;
-   border-color: var(--border);
+   border-color: var(--color-border);
 }
 .class-section-1 img{
-   position: relative;
+   position: absolute;
    width: 155px;
-   height: 166px;
-   top: 1px;
-   left: 1px;   
+   height: 169px;
+   border-radius: 20px 0 0 20px;
+   border: 1px solid;
+   border-color: var(--color-border);
 }
+.class-section-1 h3{
+   position:absolute;
+   left:169px;
+   top:24px;
+   font-weight: var(--bold);
+   font-size: var(--medium);
+   line-height: var(--line-height-4);
+   color:var(--color-text);
+   white-space: nowrap;
+}
+.class-section .class-type{
+   position: absolute;
+   width: 40px;
+   height: 13px;
+   top: 49px;
+   left: 170px;
+
+   font-weight: var(--medium);
+   font-size: var(--tiny);
+   line-height:var(--line-height-4);
+   color:var(--color-light-grey);
+   white-space: nowrap;
+ }
