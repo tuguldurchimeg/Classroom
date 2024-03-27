@@ -11,16 +11,17 @@
         <meta name="keywords" content="МУИС, МУИС анги захиалах, Оюутан, Монгол Улсын Их Сургууль">
         <link rel="stylesheet" href="variables.css">
         <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="class-style.css">
      </head>
 <body>
     <header>
-        <a href="index.html">logo</a>
+        <a href="index.html"><img class="logo" src="assets/Logo.png" alt="logo image"></a>
         <button>profile</button>
 
         <nav class="user-menu">
             <ul>
                 <li>
-                    <a href="user.html">21B1NUM1402</a>
+                    <a href="user.html" id="user">21B1NUM1402</a>
                 </li>
                 <li>
                     <a href="user.html"><span>Захиалсан ангиуд</span></a>
@@ -38,19 +39,19 @@
     <main>
         <section class="class-info">
             <article>
-                <h2 class="class-title">1-407</h2>                          
+                <h2 class="class-title heading-3">1-407</h2>                          
                 <img src="assets/class.jpg" alt="class image" class="class-img">
             </article>
 
             <nav class="main-info">
                 <ul class="info">
-                    <li class="type"><span>Лекц</span></li>
-                    <li class="capacity">
-                        <span>Суудлын тоо</span>
-                        <span>55</span>
+                    <li class="type"><span class="heading-6">Лекц</span></li>
+                    <li>
+                        <div class="info-desc">Суудлын тоо</div>
+                        <div class="heading-3">55</div>
                     </li>
-                    <li class="projector">
-                        <span>Проектор</span>
+                    <li>
+                        <div class="info-desc">Проектор</div>
                     </li>
                 </ul>
             </nav>
@@ -77,14 +78,14 @@
                 <section class="calendar">
                     <header>
                         <span class="selection-range">03/04-03/17</span>
-                        <ul class="week-days">
-                            <li>Да</li>
-                            <li>Мя</li>
-                            <li>Лх</li>
-                            <li>Пү</li>
-                            <li>Ба</li>
-                            <li>Бя</li>
-                            <li>Ня</li>
+                        <ul>
+                            <li class="week-day">Да</li>
+                            <li class="week-day">Мя</li>
+                            <li class="week-day">Лх</li>
+                            <li class="week-day">Пү</li>
+                            <li class="week-day">Ба</li>
+                            <li class="week-day">Бя</li>
+                            <li class="week-day">Ня</li>
                         </ul>
                     </header>
                     <main class="cal-days">
@@ -184,7 +185,7 @@
                         <ul>
                             <li class="day">
                                 <span>
-                                    <span>Да</span>
+                                    <div class="week-day">Да</div>
                                     <time datetime="03-04">03-04</time>
                                 </span>
                                 <ul>
@@ -193,7 +194,7 @@
                             </li>
                             <li class="day">
                                 <span>
-                                    <span>Мя</span>
+                                    <div class="week-day">Мя</div>
                                     <time datetime="03-05">03-05</time>
                                 </span>
                                 <ul>
@@ -203,7 +204,7 @@
                             </li>
                             <li class="day">
                                 <span>
-                                    <span>Лх</span>
+                                    <div class="week-day">Лх</div>
                                     <time datetime="03-06">03-06</time>
                                 </span>
                                 <ul>
@@ -212,7 +213,7 @@
                             </li>
                             <li class="day">
                                 <span>
-                                    <span>Пү</span>
+                                    <div class="week-day">Пү</div>
                                     <time datetime="03-07">03-07</time>
                                 </span>
                                 <ul>
@@ -224,7 +225,7 @@
                             </li>
                             <li class="day">
                                 <span>
-                                    <span>Ба</span>
+                                    <div class="week-day">Ба</div>
                                     <time datetime="03-08">03-08</time>
                                 </span>
                                 <ul>
@@ -237,7 +238,7 @@
                         <ul>
                             <li class="day">
                                 <span>
-                                    <span>Да</span>
+                                    <div class="week-day">Да</div>
                                     <time datetime="03-11">03-11</time>
                                 </span>
                                 <ul>
@@ -246,7 +247,7 @@
                             </li>
                             <li class="day">
                                 <span>
-                                    <span>Мя</span>
+                                    <div class="week-day">Мя</div>
                                     <time datetime="03-12">03-12</time>
                                 </span>
                                 <ul>
@@ -256,16 +257,16 @@
                             </li>
                             <li class="day">
                                 <span>
-                                    <span>Лх</span>
+                                    <div class="week-day">Лх</div>
                                     <time datetime="03-13">03-13</time>
                                 </span>
                                 <ul>
-                                    <li><button><time datetime="16:00">16:00</time></button>></li>
+                                    <li><button><time datetime="16:00">16:00</time></button></li>
                                 </ul>
                             </li>
                             <li class="day">
                                 <span>
-                                    <span>Пү</span>
+                                    <div class="week-day">Пү</div>
                                     <time datetime="03-14">03-14</time>
                                 </span>
                                 <ul>
@@ -277,7 +278,7 @@
                             </li>
                             <li class="day">
                                 <span>
-                                    <span>Ба</span>
+                                    <div class="week-day">Ба</div>
                                     <time datetime="03-15">03-15</time>
                                 </span>
                                 <ul>
@@ -329,7 +330,7 @@
             <ul>
                 <li>
                     <a href="class.html">
-                        <article class="class-section">
+                        <article class="class-section-1">
                             <img src="assets/class.jpg" alt="class image">
                             <h3>1-407</h3>
                             <div>Лекц</div>
@@ -346,7 +347,7 @@
                 </li>
                 <li>
                     <a href="class.html">
-                        <article class="class-section">
+                        <article class="class-section-1">
                             <img src="assets/class.jpg" alt="class image">
                             <h3>1-407</h3>
                             <div>Лекц</div>
@@ -363,7 +364,7 @@
                 </li>
                 <li>
                     <a href="class.html">
-                        <article class="class-section">
+                        <article class="class-section-1">
                             <img src="assets/class.jpg" alt="class image">
                             <h3>1-407</h3>
                             <div>Лекц</div>
@@ -380,7 +381,7 @@
                 </li>
                 <li>
                     <a href="class.html">
-                        <article class="class-section">
+                        <article class="class-section-1">
                             <img src="assets/class.jpg" alt="class image">
                             <h3>1-407</h3>
                             <div>Лекц</div>
