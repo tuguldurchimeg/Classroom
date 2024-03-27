@@ -9,6 +9,8 @@
         <meta name="author" content="Tuguldurchimeg">
         <meta name="author" content="Enkh-Erdem">
         <meta name="keywords" content="МУИС, МУИС анги захиалах, Оюутан, Монгол Улсын Их Сургууль">
+        <link rel="stylesheet" href="variables.css">
+        <link rel="stylesheet" href="styles.css">
      </head>
 <body>
     <header>
@@ -49,20 +51,18 @@
                     </li>
                     <li class="projector">
                         <span>Проектор</span>
-                        <i></i>
-                        <i></i>
                     </li>
                 </ul>
             </nav>
             <nav>
-                <h6 class="rating-title">Үнэлгээ</h6>
+                <h6 class="rate-title">Үнэлгээ</h6>
                 <span class="rate">3.8</span>
-                <span class="rate-turul">
-                    <span>Агаар</span>
-                    <span>Тохижилт</span>
-                    <span>NUM-Wifi</span>
-                    <span>Залгуур</span>
-                </span>
+                <nav class="rate-criteria">
+                    <meter min="0" max="5" value="2.8">Агаар</meter>
+                    <meter min="0" max="5" value="3.8">Тохижилт</meter>
+                    <meter min="0" max="5" value="1.5">NUM-Wifi</meter>
+                    <meter min="0" max="5" value="1">Залгуур</meter>
+                </nav>
                 <button class="add-rating">Санал<i class="add-icon"></i></button>       
             </nav>            
         </section>
@@ -74,7 +74,38 @@
             </menu>
     
             <section class="reserve-byDay">
-                <button class="calendar">Calendar</button>
+                <section class="calendar">
+                    <header>
+                        <span class="selection-range">03/04-03/17</span>
+                        <ul class="week-days">
+                            <li>Да</li>
+                            <li>Мя</li>
+                            <li>Лх</li>
+                            <li>Пү</li>
+                            <li>Ба</li>
+                            <li>Бя</li>
+                            <li>Ня</li>
+                        </ul>
+                    </header>
+                    <main class="cal-days">
+                        <ul>
+                            <li>4</li>
+                            <li>5</li>
+                            <li>6</li>
+                            <li>7</li>
+                            <li>8</li>
+                            <li>9</li>
+                            <li>10</li>
+                            <li>11</li>
+                            <li>12</li>
+                            <li>13</li>
+                            <li>14</li>
+                            <li>15</li>
+                            <li>16</li>
+                            <li>17</li>
+                        </ul>
+                    </main>
+                </section>
                 <span class="available-times">
                     <button><time datetime="16:00">16:00</time></button>
                     <button><time datetime="16:45">16:45</time></button>
@@ -116,6 +147,38 @@
             </section>
 
             <section class="reserve-byWeek">
+                <section class="calendar">
+                    <header>
+                        <span class="selection-range">03/04-03/17</span>
+                        <nav class="week-days">
+                            <span>Да</span>
+                            <span>Мя</span>
+                            <span>Лх</span>
+                            <span>Пү</span>
+                            <span>Ба</span>
+                            <span>Бя</span>
+                            <span>Ня</span>
+                        </nav>
+                    </header>
+                    <main class="cal-days">
+                        <ul>
+                            <li>4</li>
+                            <li>5</li>
+                            <li>6</li>
+                            <li>7</li>
+                            <li>8</li>
+                            <li>9</li>
+                            <li>10</li>
+                            <li>11</li>
+                            <li>12</li>
+                            <li>13</li>
+                            <li>14</li>
+                            <li>15</li>
+                            <li>16</li>
+                            <li>17</li>
+                        </ul>
+                    </main>
+                </section>
                 <section class="available-days">
                     <nav class="week">
                         <ul>
@@ -224,7 +287,6 @@
                         </ul>
                     </nav>
                 </section>
-                <button class="calendar">Calendar</button>
                 <form class="reserve-form">
                     <ul>
                         <li>
@@ -262,16 +324,16 @@
     </main>
         
     <aside class="similar-class">
-        <section class="classes">
+        <section>
+            <h2>Төстэй ангиуд</h2>
             <ul>
                 <li>
                     <a href="class.html">
                         <article class="class-section">
-                            <img src="assets/class.jpg" alt="class1 image" class="c1-img">
-                            <span>1-407</span>
-                            </span>
+                            <img src="assets/class.jpg" alt="class image">
+                            <h3>1-407</h3>
                             <span>Лекц</span>
-                            <span>55</span>
+                            <div>55</div>
                             <span class="rating-icon">
                                 <i id="rating1"></i>
                                 <i id="rating2"></i>
@@ -285,11 +347,10 @@
                 <li>
                     <a href="class.html">
                         <article class="class-section">
-                            <img src="assets/class.jpg" alt="class1 image" class="c1-img">
-                            <span>1-407</span>
-                            </span>
+                            <img src="assets/class.jpg" alt="class image">
+                            <h3>1-407</h3>
                             <span>Лекц</span>
-                            <span>55</span>
+                            <div>55</div>
                             <span class="rating-icon">
                                 <i id="rating1"></i>
                                 <i id="rating2"></i>
@@ -303,11 +364,10 @@
                 <li>
                     <a href="class.html">
                         <article class="class-section">
-                            <img src="assets/class.jpg" alt="class1 image" class="c1-img">
-                            <span>1-407</span>
-                            </span>
+                            <img src="assets/class.jpg" alt="class image">
+                            <h3>1-407</h3>
                             <span>Лекц</span>
-                            <span>55</span>
+                            <div>55</div>
                             <span class="rating-icon">
                                 <i id="rating1"></i>
                                 <i id="rating2"></i>
@@ -321,11 +381,10 @@
                 <li>
                     <a href="class.html">
                         <article class="class-section">
-                            <img src="assets/class.jpg" alt="class1 image" class="c1-img">
-                            <span>1-407</span>
-                            </span>
+                            <img src="assets/class.jpg" alt="class image">
+                            <h3>1-407</h3>
                             <span>Лекц</span>
-                            <span>55</span>
+                            <div>55</div>
                             <span class="rating-icon">
                                 <i id="rating1"></i>
                                 <i id="rating2"></i>
@@ -335,12 +394,10 @@
                             </span>
                         </article>
                     </a>
-                </li>
-            
+                </li> 
             </ul>
         </section>
     </aside>
-
     
     <footer>
 
