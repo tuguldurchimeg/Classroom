@@ -18,6 +18,7 @@ html{
    height: 64px;
 }
 
+<<<<<<< Updated upstream
 .class-section-1 {
    width: 297px;
    height: 172px;
@@ -37,4 +38,8 @@ html{
    height: 166px;
    top: 1px;
    left: 1px;   
+=======
+.class-section2 {
+position:fixed
+>>>>>>> Stashed changes
 }
