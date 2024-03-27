@@ -7,7 +7,19 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
    vertical-align: baseline;
    font-family: "Montserrat", Helvetica;
 }
-/* INDEX */
+html{
+   background:var(--white)
+}
+
+.main-content{
+   margin:0px 20px 0px 96px;
+;
+}
+aside{
+   margin:0px 96px 0px 0px;
+   align-items: center;
+}
+
 
 
 
@@ -16,17 +28,77 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
    width: 64px;
    height: 64px;
 }
-.class-section-2{
+
+.class-section-1 {
+   width: 297px;
+   height: 172px;
+   position:relative;
+}
+
+.class-section-1 > article{
+   position:relative;
+   height: 170px;
+   background-color: var(--color-white);
+   border-radius: 20px;
+   border: 1px solid;
+   border-color: var(--color-border);
+}
+.class-section-1 img{
+   position: absolute;
+   width: 155px;
+   height: 169px;
+   border-radius: 20px 0 0 20px;
+   border: 1px solid;
+   border-color: var(--color-border);
+}
+.class-section-1 h3{
    position:absolute;
-   width:500px;
-}
-.class-section-2 img {
-position:absolute;
-width: 282px;
-height:160px;
-}
-.class-section-2 h3 {
-   font-size: 40px;
+   left:169px;
+   top:24px;
    font-weight: var(--bold);
-   line-height: var(--line-height-1);
+   font-size: var(--medium);
+   line-height: var(--line-height-4);
+   color:var(--color-text);
+   white-space: nowrap;
+}
+.class-section-1 .class-type{
+   position: absolute;
+   width: 40px;
+   height: 13px;
+   top: 49px;
+   left: 170px;
+   font-weight: var(--medium);
+   font-size: var(--tiny);
+   line-height:var(--line-height-4);
+   color:var(--color-light-grey);
+   white-space: nowrap;
+ }
+
+
+.user-menu a{
+   font-size: var(--regular);    
+   font-weight: var(--semi-bold);
+   color: var(--color-text);
+}
+#user{
+   font-size: var(--medium);
+   font-weight: var(--semi-bold);
+   background-color: var(--color-primary);
+   color: var(--color-white);
+}
+
+.class-info img {
+   width: auto;
+   height: 234px;
+}
+
+.info-desc{
+   font-size: var(--small);
+   font-weight: var(--semi-bold);
+   color: var(--color-light-text);
+}
+.week-day{
+   font-size: var(--tiny);
+   font-weight: var(--semi-bold);
+   color: var(--color-light-text);
 }
