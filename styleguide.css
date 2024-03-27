@@ -8,6 +8,7 @@
    --color-light-grey: rgba(171, 171, 171, 1);
    --color-dark-grey: rgba(122, 125, 125, 1);
    --color-light-text: rgba(129, 129, 129, 1);
+   
    --font-family: "Montserrat", Helvetica;
 
    /* font sizes */
@@ -50,16 +51,16 @@
  .heading-4{
   font-size: 32px;
   font-weight: var(--bold);
-  line-height: var(--line-height-1);
+  line-height: var(--line-height-2);
  }
  .heading-5{
   font-size: 24px;
   font-weight: var(--bold);
-  line-height: var(--line-height-1);
+  line-height: var(--line-height-3);
  }
  .heading-6{
   font-size: 20px;
   font-weight: var(--bold);
-  line-height: var(--line-height-1);
+  line-height: var(--line-height-3);
  }
  
