@@ -39,3 +39,25 @@ html{
    top: 1px;
    left: 1px;   
 }
+.class-section-1 h3{
+   position:absolute;
+   left:169px;
+   top:24px;
+   font-weight: var(--bold);
+   font-size: var(--medium);
+   line-height: var(--line-height-4);
+   color:var(--color-text);
+   white-space: nowrap;
+}
+.class-section .class-type{
+   position: absolute;
+   width: 40px;
+   height: 13px;
+   top: 49px;
+   left: 170px;
+   font-weight: var(--medium);
+   font-size: var(--tiny);
+   line-height:var(--line-height-4);
+   color:var(--color-light-grey);
+   white-space: nowrap;
+ }
