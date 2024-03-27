@@ -79,6 +79,7 @@ aside{
    font-size: var(--regular);    
    font-weight: var(--semi-bold);
    color: var(--color-text);
+   text-decoration: none;
 }
 #user{
    font-size: var(--medium);
@@ -87,9 +88,18 @@ aside{
    color: var(--color-white);
 }
 
-.class-info img {
-   width: auto;
+.class-title img {
+   width: 508px;
    height: 234px;
+   position: relative;
+}
+
+.class-title{
+   background-color: var(--color-white);
+   border: 1px solid var(--color-border);
+   border-radius: 20px;
+   width: 508px;
+   height: 325px;
 }
 
 .info-desc{
