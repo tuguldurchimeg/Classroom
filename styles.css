@@ -6,14 +6,84 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
    font: inherit;
    vertical-align: baseline;
    font-family: "Montserrat", Helvetica;
+   list-style-type: none;
 }
 html{
    background:var(--white)
 }
 
+/* -----------------NAVBAR-------------------- */
+
+.main-header nav{
+   display: flex;
+   justify-content: space-between;
+   margin:0 96px 0 96px;
+   flex-wrap: nowrap;
+}
+.search-bar{
+   display: flex;
+   flex-wrap: nowrap;
+   border-radius: 20px;
+   border: 1px solid;
+   border-color: var(--color-border);
+}
+.calendar-wrapper{
+   width: 270px;
+   background: var(--color-white);
+   
+   border-radius: 30px;
+   border: 1px solid;
+   border-color: var(--color-border);
+}
+.calendar-wrapper div:first-child{
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   margin: 16px 16px 12px 16px;
+}
+.calendar-wrapper span{
+   font-size: 35px;
+}
+.calendar-wrapper .current-date{
+   font-weight: var(--semi-bold);
+   font-size: var(--medium);
+   line-height: var(--line-height-4);
+}
+.calendar{
+   padding: 0 16px 0 16px;
+}
+.calendar ul{
+   display: flex;
+   flex-wrap: wrap;
+   text-align: center;
+}
+.calendar ul li{
+   width: calc(100% / 7);
+}
+.calendar .weeks li{
+   color: #797B86;
+   font-weight: var(--semi-bold);
+   font-size: var(--tiny);
+}
+.calendar .days li{
+   color: #45454A;
+   font-weight: var(--regular);
+   font-size: var(--small);
+   line-height: 24px;
+   margin-top:10px;
+}
+.calendar .days{
+   margin-bottom: 25px;
+}
+
+
+
+
+
+
+/* ----------------NAVBAR-END----------------- */
 .main-content{
    margin:0px 20px 0px 96px;
-;
 }
 aside{
    margin:0px 96px 0px 0px;
