@@ -294,8 +294,8 @@ hr{
 }
 
 .rate-criteria meter {
-   -webkit-appearance: none;
-   -moz-appearance: none;
+   -webkit-appearance: meter;
+   -moz-appearance: meter;
    appearance: none;
    background: var(--color-white);
    box-shadow: 0 2px 3px rgba(0,0,0,0.2) inset;
@@ -307,7 +307,7 @@ hr{
    font-size: var(--small);
    font-weight: var(--semi-bold);
    
-   width: 100%;
+   width: 140px;
    height: 45px;
  }
  meter::-webkit-meter-bar {
@@ -317,7 +317,6 @@ hr{
  meter::-webkit-meter-optimum-value {
    background-color: var(--color-accent);
  }
-
 
  .rate{
    display: flex;
@@ -380,6 +379,11 @@ hr{
    width: 290px;
    height: 45px;
 }
+input[type="text"], textarea {
+
+   background-color : var(--color-background); 
+ 
+ }
 
 .submit{
    width: 392px;
