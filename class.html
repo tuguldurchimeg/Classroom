@@ -11,25 +11,26 @@
         <meta name="keywords" content="МУИС, МУИС анги захиалах, Оюутан, Монгол Улсын Их Сургууль">
         <link rel="stylesheet" href="styleguide.css">
         <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
      </head>
 <body>
     <header>
         <a href="index.html"><img class="logo" src="assets/Logo.png" alt="logo image"></a>
-        <button>profile</button>
+        <button class="profile-button"><i class="fa-regular fa-user"></i></button>
 
-        <nav class="user-menu">
+        <nav class="user-popup">
             <ul>
                 <li>
-                    <a href="user.html" id="user">21B1NUM1402</a>
+                    <a href="user.html" class="button">21B1NUM1402</a>
                 </li>
                 <li>
-                    <a href="user.html" id="reserved-class-menu"><span>Захиалсан ангиуд</span></a>
+                    <a href="user.html" class="reserved-menu"><span>Захиалсан ангиуд</span></a>
                 </li>
                 <li>
-                    <a href="user.html" id="liked-class-menu"><span>Дуртай ангиуд</span></a>
+                    <a href="user.html" class="liked-menu"><span>Дуртай ангиуд</span></a>
                 </li>
                 <li>
-                    <a href="contact.html" id="contact-menu"><span>Холбогдох</span></a>
+                    <a href="contact.html" class="contact-menu"><span>Холбогдох</span></a>
                 </li>
             </ul>
         </nav>
@@ -38,34 +39,41 @@
     <main>
         <section class="class-info">
             <article class="class-title">
-                <h2 class="heading-3">1-407</h2>                          
+                <h2 class="class-name heading-3">1-407</h2>                          
                 <img src="assets/class.jpg" alt="class image" class="class-img">
             </article>
 
-            <nav class="main-info">
-                <ul class="info">
+            <nav>
+                <ul class="main-info">
                     <li class="type"><span class="heading-6">Лекц</span></li>
+                    <li><div class="vl"></div></li>
                     <li>
                         <div class="info-desc">Суудлын тоо</div>
-                        <div class="heading-3">55</div>
+                        <div class="heading-5">55</div>
                     </li>
+                    <li><div class="vl"></div></li>
                     <li>
-                        <div class="info-desc">Проектор</div>
+                        <div class="info-desc" id="projector-info">Проектор</div>
+                        <i class="fa-regular fa-circle-check"></i>
                     </li>
                 </ul>
             </nav>
-            <nav>
+            <section class="rating">
                 <h6 class="rate-title">Үнэлгээ</h6>
-                <span class="rate">3.8</span>
+                <span class="rate heading-4">3.8</span>
                 <nav class="rate-criteria">
-                    <meter min="0" max="5" value="2.8">Агаар</meter>
-                    <meter min="0" max="5" value="3.8">Тохижилт</meter>
-                    <meter min="0" max="5" value="1.5">NUM-Wifi</meter>
-                    <meter min="0" max="5" value="1">Залгуур</meter>
+                    <meter id="air-meter" min="0" max="5" value="4" low="1" high="4" optimum="5">Агаар</meter>
+                    <meter id="comfort-meter" min="0" max="5" value="3.8">Тохижилт</meter>
+                    <meter id="num-wifi-meter" min="0" max="5" value="1.5">NUM Wifi</meter>
+                    <meter id="socket-meter" min="0" max="5" value="1">Залгуур</meter>
                 </nav>
-                <button class="add-rating">Санал<i class="add-icon"></i></button>       
-            </nav>            
+                <button class="add-rating-btn">
+                    <div><i class="fa-solid fa-pen"></i></div>
+                </button>       
+            </section>            
         </section>
+
+        <hr class="line-1">
 
         <section class="reservation">
             <menu class="reserve-option">      
@@ -74,21 +82,23 @@
             </menu>
     
             <section class="reserve-byDay">
-                <section class="calendar">
-                    <header>
-                        <span class="selection-range">03/04-03/17</span>
-                        <ul>
-                            <li class="week-day">Да</li>
-                            <li class="week-day">Мя</li>
-                            <li class="week-day">Лх</li>
-                            <li class="week-day">Пү</li>
-                            <li class="week-day">Ба</li>
-                            <li class="week-day">Бя</li>
-                            <li class="week-day">Ня</li>
+                <section class="calendar-wrapper">
+                    <div>
+                        <span >&#8249;</span>
+                        <p class="current-date">03/04-03/17</p>
+                        <span >&#8250;</span>
+                    </div>
+                    <main class="calendar">
+                        <ul class="weeks">
+                            <li>Да</li>
+                            <li>Мя</li>
+                            <li>Лх</li>
+                            <li>Пү</li>
+                            <li>Ба</li>
+                            <li>Бя</li>
+                            <li>Ня</li>
                         </ul>
-                    </header>
-                    <main class="cal-days">
-                        <ul>
+                        <ul class="days">
                             <li>4</li>
                             <li>5</li>
                             <li>6</li>
@@ -106,62 +116,65 @@
                         </ul>
                     </main>
                 </section>
-                <span class="available-times">
-                    <button><time datetime="16:00">16:00</time></button>
-                    <button><time datetime="16:45">16:45</time></button>
-                    <button><time datetime="17:40">17:40</time></button>
-                    <button><time datetime="18:25">18:25</time></button>
-                </span>
+                <ul class="times">
+                    <li><button><time datetime="16:00">16:00</time></button></li>
+                    <li><button><time datetime="16:00">16:00</time></button></li>
+                    <li><button><time datetime="16:00">16:00</time></button></li>
+                    <li><button><time datetime="16:00">16:00</time></button></li>
+                </ul>
                 <form class="reserve-form">
                     <ul>
                         <li>
                             <label for="purpose1">Ашиглах зорилго</label>
-                            <select name="purpose" id="purpose1" required>
-                                <option value="">Сонгоно уу!</option>
-                                <option value="клуб">Клубын уулзалт</option>
-                                <option value="хурал">Хурал, цуглаан</option>
-                                <option value="сургалт">Сургалт, давтлага</option>
-                                <option value="хичээл">Хичээл хийх</option>
-                                <option value="чөлөөт">Урлагийн наадам</option>
-                            </select>
+                            <div>
+                                <select class="form-attr" name="purpose" id="purpose1" required>
+                                    <option value="клуб">Клубын уулзалт</option>
+                                    <option value="хурал">Хурал, цуглаан</option>
+                                    <option value="сургалт">Сургалт, давтлага</option>
+                                    <option value="хичээл">Хичээл хийх</option>
+                                    <option value="чөлөөт">Урлагийн наадам</option>
+                                </select>
+                            </div>
                         </li>
                         <li>
                             <label for="description1">Нэмэлт тайлбар</label>
-                            <textarea name="description" id="description1" minlength="5" maxlength="40" required></textarea>
+                            <div><input class="form-attr" type="number" id="people1" name="people" max="50" min="2" required></div>
                         </li>
                         <li>
                             <label for="people1">Хэдэн хүн?</label>
-                            <input type="number" id="people1" name="people" max="50" min="2" required>
+                            <div><input class="form-attr" type="number" id="people1" name="people" max="50" min="2" required></div>
                         </li>
                         <li>
                             <label for="phone-number1">Утас</label>
-                            <input type="tel" class="phone-number" id="phone-number1" name="phone" pattern="[0-9]{4}-[0-9]{4}" required>
+                            <div><input class="form-attr" type="tel" class="phone-number" id="phone-number1" name="phone" pattern="[0-9]{4}-[0-9]{4}" required></div>
                         </li>
                         <li>
                             <label for="phone-number2">Утас 2</label>
-                            <input type="tel" class="phone-number" id="phone-number2" name="phone" pattern="[0-9]{4}-[0-9]{4}" required>
+                            <div><input class="form-attr" type="tel" class="phone-number" id="phone-number2" name="phone" pattern="[0-9]{4}-[0-9]{4}" required></div>
                         </li>
                     </ul>
-                    <input type="submit" value="Захиалах" />
+                    <input class="submit button" type="submit" value="Захиалах" />
                 </form>
             </section>
 
             <section class="reserve-byWeek">
-                <section class="calendar">
-                    <header>
-                        <span class="selection-range">03/04-03/17</span>
-                        <nav class="week-days">
-                            <span>Да</span>
-                            <span>Мя</span>
-                            <span>Лх</span>
-                            <span>Пү</span>
-                            <span>Ба</span>
-                            <span>Бя</span>
-                            <span>Ня</span>
-                        </nav>
-                    </header>
-                    <main class="cal-days">
-                        <ul>
+                <section class="calendar-wrapper">
+                    <div>
+                        <span >&#8249;</span>
+                        <p class="current-date">03/04-03/17</p>
+                        <span >&#8250;</span>
+                    </div>
+                    <main class="calendar">
+                        <ul class="weeks">
+                            <li>Да</li>
+                            <li>Мя</li>
+                            <li>Лх</li>
+                            <li>Пү</li>
+                            <li>Ба</li>
+                            <li>Бя</li>
+                            <li>Ня</li>
+                        </ul>
+                        <ul class="days">
                             <li>4</li>
                             <li>5</li>
                             <li>6</li>
@@ -183,39 +196,39 @@
                     <nav class="week">
                         <ul>
                             <li class="day">
-                                <span>
-                                    <div class="week-day">Да</div>
+                                <div>
+                                    <div>Да</div>
                                     <time datetime="03-04">03-04</time>
-                                </span>
-                                <ul>
+                                </div>
+                                <ul class="times">
                                     <li><button><time datetime="16:00">16:00</time></button></li>
                                 </ul>
                             </li>
                             <li class="day">
-                                <span>
-                                    <div class="week-day">Мя</div>
+                                <div>
+                                    <div>Мя</div>
                                     <time datetime="03-05">03-05</time>
-                                </span>
-                                <ul>
+                                </div>
+                                <ul class="times">
                                     <li><button><time datetime="16:00">16:00</time></button></li>
                                     <li><button><time datetime="16:00">16:00</time></button></li>
                                 </ul>
                             </li>
                             <li class="day">
-                                <span>
-                                    <div class="week-day">Лх</div>
+                                <div>
+                                    <div>Лх</div>
                                     <time datetime="03-06">03-06</time>
-                                </span>
-                                <ul>
+                                </div>
+                                <ul class="times">
                                     <li><button><time datetime="16:00">16:00</time></button></li>
                                 </ul>
                             </li>
                             <li class="day">
-                                <span>
-                                    <div class="week-day">Пү</div>
+                                <div>
+                                    <div>Пү</div>
                                     <time datetime="03-07">03-07</time>
-                                </span>
-                                <ul>
+                                </div>
+                                <ul class="times">
                                     <li><button><time datetime="16:00">16:00</time></button></li>
                                     <li><button><time datetime="16:00">16:00</time></button></li>
                                     <li><button><time datetime="16:00">16:00</time></button></li>
@@ -223,52 +236,53 @@
                                 </ul>
                             </li>
                             <li class="day">
-                                <span>
-                                    <div class="week-day">Ба</div>
+                                <div>
+                                    <div>Ба</div>
                                     <time datetime="03-08">03-08</time>
-                                </span>
-                                <ul>
+                                </div>
+                                <ul class="times">
                                     <li><button><time datetime="16:00">16:00</time></button></li>
                                 </ul>
                             </li>
                         </ul>
                     </nav>
+                    <hr class="line-2">
                     <nav class="week">
                         <ul>
                             <li class="day">
-                                <span>
-                                    <div class="week-day">Да</div>
+                                <div>
+                                    <div>Да</div>
                                     <time datetime="03-11">03-11</time>
-                                </span>
-                                <ul>
+                                </div>
+                                <ul class="times">
                                     <li><button><time datetime="16:00">16:00</time></button></li>
                                 </ul>
                             </li>
                             <li class="day">
-                                <span>
-                                    <div class="week-day">Мя</div>
+                                <div>
+                                    <div>Мя</div>
                                     <time datetime="03-12">03-12</time>
-                                </span>
-                                <ul>
+                                </div>
+                                <ul class="times">
                                     <li><button><time datetime="16:00">16:00</time></button></li>
                                     <li><button><time datetime="16:00">16:00</time></button></li>
                                 </ul>
                             </li>
                             <li class="day">
-                                <span>
-                                    <div class="week-day">Лх</div>
+                                <div>
+                                    <div>Лх</div>
                                     <time datetime="03-13">03-13</time>
-                                </span>
-                                <ul>
+                                </div>
+                                <ul class="times">
                                     <li><button><time datetime="16:00">16:00</time></button></li>
                                 </ul>
                             </li>
                             <li class="day">
-                                <span>
-                                    <div class="week-day">Пү</div>
+                                <div>
+                                    <div>Пү</div>
                                     <time datetime="03-14">03-14</time>
-                                </span>
-                                <ul>
+                                </div>
+                                <ul class="times">
                                     <li><button><time datetime="16:00">16:00</time></button></li>
                                     <li><button><time datetime="16:00">16:00</time></button></li>
                                     <li><button><time datetime="16:00">16:00</time></button></li>
@@ -276,11 +290,11 @@
                                 </ul>
                             </li>
                             <li class="day">
-                                <span>
-                                    <div class="week-day">Ба</div>
+                                <div>
+                                    <div>Ба</div>
                                     <time datetime="03-15">03-15</time>
-                                </span>
-                                <ul>
+                                </div>
+                                <ul class="times">
                                     <li><button><time datetime="16:00">16:00</time></button></li>
                                 </ul>
                             </li>
@@ -291,48 +305,51 @@
                     <ul>
                         <li>
                             <label for="purpose1">Ашиглах зорилго</label>
-                            <select name="purpose" id="purpose1" required>
-                                <option value="">Сонгоно уу!</option>
-                                <option value="клуб">Клубын уулзалт</option>
-                                <option value="хурал">Хурал, цуглаан</option>
-                                <option value="сургалт">Сургалт, давтлага</option>
-                                <option value="хичээл">Хичээл хийх</option>
-                                <option value="чөлөөт">Урлагийн наадам</option>
-                            </select>
+                            <div>
+                                <select class="form-attr" name="purpose" id="purpose1" required>
+                                    <option value="клуб">Клубын уулзалт</option>
+                                    <option value="хурал">Хурал, цуглаан</option>
+                                    <option value="сургалт">Сургалт, давтлага</option>
+                                    <option value="хичээл">Хичээл хийх</option>
+                                    <option value="чөлөөт">Урлагийн наадам</option>
+                                </select>
+                            </div>
                         </li>
                         <li>
-                            <label for="description2">Нэмэлт тайлбар</label>
-                            <textarea name="description" id="description2" minlength="5" maxlength="40" required></textarea>
+                            <label for="description1">Нэмэлт тайлбар</label>
+                            <div><input class="form-attr" type="number" id="people1" name="people" max="50" min="2" required></div>
                         </li>
                         <li>
-                            <label for="people2">Хэдэн хүн?</label>
-                            <input type="number" id="people2" name="people" max="50" min="2" required>
+                            <label for="people1">Хэдэн хүн?</label>
+                            <div><input class="form-attr" type="number" id="people1" name="people" max="50" min="2" required></div>
                         </li>
                         <li>
-                            <label for="phone-number3">Утас</label>
-                            <input type="tel" class="phone-number" id="phone-number3" name="phone" pattern="[0-9]{4}-[0-9]{4}" required>
+                            <label for="phone-number1">Утас</label>
+                            <div><input class="form-attr" type="tel" class="phone-number" id="phone-number1" name="phone" pattern="[0-9]{4}-[0-9]{4}" required></div>
                         </li>
                         <li>
-                            <label for="phone-number4">Утас 2</label>
-                            <input type="tel" class="phone-number" id="phone-number4" name="phone" pattern="[0-9]{4}-[0-9]{4}" required>
+                            <label for="phone-number2">Утас 2</label>
+                            <div><input class="form-attr" type="tel" class="phone-number" id="phone-number2" name="phone" pattern="[0-9]{4}-[0-9]{4}" required></div>
                         </li>
                     </ul>
-                    <input type="submit" value="Захиалах" />
+                    <input class="submit button" type="submit" value="Захиалах" />
                 </form>
             </section>
         </section>
     </main>
+
+    <hr class="line-1">
         
     <aside class="similar-class">
         <section>
-            <h2>Төстэй ангиуд</h2>
+            <h2 class="heading-4">Төстэй ангиуд</h2>
             <ul>
                 <li>
                     <a href="class.html">
                         <article class="class-section-1">
                             <img src="assets/class.jpg" alt="class image">
                             <h3>1-407</h3>
-                            <div>Лекц</div>
+                            <div class="class-type">Лекц</div>
                             <div>55</div>
                             <span class="rating-icon">
                                 <i id="rating1"></i>
@@ -349,7 +366,7 @@
                         <article class="class-section-1">
                             <img src="assets/class.jpg" alt="class image">
                             <h3>1-407</h3>
-                            <div>Лекц</div>
+                            <div class="class-type">Лекц</div>
                             <div>55</div>
                             <span class="rating-icon">
                                 <i id="rating1"></i>
@@ -366,7 +383,7 @@
                         <article class="class-section-1">
                             <img src="assets/class.jpg" alt="class image">
                             <h3>1-407</h3>
-                            <div>Лекц</div>
+                            <div class="class-type">Лекц</div>
                             <div>55</div>
                             <span class="rating-icon">
                                 <i id="rating1"></i>
@@ -383,7 +400,7 @@
                         <article class="class-section-1">
                             <img src="assets/class.jpg" alt="class image">
                             <h3>1-407</h3>
-                            <div>Лекц</div>
+                            <div class="class-type">Лекц</div>
                             <div>55</div>
                             <span class="rating-icon">
                                 <i id="rating1"></i>
