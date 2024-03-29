@@ -9,8 +9,18 @@
    --color-dark-grey: rgba(122, 125, 125, 1);
    --color-light-text: rgba(129, 129, 129, 1);
    --color-background: linear-gradient(#E8E8F5, #F4FBF3);
+   --color-primary-gradient: linear-gradient(
+    180deg,
+    rgb(82.51, 213.99, 15.69) 0%,
+    rgb(82.51, 213.99, 15.69) 0.01%,
+    rgb(165.83, 231.69, 132.35) 62.1%,
+    rgb(172, 233, 141) 100%
+  );
+
    
    --font-family-1: "Montserrat", Helvetica;
+
+
 
    /* font sizes */
    --large: 20px;
