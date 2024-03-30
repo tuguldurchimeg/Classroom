@@ -8,15 +8,19 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
    font-family: "Montserrat", Helvetica;
    list-style-type: none;
 }
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
 html{
-   background:var(--color-background)
+   background:var(--color-background); 
+   font-family: var(--font-family-1);
 }
 
 /* -----------------NAVBAR-------------------- */
 
 .main-header nav{
-   display: flex;
+   display: flex; 
    justify-content: space-between;
+   align-items: center;
    margin:0 96px 0 96px;
    flex-wrap: nowrap;
 }
@@ -146,11 +150,15 @@ aside{
  .profile-button{
    background-color: var(--color-white);
    border: 1px solid var(--color-border);
-   border-radius: 50%;
+   box-shadow: var(--shadow-1);
+   border-radius: 50%; 
+   font-size: 1.5em;
    width: 45px;
    height: 45px;
-   font-size: 1.5em;
-   line-height: var(--line-height-4);
+
+   &:is(:hover, :focus){
+      cursor: pointer;
+   }
  }
 
 /* ---------- CLASS page ---------- */
@@ -167,6 +175,7 @@ hr{
    width: 300px;
    height: 240px;
    line-height: var(--line-height-4);
+   display: none;
 }
 .user-popup > ul{
    display: flex;
@@ -183,7 +192,6 @@ hr{
    text-decoration: none;
    &:is(:hover, :focus) {
       cursor: pointer;
-      text-decoration: underline;
    }
 }
 .button{
@@ -227,6 +235,22 @@ hr{
 /* --- User PopUp END --- */
 
 /* --- Class Info SECTION --- */
+.class-info{
+   display: flex;
+   justify-content: center;
+   margin-top: 2vw;
+   margin-bottom: 1vw;
+   column-gap: 12vw;
+}
+
+/* Main-info + Rating */
+.class-info > section {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   row-gap: 20px;
+}
+
 .class-title{
    background-color: var(--color-white);
    border: 1px solid var(--color-border);
@@ -234,28 +258,37 @@ hr{
    width: 508px;
    height: 325px;
 }
-.class-img {
+.class-title > h2 >span::after{
+   font-family: "Font Awesome 6 free";
+   content: "\f004";
+   color: var(--color-primary);
+}
+.class-title > h2 span{
+   margin: 0.8em;
+   margin-top: 0.5em;
+   display: flex;
+   justify-content: space-between;
+}
+.class-title > h2{
    width: inherit;
-   height: 235px;
+}
+.class-img{
    border-bottom-left-radius: 20px;
    border-bottom-right-radius: 20px;
-   position: relative;
-   top: 0px;
-}
-.class-name{
-   margin-left: 35px;
-   margin-top: 20px;
+   width: inherit;
+   height: 235px;
 }
 
 .main-info{
    background-color: var(--color-white);
-   border: 1px solid var(--color-border);
+   box-shadow: var(--shadow-1);
    border-radius: 40px;
    display: flex;
    flex-direction: row;
-   justify-content: space-evenly;
    align-items: center;
    text-align: center;
+   justify-content: center;
+   column-gap: 0.8em;  
    width: 355px;
    height: 90px;
 }
@@ -268,7 +301,8 @@ hr{
 .fa-circle-check{
    /* font-family: "Font Awesome 6 free";
    content: "\f058"; */
-   font-size: 1.6em;
+   padding-top: 0.2em;
+   font-size: 1.5em;
 }
 .vl {
    border-left: 1px solid var(--color-border);
@@ -279,18 +313,32 @@ hr{
 /* --- RATING --- */
 .rating{
    display: grid;
-   grid-template-rows: 1fr 2fr 1fr;
-  
+   justify-items: center;
+   margin-top: 1vw;
+   
    width: 300px;
    height: 225px;
 }
+
+/* .rate{
+   display: flex;
+   align-items: center;
+}
+
+.rate::before, .rate::after{
+   font-family: "Font Awesome 6 free";
+   content: "\f005";
+   font-size: 0.5em;
+   margin: 0.5em;
+   color: var(--color-accent);
+} */
 
 .rate-criteria{
    display: grid;
    grid-template-columns: 1fr 1fr;
    grid-template-rows: 1fr 1fr;
-   column-gap: 20px;
-   row-gap: 15px;
+   column-gap: 1em;
+   row-gap: 0.8em;
 }
 
 .rate-criteria meter {
@@ -318,28 +366,17 @@ hr{
    background-color: var(--color-accent);
  }
 
- .rate{
-   display: flex;
-   align-items: center;
-}
-.rate::before, .rate::after{
-   font-family: "Font Awesome 6 free";
-   content: "\f005";
-   font-size: 0.5em;
-   margin: 0.5em;
-   color: var(--color-accent);
-}
-
  .add-rating-btn{
    background-color: var(--color-white);
    border: 1px solid var(--color-border);
-   border-radius: 30px;
-   font-size: var(--regular);
+   font-size: var(--large);
    font-weight: var(--semi-bold);
    color: var(--color-primary);
+   border-radius: 30px;
+   margin-top: 1em;
+   transition: width 2s, height 2s, transform 1s;
    width: 100px;
    height: 40px;
-   transition: width 2s, height 2s, transform 1s;
 
    &:is(:hover, :focus) {
       cursor: pointer;
@@ -349,7 +386,7 @@ hr{
 
 /* --- Class Info Section END--- */
 
-/* --- Reserve Form --- */
+/* --- Reserve FORM --- */
 .reserve-form{
    background-color: var(--color-white);
    border: 1px solid var(--color-border);
@@ -379,18 +416,13 @@ hr{
    width: 290px;
    height: 45px;
 }
-input[type="text"], textarea {
-
-   background-color : var(--color-background); 
- 
- }
 
 .submit{
    width: 392px;
    font-size: 1.2em;
 }
 /* -- Time button -- */
-.reserve-byDay > ul button{
+.by-day > ul button{
    font-size: var(--large);
    border: 1px solid var(--color-border);
    color: var(--color-text);
@@ -410,7 +442,6 @@ input[type="text"], textarea {
       box-shadow: var(--shadow-1);
    }
 }
-/* -- Time button END-- */
 
 /* ----- Week SECTION -----  */
 .available-days{
@@ -429,9 +460,9 @@ input[type="text"], textarea {
 }
 
 .times{
-   padding-top: 18px;
    display: grid;
    gap: 13px;
+   padding-top: 18px;
 }
 
 /* Date ( Да 03-04 ) */
@@ -459,3 +490,21 @@ input[type="text"], textarea {
 }
 
 /* ----- Week SECTION END-----  */
+
+.option-tab{
+   display: flex;
+   justify-content: center;
+   column-gap: 7vw;
+   margin-top: 1.5vw;
+}
+.option-tab button{
+   font-size: var(--heading-5);
+   line-height: var(--line-height-3);
+   font-weight: var(--medium);
+   background: none;
+   border: none;
+
+   &:is(:hover, :focus){
+      cursor: pointer;
+   }
+}

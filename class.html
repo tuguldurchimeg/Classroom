@@ -12,76 +12,84 @@
         <link rel="stylesheet" href="styleguide.css">
         <link rel="stylesheet" href="styles.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
      </head>
 <body>
-    <header>
-        <a href="index.html"><img class="logo" src="assets/Logo.png" alt="logo image"></a>
-        <button class="profile-button"><i class="fa-regular fa-user"></i></button>
-
-        <nav class="user-popup">
-            <ul>
-                <li>
-                    <a href="user.html" class="button">21B1NUM1402</a>
-                </li>
-                <li>
-                    <a href="user.html" class="reserved-menu"><span>Захиалсан ангиуд</span></a>
-                </li>
-                <li>
-                    <a href="user.html" class="liked-menu"><span>Дуртай ангиуд</span></a>
-                </li>
-                <li>
-                    <a href="contact.html" class="contact-menu"><span>Холбогдох</span></a>
-                </li>
-            </ul>
+    <header class="main-header">
+        <nav>
+            <a href="index.html"><img class="logo" src="assets/Logo.png" alt="logo image"></a>
+            <button class="profile-button"><i class="fa-regular fa-user"></i></button>
         </nav>
-
+        <hr>
     </header>
+    <nav class="user-popup">
+        <ul>
+            <li>
+                <a href="user.html" class="button">21B1NUM1402</a>
+            </li>
+            <li>
+                <a href="user.html" class="reserved-menu"><span>Захиалсан ангиуд</span></a>
+            </li>
+            <li>
+                <a href="user.html" class="liked-menu"><span>Дуртай ангиуд</span></a>
+            </li>
+            <li>
+                <a href="contact.html" class="contact-menu"><span>Холбогдох</span></a>
+            </li>
+        </ul>
+    </nav>
     <main>
         <section class="class-info">
             <article class="class-title">
-                <h2 class="class-name heading-3">1-407</h2>                          
-                <img src="assets/class.jpg" alt="class image" class="class-img">
+                <h2 class="heading-3">
+                    <span>1 - 407</span>
+                <h2>
+                <img src="assets/class.jpg" alt="class image" class="class-img">            
             </article>
 
-            <nav>
-                <ul class="main-info">
-                    <li class="type"><span class="heading-6">Лекц</span></li>
-                    <li><div class="vl"></div></li>
-                    <li>
-                        <div class="info-desc">Суудлын тоо</div>
-                        <div class="heading-5">55</div>
-                    </li>
-                    <li><div class="vl"></div></li>
-                    <li>
-                        <div class="info-desc" id="projector-info">Проектор</div>
-                        <i class="fa-regular fa-circle-check"></i>
-                    </li>
-                </ul>
-            </nav>
-            <section class="rating">
-                <h6 class="rate-title">Үнэлгээ</h6>
-                <span class="rate heading-4">3.8</span>
-                <nav class="rate-criteria">
-                    <meter id="air-meter" min="0" max="5" value="4" low="1" high="4" optimum="5">Агаар</meter>
-                    <meter id="comfort-meter" min="0" max="5" value="3.8">Тохижилт</meter>
-                    <meter id="num-wifi-meter" min="0" max="5" value="1.5">NUM Wifi</meter>
-                    <meter id="socket-meter" min="0" max="5" value="1">Залгуур</meter>
+            <section>
+                <nav>
+                    <ul class="main-info">
+                        <li><span class="heading-6">Лекц</span></li>
+                        <li><div class="vl"></div></li>
+                        <li>
+                            <div class="info-desc">Суудлын тоо</div>
+                            <div class="heading-5">55</div>
+                        </li>
+                        <li><div class="vl"></div></li>
+                        <li>
+                            <div class="info-desc" id="projector-info">Проектор</div>
+                            <i class="fa-regular fa-circle-check"></i>
+                        </li>
+                    </ul>
                 </nav>
-                <button class="add-rating-btn">
-                    <div><i class="fa-solid fa-pen"></i></div>
-                </button>       
-            </section>            
+                <section class="rating">
+                    <h6>
+                        <div class="rate-title">Үнэлгээ</div>
+                        <div class="rate heading-4">3.8</div>
+                    </h6>
+                    <nav class="rate-criteria">
+                        <meter id="air-meter" min="0" max="5" value="4" low="1" high="4" optimum="5">Агаар</meter>
+                        <meter id="comfort-meter" min="0" max="5" value="3.8">Тохижилт</meter>
+                        <meter id="num-wifi-meter" min="0" max="5" value="1.5">NUM Wifi</meter>
+                        <meter id="socket-meter" min="0" max="5" value="1">Залгуур</meter>
+                    </nav>
+                    <button class="add-rating-btn">
+                        <div><i class="fa-solid fa-pen"></i></div>
+                    </button>       
+                </section>  
+            </section>          
         </section>
 
         <hr class="line-1">
-
+        <menu class="option-tab">      
+            <button class="tablink">Өдрөөр</button>
+            <button class="tablink">7 хоногоор</button>
+        </menu>
         <section class="reservation">
-            <menu class="reserve-option">      
-                    <li><button>Өдрөөр</button></li>
-                    <li><button>7 хоногоор</button></li>
-            </menu>
-    
-            <section class="reserve-byDay">
+            <section class="by-day tabcontent">
                 <section class="calendar-wrapper">
                     <div>
                         <span >&#8249;</span>
@@ -157,7 +165,7 @@
                 </form>
             </section>
 
-            <section class="reserve-byWeek">
+            <section class="by-week tabcontent">
                 <section class="calendar-wrapper">
                     <div>
                         <span >&#8249;</span>
@@ -197,7 +205,7 @@
                         <ul>
                             <li class="day">
                                 <div>
-                                    <div>Да</div>
+                                    <lab>Да</lab>
                                     <time datetime="03-04">03-04</time>
                                 </div>
                                 <ul class="times">

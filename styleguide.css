@@ -13,6 +13,12 @@
    --font-family-1: "Montserrat", Helvetica;
 
    /* font sizes */
+  --heading-1: 56px;
+  --heading-2: 48px;
+  --heading-3: 40px;
+  --heading-4: 32px;
+  --heading-5: 24px;
+
    --large: 20px;
    --medium: 18px;
    --regular: 16px;
@@ -34,7 +40,7 @@
    --line-height-4: 150%;
 
    /* shadow */
-   --shadow-1: 2px 4px 4px rgb(0, 0, 0, 0.2);
+   --shadow-1: 1px 4px 4px rgb(0, 0, 0, 0.2);
  }
 
  .heading-1{
