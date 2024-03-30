@@ -20,17 +20,58 @@ html{
 .main-header nav{
    display: flex; 
    justify-content: space-between;
-   align-items: center;
-   margin:0 96px 0 96px;
+   margin:47px 96px 0 96px;
    flex-wrap: nowrap;
 }
 .search-bar{
    display: flex;
+   position:relative;
+   width: 631px;
+   height: 70px;
    flex-wrap: nowrap;
-   border-radius: 20px;
+
+   background-color: var(--color-white);
+   border-radius: 50px;
    border: 1px solid;
    border-color: var(--color-border);
 }
+.search-bar-bair{
+   display: flex;
+   width: 185px;
+   height: 50px;
+   align-items: flex-start;
+   position: absolute;
+   top: 9px;
+   left: 14px;
+}
+.search-bar-bair>button{
+   width: 210px;
+   display: flex;
+   height: 50px;
+   align-items: center;
+   gap: 8px;
+   padding: 12px 24px;
+   position: relative;
+   background-color:var(--color-white);
+   border-radius: 30px;
+}
+.search-bar-bair>button>p{
+
+}
+
+
+
+
+
+
+
+.search-bar>li>ul{
+   display: none;
+}
+.calendar-box{
+   display: none;
+}
+/* -----------------CALENDAR------------------ */
 .calendar-wrapper{
    width: 270px;
    background: var(--color-white);
@@ -79,7 +120,7 @@ html{
 .calendar .days{
    margin-bottom: 25px;
 }
-
+/* ---------------CALENDAR-END---------------- */
 
 
 
