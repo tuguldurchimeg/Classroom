@@ -8,7 +8,9 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
    font-family: "Montserrat", Helvetica;
    list-style-type: none;
 }
-
+a{
+   text-decoration: none;
+}
 html{
    background:var(--color-background); 
    font-family: var(--font-family-1);
@@ -139,18 +141,41 @@ button{
 }
 
 .main-content{
-   margin:0px 0 0px 96px;
-
    display: grid;
-   gap: 19px;
+   gap: 25px 21px;
    grid-template-columns: repeat( auto-fit, minmax(297px, 1fr) );
 }
+.wrapper{
+   display: flex;
+   margin:0px 0 0px 96px;
+}
 main{
-   width: 70%;
+   width: 72%;
 }
 aside{
-   width: 20%;
+   width: 28%; 
+   margin-left: auto;
+   margin-top:77px;
+   margin-right: 96px;
+
+   border-radius: 20px;
+   border: 1px solid;
+   border-color: var(--color-border);
 }
+aside section{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap:19px;
+}
+aside section h2{
+   font-size: var(--heading-5);
+   font-weight: var(--bold);
+   margin-top: 4px;
+}
+
+
+
 /* -----------------CALENDAR------------------ */
 .calendar-wrapper{
    width: 270px;
@@ -203,13 +228,7 @@ aside{
 /* ---------------CALENDAR-END---------------- */
 
 
-
-
-
-/* ----------------NAVBAR-END----------------- */
-
-
-/* COMPONENT */
+/* ---------------COMPONENT-------------------- */
 .logo{
    width: 64px;
    height: 64px;
@@ -271,6 +290,46 @@ aside{
  .profile-button:hover{
    cursor: pointer;
  }
+
+
+
+ .class-section-3 {
+   width: 258px;
+   height: 118px;
+   background-color: var(--color-white);
+
+   border-radius: 20px;
+   border: 1px solid;
+   border-color: var(--color-border);
+}
+
+.class-section-3 article{
+   display: flex;
+}
+.class-section-3 img{
+   width: 111px;
+   height: 118px;
+   border-radius: 20px 0 0 20px;
+}
+.class-section-3 article>div{
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   flex-wrap: nowrap;
+
+   padding:14px 0 19px 17px;
+}
+.class-section-3 article h3{
+   font-size: var(--medium-size);
+   font-weight: var(--semi-bold);
+   color: var(--color-text);
+}
+.class-section-3 article div.vote{
+   font-size: var(--tiny);
+   font-weight: var(--normal);
+   color: var(--color-dark-grey);
+   line-height: var(--line-height-4);
+}
 
 /* ---------- CLASS page ---------- */
 hr{
