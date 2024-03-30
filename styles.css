@@ -202,11 +202,9 @@ aside{
  }
 
 /* ---------- CLASS page ---------- */
-
 hr{
    border-top: 1px solid var(--color-border);
 }
-
 /* --- User PopUp --- */
 .user-popup{
    background-color: var(--color-white);
@@ -243,16 +241,14 @@ hr{
    display: flex;
    align-items: center;
    justify-content: center;
-   text-decoration: none;
+   border: none;
    width: 270px;
    height: 50px;
-   border: none;
-   
-   &:is(:hover, :focus) {
-      cursor: pointer;
+}
+.button:hover{
+   cursor: pointer;
       background-color: var(--color-primary);
       color: var(--color-white);
-   }
 }
 .reserved-menu::before, .liked-menu::before, .contact-menu::before{
    font-family: "Font Awesome 6 free";
