@@ -8,7 +8,6 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
    font-family: "Montserrat", Helvetica;
    list-style-type: none;
 }
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 html{
    background:var(--color-background); 
@@ -20,6 +19,7 @@ html{
 .main-header nav{
    display: flex; 
    justify-content: space-between;
+   align-items: center;
    margin:47px 96px 0 96px;
    flex-wrap: nowrap;
 }
@@ -196,10 +196,9 @@ aside{
    font-size: 1.5em;
    width: 45px;
    height: 45px;
-
-   &:is(:hover, :focus){
-      cursor: pointer;
-   }
+ }
+ .profile-button:hover{
+   cursor: pointer;
  }
 
 /* ---------- CLASS page ---------- */
@@ -226,14 +225,14 @@ hr{
    height: inherit;
    margin-top: -10px;
 }
-.reserved-menu, .liked-menu, .contact-menu{
+.menu{
    font-size: var(--regular);    
    font-weight: var(--semi-bold);
    color: var(--color-text);
    text-decoration: none;
-   &:is(:hover, :focus) {
-      cursor: pointer;
-   }
+}
+.reserved-menu, .liked-menu, .contact-menu:hover{
+   cursor: pointer;
 }
 .button{
    font-size: var(--regular);
@@ -255,27 +254,24 @@ hr{
       color: var(--color-white);
    }
 }
-.reserved-menu::before{
+.reserved-menu::before, .liked-menu::before, .contact-menu::before{
    font-family: "Font Awesome 6 free";
+   font-size: 1.4em;
+   margin: 0.5em;
+}
+.reserved-menu::before{
    content: "\f543";
-   font-size: 1.5em;
    margin: 0.6em;
 }
 .liked-menu::before{
-   font-family: "Font Awesome 6 free";
    content: "\f004";
-   font-size: 1.5em;
-   margin: 0.5em;
 }
 .contact-menu::before{
-   font-family: "Font Awesome 6 free";
-   font-size: 1.5em;
    content: "\f590";
-   margin: 0.5em;
 }
 /* --- User PopUp END --- */
 
-/* --- Class Info SECTION --- */
+/* ---------- CLASS INFO SECTION ---------- */
 .class-info{
    display: flex;
    justify-content: center;
@@ -350,7 +346,6 @@ hr{
    height: 45px;
  }
 
-
 /* --- RATING --- */
 .rating{
    display: grid;
@@ -399,10 +394,6 @@ hr{
    width: 140px;
    height: 45px;
  }
- meter::-webkit-meter-bar {
-   background-color: #f00;
- }
- 
  meter::-webkit-meter-optimum-value {
    background-color: var(--color-accent);
  }
@@ -418,38 +409,71 @@ hr{
    transition: width 2s, height 2s, transform 1s;
    width: 100px;
    height: 40px;
-
-   &:is(:hover, :focus) {
-      cursor: pointer;
+}
+.add-rating-btn:hover{
+   cursor: pointer;
       transform: scale(1.1);
-   }
 }
 
 /* --- Class Info Section END--- */
 
+/* ---- MENU -----  */
+.option-tab{
+   display: flex;
+   justify-content: center;
+   column-gap: 7vw;
+   margin-top: 1.5vw;
+}
+.option-tab button{
+   font-size: var(--heading-5);
+   line-height: var(--line-height-3);
+   font-weight: var(--medium);
+   background: none;
+   border: none;
+}
+.option-tab button:hover{
+   cursor: pointer;
+}
+/* ------ MENU END ----- */
+
 /* --- Reserve FORM --- */
 .reserve-form{
    background-color: var(--color-white);
-   border: 1px solid var(--color-border);
+   box-shadow: var(--shadow-1);
    border-radius: 30px;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   position: relative;
    width: 405px;
    height: 440px;
 }
-.reserve-form ul{
+.reserve-form > ul{
    display: flex;
    flex-direction: column;
+   margin: 2em;
    row-gap: 10px;
    column-gap: 20px;
-   height: inherit;
+}
+.form-side{
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+}
+input[type=number]{
+   width: 5em;
+}
+input[type=tel]{
+   width: 10em;
 }
 .reserve-form label{
    color: var(--color-light-text);
    font-size: var(--tiny);
    font-weight: var(--normal);
+   margin-bottom: 0.5em;
 }
 .form-attr{
-   background-color: var(--color-background);
-   border: 1px solid var(--color-border);
+   background-image: var(--color-background);
+   border: none;
    border-radius: 30px;
    font-size: var(--regular);
    font-weight: var(--medium);
@@ -462,15 +486,25 @@ hr{
    width: 392px;
    font-size: 1.2em;
 }
-/* -- Time button -- */
-.by-day > ul button{
+/* -- Time buttons -- */
+
+.day-times button{
+   font-weight: var(--semi-bold);
    font-size: var(--large);
-   border: 1px solid var(--color-border);
    color: var(--color-text);
+   border: 1px solid var(--color-border);
+   background-image: var(--color-background);
+   border-radius: 30px;
+
+   width: 112px;
+   height: 40px;
+}
+.day-times button:hover{
+   box-shadow: var(--shadow-1);
 }
 
 .times button{
-   background-color: var(--color-background);
+   background-image: var(--color-background);
    border-radius: 30px;
    color: var(--color-light-text);
    font-weight: var(--semi-bold);
@@ -478,13 +512,13 @@ hr{
    border: none;
    width: 112px;
    height: 40px;
-   
-   &:is(:hover, :focus){
-      box-shadow: var(--shadow-1);
-   }
 }
+.times button:hover{
+   box-shadow: var(--shadow-1);
+}
+/* Time buttons END */
 
-/* ----- Week SECTION -----  */
+/* --------- Week SECTION ---------  */
 .available-days{
    background-color: var(--color-white);
    border: 1px solid var(--color-border);
@@ -493,20 +527,7 @@ hr{
    height: 630px;
 }
 
-/* Column grid */
-.week > ul{
-   display: grid;
-   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-   padding: 20px 35px ;
-}
-
-.times{
-   display: grid;
-   gap: 13px;
-   padding-top: 18px;
-}
-
-/* Date ( Да 03-04 ) */
+/* Date design ( Да 03-04 ) */
 .day > div{
    background-color: var(--color-white);
    border: 1px solid var(--color-border);
@@ -530,22 +551,84 @@ hr{
    color: var(--color-light-text);
 }
 
-/* ----- Week SECTION END-----  */
-
-.option-tab{
-   display: flex;
+/* ----- Week Section LAYOUT -----  */
+.by-week{
+   display: grid;
+   grid-template-columns: auto;
+   grid-template-rows: 1fr 2fr;
+   grid-template-areas: "day cal"
+                        "day form"
+                        "day form";
+   align-items: center;
+   justify-items: center;
    justify-content: center;
    column-gap: 7vw;
-   margin-top: 1.5vw;
+   
 }
-.option-tab button{
-   font-size: var(--heading-5);
-   line-height: var(--line-height-3);
-   font-weight: var(--medium);
-   background: none;
-   border: none;
 
-   &:is(:hover, :focus){
-      cursor: pointer;
-   }
+.available-days{
+   grid-area: day;
+}
+.byweek.class-wrapper{
+   grid-area: cal;
+}
+.by-week.reserve-form{
+   grid-area: form;
+}
+
+.week > ul{
+   display: grid;
+   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+   padding: 20px 35px ;
+}
+
+.times{
+   display: grid;
+   gap: 13px;
+   padding-top: 18px;
+}
+
+
+/* ----- Week SECTION END-----  */
+
+/* ---------- Day Section LAYOUT ---------  */
+.by-day{
+   display: flex;
+   align-items: center;
+   justify-items: center;
+   justify-content: center;
+   column-gap: 3vw;
+}
+
+.byweek.class-wrapper{
+   grid-area: cal;
+}
+.day-times{
+   grid-area: time;
+   display: grid;
+   grid-template-columns: 1fr 1fr 1fr;
+   grid-template-rows: auto;
+   column-gap: 1em;
+   row-gap: 1em;
+}
+.by-week.reserve-form{
+   grid-area: form;
+}
+
+/* Day Section END */
+
+/* ----- Similar Class Section ------ */
+.similar-class{
+   margin-top: 5vw;
+}
+.similar-class h2{
+   text-shadow: var(--shadow-1);
+   margin-left: 7vw;
+
+}
+.similar-class ul{
+   display: flex;
+   column-gap: 1vw;
+   justify-content: center;
+   margin-top: 2em;
 }

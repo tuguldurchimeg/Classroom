@@ -8,7 +8,7 @@
    --color-light-grey: rgba(171, 171, 171, 1);
    --color-dark-grey: rgba(122, 125, 125, 1);
    --color-light-text: rgba(129, 129, 129, 1);
-   --color-background: linear-gradient(#E8E8F5, #F4FBF3);
+   --color-background: linear-gradient(to bottom, #F0E8F5, #F4FBF3 100%);
    --color-primary-gradient: linear-gradient(
     180deg,
     rgb(82.51, 213.99, 15.69) 0%,
