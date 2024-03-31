@@ -145,9 +145,7 @@ button{
    gap: 19px;
    grid-template-columns: repeat( auto-fit, minmax(297px, 1fr) );
 }
-main{
-   width: 70%;
-}
+
 aside{
    width: 20%;
 }
@@ -171,7 +169,7 @@ aside{
 }
 .calendar-wrapper .current-date{
    font-weight: var(--semi-bold);
-   font-size: var(--medium);
+   font-size: var(--medium-size);
    line-height: var(--line-height-4);
 }
 .calendar{
@@ -575,7 +573,7 @@ input[type=tel]{
    border-radius: 30px;
    color: var(--color-light-text);
    font-weight: var(--semi-bold);
-   font-size: var(--medium);
+   font-size: var(--medium-size);
    border: none;
    width: 112px;
    height: 40px;
