@@ -1,10 +1,11 @@
 /* --------------------HOME-PAGE-MAIN--------------- */
 
 .search-bar{
+   width: 39.5rem;
+   height: 4.375rem;
+
    display: flex;
-   position:relative;
-   min-width: 631px;
-   min-height: 70px;
+   justify-content: space-around;
    flex-wrap: nowrap;
 
    background-color: var(--color-white);
@@ -12,61 +13,46 @@
    border: 1px solid;
    border-color: var(--color-border);
    
+   font-size: var(--small);
+   font-weight: var(--medium);
+
+      & .bair , & .odor , & .tsag{
+         display: flex;
+         width: 10rem;
+         height: 3.125rem;
+         align-items: flex-start;
+         position: relative;
+         top: 0.56rem;
+         left: 0.875rem;
+      }
 }
-.search-bar-bair{
-   display: flex;
-   width: 185px;
-   height: 50px;
-   align-items: flex-start;
-   position: relative;
-   top: 9px;
-   left: 14px;
+
+.odor>button{
+   width: 11.5rem;
 }
-.search-bar-odor{
-   display: flex;
-   width: 160px;
-   height: 50px;
-   align-items: flex-start;
-   position: absolute;
-   top: 9px;
-   left: 218px;
-}
-.saerch-bar-odor>button{
-   width: 185px;
-}
-.search-bar-tsag{
-   display: flex;
-   width: 160px;
-   height: 50px;
-   align-items: flex-start;
-   position: absolute;
-   top: 9px;
-   left: 398px;
- }
+
  .search-button-background{
-   position: absolute;
-   width: 55px;
-   height: 55px;
-   top: 6px;
-   left: 564px;
+   width: 3.4rem;
+   height: 3.4rem;
+   margin-top: 0.5em;
+
    border-radius: 50px;
    border: 1px solid;
    border-color: var(--color-border);
+
    background: var(--color-primary-gradient);
  }
  .search-button-background>button{
-   position: absolute;
-   width: 31px;
-   height: 31px;
-   top:12px;
-   left: 11px;
+   width: 2rem;
+   height: 2rem;
+   top: 0.75rem;
 
    border-radius: 40px;
    border:none;
  }
- .search-bar-odor>button,  .search-bar-tsag>button, .search-bar-bair>button{
-   width: 160px;
-   height: 50px;
+ .odor>button,  .tsag>button, .bair>button{
+   width: 10rem;
+   height: 3.125rem;
    
    display: flex;
    flex-direction: column;
@@ -91,6 +77,8 @@
 .class-filter{
    margin-bottom: 20px;
    margin-top: 27px;
+   position: relative;
+   left:10vw;
 }
 .class-filter ul{
    position: relative;

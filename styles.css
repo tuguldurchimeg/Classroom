@@ -34,7 +34,7 @@ button{
    display: flex; 
    flex-wrap: nowrap;
    
-   margin:46px 96px 46px 96px;
+   margin:2.875rem 6rem;
 
    justify-content: space-between;
    align-items: center;
