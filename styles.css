@@ -1,3 +1,5 @@
+@import url(styleguide.css);
+
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
    margin: 0;
    padding: 0;
@@ -20,13 +22,22 @@ button{
 }
 
 /* -----------------NAVBAR-------------------- */
+.main-header{
+   position: fixed;
+   top: 0;
+   width: 100%;
+   z-index: 4;
+   background: var(--color-background);
+}
 
 .main-header nav{
    display: flex; 
+   flex-wrap: nowrap;
+   
+   margin:46px 96px 40px 96px;
+
    justify-content: space-between;
    align-items: center;
-   margin:47px 96px 37px 96px;
-   flex-wrap: nowrap;
 }
 .search-bar{
    display: flex;
@@ -39,6 +50,7 @@ button{
    border-radius: 50px;
    border: 1px solid;
    border-color: var(--color-border);
+   
 }
 .search-bar-bair{
    display: flex;
@@ -78,7 +90,7 @@ button{
    left: 564px;
    border-radius: 50px;
    border: 1px solid;
-   border-color: var(--border);
+   border-color: var(--color-border);
    background: linear-gradient(
      180deg,
      rgb(82.51, 213.99, 15.69) 0%,
@@ -93,6 +105,9 @@ button{
    height: 31px;
    top:12px;
    left: 11px;
+
+   border-radius: 40px;
+   border:none;
  }
  .search-bar-odor>button,  .search-bar-tsag>button, .search-bar-bair>button{
    width: 160px;
@@ -104,6 +119,7 @@ button{
 
    background-color:var(--color-white);
    border-radius: 30px;
+   border:none;
 
    font-size: var(--small);
    font-weight: var(--medium);
@@ -117,13 +133,18 @@ button{
 }
 
 /* --------------------HOME-PAGE-MAIN--------------- */
-.class-filter ul{
-   display: flex;
-   flex-wrap: nowrap;
-   justify-content: center;
-   gap:25px;
+
+.class-filter{
    margin-bottom: 20px;
    margin-top: 27px;
+}
+.class-filter ul{
+   position: relative;
+   display: flex;
+   flex-wrap: nowrap;
+   flex-direction: row;
+   justify-content:center;
+   gap:25px;
 }
 
 .class-filter ul>li>button{
@@ -144,6 +165,7 @@ button{
    display: grid;
    gap: 25px 21px;
    grid-template-columns: repeat( auto-fit, minmax(297px, 1fr) );
+
 }
 
 .wrapper{
@@ -151,28 +173,35 @@ button{
    margin:0px 0 0px 96px;
 }
 
-aside{
+aside.index-aside{
    width: 28%; 
    margin-left: auto;
-   margin-top:77px;
+   margin-top:244px;
    margin-right: 96px;
 
    border-radius: 20px;
    border: 1px solid;
    border-color: var(--color-border);
 }
-aside section{
+aside.index-aside section{
    display: flex;
    flex-direction: column;
    align-items: center;
    gap:19px;
 }
-aside section h2{
+aside.index-aside section h2{
    font-size: var(--heading-5);
    font-weight: var(--bold);
    margin-top: 4px;
 }
+main.index-main{
+   width: 72%;
+   fill:var(--color-background);
+}
 
+main{
+   margin-top: 167px;
+}
 
 
 /* -----------------CALENDAR------------------ */
@@ -231,6 +260,7 @@ aside section h2{
 .logo{
    width: 64px;
    height: 64px;
+   fill:red;
 }
 
 .class-section-1 {
@@ -240,7 +270,7 @@ aside section h2{
 }
 
 .class-section-1 > article{
-   position:relative;
+   
    height: 170px;
    background-color: var(--color-white);
    border-radius: 20px;
