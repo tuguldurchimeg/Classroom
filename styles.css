@@ -97,6 +97,7 @@ button{
 .logo{
    width: 64px;
    height: 64px;
+   
 }
 
 .class-section-1 {
@@ -114,7 +115,7 @@ button{
    border: 1px solid;
    border-color: var(--color-border);
 }
-.class-section-1 img{
+.class-section-1 .image{
    position: relative;
    width: 10rem;
    height: 10.585rem;
@@ -122,6 +123,10 @@ button{
    border-radius: 20px 0 0 20px;
    border: 1px solid;
    border-color: var(--color-border);
+}
+.class-section-1 .heart-grey{
+   position: absolute;
+   left: 88%;
 }
 .class-section-1 .text-wrapper{
    display: flex;
@@ -149,6 +154,14 @@ button{
    font-weight: var(--medium);
    font-size: var(--small);
    color:var(--color-light-grey);
+ }
+ .seat-count::before{
+   position:relative ;
+   top: 0.3rem;
+   content: url('assets/Seat-logo.svg');
+   width: 0.9rem; /* Adjust width if needed */
+   height: 1.4rem; /* Adjust height if needed */
+   margin-right: 5px; /* Adjust spacing if needed */
  }
  .profile-button{
    background-color: var(--color-white);

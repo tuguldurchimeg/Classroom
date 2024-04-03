@@ -9,6 +9,7 @@
    --color-dark-grey: rgba(122, 125, 125, 1);
    --color-light-text: rgba(129, 129, 129, 1);
    --color-background: linear-gradient(to bottom, rgba(240, 232, 245, 1), rgba(244, 251, 243, 1));
+   --color-background: rgba(240,232,245,1);
    --color-primary-gradient: linear-gradient(
     180deg,
     rgb(82.51, 213.99, 15.69) 0%,
