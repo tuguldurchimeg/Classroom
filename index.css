@@ -75,8 +75,8 @@
 /* -------------------------------MAIN HOMEPAGE------------------------------- */
 
 .class-filter{
-   margin-bottom: 20px;
-   margin-top: 27px;
+   margin-bottom: 1.25em; 
+   margin-top: 1.6em;
    position: relative;
    left:10vw;
 }
@@ -86,12 +86,12 @@
    flex-wrap: nowrap;
    flex-direction: row;
    justify-content:center;
-   gap:25px;
+   gap:1.5rem;
 }
 
 .class-filter ul>li>button{
-   width: 85px;
-   height: 30px;
+   width: 5.31rem;
+   height: 2rem;
 
    background: var(--color-white);
    color: var(--color-light-grey);
@@ -105,21 +105,20 @@
 
 .main-content{
    display: grid;
-   gap: 25px 21px;
-   grid-template-columns: repeat( auto-fit, minmax(297px, 1fr) );
-
+   gap: var(--gap-1);
+   grid-template-columns: repeat( auto-fit, minmax(18.75rem, 1fr) );
 }
 
 .wrapper{
    display: flex;
-   margin:0px 0 0px 96px;
+   margin:0px 0 0px var(--margin-1);
 }
 
 aside.index-aside{
-   width: 28%; 
+   width: 25%; 
    margin-left: auto;
-   margin-top:244px;
-   margin-right: 96px;
+   margin-top:15.25rem;
+   margin-right: var(--margin-1);
 
    border-radius: 20px;
    border: 1px solid;
@@ -129,7 +128,7 @@ aside.index-aside section{
    display: flex;
    flex-direction: column;
    align-items: center;
-   gap:19px;
+   gap:var(--gap-1);
 }
 aside.index-aside section h2{
    font-size: var(--heading-5);
@@ -137,11 +136,12 @@ aside.index-aside section h2{
    margin-top: 4px;
 }
 main.index-main{
-   width: 72%;
+   width: 75%;
    fill:var(--color-background);
 }
 
 main{
-   margin-top: 167px;
+   margin-top: 10.4375rem;
+   margin-right: var(--gap-1);
 }
 

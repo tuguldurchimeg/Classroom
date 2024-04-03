@@ -51,6 +51,10 @@
 
    /* shadow */
    --shadow-1: 1px 4px 4px rgb(0, 0, 0, 0.2);
+
+   /* gap */
+   --gap-1: 1.25rem;
+   --margin-1: 6rem;
  }
 
  .heading-1{

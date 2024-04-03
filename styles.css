@@ -100,31 +100,36 @@ button{
 }
 
 .class-section-1 {
-   width: 297px;
-   height: 172px;
+   width: 18.75rem;
+   height: 10.75rem;
    position:relative;
 }
 
 .class-section-1 > article{
-   
-   height: 170px;
+   display: flex;
+   width: 18.75rem;
    background-color: var(--color-white);
+   
    border-radius: 20px;
    border: 1px solid;
    border-color: var(--color-border);
 }
 .class-section-1 img{
-   position: absolute;
-   width: 155px;
-   height: 169px;
+   position: relative;
+   width: 10rem;
+   height: 10.585rem;
+   
    border-radius: 20px 0 0 20px;
    border: 1px solid;
    border-color: var(--color-border);
 }
+.class-section-1 .text-wrapper{
+   display: flex;
+   flex-direction: column;
+   margin-top:1.75em;
+   margin-left: 0.8em;
+}
 .class-section-1 h3{
-   position:absolute;
-   left:169px;
-   top:24px;
    font-weight: var(--bold);
    font-size: var(--medium-size);
    line-height: var(--line-height-4);
@@ -132,16 +137,18 @@ button{
    white-space: nowrap;
 }
 .class-section-1 .class-type{
-   position: absolute;
-   width: 40px;
-   height: 13px;
-   top: 49px;
-   left: 170px;
+   margin-top: -0.5em;
    font-weight: var(--medium);
    font-size: var(--tiny);
    line-height:var(--line-height-4);
    color:var(--color-light-grey);
    white-space: nowrap;
+ }
+ .class-section-1 .seat-count{
+   margin-top: 1.2em;
+   font-weight: var(--medium);
+   font-size: var(--small);
+   color:var(--color-light-grey);
  }
  .profile-button{
    background-color: var(--color-white);
