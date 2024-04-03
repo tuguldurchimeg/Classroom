@@ -238,14 +238,29 @@ hr{
    height: inherit;
    margin-top: -10px;
 }
+.reserved-menu, .liked-menu, .contact-menu:hover{
+   cursor: pointer;
+}
+.reserved-menu::before, .liked-menu::before, .contact-menu::before{
+   font-family: "Font Awesome 6 free";
+   font-size: 1.4em;
+   margin: 0.5em;
+}
+.reserved-menu::before{
+   content: "\f543";
+   margin: 0.6em;
+}
+.liked-menu::before{
+   content: "\f004";
+}
+.contact-menu::before{
+   content: "\f590";
+}
 .menu{
    font-size: var(--regular);    
    font-weight: var(--semi-bold);
    color: var(--color-text);
    text-decoration: none;
-}
-.reserved-menu, .liked-menu, .contact-menu:hover{
-   cursor: pointer;
 }
 .button{
    font-size: var(--regular);
@@ -265,21 +280,7 @@ hr{
       background-color: var(--color-primary);
       color: var(--color-white);
 }
-.reserved-menu::before, .liked-menu::before, .contact-menu::before{
-   font-family: "Font Awesome 6 free";
-   font-size: 1.4em;
-   margin: 0.5em;
-}
-.reserved-menu::before{
-   content: "\f543";
-   margin: 0.6em;
-}
-.liked-menu::before{
-   content: "\f004";
-}
-.contact-menu::before{
-   content: "\f590";
-}
+
 /* --- User PopUp END --- */
 
 /* ---------- CLASS INFO SECTION ---------- */
