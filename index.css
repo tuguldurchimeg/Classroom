@@ -160,4 +160,67 @@ main{
    margin-top: 10.4375rem;
    margin-right: var(--gap-1);
 }
+/* --------------------MEDIA-QUERIES----------------- */
 
+@media (max-width: 599px) {
+   aside{
+      display: none;
+   }
+   .wrapper{
+      margin:0 1.5rem;
+   }
+   .class-section-1 {
+      width: 10.3125rem;
+      height: 11.25rem;
+   }
+   .class-section-1 > article{
+      display: flex;
+      flex-direction: column-reverse;
+      width: 10.3125rem;
+      border-radius: 20px;
+   }
+   .class-section-1 .image{
+      width: 10.312rem;
+      height: 6.1rem;
+      
+      border-radius: 0px 0 20px 20px;
+   }
+   .class-section-1 .heart-grey{
+      position: absolute;
+      left: 80%;
+   }
+   .class-section-1 .text-wrapper{
+      margin:0.875em 0.5em 0.75em;
+   }
+   .class-section-1 h3{
+      font-size: var(--medium-size);
+      font-weight: var(--bold);
+      line-height: var(--line-height-3);
+   }
+   .class-section-1 .class-type{
+      margin-top: -0.55em;
+   }
+   .class-section-1 .seat-count{
+      margin-top: 0.5em;
+   }
+    .seat-count::before{
+      position:relative ;
+      top: 0.3rem;
+      content: url('assets/Seat-logo.svg');
+      width: 0.625rem; 
+      height: 0.6rem; 
+      margin-right: 5px;
+   }
+
+   main.index-main{
+      width: 100%;
+   }
+   .main-content{
+      display: grid;
+      gap: 0.75rem;
+      grid-template-columns: repeat( auto-fit, minmax(10.25rem, 1fr) );
+   }
+
+
+
+}
