@@ -101,14 +101,14 @@ button{
 }
 
 .class-section-1 {
-   width: 18.75rem;
+   /* width: 18.75rem; */
    height: 10.75rem;
    position:relative;
 }
 
 .class-section-1 > article{
    display: flex;
-   width: 18.75rem;
+   /* width: 18.75rem; */
    background-color: var(--color-white);
    
    border-radius: 20px;
@@ -117,7 +117,7 @@ button{
 }
 .class-section-1 .image{
    position: relative;
-   width: 10rem;
+   width: 50%;
    height: 10.585rem;
    
    border-radius: 20px 0 0 20px;
