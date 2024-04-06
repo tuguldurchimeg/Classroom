@@ -1,3 +1,5 @@
+@import url(styleguide.css);
+
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
    margin: 0;
    padding: 0;
@@ -20,159 +22,23 @@ button{
 }
 
 /* -----------------NAVBAR-------------------- */
+.main-header{
+   position: fixed;
+   top: 0;
+   width: 100%;
+   z-index: 4;
+   background: var(--color-background);
+}
 
 .main-header nav{
    display: flex; 
+   flex-wrap: nowrap;
+   
+   margin:2.875rem 6rem;
+
    justify-content: space-between;
    align-items: center;
-   margin:47px 96px 37px 96px;
-   flex-wrap: nowrap;
 }
-.search-bar{
-   display: flex;
-   position:relative;
-   min-width: 631px;
-   min-height: 70px;
-   flex-wrap: nowrap;
-
-   background-color: var(--color-white);
-   border-radius: 50px;
-   border: 1px solid;
-   border-color: var(--color-border);
-}
-.search-bar-bair{
-   display: flex;
-   width: 185px;
-   height: 50px;
-   align-items: flex-start;
-   position: relative;
-   top: 9px;
-   left: 14px;
-}
-.search-bar-odor{
-   display: flex;
-   width: 160px;
-   height: 50px;
-   align-items: flex-start;
-   position: absolute;
-   top: 9px;
-   left: 218px;
-}
-.saerch-bar-odor>button{
-   width: 185px;
-}
-.search-bar-tsag{
-   display: flex;
-   width: 160px;
-   height: 50px;
-   align-items: flex-start;
-   position: absolute;
-   top: 9px;
-   left: 398px;
- }
- .search-button-background{
-   position: absolute;
-   width: 55px;
-   height: 55px;
-   top: 6px;
-   left: 564px;
-   border-radius: 50px;
-   border: 1px solid;
-   border-color: var(--border);
-   background: linear-gradient(
-     180deg,
-     rgb(82.51, 213.99, 15.69) 0%,
-     rgb(82.51, 213.99, 15.69) 0.01%,
-     rgb(165.83, 231.69, 132.35) 62.1%,
-     rgb(172, 233, 141) 100%
-   );
- }
- .search-button-background>button{
-   position: absolute;
-   width: 31px;
-   height: 31px;
-   top:12px;
-   left: 11px;
- }
- .search-bar-odor>button,  .search-bar-tsag>button, .search-bar-bair>button{
-   width: 160px;
-   height: 50px;
-   
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
-
-   background-color:var(--color-white);
-   border-radius: 30px;
-
-   font-size: var(--small);
-   font-weight: var(--medium);
-}
-
-.search-bar>li>ul{
-   display: none;
-}
-.calendar-box{
-   display: none;
-}
-
-/* --------------------HOME-PAGE-MAIN--------------- */
-.class-filter ul{
-   display: flex;
-   flex-wrap: nowrap;
-   justify-content: center;
-   gap:25px;
-   margin-bottom: 20px;
-   margin-top: 27px;
-}
-
-.class-filter ul>li>button{
-   width: 85px;
-   height: 30px;
-
-   background: var(--color-white);
-   color: var(--color-light-grey);
-
-   font-size: var(--small) ;
-   font-weight: var(--normal);
-
-   border-radius: 20px;
-   border-color: transparent;
-}
-
-.main-content{
-   display: grid;
-   gap: 25px 21px;
-   grid-template-columns: repeat( auto-fit, minmax(297px, 1fr) );
-}
-
-.wrapper{
-   display: flex;
-   margin:0px 0 0px 96px;
-}
-
-aside{
-   width: 28%; 
-   margin-left: auto;
-   margin-top:77px;
-   margin-right: 96px;
-
-   border-radius: 20px;
-   border: 1px solid;
-   border-color: var(--color-border);
-}
-aside section{
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   gap:19px;
-}
-aside section h2{
-   font-size: var(--heading-5);
-   font-weight: var(--bold);
-   margin-top: 4px;
-}
-
 
 
 /* -----------------CALENDAR------------------ */
@@ -231,34 +97,44 @@ aside section h2{
 .logo{
    width: 64px;
    height: 64px;
+   
 }
 
 .class-section-1 {
-   width: 297px;
-   height: 172px;
+   /* width: 18.75rem; */
+   height: 10.75rem;
    position:relative;
 }
 
 .class-section-1 > article{
-   position:relative;
-   height: 170px;
+   display: flex;
+   /* width: 18.75rem; */
    background-color: var(--color-white);
+   
    border-radius: 20px;
    border: 1px solid;
    border-color: var(--color-border);
 }
-.class-section-1 img{
-   position: absolute;
-   width: 155px;
-   height: 169px;
+.class-section-1 .image{
+   position: relative;
+   width: 50%;
+   height: 10.585rem;
+   
    border-radius: 20px 0 0 20px;
    border: 1px solid;
    border-color: var(--color-border);
 }
+.class-section-1 .heart-grey{
+   position: absolute;
+   left: 88%;
+}
+.class-section-1 .text-wrapper{
+   display: flex;
+   flex-direction: column;
+   margin-top:1.75em;
+   margin-left: 0.8em;
+}
 .class-section-1 h3{
-   position:absolute;
-   left:169px;
-   top:24px;
    font-weight: var(--bold);
    font-size: var(--medium-size);
    line-height: var(--line-height-4);
@@ -266,16 +142,26 @@ aside section h2{
    white-space: nowrap;
 }
 .class-section-1 .class-type{
-   position: absolute;
-   width: 40px;
-   height: 13px;
-   top: 49px;
-   left: 170px;
+   margin-top: -0.5em;
    font-weight: var(--medium);
    font-size: var(--tiny);
    line-height:var(--line-height-4);
    color:var(--color-light-grey);
    white-space: nowrap;
+ }
+ .class-section-1 .seat-count{
+   margin-top: 1.2em;
+   font-weight: var(--medium);
+   font-size: var(--small);
+   color:var(--color-light-grey);
+ }
+ .seat-count::before{
+   position:relative ;
+   top: 0.3rem;
+   content: url('assets/Seat-logo.svg');
+   width: 0.9rem; 
+   height: 1.4rem; 
+   margin-right: 5px; 
  }
  .profile-button{
    background-color: var(--color-white);
@@ -368,14 +254,29 @@ hr{
    height: inherit;
    margin-top: -10px;
 }
+.reserved-menu, .liked-menu, .contact-menu:hover{
+   cursor: pointer;
+}
+.reserved-menu::before, .liked-menu::before, .contact-menu::before{
+   font-family: "Font Awesome 6 free";
+   font-size: 1.4em;
+   margin: 0.5em;
+}
+.reserved-menu::before{
+   content: "\f543";
+   margin: 0.6em;
+}
+.liked-menu::before{
+   content: "\f004";
+}
+.contact-menu::before{
+   content: "\f590";
+}
 .menu{
    font-size: var(--regular);    
    font-weight: var(--semi-bold);
    color: var(--color-text);
    text-decoration: none;
-}
-.reserved-menu, .liked-menu, .contact-menu:hover{
-   cursor: pointer;
 }
 .button{
    font-size: var(--regular);
@@ -395,21 +296,7 @@ hr{
       background-color: var(--color-primary);
       color: var(--color-white);
 }
-.reserved-menu::before, .liked-menu::before, .contact-menu::before{
-   font-family: "Font Awesome 6 free";
-   font-size: 1.4em;
-   margin: 0.5em;
-}
-.reserved-menu::before{
-   content: "\f543";
-   margin: 0.6em;
-}
-.liked-menu::before{
-   content: "\f004";
-}
-.contact-menu::before{
-   content: "\f590";
-}
+
 /* --- User PopUp END --- */
 
 /* ---------- CLASS INFO SECTION ---------- */
