@@ -123,6 +123,7 @@
    display: grid;
    gap: var(--gap-1);
    grid-template-columns: repeat( auto-fill, minmax(18.75rem, 0.4fr) );
+   justify-content: center;
 }
 
 .wrapper{
@@ -141,10 +142,13 @@ aside.index-aside{
    border-color: var(--color-border);
 }
 aside.index-aside section{
-   display: flex;
-   flex-direction: column;
-   align-items: center;
+   display: grid;
+   text-align: center;
+   grid-template-columns: repeat( auto-fill, minmax(16.125rem, 0.4fr) );
+   justify-content: center;
    gap:var(--gap-1);
+   
+   margin: 1em;
 }
 aside.index-aside section h2{
    font-size: var(--heading-5);
@@ -154,18 +158,30 @@ aside.index-aside section h2{
 main.index-main{
    width: 75%;
    background: var(--color-background);
+   display: flex;
+   flex-direction: column;
 }
 
 main{
    margin-top: 10.4375rem;
    margin-right: var(--gap-1);
 }
-/* --------------------MEDIA-QUERIES----------------- */
+.mobile-nav{
+   display: none;
+}
 
-@media (max-width: 599px) {
+/* --------------------MEDIA-QUERIES----------------- */
+@media (max-width: 1140px){
    aside{
       display: none;
    }
+   main.index-main{
+      width: 100%;
+      margin:0;
+   }
+}
+
+@media (max-width: 599px) {
    .wrapper{
       margin:0 1.5rem;
    }
@@ -209,11 +225,6 @@ main{
       height: 0.6rem; 
       margin-right: 5px;
    }
-
-   main.index-main{
-      width: 100%;
-      margin:0;
-   }
    .main-content{
       display: grid;
       gap: 0.75rem;
@@ -222,14 +233,15 @@ main{
    }
 
    .mobile-nav{
+      display: block;
       position: fixed;
       width: 100%;
       z-index: 999;
       bottom:0;
       background-color: var(--color-white);
       border-radius: 35px;
-      border-color: var(--color-border);
       border: 1px solid;
+      border-color: var(--color-border);
    }
    .mobile-nav ul{
       display: flex;
@@ -240,6 +252,25 @@ main{
    .mobile-nav ul:first-child img{
       width: 28px;
    }
+   .class-filter{
+      position: inherit;
+   }
+   .class-filter ul{
+      display: flex;
+      flex-wrap: nowrap;
+      flex-direction: row;
+      justify-content:center;
+      gap:1rem;
+   }
+   
+   .class-filter ul>li>button{
+      width: 4.625rem;
+      height: 1.56rem;
+   
+      font-size: var(--tiny) ;
+      font-weight: var(--medium);
+   }
+
    .main-header{
       display: none;
    }
