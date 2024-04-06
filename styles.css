@@ -289,8 +289,24 @@ aside section h2{
  .profile-button:hover{
    cursor: pointer;
  }
-
-
+ .class-section-1 {
+   width: 282px;
+   height: 160px;
+   position:absolute;
+}
+/* class-section-2 */
+.class-section-2 img{
+   position: absolute;
+   width: 155px;
+   height: 169px;
+   border-radius: 20px 0 0 20px;
+   border: 1px solid;
+   border-color: var(--color-border);
+}
+.logo{
+   width: 64px;
+   height: 64px;
+}
 
  .class-section-3 {
    width: 258px;
