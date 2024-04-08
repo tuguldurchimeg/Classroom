@@ -399,17 +399,28 @@ hr{
       font-size: 12px;
    }
    
-   
+   .available-days{
+      width: 27rem;
+   }
    .week > ul{
       display: grid;
       grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+      grid-template-columns: auto;
       padding: 2em 3em;
    }
-   .day, .times{
+   .times{
       display: flex;
       flex-wrap: wrap;
       gap: 1em;
       padding-top: 1em;
       justify-content: flex-start;
+   }
+
+   .rate-criteria{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      column-gap: 1em;
+      row-gap: 0.9em;
    }
  }
