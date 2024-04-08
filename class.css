@@ -390,19 +390,22 @@ hr{
     column-gap: 5rem;
     justify-content: center;
     margin-top: 2em;
+    overflow: hidden;
  }
 
  /* ---------- Media Query --------- */
- @media (max-width: 550px) {
-
-   .available-days{
-      width: 27rem;
+ @media (max-width: 576px) {
+   .class-title,  .available-days{
+      width: 30rem;
    }
    .week > ul{
-      display: grid;
-      grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-      grid-template-columns: auto;
-      padding: 2em 3em;
+      display: flex;
+      flex-direction: column;
+   }
+   .day{
+      display:flex;
+      flex-direction:row;
+      align-items: center;
    }
    .times{
       display: flex;

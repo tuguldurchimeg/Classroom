@@ -239,7 +239,9 @@ html{
    color: var(--color-dark-grey);
    line-height: var(--line-height-4);
 }
-
+.mobile-nav{
+   display: none;
+}
 /* --------- MEDIA QUERIES --------- */
 @media (max-width: 550px) {
    html{
