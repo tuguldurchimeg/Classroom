@@ -70,8 +70,7 @@ hr{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin-top: 2rem;
-    margin-bottom: 1rem;
+    margin: 1rem;
     column-gap: 10rem;
  }
  
@@ -395,10 +394,7 @@ hr{
 
  /* ---------- Media Query --------- */
  @media (max-width: 550px) {
-   html{
-      font-size: 12px;
-   }
-   
+
    .available-days{
       width: 27rem;
    }
@@ -417,10 +413,6 @@ hr{
    }
 
    .rate-criteria{
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 1fr 1fr;
-      column-gap: 1em;
-      row-gap: 0.9em;
+      column-gap: 6em;
    }
  }
