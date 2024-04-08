@@ -54,8 +54,8 @@ hr{
     align-items: center;
     justify-content: center;
     border: none;
-    width: 270px;
-    height: 50px;
+    width: 100%;
+    height: 3rem;
  }
  .button:hover{
     cursor: pointer;
@@ -320,7 +320,7 @@ hr{
     border-radius: 30px;
     text-align: center;
     align-items: center;
-    width: 6.8em;
+    width: 6.8rem;
     height: 2.8em;
  
  }
@@ -403,19 +403,17 @@ hr{
       flex-direction: column;
    }
    .day{
-      display:flex;
-      flex-direction:row;
+      display:grid;
+      grid-template-columns: 1fr 3fr;
+      justify-content:flex-start;
       align-items: center;
    }
+   
    .times{
       display: flex;
       flex-wrap: wrap;
       gap: 1em;
-      padding-top: 1em;
+      margin-left: 2rem;
       justify-content: flex-start;
-   }
-
-   .rate-criteria{
-      column-gap: 6em;
    }
  }
