@@ -344,15 +344,12 @@ hr{
     align-items: center;
     justify-content: center;
     column-gap: 5rem;
-    
  }
- 
  .week > ul{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     padding: 2em 3em;
  }
- 
  .times{
     display: grid;
     gap: 1em;
@@ -377,7 +374,6 @@ hr{
     flex-wrap: wrap;
     gap: 1em;
     max-width: 20rem;
-    justify-content: center ;
  }
  /* Day Section END */
  
@@ -395,4 +391,25 @@ hr{
     column-gap: 5rem;
     justify-content: center;
     margin-top: 2em;
+ }
+
+ /* ---------- Media Query --------- */
+ @media (max-width: 550px) {
+   html{
+      font-size: 12px;
+   }
+   
+   
+   .week > ul{
+      display: grid;
+      grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+      padding: 2em 3em;
+   }
+   .day, .times{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1em;
+      padding-top: 1em;
+      justify-content: flex-start;
+   }
  }

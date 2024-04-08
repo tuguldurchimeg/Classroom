@@ -180,8 +180,7 @@ html{
    box-shadow: var(--shadow-1);
    border-radius: 50%; 
    font-size: 1.5em;
-   width: 45px;
-   height: 45px;
+   
  }
  .profile-button:hover{
    cursor: pointer;
@@ -239,4 +238,33 @@ html{
    font-weight: var(--normal);
    color: var(--color-dark-grey);
    line-height: var(--line-height-4);
+}
+
+/* --------- MEDIA QUERIES --------- */
+@media (max-width: 599px) {
+   .mobile-nav{
+      display: block;
+      position: fixed;
+      width: 100%;
+      z-index: 999;
+      bottom:0;
+      background-color: var(--color-white);
+      border-radius: 35px;
+      border: 1px solid;
+      border-color: var(--color-border);
+   }
+   .mobile-nav ul{
+      display: flex;
+      height: 4rem;
+      justify-content: space-evenly;
+      align-items: center;
+   }
+   .mobile-nav ul:first-child img{
+      width: 28px;
+   }
+
+   .main-header-2{
+      display: none;
+   }
+
 }
