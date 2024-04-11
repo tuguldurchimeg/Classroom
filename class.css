@@ -396,7 +396,7 @@ hr{
  /* ---------- Media Query --------- */
  @media (max-width: 576px) {
    .class-title,  .available-days{
-      width: 30rem;
+      width: 28rem;
    }
    .week > ul{
       display: flex;
@@ -416,4 +416,32 @@ hr{
       margin-left: 2rem;
       justify-content: flex-start;
    }
+
+   .rating{
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: auto;
+      grid-area: "crit title crit",
+                 "crit but crit";
+   }
+   .rating h6{
+      grid-area: title;
+   }
+   .rate-criteria{
+      grid-area: crit;
+      column-gap: 10rem;
+   }
+   .add-rating-btn{
+      grid-area: but;
+      margin-top: 5rem;
+   }
+   .similar-class ul{
+      display: flex;
+      overflow: scroll;
+      gap: 2rem;
+   }
+
+
+
+   /*  */
+
  }
