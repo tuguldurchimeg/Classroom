@@ -343,6 +343,7 @@ hr{
     align-items: center;
     justify-content: center;
     column-gap: 5rem;
+    row-gap: 1rem;
  }
  .week > ul{
     display: grid;
@@ -398,6 +399,9 @@ hr{
    .class-title,  .available-days{
       width: 28rem;
    }
+   .by-week{
+      flex-direction: column-reverse;
+   }
    .week > ul{
       display: flex;
       flex-direction: column;
@@ -428,7 +432,10 @@ hr{
    }
    .rate-criteria{
       grid-area: crit;
-      column-gap: 10rem;
+      column-gap: 12rem;
+   }
+   .rate-criteria meter{
+      width: 8.5em;
    }
    .add-rating-btn{
       grid-area: but;
