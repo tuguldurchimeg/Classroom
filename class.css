@@ -70,7 +70,7 @@ hr{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin: 1rem;
+    margin: 2rem;
     column-gap: 10rem;
  }
  
@@ -86,7 +86,7 @@ hr{
     border: 1px solid var(--color-border);
     border-radius: 20px;
     width: 31em;
-    height: auto;
+    height: 20rem;
  }
  .class-title > h2 >span::after{
     font-family: "Material Symbols Outlined";
@@ -201,8 +201,8 @@ hr{
     height: 2em;
  }
  .add-rating-btn:hover{
-    cursor: pointer;
-       transform: scale(1.1);
+   cursor: pointer;
+   transform: scale(1.1);
  }
  
  /* --- Class Info Section END--- */
@@ -298,7 +298,7 @@ hr{
     font-weight: var(--medium);
     font-size: var(--medium-size);
     border: none;
-    width: 5em;
+    width: 6rem;
     height: 2em;
  }
  .times button:hover, .day-times button:hover{
@@ -314,6 +314,14 @@ hr{
  }
  
  /* Date design ( Да 03-04 ) */
+ .date-range-chooser{
+   display: flex;
+   align-items: center;
+   justify-content: space-evenly;
+   margin: 2rem 7rem 0rem 7rem;
+   font-weight: 600;
+   font-size: var(--large);
+}
  .day > div{
     background-color: var(--color-white);
     box-shadow: var(--shadow-2);
@@ -397,11 +405,15 @@ hr{
  /* ---------- Media Query --------- */
  @media (max-width: 576px) {
    .class-title,  .available-days{
-      width: 28rem;
+      width: 30rem;
    }
-   .by-week{
-      flex-direction: column-reverse;
+   .class-title{
+      height: 18rem;
    }
+   .class-img{
+      height: 12.5rem;
+   }
+   /* --- WEEK SECTION Vertical layout on mobile --- */
    .week > ul{
       display: flex;
       flex-direction: column;
@@ -420,7 +432,11 @@ hr{
       margin-left: 2rem;
       justify-content: flex-start;
    }
-
+   .times button, .day-times button{
+      width: 7rem;
+      font-size: var(--color-accent);
+   }
+   /* --- Rating diffrent Layout --- */
    .rating{
       grid-template-columns: 1fr 1fr 1fr;
       grid-template-rows: auto;
@@ -440,15 +456,65 @@ hr{
    .add-rating-btn{
       grid-area: but;
       margin-top: 5rem;
+      width: 4.5rem;
    }
-   .similar-class ul{
-      display: flex;
-      overflow: scroll;
-      gap: 2rem;
+   /*  */
+   .main-info{
+      height: 4.3rem;
    }
-
-
+   .option-tab{
+      justify-content: space-evenFly;
+   }
+   .times{
+      
+   }
 
    /*  */
+   .similar-class ul{
+      overflow: scroll;
+      gap: 0.75rem;
+      justify-content: flex-start;
+   }
+   
+   .class-section-1 {
+      height: 100%;
+   }
+   .class-section-1 > article{
+      display: flex;
+      flex-direction: column-reverse;
+      border-radius: 20px;
+   }
+   .class-section-1 .image{
+      width: 100%;
+      height: 6.1rem;
+      
+      border-radius: 0px 0 20px 20px;
+   }
+   .class-section-1 .heart-grey{
+      position: absolute;
+      left: 80%;
+   }
+   .class-section-1 .text-wrapper{
+      margin:0.875em 0.5em 0.75em;
+   }
+   .class-section-1 h3{
+      font-size: var(--medium-size);
+      font-weight: var(--semi-bold);
+      line-height: var(--line-height-3);
+   }
+   .class-section-1 .class-type{
+      margin-top: -0.55em;
+   }
+   .class-section-1 .seat-count{
+      margin-top: 0.5em;
+   }
+    .seat-count::before{
+      position:relative ;  
+      top: 0.3rem;
+      content: url('assets/Seat-logo.svg');
+      width: 0.625rem; 
+      height: 0.6rem; 
+      margin-right: 5px;
+   }
 
  }
