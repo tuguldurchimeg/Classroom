@@ -54,7 +54,7 @@ html{
 
 /* -----------------CALENDAR------------------ */
 .calendar-wrapper{
-   width: 270px;
+   width: 15rem;
    background: var(--color-white);
    
    border-radius: 30px;
@@ -85,6 +85,7 @@ html{
 }
 .calendar ul li{
    width: calc(100% / 7);
+   height: auto;
 }
 .calendar .weeks li{
    color: #797B86;
