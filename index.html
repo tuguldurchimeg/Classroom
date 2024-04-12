@@ -1,322 +1,450 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Classroom</title>
-   <meta name="description" content="College classroom booking system for students.">
-   <meta name="author" content="Chinkhusel">
-   <meta name="author" content="Tuguldurchimeg">
-   <meta name="author" content="Enkh-Erdem">
-   <meta name="keywords" content="МУИС, МУИС анги захиалах, Оюутан, Монгол Улсын Их Сургууль">
-   <link rel="stylesheet" href="styleguide.css">
-   <link rel="stylesheet" href="styles.css">
-   <link rel="stylesheet" href="index.css">
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-   <link rel="preconnect" href="https://fonts.googleapis.com">
-   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-</head>
-<body>
-   <header class="main-header">
-      <nav> 
-            <a href="index.html">
-               <img class="logo" src="assets/Logo.svg"/>
-            </a>
-            <ul class="search-bar">               
-                     <li class="bair">
-                        <button>
-                           <span>Хичээлийн байр</span>
-                           <span class="light-grey">2-р байр</span>
-                        </button>
-                        <ul>
-                           <li><button><img src="" alt="classroom-picture"><span>1-р байр</span></button></li>
-                           <li><button><img src="" alt="classroom-picture"><span>2-р байр</span></button></li>
-                           <li><button><img src="" alt="classroom-picture"><span>4-р байр</span></button></li>
-                           <li><button><img src="" alt="classroom-picture"><span>5-р байр</span></button></li>
-                           <li><button><img src="" alt="classroom-picture"><span>7-р байр</span></button></li>
-                           <li><button><img src="" alt="classroom-picture"><span>8-р байр</span></button></li>
-                           <li><button><img src="" alt="classroom-picture"><span>E-Lib</span></button></li>
-                           <li><button><img src="" alt="classroom-picture"><span>Хууль зүй</span></button></li>
-                        </ul>
-                     </li>
-                     <li class="odor">
-                        <button>
-                           <span>Өдөр</span>
-                           <time datetime="2024-02-14 20:00" class="light-grey">03.05-03.19</time>
-                        </button>
-                        <div class="calendar-box">
-                           <ul>
-                              <li><button>1 өдөр</button></li>
-                              <li><button>7 хоног</button></li>
-                              <li><button>2-7 хоног</button></li>
-                           </ul>
-                           <div class="calendar-wrapper">
-                              <div>
-                                 <span >&#8249;</span>
-                                 <p class="current-date">3-р сар 2024</p>
-                                 <span >&#8250;</span>
-                              </div>
-                              <div class="calendar">
-                                 <ul class="weeks">
-                                    <li>Sun</li>
-                                    <li>Mon</li>
-                                    <li>Tue</li>
-                                    <li>Wed</li>
-                                    <li>Thu</li>
-                                    <li>Fri</li>
-                                    <li>Sat</li>
-                                 </ul>
-                                 <ul class="days">
-                                    <li>27</li>
-                                    <li>28</li>
-                                    <li>29</li>
-                                    <li>30</li>
-                                    <li>1</li>
-                                    <li>2</li>
-                                    <li>3</li>
-                                    <li>4</li>
-                                    <li>5</li>
-                                    <li>6</li>
-                                    <li>7</li>
-                                    <li>8</li>
-                                    <li>9</li>
-                                    <li>10</li>
-                                    <li>11</li>
-                                    <li>12</li>
-                                    <li>13</li>
-                                    <li>14</li>
-                                    <li>15</li>
-                                    <li>16</li>
-                                    <li>17</li>
-                                    <li>18</li>
-                                    <li>19</li>
-                                    <li>20</li>
-                                    <li>21</li>
-                                    <li>22</li>
-                                    <li>23</li>
-                                    <li>24</li>
-                                    <li>25</li>
-                                    <li>26</li>
-                                    <li>27</li>
-                                    <li>28</li>
-                                    <li>29</li>
-                                    <li>30</li>
-                                    <li>31</li>
-                                 </ul>
-                              </div>
-                           </div>
-                        </div>
-                     </li>
-                     <li class="tsag">
-                        <button>
-                           <span>Цаг</span>
-                           <time datetime="2024-02-14 20:00" class="light-grey">16:00 - 19:20</time>
-                        </button>
-                        <ul>
-                           <li><button>07:40</button></li>
-                           <li><button>08:25</button></li>
-                           <li><button>09:20</button></li>
-                           <li><button>10:05</button></li>
-                           <li><button>11:00</button></li>
-                           <li><button>11:45</button></li>
-                           <li><button>12:40</button></li>
-                           <li><button>13:25</button></li>
-                           <li><button>14:20</button></li>
-                           <li><button>15:05</button></li>
-                           <li><button>16:00</button></li>
-                           <li><button>16:45</button></li>
-                           <li><button>17:40</button></li>
-                           <li><button>18:25</button></li>
-                           <li><button>19:20</button></li>
-                           <li><button>20:05</button></li>
-                           <li><button>21:00</button></li>
-                           <li><button>21:45</button></li>
-                        </ul>
-                     </li>
-                     <li class="search-button-background">
-                        <button class="search-button">
-                           <img src="assets/Search-button.svg" alt="search">
-                        </button>
-                     </li>
-            </ul>
-            <button class="profile-button"><i class="fa-regular fa-user"></i></button>
-      </nav>
-   </header>
-   <!-- <hr class="margin"> -->
-   <div class="wrapper">
-      <main class="index-main">
-         <header class="class-filter">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Classroom</title>
+    <meta
+      name="description"
+      content="College classroom booking system for students."
+    />
+    <meta name="author" content="Chinkhusel" />
+    <meta name="author" content="Tuguldurchimeg" />
+    <meta name="author" content="Enkh-Erdem" />
+    <meta
+      name="keywords"
+      content="МУИС, МУИС анги захиалах, Оюутан, Монгол Улсын Их Сургууль"
+    />
+    <link rel="stylesheet" href="styleguide.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="index.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="main-header">
+      <nav>
+        <a href="index.html">
+          <img class="logo" src="assets/Logo.svg" />
+        </a>
+        <ul class="search-bar">
+          <li class="bair">
+            <button>
+              <span>Хичээлийн байр</span>
+              <span class="light-grey">2-р байр</span>
+            </button>
             <ul>
-               <li><button>Лекц</button></li>
-               <li><button>Сем</button></li>
-               <li><button>Лаб</button></li>
+              <li>
+                <button>
+                  <img src="" alt="classroom-picture" /><span>1-р байр</span>
+                </button>
+              </li>
+              <li>
+                <button>
+                  <img src="" alt="classroom-picture" /><span>2-р байр</span>
+                </button>
+              </li>
+              <li>
+                <button>
+                  <img src="" alt="classroom-picture" /><span>4-р байр</span>
+                </button>
+              </li>
+              <li>
+                <button>
+                  <img src="" alt="classroom-picture" /><span>5-р байр</span>
+                </button>
+              </li>
+              <li>
+                <button>
+                  <img src="" alt="classroom-picture" /><span>7-р байр</span>
+                </button>
+              </li>
+              <li>
+                <button>
+                  <img src="" alt="classroom-picture" /><span>8-р байр</span>
+                </button>
+              </li>
+              <li>
+                <button>
+                  <img src="" alt="classroom-picture" /><span>E-Lib</span>
+                </button>
+              </li>
+              <li>
+                <button>
+                  <img src="" alt="classroom-picture" /><span>Хууль зүй</span>
+                </button>
+              </li>
             </ul>
-         </header>
-      
-         <div class="main-content">
-            <a href="class.html" class="class-section-1">
-               <article>
-                  <img src="assets/class.jpg" alt="classroom-picture" class="image">
-                     <div class="text-wrapper">
-                        <h3> 1-407</h3>
-                        <img src="assets/Heart-grey.svg" alt="like this class" class="heart-grey">
-                        <div class="class-type">Лекц</div>
-                        <div class="seat-count">55</div>
-                     </div>
-               </article>
-            </a>
-            <a href="class.html" class="class-section-1">
-               <article>
-                  <img src="assets/class.jpg" alt="classroom-picture" class="image">
-                  <div class="text-wrapper">
-                        <h3> 1-407</h3>
-                        <img src="assets/Heart-grey.svg" alt="like this class" class="heart-grey">
-                        <div class="class-type">Лекц</div>
-                        <div class="seat-count">55</div>
-                     </div>
-               </article>
-            </a>
-            <a href="class.html" class="class-section-1">
-               <article>
-                  <img src="assets/class.jpg" alt="classroom-picture" class="image">
-                  <div class="text-wrapper">
-                        <h3> 1-407</h3>
-                        <img src="assets/Heart-grey.svg" alt="like this class" class="heart-grey">
-                        <div class="class-type">Лекц</div>
-                        <div class="seat-count">55</div>
-                     </div>
-               </article>
-            </a>
-            <a href="class.html" class="class-section-1">
-               <article>
-                  <img src="assets/class.jpg" alt="classroom-picture" class="image">
-                  <div class="text-wrapper">
-                        <h3> 1-407</h3>
-                        <img src="assets/Heart-grey.svg" alt="like this class" class="heart-grey">
-                        <div class="class-type">Лекц</div>
-                        <div class="seat-count">55</div>
-                     </div>
-               </article>
-            </a>
-            <a href="class.html" class="class-section-1">
-               <article>
-                  <img src="assets/class.jpg" alt="classroom-picture" class="image">
-                  <div class="text-wrapper">
-                        <h3> 1-407</h3>
-                        <img src="assets/Heart-grey.svg" alt="like this class" class="heart-grey">
-                        <div class="class-type">Лекц</div>
-                        <div class="seat-count">55</div>
-                     </div>
-               </article>
-            </a>
-            <a href="class.html" class="class-section-1">
-               <article>
-                  <img src="assets/class.jpg" alt="classroom-picture" class="image">
-                  <div class="text-wrapper">
-                        <h3> 1-407</h3>
-                        <img src="assets/Heart-grey.svg" alt="like this class" class="heart-grey">
-                        <div class="class-type">Лекц</div>
-                        <div class="seat-count">55</div>
-                     </div>
-               </article>
-            </a>
-            <a href="class.html" class="class-section-1">
-               <article>
-                  <img src="assets/class.jpg" alt="classroom-picture" class="image">
-                  <div class="text-wrapper">
-                        <h3> 1-407</h3>
-                        <img src="assets/Heart-grey.svg" alt="like this class" class="heart-grey">
-                        <div class="class-type">Лекц</div>
-                        <div class="seat-count">55</div>
-                     </div>
-               </article>
-            </a>
-            <a href="class.html" class="class-section-1">
-               <article>
-                  <img src="assets/class.jpg" alt="classroom-picture" class="image">
-                  <div class="text-wrapper">
-                        <h3> 1-407</h3>
-                        <img src="assets/Heart-grey.svg" alt="like this class" class="heart-grey">
-                        <div class="class-type">Лекц</div>
-                        <div class="seat-count">55</div>
-                     </div>
-               </article>
-            </a>
-            
-         </div>
+          </li>
+          <li class="odor">
+            <button>
+              <span>Өдөр</span>
+              <time datetime="2024-02-14 20:00" class="light-grey"
+                >03.05-03.19</time
+              >
+            </button>
+            <div class="calendar-box">
+              <ul>
+                <li><button>1 өдөр</button></li>
+                <li><button>7 хоног</button></li>
+                <li><button>2-7 хоног</button></li>
+              </ul>
+              <div class="calendar-wrapper">
+                <div>
+                  <span>&#8249;</span>
+                  <p class="current-date">3-р сар 2024</p>
+                  <span>&#8250;</span>
+                </div>
+                <div class="calendar">
+                  <ul class="weeks">
+                    <li>Sun</li>
+                    <li>Mon</li>
+                    <li>Tue</li>
+                    <li>Wed</li>
+                    <li>Thu</li>
+                    <li>Fri</li>
+                    <li>Sat</li>
+                  </ul>
+                  <ul class="days">
+                    <li>27</li>
+                    <li>28</li>
+                    <li>29</li>
+                    <li>30</li>
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                    <li>5</li>
+                    <li>6</li>
+                    <li>7</li>
+                    <li>8</li>
+                    <li>9</li>
+                    <li>10</li>
+                    <li>11</li>
+                    <li>12</li>
+                    <li>13</li>
+                    <li>14</li>
+                    <li>15</li>
+                    <li>16</li>
+                    <li>17</li>
+                    <li>18</li>
+                    <li>19</li>
+                    <li>20</li>
+                    <li>21</li>
+                    <li>22</li>
+                    <li>23</li>
+                    <li>24</li>
+                    <li>25</li>
+                    <li>26</li>
+                    <li>27</li>
+                    <li>28</li>
+                    <li>29</li>
+                    <li>30</li>
+                    <li>31</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="tsag">
+            <button>
+              <span>Цаг</span>
+              <time datetime="2024-02-14 20:00" class="light-grey"
+                >16:00 - 19:20</time
+              >
+            </button>
+            <ul>
+              <li><button>07:40</button></li>
+              <li><button>08:25</button></li>
+              <li><button>09:20</button></li>
+              <li><button>10:05</button></li>
+              <li><button>11:00</button></li>
+              <li><button>11:45</button></li>
+              <li><button>12:40</button></li>
+              <li><button>13:25</button></li>
+              <li><button>14:20</button></li>
+              <li><button>15:05</button></li>
+              <li><button>16:00</button></li>
+              <li><button>16:45</button></li>
+              <li><button>17:40</button></li>
+              <li><button>18:25</button></li>
+              <li><button>19:20</button></li>
+              <li><button>20:05</button></li>
+              <li><button>21:00</button></li>
+              <li><button>21:45</button></li>
+            </ul>
+          </li>
+          <li class="search-button-background">
+            <button class="search-button">
+              <img src="assets/Search-button.svg" alt="search" />
+            </button>
+          </li>
+        </ul>
+        <button class="profile-button">
+          <i class="fa-regular fa-user"></i>
+        </button>
+      </nav>
+    </header>
+    <!-- <hr class="margin"> -->
+    <div class="wrapper">
+      <main class="index-main">
+        <header class="class-filter">
+          <ul>
+            <li><button>Лекц</button></li>
+            <li><button>Сем</button></li>
+            <li><button>Лаб</button></li>
+          </ul>
+        </header>
+
+        <div class="main-content">
+          <a href="class.html" class="class-section-1">
+            <article>
+              <img
+                src="assets/class.jpg"
+                alt="classroom-picture"
+                class="image"
+              />
+              <div class="text-wrapper">
+                <h3>1-407</h3>
+                <img
+                  src="assets/Heart-grey.svg"
+                  alt="like this class"
+                  class="heart-grey"
+                />
+                <div class="class-type">Лекц</div>
+                <div class="seat-count">55</div>
+              </div>
+            </article>
+          </a>
+          <a href="class.html" class="class-section-1">
+            <article>
+              <img
+                src="assets/class.jpg"
+                alt="classroom-picture"
+                class="image"
+              />
+              <div class="text-wrapper">
+                <h3>1-407</h3>
+                <img
+                  src="assets/Heart-grey.svg"
+                  alt="like this class"
+                  class="heart-grey"
+                />
+                <div class="class-type">Лекц</div>
+                <div class="seat-count">55</div>
+              </div>
+            </article>
+          </a>
+          <a href="class.html" class="class-section-1">
+            <article>
+              <img
+                src="assets/class.jpg"
+                alt="classroom-picture"
+                class="image"
+              />
+              <div class="text-wrapper">
+                <h3>1-407</h3>
+                <img
+                  src="assets/Heart-grey.svg"
+                  alt="like this class"
+                  class="heart-grey"
+                />
+                <div class="class-type">Лекц</div>
+                <div class="seat-count">55</div>
+              </div>
+            </article>
+          </a>
+          <a href="class.html" class="class-section-1">
+            <article>
+              <img
+                src="assets/class.jpg"
+                alt="classroom-picture"
+                class="image"
+              />
+              <div class="text-wrapper">
+                <h3>1-407</h3>
+                <img
+                  src="assets/Heart-grey.svg"
+                  alt="like this class"
+                  class="heart-grey"
+                />
+                <div class="class-type">Лекц</div>
+                <div class="seat-count">55</div>
+              </div>
+            </article>
+          </a>
+          <a href="class.html" class="class-section-1">
+            <article>
+              <img
+                src="assets/class.jpg"
+                alt="classroom-picture"
+                class="image"
+              />
+              <div class="text-wrapper">
+                <h3>1-407</h3>
+                <img
+                  src="assets/Heart-grey.svg"
+                  alt="like this class"
+                  class="heart-grey"
+                />
+                <div class="class-type">Лекц</div>
+                <div class="seat-count">55</div>
+              </div>
+            </article>
+          </a>
+          <a href="class.html" class="class-section-1">
+            <article>
+              <img
+                src="assets/class.jpg"
+                alt="classroom-picture"
+                class="image"
+              />
+              <div class="text-wrapper">
+                <h3>1-407</h3>
+                <img
+                  src="assets/Heart-grey.svg"
+                  alt="like this class"
+                  class="heart-grey"
+                />
+                <div class="class-type">Лекц</div>
+                <div class="seat-count">55</div>
+              </div>
+            </article>
+          </a>
+          <a href="class.html" class="class-section-1">
+            <article>
+              <img
+                src="assets/class.jpg"
+                alt="classroom-picture"
+                class="image"
+              />
+              <div class="text-wrapper">
+                <h3>1-407</h3>
+                <img
+                  src="assets/Heart-grey.svg"
+                  alt="like this class"
+                  class="heart-grey"
+                />
+                <div class="class-type">Лекц</div>
+                <div class="seat-count">55</div>
+              </div>
+            </article>
+          </a>
+          <a href="class.html" class="class-section-1">
+            <article>
+              <img
+                src="assets/class.jpg"
+                alt="classroom-picture"
+                class="image"
+              />
+              <div class="text-wrapper">
+                <h3>1-407</h3>
+                <img
+                  src="assets/Heart-grey.svg"
+                  alt="like this class"
+                  class="heart-grey"
+                />
+                <div class="class-type">Лекц</div>
+                <div class="seat-count">55</div>
+              </div>
+            </article>
+          </a>
+        </div>
       </main>
       <aside class="index-aside">
-         <section>
-            <h2>Онцлох ангиуд</h2>
-            <a href="class.html" class="class-section-3">
-               <article>
-                  <img src="assets/class.jpg" alt="classroom-picture">
-                  <div>
-                     <h3>1-407</h3>
-                     <div class="vote">54 санал</div>
-                  </div>
-               </article>
-            </a>
-            <a href="class.html" class="class-section-3">
-               <article>
-                  <img src="assets/class.jpg" alt="classroom-picture">
-                  <div>
-                     <h3>1-407</h3>
-                     <div class="vote">54 санал</div>
-                  </div>
-               </article>
-            </a>
-            <a href="class.html" class="class-section-3">
-               <article>
-                  <img src="assets/class.jpg" alt="classroom-picture">
-                  <div>
-                     <h3>1-407</h3>
-                     <div class="vote">54 санал</div>
-                  </div>
-               </article>
-            </a>
-            <a href="class.html" class="class-section-3">
-               <article>
-                  <img src="assets/class.jpg" alt="classroom-picture">
-                  <div>
-                     <h3>1-407</h3>
-                     <div class="vote">54 санал</div>
-                  </div>
-               </article>
-            </a>
-            <a href="class.html" class="class-section-3">
-               <article>
-                  <img src="assets/class.jpg" alt="classroom-picture">
-                  <div>
-                     <h3>1-407</h3>
-                     <div class="vote">54 санал</div>
-                  </div>
-               </article>
-            </a>
-            <a href="class.html" class="class-section-3">
-               <article>
-                  <img src="assets/class.jpg" alt="classroom-picture">
-                  <div>
-                     <h3>1-407</h3>
-                     <div class="vote">54 санал</div>
-                  </div>
-               </article>
-            </a>
-         </section>
+        <section>
+          <h2>Онцлох ангиуд</h2>
+          <a href="class.html" class="class-section-3">
+            <article>
+              <img src="assets/class.jpg" alt="classroom-picture" />
+              <div>
+                <h3>1-407</h3>
+                <div class="vote">54 санал</div>
+              </div>
+            </article>
+          </a>
+          <a href="class.html" class="class-section-3">
+            <article>
+              <img src="assets/class.jpg" alt="classroom-picture" />
+              <div>
+                <h3>1-407</h3>
+                <div class="vote">54 санал</div>
+              </div>
+            </article>
+          </a>
+          <a href="class.html" class="class-section-3">
+            <article>
+              <img src="assets/class.jpg" alt="classroom-picture" />
+              <div>
+                <h3>1-407</h3>
+                <div class="vote">54 санал</div>
+              </div>
+            </article>
+          </a>
+          <a href="class.html" class="class-section-3">
+            <article>
+              <img src="assets/class.jpg" alt="classroom-picture" />
+              <div>
+                <h3>1-407</h3>
+                <div class="vote">54 санал</div>
+              </div>
+            </article>
+          </a>
+          <a href="class.html" class="class-section-3">
+            <article>
+              <img src="assets/class.jpg" alt="classroom-picture" />
+              <div>
+                <h3>1-407</h3>
+                <div class="vote">54 санал</div>
+              </div>
+            </article>
+          </a>
+          <a href="class.html" class="class-section-3">
+            <article>
+              <img src="assets/class.jpg" alt="classroom-picture" />
+              <div>
+                <h3>1-407</h3>
+                <div class="vote">54 санал</div>
+              </div>
+            </article>
+          </a>
+        </section>
       </aside>
-   </div>
-   <nav class="mobile-nav">
+    </div>
+    <nav class="mobile-nav">
       <ul>
-         <li><a href="index.html"><img src="assets/Logo.svg" alt="Home"></a></li>
-         <li><a href="user.html"><img src="assets/Navbar-heart.svg" alt="Liked Classes"></a></li>
-         <li><a href="user.html"><img src="assets/Waiting.svg" alt="Zahialguud"></a></li>
-         <li><a href="user.html"><img src="assets/Navbar-profile.svg" alt="Profile"></a></li>
+        <li>
+          <a href="index.html"><img src="assets/Logo.svg" alt="Home" /></a>
+        </li>
+        <li>
+          <a href="user.html"
+            ><img src="assets/Navbar-heart.svg" alt="Liked Classes"
+          /></a>
+        </li>
+        <li>
+          <a href="user.html"
+            ><img src="assets/Waiting.svg" alt="Zahialguud"
+          /></a>
+        </li>
+        <li>
+          <a href="user.html"
+            ><img src="assets/Navbar-profile.svg" alt="Profile"
+          /></a>
+        </li>
       </ul>
-   </nav>
+    </nav>
 
-   <footer>
-
-   </footer>
-</body>
+    <footer></footer>
+  </body>
 </html>
