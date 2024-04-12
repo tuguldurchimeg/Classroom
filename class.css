@@ -196,7 +196,7 @@ hr{
     color: var(--color-primary);
     border-radius: 30px;
     margin-top: 1em;
-    transition: width 2s, height 2s, transform 0.5s;
+    transition: transform 0.5s;
     width: 4.5em;
     height: 2em;
  }
@@ -215,7 +215,7 @@ hr{
     margin-top: 1.5vw;
  }
  .option-tab button{
-    font-size: var(--heading-5);
+    font-size: var(--heading-6);
     line-height: var(--line-height-3);
     font-weight: var(--medium);
     background: none;
@@ -388,35 +388,37 @@ hr{
  /* ----- Similar Class Section ------ */
  .similar-class{
     margin-top: 5vw;
+    margin-left: 4em;
  }
  .similar-class h2{
     text-shadow: var(--shadow-1);
-    margin-left: 6rem;
- 
+    font-size: var(--heading-5);
+    font-weight: var(--bold);
  }
  .similar-class ul{
     display: flex;
-    column-gap: 5rem;
-    justify-content: center;
+    justify-content: flex-start;
+    gap: 1rem;
     margin-top: 2em;
-    overflow: hidden;
+    overflow: scroll;
  }
 
  /* ---------- Media Query --------- */
  @media (max-width: 576px) {
    .class-title,  .available-days{
-      width: 30rem;
+      width: 23rem;
    }
    .class-title{
-      height: 18rem;
+      height: 16rem;
    }
    .class-img{
-      height: 12.5rem;
+      height: 10.5rem;
    }
    /* --- WEEK SECTION Vertical layout on mobile --- */
    .week > ul{
       display: flex;
       flex-direction: column;
+      padding: 1rem;
    }
    .day{
       display:grid;
@@ -428,14 +430,11 @@ hr{
    .times{
       display: flex;
       flex-wrap: wrap;
-      gap: 1em;
-      margin-left: 2rem;
+      gap: 0.5em;
+      margin-left: 1rem;
       justify-content: flex-start;
    }
-   .times button, .day-times button{
-      width: 7rem;
-      font-size: var(--color-accent);
-   }
+   
    /* --- Rating diffrent Layout --- */
    .rating{
       grid-template-columns: 1fr 1fr 1fr;
@@ -448,7 +447,7 @@ hr{
    }
    .rate-criteria{
       grid-area: crit;
-      column-gap: 12rem;
+      column-gap: 9rem;
    }
    .rate-criteria meter{
       width: 8.5em;
@@ -463,58 +462,15 @@ hr{
       height: 4.3rem;
    }
    .option-tab{
-      justify-content: space-evenFly;
-   }
-   .times{
-      
+      justify-content: space-evenly;
    }
 
    /*  */
-   .similar-class ul{
-      overflow: scroll;
-      gap: 0.75rem;
-      justify-content: flex-start;
+   .similar-class li{
+      min-width: 10rem;
    }
-   
-   .class-section-1 {
-      height: 100%;
+   .similar-class{
+      margin-left: 2em;
+      padding: 1rem;
    }
-   .class-section-1 > article{
-      display: flex;
-      flex-direction: column-reverse;
-      border-radius: 20px;
-   }
-   .class-section-1 .image{
-      width: 100%;
-      height: 6.1rem;
-      
-      border-radius: 0px 0 20px 20px;
-   }
-   .class-section-1 .heart-grey{
-      position: absolute;
-      left: 80%;
-   }
-   .class-section-1 .text-wrapper{
-      margin:0.875em 0.5em 0.75em;
-   }
-   .class-section-1 h3{
-      font-size: var(--medium-size);
-      font-weight: var(--semi-bold);
-      line-height: var(--line-height-3);
-   }
-   .class-section-1 .class-type{
-      margin-top: -0.55em;
-   }
-   .class-section-1 .seat-count{
-      margin-top: 0.5em;
-   }
-    .seat-count::before{
-      position:relative ;  
-      top: 0.3rem;
-      content: url('assets/Seat-logo.svg');
-      width: 0.625rem; 
-      height: 0.6rem; 
-      margin-right: 5px;
-   }
-
  }
