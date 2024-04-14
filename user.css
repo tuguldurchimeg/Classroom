@@ -336,9 +336,25 @@ header{
     }
   }
 }
+.font h3 {
+  font-weight: var(--bold);
+  font-size: var(--medium-size);
+  line-height: var(--line-height-4);
+  color: var(--color-text);
+  white-space: nowrap;
+}
+.class-type {
+  margin-top: 0.2 rem;
+  margin-bottom: 1 rem;
+  font-weight: var(--medium);
+  font-size: var(--tiny);
+  line-height: var(--line-height-4);
+  color: var(--color-light-grey);
+  white-space: nowrap;
+}
 
 .right-section{
-  border-left: 2px solid black;
+  border-left: 1px solid black;
   height: 100%;
   & h1{
     margin-left: 1rem;
@@ -364,19 +380,26 @@ header{
 .log-out{
   margin-left: 5rem;
   margin-top:5rem;
+  border-top: 1px solid black;
+  height: 100%;
+  font-weight: var(--medium);
+  font-size: var(--medium);
+  line-height: var(--line-height-4);
+  color: var(--color-light-grey);
+  white-space: nowrap;
 }
 
 
 @media screen and (max-width: 1200px) {
   .right-section {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Display as two equal columns */
-    gap: 20px; /* Optional: Add gap between the columns */
+    grid-template-columns: 1fr 1fr; 
+    gap: 20px; 
   }
 }
 
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1000px) {
   .verified {
     display: block !important; 
   }
