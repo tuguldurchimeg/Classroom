@@ -215,12 +215,12 @@ html {
    position:absolute;
 } */
 /* class-section-2 */
-.class-section-2 img {
-  position: absolute;
-  width: 40%;
-  height: 100%;
-  border-radius: 20px 0 0 20px;
-}
+/* .class-section-2 img{
+   position: absolute;
+   width: 40%;
+   height: 100%;
+   border-radius: 20px 0 0 20px;
+} */
 .logo {
   width: 64px;
   height: 64px;
@@ -267,6 +267,76 @@ html {
   display: none;
 }
 
+hr {
+  border-top: 0.5px solid var(--color-border);
+}
+/* ------ User PopUp ------ */
+.user-popup {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: 20px;
+  margin-top: 0.6rem;
+  width: 20rem;
+  height: 11rem;
+  position: absolute;
+  right: 5rem;
+  display: none;
+}
+.user-popup > ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+.menu:hover {
+  cursor: pointer;
+}
+.menu::before {
+  font-family: "Font Awesome 6 free";
+  font-size: 1.4em;
+  margin: 0.5em;
+}
+.menu {
+  font-size: var(--regular);
+  font-weight: var(--semi-bold);
+  color: var(--color-text);
+  text-decoration: none;
+  margin-left: 1rem;
+}
+.reserved-menu::before {
+  content: "\f543";
+  margin: 0.6em;
+}
+.liked-menu::before {
+  content: "\f004";
+}
+.contact-menu::before {
+  content: "\f590";
+}
+.button {
+  font-size: var(--regular);
+  font-weight: var(--semi-bold);
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  width: 100%;
+  height: 3rem;
+}
+.button:hover {
+  cursor: pointer;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+/* ------ User PopUp END ------ */
+
+.mobile-nav {
+  display: none;
+}
+
 footer {
   background-color: var(--color-primary);
   width: 100%;
@@ -274,7 +344,7 @@ footer {
   margin-top: 5rem;
 }
 /* --------- MEDIA QUERIES --------- */
-@media (max-width: 576px) {
+@media (max-width: 640px) {
   .mobile-nav {
     display: block;
     position: fixed;

@@ -1,83 +1,11 @@
 /* ---------- CLASS page ---------- */
-hr{
-    border-top: 0.5px solid var(--color-border);
- }
- /* ------ User PopUp ------ */
- .user-popup{
-    background-color: var(--color-white);
-    border: 1px solid var(--color-border);
-    border-radius: 20px;
-    width: 300px;
-    height: 240px;
-    line-height: var(--line-height-4);
-    display: none;
- }
- .user-popup > ul{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    padding-left: 13px;
-    height: inherit;
- }
- .reserved-menu, .liked-menu, .contact-menu:hover{
-    cursor: pointer;
- }
- .reserved-menu::before, .liked-menu::before, .contact-menu::before{
-    font-family: "Font Awesome 6 free";
-    font-size: 1.4em;
-    margin: 0.5em;
- }
- .reserved-menu::before{
-    content: "\f543";
-    margin: 0.6em;
- }
- .liked-menu::before{
-    content: "\f004";
- }
- .contact-menu::before{
-    content: "\f590";
- }
- .menu{
-    font-size: var(--regular);    
-    font-weight: var(--semi-bold);
-    color: var(--color-text);
-    text-decoration: none;
- }
- .button{
-    font-size: var(--regular);
-    font-weight: var(--semi-bold);
-    background-color: var(--color-primary);
-    color: var(--color-white);
-    border-radius: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: none;
-    width: 100%;
-    height: 3rem;
- }
- .button:hover{
-    cursor: pointer;
-       background-color: var(--color-primary);
-       color: var(--color-white);
- }
- 
- /* ------ User PopUp END ------ */
- 
+
  /* ---------- CLASS INFO SECTION ---------- */
  .class-info{
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    margin: 2rem;
     justify-content: space-evenly;
- }
- 
- .class-info > section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    row-gap: 1.5rem;
+    margin-top: 2rem;
  }
  
  .class-title{
@@ -103,10 +31,17 @@ hr{
  }
  .class-img{
     border-radius: 0 0 20px 20px;
-    width: inherit;
+    width: 100%;
     height: 14.5rem;
  }
- 
+
+ .class-info > section {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   row-gap: 1.5rem;
+   font-size: var(--medium);
+}
  .main-info{
     background-color: var(--color-white);
     box-shadow: var(--shadow-1);
@@ -116,8 +51,8 @@ hr{
     text-align: center;
     justify-content: center;
     column-gap: 0.8em;  
-    width: 22rem;
-    height: 5.5rem;
+    width: 22em;
+    height: 5.5em;
  }
  
  .info-desc, .rate-title{
@@ -210,8 +145,9 @@ hr{
  .option-tab{
     display: flex;
     justify-content: center;
-    column-gap: 7vw;
+    gap: 10rem;
     margin-top: 1.5vw;
+    padding: 0;
  }
  .option-tab button{
     font-size: var(--heading-6);
@@ -273,11 +209,11 @@ hr{
  }
  .form-attr{
     background-image: var(--color-background-gradient);
-    border: none;
-    border-radius: 30px;
     font-size: var(--regular);
     font-weight: var(--medium);
     color: var(--color-light-text);
+    border-radius: 30px;
+    border: none;
     width: 17em;
     height: 2.5rem;
  }
@@ -288,21 +224,6 @@ hr{
     width: 100%;
     font-size: 1.2em;
  }
-
- /* ------ Time buttons ------- */
- .times button, .day-times button{
-    background-image: var(--color-background-gradient);
-    border-radius: 30px;
-    color: var(--color-text);
-    font-weight: var(--medium);
-    font-size: var(--medium-size);
-    border: none;
-    width: 6rem;
-    height: 2em;
- }
- .times button:hover, .day-times button:hover{
-    box-shadow: var(--shadow-1);
- }
  
  /* --------- Week SECTION ---------  */
  .available-days{
@@ -312,7 +233,6 @@ hr{
     height: auto;
  }
  
- /* Date design ( Да 03-04 ) */
  .date-range-chooser{
    display: flex;
    align-items: center;
@@ -326,35 +246,50 @@ hr{
     box-shadow: var(--shadow-2);
     border-radius: 30px;
     text-align: center;
-    align-items: center;
-    width: 6.8rem;
+    width: 6.8em;
     height: 2.8em;
- 
  }
- .day > div time{
+ .day > div time{    /*udur*/
     font-weight: var(--bold);
     font-size: var(--large);
     color: var(--color-text);
  }
  
- .day > div > div{
+ .day > div > div{   /*garig*/
     font-weight: var(--semi-bold);
     font-size: var(--tiny);
     color: var(--color-light-text);
  }
  
+ .times button, .day-times button{
+   background-image: var(--color-background-gradient);
+   border-radius: 30px;
+   color: var(--color-light-text);
+   font-weight: var(--semi-bold);
+   font-size: var(--medium-size);
+   font-family: var(--font-family-1);
+   border: none;
+   width: 6em;
+   height: 2em;
+}
+.day-times button{
+   color: var(--color-text);
+}
+.times button:hover, .day-times button:hover{
+   box-shadow: var(--shadow-1);
+}
+
  /* ----- Week Section LAYOUT -----  */
  .by-week{
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: space-evenly;
-   
+    justify-content: space-evenly; 
  }
  .week > ul{
     display: flex;
-    padding: 2em 3em;
-    justify-content: space-between;
+    justify-content: space-evenly;
+    padding: 1.5rem;
  }
  .times{
     display: grid;
@@ -378,7 +313,7 @@ hr{
  .day-times{
     display: flex;
     flex-wrap: wrap;
-    max-width: 20rem;
+    max-width: 23rem;
     gap: 1rem;
  }
 
@@ -389,8 +324,7 @@ hr{
  
  /* ----- Similar Class Section ------ */
  .similar-class{
-    margin-top: 5vw;
-    margin-left: 4em;
+    margin: 2rem;
  }
  .similar-class h2{
     text-shadow: var(--shadow-1);
@@ -404,9 +338,12 @@ hr{
     margin-top: 2em;
     overflow: scroll;
  }
+ .similar-class li{
+   min-width: 18rem;
+ }
 
  /* ---------- Media Query --------- */
- @media (max-width: 576px) {
+ @media (max-width: 640px) {
    .class-title,  .available-days, .calendar-wrapper{
       width: 23rem;
    }
@@ -419,21 +356,20 @@ hr{
    /* --- WEEK SECTION Vertical layout on mobile --- */
    .week > ul{
       flex-direction: column;
-      padding: 1rem;
+      padding: 2rem;
       row-gap: 1.1rem;
    }
    .day{
       display:grid;
-      grid-template-columns: 1fr 3fr;
-      justify-content:flex-start;   
+      grid-template-columns: 1fr 2fr;
    }
-
    .times{
       display: flex;
       flex-wrap: wrap;
       margin-left: 1rem;
       margin-top: 0;
       justify-content: flex-start;
+      align-items: center;
    }
    
    /* --- Rating diffrent Layout --- */
@@ -464,14 +400,53 @@ hr{
    }
    .option-tab{
       justify-content: space-evenly;
+      gap: 0;
    }
 
    /*  */
    .similar-class li{
       min-width: 10rem;
    }
-   .similar-class{
-      margin-left: 2em;
-      padding: 1rem;
+ }
+ @media (max-width: 820px) {
+   .class-title{
+      width: 20rem;
+      height: 15.5rem;  
+   }
+   .class-img{
+      height: 10rem;
+   }
+   .main-info{
+      font-size: var(--medium-size);
+      width: 16rem;
+      height: 4.5rem;
+   }
+   
+ }
+ @media (max-width: 960px) {
+   .main-info{
+      width: 20rem;
+      height: 5rem;
+      font-size: var(--regular);
+   }
+   .class-title{
+      width: 27rem;
+      height: 17.5rem;
+   }
+   .class-img{
+      height: 12rem;
+   }
+ }
+ @media  (max-width: 1100px) {
+   .class-title{
+      width: 29rem;
+      height: 19.5rem;
+   }
+   .class-img{
+      height: 14rem;
+   }
+   
+   .available-days{
+      width: 38rem;
    }
  }
