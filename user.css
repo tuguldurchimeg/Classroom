@@ -1,6 +1,6 @@
 @import url(styleguide.css);
 
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+* {
    margin: 0;
    padding: 0;
    border: 0;
@@ -19,6 +19,9 @@ html{
 
 }
 
+
+
+/* 
 .box {
    width: 100%;
    height: 100vh;
@@ -249,4 +252,132 @@ html{
    top: 11px;
    left: 213px;
  }
- 
+  */
+
+
+
+.main{
+  display: grid;
+  grid-template-columns: 20% 80%;
+  background-color: white;
+  margin: 2rem 5rem;
+  height: 40rem;
+  border-radius: 2rem;
+  border-style: solid;
+  border-width: 0.5px;
+}
+
+/* 
+header{
+  background-color: aqua;
+  & a{
+      padding-left: 10rem;
+  }
+} */
+
+.verified{
+  padding-left: 1rem;
+  display: grid;
+  grid-template-columns: 30% 30% 30%;
+  gap: 1rem;
+  & .class-section-2{
+    gap: 2px;
+    border-style: solid;
+    border-width: 1px;
+    overflow: hidden;
+    border-radius: 1rem;
+    height: 10rem;
+    width: 18rem;
+    display: grid;
+    grid-template-columns: 50% 30% 10%;
+    
+    & .img{
+      img{
+        width: 100%;
+        height: 100%;
+        border-radius: 10px 0px 0px 10px ;
+      }  
+    }
+    & .details{
+      & .heartdetailsgrid{
+        display: grid;
+        grid-template-columns: 90% 10%;
+        margin-left: 1rem;
+        margin-bottom: 1.5rem;
+        padding-top: 0.5rem;
+      }
+      & button{
+        border-radius: 1rem;
+        border-style: solid;
+        border-width: 0.5px;
+        padding: 0.1rem 1rem;
+      }
+      & ul{
+        margin-left: 1rem;
+        & li{
+          padding-top: 0.2rem;
+        }
+      }
+    }
+    & .cancel{
+      & button{
+        margin-left: 1rem;
+        width: 150%;
+        height: 100%;
+        overflow: hidden;
+        background-color: #D46A6A;
+        & img{
+          height: 94%;
+          width: 100%;
+          border-radius:0px 10px 10px 0px ;
+        }
+      }
+      
+    }
+  }
+}
+
+.right-section{
+  border-left: 2px solid black;
+  height: 100%;
+  & h1{
+    margin-left: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+  } 
+}
+.info{
+  margin-left: 5rem;
+  margin-top: 3rem;
+  & .profile-button{
+    padding:2rem;
+  }
+
+}
+
+header{
+  & button{
+    padding: 8px;
+  }
+}
+.log-out{
+  margin-left: 5rem;
+  margin-top:5rem;
+}
+
+
+@media screen and (max-width: 1200px) {
+  .right-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Display as two equal columns */
+    gap: 20px; /* Optional: Add gap between the columns */
+  }
+}
+
+
+@media screen and (max-width: 800px) {
+  .verified {
+    display: block !important; 
+  }
+}
