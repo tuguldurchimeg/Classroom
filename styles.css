@@ -136,7 +136,7 @@ html {
 
 .class-section-1 {
   /* width: 18.75rem; */
-  height: 10.75rem;
+  /* height: 10.75rem; */
   position: relative;
 }
 
@@ -152,7 +152,7 @@ html {
 .class-section-1 .image {
   position: relative;
   width: 50%;
-  height: 10.585rem;
+  /* height: 10.585rem; */
 
   border-radius: 20px 0 0 20px;
   border: 1px solid;
@@ -160,7 +160,7 @@ html {
 }
 .class-section-1 .heart-grey {
   position: absolute;
-  left: 88%;
+  right: 0.8em;
 }
 .class-section-1 .text-wrapper {
   display: flex;
@@ -183,7 +183,11 @@ html {
   color: var(--color-light-grey);
   white-space: nowrap;
 }
-.class-section-1 .seat-count {
+.class-section-1 .class-info {
+  display: flex;
+}
+.class-section-1 .class-info {
+  gap: 1em;
   margin-top: 1.2em;
   font-weight: var(--medium);
   font-size: var(--small);
@@ -194,6 +198,14 @@ html {
   top: 0.3rem;
   content: url("assets/Seat-logo.svg");
   width: 0.9rem;
+  height: 1.4rem;
+  margin-right: 5px;
+}
+.projector::before {
+  position: relative;
+  top: 0.3rem;
+  content: url("assets/Projector-off.svg");
+  width: 1.6rem;
   height: 1.4rem;
   margin-right: 5px;
 }
@@ -209,18 +221,6 @@ html {
 .profile-button:hover {
   cursor: pointer;
 }
-/* .class-section-1 {
-   width: 282px;
-   height: 160px;
-   position:absolute;
-} */
-/* class-section-2 */
-/* .class-section-2 img{
-   position: absolute;
-   width: 40%;
-   height: 100%;
-   border-radius: 20px 0 0 20px;
-} */
 .logo {
   width: 64px;
   height: 64px;
@@ -344,7 +344,7 @@ footer {
   margin-top: 5rem;
 }
 /* --------- MEDIA QUERIES --------- */
-@media (max-width: 599px) {
+@media (max-width: 660px) {
   .mobile-nav {
     display: block;
     position: fixed;
@@ -380,13 +380,13 @@ footer {
   }
   .class-section-1 .image {
     width: 100%;
-    height: 6.1rem;
+    /* height: 6.1rem; */
 
     border-radius: 0px 0 20px 20px;
   }
   .class-section-1 .heart-grey {
     position: absolute;
-    left: 80%;
+    right: 0.8em;
   }
   .class-section-1 .text-wrapper {
     margin: 0.875em 0.5em 0.75em;
@@ -399,7 +399,7 @@ footer {
   .class-section-1 .class-type {
     margin-top: -0.55em;
   }
-  .class-section-1 .seat-count {
+  .class-section-1 .class-info {
     margin-top: 0.5em;
   }
   .seat-count::before {
@@ -408,6 +408,14 @@ footer {
     content: url("assets/Seat-logo.svg");
     width: 0.625rem;
     height: 0.6rem;
+    margin-right: 5px;
+  }
+  .projector::before {
+    position: relative;
+    top: 0.3rem;
+    content: url("assets/Projector-off.svg");
+    width: 0.8rem;
+    height: 0.8rem;
     margin-right: 5px;
   }
 }
