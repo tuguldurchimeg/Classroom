@@ -344,7 +344,7 @@ footer {
   margin-top: 5rem;
 }
 /* --------- MEDIA QUERIES --------- */
-@media (max-width: 640px) {
+@media (max-width: 599px) {
   .mobile-nav {
     display: block;
     position: fixed;
