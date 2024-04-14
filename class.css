@@ -83,9 +83,10 @@
  .rate{
     display: flex;
     align-items: center;
-    margin-top: 0;
+    font-size: var(--heading-4);
+    font-weight: var(--bold);
  }
- .rate::before, .rate::after{
+ .rate::before, .rate::after, .rate-title-p::before, .rate-title-p::after{
     font-family: "Font Awesome 6 free";
     content: "\f005";
     font-size: 0.5em;
@@ -269,7 +270,7 @@
    font-size: var(--medium-size);
    font-family: var(--font-family-1);
    border: none;
-   width: 6em;
+   width: 5em;
    height: 2em;
 }
 .day-times button{
@@ -342,6 +343,48 @@
    min-width: 18rem;
  }
 
+ .rating-pop-up{
+   background-image: var(--color-background-gradient);
+   border: 1px solid var(--color-border);
+   border-radius: 70px;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-evenly;
+   align-items: center;
+   width: 30rem;
+   height: 35rem;
+ }
+.rate-title-p{
+   font-size: var(--heading-4);
+   font-weight: var(--bold);
+}
+ .star{
+   font-family: "Font Awesome 6 free";
+   content: "\";
+ }
+ .rate-crits > span{
+   font-size: var(--large);
+   font-weight: var(--normal);
+   color: var(--color-light-text);
+ }
+ .star-wid, .add-rate{
+   background-color: var(--color-white);
+   border: 1px solid var(--color-border);
+   border-radius: 40px;
+   margin-top: 0.2rem;
+   width: 18rem;
+   height: 4rem;
+ }
+ .add-rate{
+   border: 1px solid var(--color-primary);
+   font-size: var(--heading-5);
+   font-weight: bold;
+ }
+ .add-rate:hover{
+   background-color: var(--color-primary);
+   color: var(--color-white);
+ }
+
  /* ---------- Media Query --------- */
  @media (max-width: 640px) {
    .class-title,  .available-days, .calendar-wrapper{
@@ -356,8 +399,8 @@
    /* --- WEEK SECTION Vertical layout on mobile --- */
    .week > ul{
       flex-direction: column;
-      padding: 2rem;
-      row-gap: 1.1rem;
+      padding: 1.5rem;
+      row-gap: 1rem;
    }
    .day{
       display:grid;
@@ -366,7 +409,7 @@
    .times{
       display: flex;
       flex-wrap: wrap;
-      margin-left: 1rem;
+      margin-left: 0.5rem;
       margin-top: 0;
       justify-content: flex-start;
       align-items: center;
@@ -407,9 +450,10 @@
    .similar-class li{
       min-width: 10rem;
    }
+
  }
- @media (max-width: 820px) {
-   .class-title{
+ @media (max-width: 768px) {
+   /* .class-title{
       width: 20rem;
       height: 15.5rem;  
    }
@@ -420,33 +464,5 @@
       font-size: var(--medium-size);
       width: 16rem;
       height: 4.5rem;
-   }
-   
- }
- @media (max-width: 960px) {
-   .main-info{
-      width: 20rem;
-      height: 5rem;
-      font-size: var(--regular);
-   }
-   .class-title{
-      width: 27rem;
-      height: 17.5rem;
-   }
-   .class-img{
-      height: 12rem;
-   }
- }
- @media  (max-width: 1100px) {
-   .class-title{
-      width: 29rem;
-      height: 19.5rem;
-   }
-   .class-img{
-      height: 14rem;
-   }
-   
-   .available-days{
-      width: 38rem;
-   }
+   } */
  }
