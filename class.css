@@ -339,6 +339,9 @@
     margin-top: 2em;
     overflow: scroll;
  }
+ .similar-class ul::-webkit-scrollbar{
+   display: none;
+ }
  .similar-class li{
    min-width: 18rem;
  }
