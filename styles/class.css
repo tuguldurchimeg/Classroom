@@ -156,8 +156,6 @@
     font-weight: var(--medium);
     background: none;
     border: none;
- }
- .option-tab button:hover{
     cursor: pointer;
  }
  /* ------ MENU END ----- */
@@ -281,7 +279,7 @@
 }
 
  /* ----- Week Section LAYOUT -----  */
- .by-week{
+ #week-tab{
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -302,7 +300,7 @@
  /* ----- Week SECTION END-----  */
  
  /* ---------- Day Section LAYOUT ---------  */
- .by-day{
+ #day-tab{
     display: flex;
     justify-content: center;
     align-items: flex-start;
