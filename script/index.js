@@ -37,7 +37,7 @@ fetch('https://api.npoint.io/70107af397f4a981c076')
    }
 
    document.getElementById("class-section1").innerHTML = classSection1HTML;
-   console.log(filteredClasses);
+   console.log(filteredClasses.length);
 });
 
 
