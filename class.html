@@ -18,20 +18,21 @@
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
+        <script defer src="script/class.js"></script>
      </head>
 <body>
     <header class="main-header-2">
         <nav>
             <a href="index.html">
-                <img class="logo" src="assets/Logo.svg" alt="logo image">
+                <img class="logo" src="styles/assets/Logo.svg" alt="logo image">
             </a>
             <button class="profile-button"><i class="fa-regular fa-user"></i></button>
         </nav>
     </header>
-    <nav class="user-popup">
+    <nav class="pop-up" id="user-popup">
         <ul>
             <li>
-                <a href="user.html" class="button">21B1NUM1402</a>
+                <a href="user.html" class="button">Нэвтрэх</a>
             </li>
             <li>
                 <a href="user.html" class="reserved-menu menu"><span>Захиалсан ангиуд</span></a>
@@ -50,7 +51,7 @@
                 <h2 class="heading-3">
                     <span>1 - 407</span>
                 <h2>
-                <img src="assets/class.jpg" alt="class image" class="class-img">            
+                <img src="styles/assets/class.jpg" alt="class image" class="class-img">            
             </article>
 
             <section>
@@ -80,13 +81,13 @@
                         <meter id="num-wifi-meter" min="0" max="5" value="1.5">NUM Wifi</meter>
                         <meter id="socket-meter" min="0" max="5" value="1">Залгуур</meter>
                     </nav>
-                    <button class="add-rating-btn">
+                    <button id="add-rating-btn">
                         <div><i class="fa-solid fa-pen"></i></div>
                     </button>       
                 </section>  
             </section>          
         </section>
-        <section class="rating-pop-up">
+        <section class="pop-up" id="rating-pop-up">
             <h5 class="rate-title-p">Үнэлгээ</h5>
             <div class="rate-crits">
                 <span>Агааржуулалт</span>
@@ -152,12 +153,15 @@
         </section>
 
         <hr class="line-1">
-        <menu class="option-tab">      
-            <button class="tablink">Өдрөөр</button>
-            <button class="tablink">7 хоногоор</button>
+        <menu class="option-tab">
+            <input type="radio" class="tablink" id="day-btn" name="tab-btn" checked="checked">
+            <label for="day-btn">Өдрөөр</label>
+            <input type="radio" class="tablink" id="week-btn" name="tab-btn">     
+            <label for="week-btn">7 хоногоор</label>
+            <div class="glider"></div>
         </menu>
         <section class="reservation">
-            <section class="by-day tabcontent">
+            <section class="tabcontent" id="day-tab">
                 <section class="calendar-wrapper">
                     <div>
                         <span >&#8249;</span>
@@ -236,7 +240,7 @@
                 </form>
             </section>
 
-            <section class="by-week tabcontent">
+            <section class="tabcontent" id="week-tab">
                 <section class="available-days">
                     <div class="date-range-chooser">
                         <span >&#8249;</span>
@@ -395,10 +399,10 @@
             <li>
                 <a href="class.html" class="class-section-1">
                     <article>
-                        <img src="assets/class.jpg" alt="classroom-picture" class="image">
+                        <img src="styles/assets/class.jpg" alt="classroom-picture" class="image">
                             <div class="text-wrapper">
                                 <h3> 1-407</h3>
-                                <img src="assets/Heart-grey.svg" alt="like this class" class="heart-grey">
+                                <img src="styles/assets/Heart-grey.svg" alt="like this class" class="heart-grey">
                                 <div class="class-type">Лекц</div>
                                 <div class="seat-count">55</div>
                             </div>
@@ -408,10 +412,10 @@
             <li>
                 <a href="class.html" class="class-section-1">
                     <article>
-                        <img src="assets/class.jpg" alt="classroom-picture" class="image">
+                        <img src="styles/assets/class.jpg" alt="classroom-picture" class="image">
                             <div class="text-wrapper">
                                 <h3> 1-407</h3>
-                                <img src="assets/Heart-grey.svg" alt="like this class" class="heart-grey">
+                                <img src="styles/assets/Heart-grey.svg" alt="like this class" class="heart-grey">
                                 <div class="class-type">Лекц</div>
                                 <div class="seat-count">55</div>
                             </div>
@@ -421,10 +425,10 @@
             <li>
                 <a href="class.html" class="class-section-1">
                     <article>
-                        <img src="assets/class.jpg" alt="classroom-picture" class="image">
+                        <img src="styles/assets/class.jpg" alt="classroom-picture" class="image">
                         <div class="text-wrapper">
                                 <h3> 1-407</h3>
-                                <img src="assets/Heart-grey.svg" alt="like this class" class="heart-grey">
+                                <img src="styles/assets/Heart-grey.svg" alt="like this class" class="heart-grey">
                                 <div class="class-type">Лекц</div>
                                 <div class="seat-count">55</div>
                             </div>
@@ -434,10 +438,10 @@
             <li>
                 <a href="class.html" class="class-section-1">
                     <article>
-                        <img src="assets/class.jpg" alt="classroom-picture" class="image">
+                        <img src="styles/assets/class.jpg" alt="classroom-picture" class="image">
                         <div class="text-wrapper">
                                 <h3> 1-407</h3>
-                                <img src="assets/Heart-grey.svg" alt="like this class" class="heart-grey">
+                                <img src="styles/assets/Heart-grey.svg" alt="like this class" class="heart-grey">
                                 <div class="class-type">Лекц</div>
                                 <div class="seat-count">55</div>
                             </div>
@@ -447,10 +451,10 @@
             <li>
                 <a href="class.html" class="class-section-1">
                     <article>
-                        <img src="assets/class.jpg" alt="classroom-picture" class="image">
+                        <img src="styles/assets/class.jpg" alt="classroom-picture" class="image">
                         <div class="text-wrapper">
                                 <h3> 1-407</h3>
-                                <img src="assets/Heart-grey.svg" alt="like this class" class="heart-grey">
+                                <img src="styles/assets/Heart-grey.svg" alt="like this class" class="heart-grey">
                                 <div class="class-type">Лекц</div>
                                 <div class="seat-count">55</div>
                             </div>
@@ -461,10 +465,10 @@
     </aside>
     <nav class="mobile-nav">
         <ul>
-           <li><a href="index.html"><img src="assets/Logo.svg" alt="Home"></a></li>
-           <li><a href="user.html"><img src="assets/Navbar-heart.svg" alt="Liked Classes"></a></li>
-           <li><a href="user.html"><img src="assets/Waiting.svg" alt="Zahialguud"></a></li>
-           <li><a href="user.html"><img src="assets/Navbar-profile.svg" alt="Profile"></a></li>
+           <li><a href="index.html"><img src="styles/assets/Logo.svg" alt="Home"></a></li>
+           <li><a href="user.html"><img src="styles/assets/Navbar-heart.svg" alt="Liked Classes"></a></li>
+           <li><a href="user.html"><img src="styles/assets/Waiting.svg" alt="Zahialguud"></a></li>
+           <li><a href="user.html"><img src="styles/assets/Navbar-profile.svg" alt="Profile"></a></li>
         </ul>
      </nav>
     

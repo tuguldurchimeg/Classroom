@@ -123,7 +123,7 @@
     background-color: var(--color-accent);
   }
  
-  .add-rating-btn{
+  #add-rating-btn{
     background-color: var(--color-white);
     border: 1px solid var(--color-border);
     font-size: var(--large);
@@ -135,7 +135,7 @@
     width: 4.5em;
     height: 2em;
  }
- .add-rating-btn:hover{
+ #add-rating-btn:hover{
    cursor: pointer;
    transform: scale(1.1);
  }
@@ -150,15 +150,42 @@
     margin-top: 1.5vw;
     padding: 0;
  }
- .option-tab button{
+ .option-tab label{
     font-size: var(--heading-6);
     line-height: var(--line-height-3);
     font-weight: var(--medium);
     background: none;
     border: none;
- }
- .option-tab button:hover{
     cursor: pointer;
+
+ }
+
+ #day-btn:checked ~ .reservation #day-tab,
+ #week-btn:checked ~ .reservation #week-tab {
+     display: block !important;
+ }
+
+ .tablink {
+   visibility: hidden;
+   position: absolute; 
+}
+#week-tab{
+   display: none !important;
+}
+
+
+/* #day-btn:checked ~ .glider {
+   left: 0px;
+ }
+ #week-btn:checked ~ .glider {
+   left: 10rem;
+ } */
+ .glider{
+   width: 10rem;
+   height: 3px;
+   background: var(--color-primary-gradient);
+   box-shadow: var(--shadow-1);
+   position: absolute;
  }
  /* ------ MENU END ----- */
  
@@ -281,7 +308,7 @@
 }
 
  /* ----- Week Section LAYOUT -----  */
- .by-week{
+#week-tab{
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -302,7 +329,7 @@
  /* ----- Week SECTION END-----  */
  
  /* ---------- Day Section LAYOUT ---------  */
- .by-day{
+ #day-tab{
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -346,7 +373,7 @@
    min-width: 18rem;
  }
 
- .rating-pop-up{
+ #rating-pop-up{
    background-image: var(--color-background-gradient);
    border: 1px solid var(--color-border);
    border-radius: 70px;
@@ -359,8 +386,6 @@
    position: absolute;
    /* left: 30rem;
    top: 7rem; */
-
-   visibility: hidden;
  }
 .rate-title-p{
    font-size: var(--heading-4);
@@ -462,7 +487,7 @@
    .rate-criteria meter{
       width: 8em;
    }
-   .add-rating-btn{
+   #add-rating-btn{
       grid-area: but;
       margin-top: 5rem;
       width: 4.5rem;

@@ -280,7 +280,7 @@ hr {
   height: auto;
   position: absolute;
   right: 6rem;
-  visibility: hidden;
+  /* visibility: hidden; */
 }
 .user-popup > ul {
   display: flex;
@@ -330,6 +330,10 @@ hr {
   cursor: pointer;
   background-color: var(--color-primary);
   color: var(--color-white);
+}
+
+.pop-up{
+  display: none !important;
 }
 
 /* ------ User PopUp END ------ */
