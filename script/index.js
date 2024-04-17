@@ -6,7 +6,8 @@ fetch('https://api.npoint.io/70107af397f4a981c076')
    const jsonData = responseObj;
 
    var filteredClasses = jsonData.filter(function (availableClass) {
-      return availableClass['Хичээлийн_хуваарь_тавих_боломж'] != "Хуваарь тавих боломжгүй";
+      // return availableClass['Хичээлийн_хуваарь_тавих_боломж'] != "Хуваарь тавих боломжгүй";
+      return availableClass['Хичээлийн_байр'] == "Хичээлийн байр 3А";
    });
 
    for (let classSection1 of filteredClasses){
