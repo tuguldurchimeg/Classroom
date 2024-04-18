@@ -1,7 +1,7 @@
-import ClassI from "./Class.js";
+import ClassSec from "./ClassSection.js";
 
-const usp = new URLSearchParams(document.location.search);
-let filterValue = usp.get("Хичээлийн_хуваарь_тавих_боломж");
+// const usp = new URLSearchParams(document.location.search);
+// let filterValue = usp.get("Хичээлийн_хуваарь_тавих_боломж");
 
 fetch("https://api.npoint.io/70107af397f4a981c076")
   .then((response) => response.json())
@@ -16,7 +16,7 @@ fetch("https://api.npoint.io/70107af397f4a981c076")
     });
 
     const classSection1HTMLArray = filteredClasses.map((classObj) => {
-      const classI = new ClassI(classObj);
+      const classI = new ClassSec(classObj);
       return classI.Render();
     });
 

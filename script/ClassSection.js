@@ -1,4 +1,4 @@
-export default class ClassI {
+export default class ClassSec {
   constructor(classObj) {
     this.classObj = classObj;
   }
