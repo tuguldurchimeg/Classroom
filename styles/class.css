@@ -61,11 +61,10 @@
     color: var(--color-light-text);
  }
 
-.fa-circle-check{
-    /* font-family: "Font Awesome 6 free";
-    content: "\f058"; */
-    padding-top: 0.2em;
-    font-size: 1.5em;
+.proj-state{
+    padding-top: 0.1em;
+    width: 1.5rem;
+    height: 1.5rem;
  }
  .vl {
     border-left: 1px solid var(--color-border);
@@ -87,8 +86,7 @@
     font-weight: var(--bold);
  }
  .rate::before, .rate::after, .rate-title-p::before, .rate-title-p::after{
-    font-family: "Font Awesome 6 free";
-    content: "\f005";
+    content: url("assets/Star.svg");
     font-size: 0.5em;
     margin: 0.5em;
     color: var(--color-accent);
@@ -352,7 +350,8 @@
  
  /* ----- Similar Class Section ------ */
  .similar-class{
-    margin: 2rem;
+    margin-top: 5rem;
+    margin-left: 5rem;
  }
  .similar-class h2{
     text-shadow: var(--shadow-1);
@@ -362,7 +361,7 @@
  .similar-class ul{
     display: flex;
     justify-content: space-between;
-    gap: 1rem;
+    gap: 2rem;
     margin-top: 2em;
     overflow: scroll;
  }
@@ -397,10 +396,9 @@
    color: var(--color-light-text);
  }
  .star::before{
-   font-family: "Font Awesome 6 free";
-   content: "\f005";
-   font-weight: 600;
-   font-size: var(--heading-5);
+   content: url("assets/Star.svg");
+   height: 1.5rem;
+   width: 1.5rem;
    transition: all 0.2s ease;
  } 
  .star-wid input{
@@ -504,6 +502,9 @@
    /*  */
    .similar-class li{
       min-width: 10rem;
+   }
+   .similar-class{
+      margin: 2rem;
    }
 
    .rating-pop-up{

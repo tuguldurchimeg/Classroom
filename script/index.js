@@ -22,7 +22,9 @@ fetch("https://api.npoint.io/70107af397f4a981c076")
                 class="image"
               />
               <div class="text-wrapper">
-                <h3>${classSection1.Өрөөний_дугаар}</h3>
+                <h3>${classSection1.Хичээлийн_байр.slice(-2)} - ${
+        classSection1.Өрөөний_дугаар
+      }</h3>
                 <img
                   src="styles/assets/Heart-grey.svg"
                   alt="like this class"
@@ -31,7 +33,12 @@ fetch("https://api.npoint.io/70107af397f4a981c076")
                 <div class="class-type">${classSection1.Өрөөний_зориулалт}</div>
                 <div class="class-info">
                   <div class="seat-count">${classSection1.Суудлын_тоо}</div>
-                  <div class="projector"></div>
+                  ${
+                    classSection1.Проектортой_эсэх === "Проектортой"
+                      ? '<div class="projector proj-on"></div>'
+                      : '<div class="projector proj-off"></div>'
+                  }
+                  
                 </div>
               </div>
             </article>
