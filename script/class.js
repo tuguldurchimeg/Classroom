@@ -24,7 +24,9 @@ fetch("https://api.npoint.io/70107af397f4a981c076")
     `;
 
     mainInfoHTML = ` 
-    <li><span class="type-m heading-6">Лекц</span></li>
+    <li><span class="type-m heading-6">${
+      filteredClasses[2].Өрөөний_зориулалт
+    }</span></li>
     <li><div class="vl"></div></li>
     <li>
         <div class="info-desc">Суудлын тоо</div>
