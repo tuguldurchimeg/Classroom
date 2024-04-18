@@ -1,64 +1,38 @@
-let jsonData;
-fetch("https://api.npoint.io/70107af397f4a981c076")
-  .then((response) => response.json())
-  .then((responseObj) => {
-    jsonData = responseObj;
-
-    const filteredClasses = jsonData.filter(
-      (avClass) =>
-        avClass.Хичээлийн_хуваарь_тавих_боломж != "Хуваарь тавих боломжгүй"
-    );
-
-    console.log(filteredClasses);
-
-    let classTitleHTML;
-    let mainInfoHTML;
-
-    classTitleHTML = `
-    <h2 class="heading-3">
-    <span>${filteredClasses[2].Хичээлийн_байр.slice(-2)} - ${
-      filteredClasses[2].Өрөөний_дугаар
-    }</span>
-    <h2>
-    <img src="styles/assets/class.jpg" alt="class image" class="class-img">
-    `;
-
-    mainInfoHTML = ` 
-    <li><span class="type-m heading-6">${
-      filteredClasses[2].Өрөөний_зориулалт
-    }</span></li>
-    <li><div class="vl"></div></li>
-    <li>
-        <div class="info-desc">Суудлын тоо</div>
-        <div class="seat-count-m heading-6">${
-          filteredClasses[2].Суудлын_тоо
-        }</div>
-    </li>
-    <li><div class="vl"></div></li>
-    <li>
-        <div class="info-desc" id="projector-info">Проектор</div>
-        <img 
-          src="${
-            filteredClasses[2].Проектортой_эсэх === "Проектортой"
-              ? "styles/assets/Check.svg"
-              : "styles/assets/X.svg"
-          }"
-          alt="projector"
-          class="proj-state"
-        />
-    </li>
-   `;
-
-    document.getElementById("main-title").innerHTML = classTitleHTML;
-    document.getElementById("main-desc").innerHTML = mainInfoHTML;
-  });
-
-// let addRatingBtn = document.getElementById("add-rating-btn");
-
-// addRatingBtn.addEventListener("click", function () {
-//   displayPopUP("rating-pop-up");
-// });
-
-// function displayPopUP(popup) {
-//   document.getElementsByClassName(popup)[0].style.display = "block";
-// }
+export default class ClassI {
+  constructor(classObj) {
+    this.classObj = classObj;
+  }
+  Render() {
+    return `<a href="class.html" class="class-section-1">
+            <article>
+              <img
+                src="styles/assets/class.jpg"
+                alt="classroom-picture"
+                class="image"
+              />
+              <div class="text-wrapper">
+                <h3>
+                  ${this.classObj.Хичээлийн_байр.slice(-2)} - ${
+      this.classObj.Өрөөний_дугаар
+    }
+                </h3>
+                <img
+                  src="styles/assets/Heart-grey.svg"
+                  alt="like this class"
+                  class="heart-grey"
+                />
+                <div class="class-type">${this.classObj.Өрөөний_зориулалт}</div>
+                <div class="class-info">
+                  <div class="seat-count">${this.classObj.Суудлын_тоо}</div>
+                  ${
+                    this.classObj.Проектортой_эсэх === "Проектортой"
+                      ? '<div class="projector proj-on"></div>'
+                      : '<div class="projector proj-off"></div>'
+                  }
+                </div>
+              </div>
+            </article>
+          </a>
+      `;
+  }
+}
