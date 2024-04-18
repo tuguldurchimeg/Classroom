@@ -1,17 +1,19 @@
 let classSection1HTML = "";
 
-fetch('https://api.npoint.io/70107af397f4a981c076')
-.then(response => response.json())
-.then(responseObj => {
-   const jsonData = responseObj;
+fetch("https://api.npoint.io/70107af397f4a981c076")
+  .then((response) => response.json())
+  .then((responseObj) => {
+    const jsonData = responseObj;
 
-   var filteredClasses = jsonData.filter(function (availableClass) {
-      // return availableClass['Хичээлийн_хуваарь_тавих_боломж'] != "Хуваарь тавих боломжгүй";
-      return availableClass['Хичээлийн_байр'] == "Хичээлийн байр 3А";
-   });
+    var filteredClasses = jsonData.filter(function (availableClass) {
+      return (
+        availableClass["Хичээлийн_хуваарь_тавих_боломж"] !=
+        "Хуваарь тавих боломжгүй"
+      );
+    });
 
-   for (let classSection1 of filteredClasses){
-      classSection1HTML +=`
+    for (let classSection1 of filteredClasses) {
+      classSection1HTML += `
       <a href="class.html" class="class-section-1">
             <article>
               <img
@@ -34,9 +36,9 @@ fetch('https://api.npoint.io/70107af397f4a981c076')
               </div>
             </article>
           </a>
-      `
-   }
+      `;
+    }
 
-   document.getElementById("class-section1").innerHTML = classSection1HTML;
-   console.log(filteredClasses.length);
-});
+    document.getElementById("class-section1").innerHTML = classSection1HTML;
+    console.log(filteredClasses);
+  });
