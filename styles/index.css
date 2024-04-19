@@ -272,22 +272,18 @@ main {
   border-radius: 20px;
   border-color: rgba(120, 202, 77, 0.1);
   transition: all .2s ease-out;
-  /* box-shadow: 0 4px 16px rgba(10,10,10,.2); */
 }
 .class-section-1:hover{
   border: 2px solid;
-  border-color: rgba(120, 202, 77, 0.8);
+  border-color: rgba(42, 71, 28, 0.8);
 }
-
-
 .class-section-3{
   border: 1.5px solid;
   border-radius: 20px;
   border-color: rgba(120, 202, 77, 0.1);
   transition: all .2s ease-out;
-  /* box-shadow: 0 4px 16px rgba(10,10,10,.2); */
 }
 .class-section-3:hover{
-  border: 1.5px solid;
-  border-color: rgba(120, 202, 77, 0.8);
+  border: 1px solid;
+  border-color: rgba(42, 71, 28, 0.8);
 }
