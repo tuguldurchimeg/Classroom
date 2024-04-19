@@ -169,7 +169,7 @@ html {
   margin-left: 0.8em;
 }
 .class-section-1 h3 {
-  font-weight: var(--bold);
+  font-weight: var(--semi-bold);
   font-size: var(--medium-size);
   line-height: var(--line-height-4);
   color: var(--color-text);
@@ -409,21 +409,5 @@ footer {
   }
   .class-section-1 .class-info {
     margin-top: 0.5em;
-  }
-  .seat-count::before {
-    position: relative;
-    top: 0.3rem;
-    content: url("assets/Seat-logo.svg");
-    width: 0.625rem;
-    height: 0.6rem;
-    margin-right: 5px;
-  }
-  .projector::before {
-    position: relative;
-    top: 0.3rem;
-    content: url("assets/Projector-off.svg");
-    width: 0.8rem;
-    height: 0.8rem;
-    margin-right: 5px;
   }
 }

@@ -7,11 +7,17 @@ fetch("https://api.npoint.io/70107af397f4a981c076")
   .then((response) => response.json())
   .then((responseObj) => {
     const jsonData = responseObj;
-
     let filteredClasses = jsonData.filter(function (availableClass) {
       return (
-        availableClass["Хичээлийн_хуваарь_тавих_боломж"] !=
-        "Хуваарь тавих боломжгүй"
+        availableClass["Хичээлийн_хуваарь_тавих_боломж"] != "Хуваарь тавих боломжгүй" &&
+        availableClass["Хичээлийн_байр"] != "Багш оюутны хөгжлийн төв" &&
+        availableClass["Хичээлийн_байр"] != "Дорнод сургуулийн хичээлийн байр" &&
+        availableClass["Хичээлийн_байр"] != "Завхан сургуулийн хичээлийн байр" &&
+        availableClass["Хичээлийн_байр"] != "Цөмийн судалгааны төв" &&
+        availableClass["Хичээлийн_байр"] != "Ховд сургуулийн хичээлийн 1-р байр" &&
+        availableClass["Хичээлийн_байр"] != "Ховд сургуулийн хичээлийн 2-р байр" &&
+        availableClass["Хичээлийн_байр"] != "Орхон сургуулийн хичээлийн байр" &&
+        availableClass["Өрөөний_зориулалт"] != "Биеийн тамирын зал "
       );
     });
 
