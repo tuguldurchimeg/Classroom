@@ -3,11 +3,12 @@
   display: none;
 }
 .search-bar {
-  width: 39.5rem;
+  width: 55%;
   height: 4.375rem;
 
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
+  align-items: center;
   flex-wrap: nowrap;
 
   background-color: var(--color-white);
@@ -23,12 +24,10 @@
   & .odor,
   & .tsag {
     display: flex;
-    width: 10rem;
+    width: 25%;
     height: 3.125rem;
     align-items: flex-start;
     position: relative;
-    top: 0.56rem;
-    left: 0.875rem;
 
     & .light-grey {
       color: var(--color-light-grey);
@@ -39,9 +38,10 @@
 .odor > button,
 .tsag > button,
 .bair > button {
-  width: 10rem;
-  height: 3.125rem;
+  width: 100%;
+  height: 100%;
 
+  
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -52,6 +52,10 @@
 
   font-size: var(--small);
   font-weight: var(--medium);
+
+  text-overflow: ellipsis " [..]";
+  white-space: nowrap;
+  overflow: hidden;
 
   &:hover {
     background: var(--color-background);
@@ -67,7 +71,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 0.5em;
 
   border-radius: 50px;
   border: 1px solid;
@@ -85,7 +88,7 @@
   border: none;
 }
 .search-button-background > button > img {
-  padding-top: 0.1em;
+  padding-top: 0.3em;
   width: 1.6rem;
 }
 
@@ -249,10 +252,18 @@ main {
       display: none;
     }
   }
+  .line-svg{
+    display: none;
+  }
   .search-bar {
-    justify-content: space-between;
+    width: 100%;
+    justify-content: space-evenly;
     margin: 0 1.2em;
   }
+  .search-bar .bair{
+    width: 80%;
+  }
+
   .search-bar .odor,
   .search-bar .tsag {
     display: none;
@@ -264,6 +275,9 @@ main {
   .class-filter {
     margin-top: 1em;
   }
+  .main-header nav{
+    animation: none;
+   }
 }
 
 
@@ -286,4 +300,22 @@ main {
 .class-section-3:hover{
   border: 1px solid;
   border-color: rgba(42, 71, 28, 0.8);
+}
+.main-header nav{
+ animation: nav-animation linear forwards;
+ animation-timeline: view(); 
+ animation-range-start: 100vh;
+ animation-range-end: 140vh;
+}
+.line-svg{
+  margin-top: 0.75em;
+  height: 70%;
+  fill:black;
+}
+
+@keyframes nav-animation{
+  100%{
+      margin-top: 1.5em ;
+      margin-bottom: 1.5em;
+  }
 }
