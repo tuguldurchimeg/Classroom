@@ -8,7 +8,7 @@ fetch("https://api.npoint.io/70107af397f4a981c076")
   .then((responseObj) => {
     const jsonData = responseObj;
 
-    var filteredClasses = jsonData.filter(function (availableClass) {
+    let filteredClasses = jsonData.filter(function (availableClass) {
       return (
         availableClass["Хичээлийн_хуваарь_тавих_боломж"] !=
         "Хуваарь тавих боломжгүй"
