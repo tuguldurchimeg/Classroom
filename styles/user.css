@@ -141,8 +141,9 @@ header{
   }
 }
 .log-out{
-  margin-left: 5rem;
-  margin-top:5rem;
+  position:relative;
+  margin-right: 3 rem;
+  margin-top:3rem;
   border-top: 1px solid black;
   height: 100%;
   font-weight: var(--medium);
@@ -150,8 +151,23 @@ header{
   line-height: var(--line-height-4);
   color: var(--color-light-grey);
   white-space: nowrap;
+text-align:center;
 }
-
+.ordered:hover {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border-radius: 30px;
+}
+.liked:hover:hover {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border-radius: 30px;
+}
+.account:hover {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border-radius: 30px;
+}
 
 /* @media screen and (max-width: 1200px) {
   .right-section {
