@@ -1,14 +1,29 @@
-let jsonData;
-let filteredClasses;
+// const usp = new URLSearchParams(document.location.search);
+// const filterValue = usp.get("Хуваарь тавих боломжгүй");
+
 fetch("https://api.npoint.io/70107af397f4a981c076")
   .then((response) => response.json())
   .then((responseObj) => {
-    jsonData = responseObj;
+    const jsonData = responseObj;
 
-    filteredClasses = jsonData.filter(
-      (classes) =>
-        classes.Хичээлийн_хуваарь_тавих_боломж != "Хуваарь тавих боломжгүй"
-    );
+    let filteredClasses = jsonData.filter(function (availableClass) {
+      return (
+        availableClass["Хичээлийн_хуваарь_тавих_боломж"] !=
+          "Хуваарь тавих боломжгүй" &&
+        availableClass["Хичээлийн_байр"] != "Багш оюутны хөгжлийн төв" &&
+        availableClass["Хичээлийн_байр"] !=
+          "Дорнод сургуулийн хичээлийн байр" &&
+        availableClass["Хичээлийн_байр"] !=
+          "Завхан сургуулийн хичээлийн байр" &&
+        availableClass["Хичээлийн_байр"] != "Цөмийн судалгааны төв" &&
+        availableClass["Хичээлийн_байр"] !=
+          "Ховд сургуулийн хичээлийн 1-р байр" &&
+        availableClass["Хичээлийн_байр"] !=
+          "Ховд сургуулийн хичээлийн 2-р байр" &&
+        availableClass["Хичээлийн_байр"] != "Орхон сургуулийн хичээлийн байр" &&
+        availableClass["Өрөөний_зориулалт"] != "Биеийн тамирын зал "
+      );
+    });
 
     let classTitleHTML = `
     <h2 class="heading-3">
@@ -62,11 +77,13 @@ fetch("https://api.npoint.io/70107af397f4a981c076")
 const profileBtn = document.getElementById("profile-btn");
 
 profileBtn.addEventListener("click", () => {
-  const userPopUp = document.getElementById("user-pop-up");
+  const userPopUp = document.getElementById("user-popup");
   openPopUp(userPopUp);
 });
 
 function openPopUp(modal) {
   if (modal == null) return;
-  modal.classList.add("active");
+  modal.style.display = "block";
+  modal.style.visibility = "visible";
+  console.log(modal.style);
 }

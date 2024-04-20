@@ -38,7 +38,7 @@ a {
   text-decoration: none;
 }
 html {
-  background: var(--color-background);
+  background: var(--color-white);
   font-family: var(--font-family-1);
 }
 /* -----------------NAVBAR-------------------- */
@@ -271,7 +271,7 @@ hr {
   border-top: 0.5px solid var(--color-border);
 }
 /* ------ User PopUp ------ */
-.user-popup {
+#user-popup {
   background-color: var(--color-white);
   border: 1px solid var(--color-border);
   border-radius: 20px;
@@ -282,7 +282,7 @@ hr {
   right: 6rem;
   /* visibility: hidden; */
 }
-.user-popup > ul {
+#user-popup > ul {
   display: flex;
   flex-direction: column;
   gap: 1.2rem;

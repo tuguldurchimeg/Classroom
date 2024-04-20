@@ -358,17 +358,17 @@
     font-size: var(--heading-5);
     font-weight: var(--bold);
  }
- .similar-class ul{
+ .similar-class div{
     display: flex;
     justify-content: space-between;
-    gap: 2rem;
     margin-top: 2em;
     overflow: scroll;
+    column-gap: 2rem;
  }
- .similar-class ul::-webkit-scrollbar{
+ .similar-class div::-webkit-scrollbar{
    display: none;
  }
- .similar-class li{
+ .similar-class a{
    min-width: 18rem;
  }
 
@@ -500,7 +500,7 @@
    }
 
    /*  */
-   .similar-class li{
+   .similar-class a{
       min-width: 10rem;
    }
    .similar-class{
