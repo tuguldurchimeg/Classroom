@@ -322,12 +322,12 @@ main {
   display: none;
   position: absolute;
   z-index: 999;
-  width: 25rem;
+  width: 20rem;
 
   top: 4.5rem;
   
   gap: 1.5rem;
-  grid-template-columns: repeat( auto-fit,minmax(5.5rem, 1fr));
+  grid-template-columns: repeat( auto-fit,minmax(5rem, 1fr));
   /* repeat(var(--destination-card-columns,3),minmax(0,1fr)) */
 
   padding: 1.4em;

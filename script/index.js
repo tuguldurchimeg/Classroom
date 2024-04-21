@@ -68,3 +68,70 @@ fetch("https://api.npoint.io/70107af397f4a981c076")
     document.getElementById("class-section1").innerHTML = classSection1HTML;
     console.log(filteredClasses);
   });
+
+
+  let bairVariable = "";
+
+  document.getElementById('bair-1').addEventListener('click',() =>{
+    bairVariable = "Хичээлийн төв байр";
+    fetchData();
+  });
+  document.getElementById('bair-2').addEventListener('click',() =>{
+    bairVariable = "Хичээлийн байр 2";
+    fetchData();
+  });
+  document.getElementById('bair-4').addEventListener('click',() =>{
+    bairVariable = "Хичээлийн байр 4";
+    fetchData();
+  });
+  document.getElementById('bair-5').addEventListener('click',() =>{
+    bairVariable = "Хичээлийн байр 5";
+    fetchData();
+  });
+  document.getElementById('bair-7').addEventListener('click',() =>{
+    bairVariable = "Хичээлийн байр 3А";
+    fetchData();
+  });
+  document.getElementById('bair-8').addEventListener('click',() =>{
+    bairVariable = "Хичээлийн байр 8";
+    fetchData();
+  });
+  document.getElementById('bair-e-lib').addEventListener('click',() =>{
+    bairVariable = "E-Номын сан";
+    fetchData();
+  });
+  document.getElementById('bair-huuli').addEventListener('click',() =>{
+    bairVariable = "Хичээлийн байр 3Б";
+    fetchData();
+  });
+
+  function fetchData() {
+    fetch("https://api.npoint.io/70107af397f4a981c076")
+    .then((response) => response.json())
+    .then((responseObj) => {
+      let filteredClasses = responseObj.filter(function (availableClass) {
+        return (
+          availableClass["Хичээлийн_хуваарь_тавих_боломж"] != "Хуваарь тавих боломжгүй" &&
+          availableClass["Хичээлийн_байр"] == bairVariable
+        );
+      });
+
+      const urlParams = new URLSearchParams(window.location.search);
+      urlParams.set('filtered',true);
+
+      const newUrl = window.location.origin + window.location.pathname + '?' + urlParams.toString();
+      window.history.pushState({path: newUrl}, '', newUrl);
+
+
+      const classSection1HTMLArray = filteredClasses.map((classObj) => {
+        const classI = new ClassSec(classObj);
+        return classI.Render();
+      });
+
+      const classSection1HTML = classSection1HTMLArray.reduce(
+        (prev, current) => prev + current
+      );
+      document.getElementById("class-section1").innerHTML = classSection1HTML;
+      console.log(filteredClasses);
+    });
+  }

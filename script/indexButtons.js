@@ -3,5 +3,8 @@ const bairlist = document.getElementById("bair-list");
 
 
 bairbtn.addEventListener("click", ()=>{
-   bairlist.classList.add("open");
+   if(bairlist.classList.contains("open"))
+      bairlist.classList.remove("open");
+   else 
+      bairlist.classList.add("open");
 })
