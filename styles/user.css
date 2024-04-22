@@ -25,12 +25,10 @@ html{
   background-color: white;
   margin: 2rem 5rem;
   height: 110%;
-  border-radius: 2rem;
-  border-style: solid;
+  border-radius: 20px;
+  border: solid var(--color-border);
   border-width: 0.5px;
 }
-
-
 
 
 /* 

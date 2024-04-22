@@ -291,14 +291,15 @@ main {
 
 
 .class-section-1{
-  border: 2px solid;
+  /* border: 2px solid;
+  border-color: rgba(120, 202, 77, 0.1); */
   border-radius: 20px;
-  border-color: rgba(120, 202, 77, 0.1);
   transition: all .2s ease-out;
 }
 .class-section-1:hover{
-  border: 2px solid;
-  border-color: rgba(42, 71, 28, 0.8);
+  /* border: 2px solid;
+  border-color: rgba(42, 71, 28, 0.8); */
+  box-shadow: var(--shadow-1);
 }
 .class-section-3{
   border: 1.5px solid;
