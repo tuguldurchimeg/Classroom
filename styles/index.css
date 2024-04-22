@@ -362,3 +362,7 @@ main {
 .bair-list.open {
   display: grid;
 }
+
+.tsag-list{
+  display: none;
+}
