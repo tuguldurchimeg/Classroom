@@ -2,24 +2,25 @@ export default class ClassSec {
   constructor(classObj) {
     this.classObj = classObj;
 
-
-    if(this.classObj.Хичээлийн_байр == "E-Номын сан")
-      this.classObj.Хичээлийн_байр = "Е";
-    else if(this.classObj.Хичээлийн_байр == "Хичээлийн төв байр")
+    if (this.classObj.Хичээлийн_байр == "E-Номын сан")
+      this.classObj.Хичээлийн_байр = "Е-lib";
+    else if (this.classObj.Хичээлийн_байр == "Хичээлийн төв байр")
       this.classObj.Хичээлийн_байр = "1";
-    else if(this.classObj.Хичээлийн_байр == "Улаанбаатар сургуулийн хичээлийн байр")
+    else if (
+      this.classObj.Хичээлийн_байр == "Улаанбаатар сургуулийн хичээлийн байр"
+    )
       this.classObj.Хичээлийн_байр = "Хууль";
-    else
-      this.classObj.Хичээлийн_байр = this.classObj.Хичээлийн_байр.slice(-2);
+    else this.classObj.Хичээлийн_байр = this.classObj.Хичээлийн_байр.slice(-2);
 
-
-    if(this.classObj.Өрөөний_зориулалт == "Хичээлийн танхим" ||
-       this.classObj.Өрөөний_зориулалт == "Семинарын танхим")
-      this.classObj.Өрөөний_зориулалт = "Семинар"
-    else if(this.classObj.Өрөөний_зориулалт == "Лекцийн танхим")
-      this.classObj.Өрөөний_зориулалт = "Лекц"
-    else if(this.classObj.Өрөөний_зориулалт == "Сургалтын лаборатори")
-      this.classObj.Өрөөний_зориулалт = "Лаб"
+    if (
+      this.classObj.Өрөөний_зориулалт == "Хичээлийн танхим" ||
+      this.classObj.Өрөөний_зориулалт == "Семинарын танхим"
+    )
+      this.classObj.Өрөөний_зориулалт = "Семинар";
+    else if (this.classObj.Өрөөний_зориулалт == "Лекцийн танхим")
+      this.classObj.Өрөөний_зориулалт = "Лекц";
+    else if (this.classObj.Өрөөний_зориулалт == "Сургалтын лаборатори")
+      this.classObj.Өрөөний_зориулалт = "Лаб";
   }
   Render() {
     return `<a href="class.html" class="class-section-1">
