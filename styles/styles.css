@@ -66,13 +66,13 @@ html {
   position: sticky;
   top: 0;
   z-index: 4;
-  background-color: var(--color-background), 80%;
+  background: var(--color-background);
   box-shadow: var(--shadow-2);
 }
 
 .main-header-2 nav {
   display: flex;
-  padding: 0.3rem 6rem;
+  padding: 1rem 6rem;
   justify-content: space-between;
   align-items: center;
 }
