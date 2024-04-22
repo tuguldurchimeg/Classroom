@@ -76,34 +76,42 @@ import ClassSec from "./ClassSection.js";
   document.getElementById('bair-1').addEventListener('click',() =>{
     bairVariable = "Хичээлийн төв байр";
     fetchData();
+    bairlist.classList.remove("open");
   });
   document.getElementById('bair-2').addEventListener('click',() =>{
     bairVariable = "Хичээлийн байр 2";
     fetchData();
+    bairlist.classList.remove("open");
   });
   document.getElementById('bair-4').addEventListener('click',() =>{
     bairVariable = "Хичээлийн байр 4";
     fetchData();
+    bairlist.classList.remove("open");
   });
   document.getElementById('bair-5').addEventListener('click',() =>{
     bairVariable = "Хичээлийн байр 5";
     fetchData();
+    bairlist.classList.remove("open");
   });
   document.getElementById('bair-7').addEventListener('click',() =>{
     bairVariable = "Хичээлийн байр 3А";
     fetchData();
+    bairlist.classList.remove("open");
   });
   document.getElementById('bair-8').addEventListener('click',() =>{
     bairVariable = "Хичээлийн байр 8";
     fetchData();
+    bairlist.classList.remove("open");
   });
   document.getElementById('bair-e-lib').addEventListener('click',() =>{
     bairVariable = "E-Номын сан";
     fetchData();
+    bairlist.classList.remove("open");
   });
   document.getElementById('bair-huuli').addEventListener('click',() =>{
     bairVariable = "Хичээлийн байр 3Б";
     fetchData();
+    bairlist.classList.remove("open");
   });
 
   function fetchData() {
