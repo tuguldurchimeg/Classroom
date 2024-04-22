@@ -53,7 +53,7 @@
   font-size: var(--small);
   font-weight: var(--medium);
 
-  text-overflow: ellipsis " [..]";
+  text-overflow: clip;
   white-space: nowrap;
   overflow: hidden;
 
@@ -64,6 +64,9 @@
   time {
     padding-left: 0.9em;
   }
+}
+.search-bar button{
+  cursor: pointer;
 }
 .search-button-background {
   width: 3.4rem;
@@ -91,6 +94,16 @@
   padding-top: 0.3em;
   width: 1.6rem;
 }
+.search-bar .bair-list li{
+  border-radius: 10px;
+  transition: all .2s ease-out;
+}
+.search-bar .bair-list li:hover{
+  box-shadow: var(--shadow-1);
+
+}
+
+
 .calendar-box {
   display: none;
 }
@@ -343,8 +356,9 @@ main {
   width: 100%;
   & button{
     width: 100%;
-
-    border-radius: 20px;
+    padding:0.3em;
+    border-radius: 10px;
+    background: var(--color-white);
     & img{
       width:inherit;
       border-radius: inherit;
@@ -355,7 +369,7 @@ main {
     
     font-size: var(--small);
     font-weight: var(--medium);
-    color: var(--color-light-text);
+    color: var(--color-dark-grey);
   }
 }
 
