@@ -23,7 +23,10 @@ export default class ClassSec {
       this.classObj.Өрөөний_зориулалт = "Лаб";
   }
   Render() {
-    return `<a href="class.html" class="class-section-1">
+    const urlParams = new URLSearchParams(window.location.search);
+    urlParams.set("id", this.classObj.Өрөөний_хувийн_дугаар);
+
+    return `<a href="class.html?${urlParams.toString()}" class="class-section-1">
             <article>
               <img
                 src="styles/assets/class.jpg"
