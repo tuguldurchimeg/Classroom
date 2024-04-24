@@ -83,14 +83,13 @@ html {
   background: var(--color-white);
 
   border-radius: 30px;
-  border: 1px solid;
-  border-color: var(--color-border);
+  box-shadow: var(--shadow-2);
 }
 .calendar-wrapper div:first-child {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 16px 16px 12px 16px;
+  margin: 1em 1em 1.5em 1em;
 }
 .calendar-wrapper span {
   font-size: 35px;
@@ -118,7 +117,6 @@ html {
   font-size: var(--tiny);
 }
 .calendar .days li {
-  color: #45454a;
   font-weight: var(--regular);
   font-size: var(--small);
   line-height: 24px;

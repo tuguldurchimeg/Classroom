@@ -1,7 +1,7 @@
 import ClassSec from "./ClassSection.js";
 
 let bairVariable = "Хичээлийн төв байр";
-fetchData();
+// fetchData();
 
 document.getElementById('bair-1').addEventListener('click',() =>{
   bairVariable = "Хичээлийн төв байр";
@@ -44,41 +44,35 @@ document.getElementById('bair-huuli').addEventListener('click',() =>{
   bairlist.classList.remove("open");
 });
 
-function fetchData() {
-  fetch("https://api.npoint.io/70107af397f4a981c076")
-  .then((response) => response.json())
-  .then((responseObj) => {
-    let filteredClasses = responseObj.filter(function (availableClass) {
-      return (
-        availableClass["Хичээлийн_хуваарь_тавих_боломж"] != "Хуваарь тавих боломжгүй" &&
-        availableClass["Хичээлийн_байр"] == bairVariable
-      );
-    });
+// function fetchData() {
+//   fetch("https://api.npoint.io/70107af397f4a981c076")
+//   .then((response) => response.json())
+//   .then((responseObj) => {
+//     let filteredClasses = responseObj.filter(function (availableClass) {
+//       return (
+//         availableClass["Хичээлийн_хуваарь_тавих_боломж"] != "Хуваарь тавих боломжгүй" &&
+//         availableClass["Хичээлийн_байр"] == bairVariable
+//       );
+//     });
 
-    const urlParams = new URLSearchParams(window.location.search);
-    urlParams.set('filtered',true);
+//     const urlParams = new URLSearchParams(window.location.search);
+//     urlParams.set('filtered',true);
 
-    const newUrl = window.location.origin + window.location.pathname + '?' + urlParams.toString();
-    window.history.pushState({path: newUrl}, '', newUrl);
+//     const newUrl = window.location.origin + window.location.pathname + '?' + urlParams.toString();
+//     window.history.pushState({path: newUrl}, '', newUrl);
 
-    const classSection1HTMLArray = filteredClasses.map((classObj) => {
-      const classI = new ClassSec(classObj);
-      return classI.Render();
-    });
+//     const classSection1HTMLArray = filteredClasses.map((classObj) => {
+//       const classI = new ClassSec(classObj);
+//       return classI.Render();
+//     });
 
-    const classSection1HTML = classSection1HTMLArray.reduce(
-      (prev, current) => prev + current
-    );
-    document.getElementById("class-section1").innerHTML = classSection1HTML;
-    console.log(filteredClasses);
-  });
-}
-
-fetch("https://sisi.num.edu.mn/digital_num/api/package/hicheeliin-huvaari")
-.then (response => response.json())
-.then (responseObj =>{
-    console.log(responseObj);
-});
+//     const classSection1HTML = classSection1HTMLArray.reduce(
+//       (prev, current) => prev + current
+//     );
+//     document.getElementById("class-section1").innerHTML = classSection1HTML;
+//     console.log(filteredClasses);
+//   });
+// }
 
 fetch("https://api.npoint.io/144f8502239edcab18c5")
   .then((response) => response.json())
@@ -116,7 +110,6 @@ fetch("https://api.npoint.io/144f8502239edcab18c5")
 
     // Group the data by "uruunii_khuviin_dugaar"
     const groupedByUruuniiDugaar = groupByUruuniiDugaar(initialData);
-
     // Convert the grouped data to the desired structure
     const desiredStructure = convertToDesiredStructure(groupedByUruuniiDugaar);
 
