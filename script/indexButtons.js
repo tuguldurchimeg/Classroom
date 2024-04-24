@@ -86,6 +86,7 @@ const renderCalendar = () =>{
 renderCalendar();
 
 prevNextIcon.forEach(icon => {
+   today = 0;
    icon.addEventListener("click", ()=>{
       currMonth = icon.id === "prev" ? currMonth - 1 : currMonth + 1;
 
@@ -100,12 +101,6 @@ prevNextIcon.forEach(icon => {
       renderCalendar();
    });
 });
-
-
-
-
-
-
 // ----------------------------------------------------------CALENDAR-END-----------------------------------------------------------------
 
 bairbtn.addEventListener("click", ()=>{
