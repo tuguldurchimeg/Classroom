@@ -264,9 +264,6 @@ html {
   color: var(--color-dark-grey);
   line-height: var(--line-height-4);
 }
-.mobile-nav {
-  display: none;
-}
 
 hr {
   border-top: 0.5px solid var(--color-border);
@@ -281,7 +278,6 @@ hr {
   height: auto;
   position: absolute;
   right: 6rem;
-  /* visibility: hidden; */
 }
 #user-popup > ul {
   display: flex;
@@ -336,7 +332,7 @@ hr {
 .pop-up{
   display: none !important;
 }
-.active{
+.pop-up.active{
   display: block;
 }
 

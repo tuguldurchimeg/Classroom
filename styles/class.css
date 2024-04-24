@@ -10,7 +10,6 @@
  
  .class-title{
     background-color: var(--color-white);
-    border: 1px solid var(--color-border);
     border-radius: 20px;
     width: 31em;
     height: 20rem;
@@ -158,18 +157,20 @@
 
  }
 
- #day-btn:checked ~ .reservation #day-tab,
- #week-btn:checked ~ .reservation #week-tab {
-     display: block !important;
- }
-
- .tablink {
-   visibility: hidden;
-   position: absolute; 
-}
-#week-tab{
+#week-tab {
    display: none !important;
 }
+
+#day-btn:checked + label + .reservation #day-tab,
+#week-btn:checked + label + .reservation #week-tab {
+   display: flex !important;
+}
+
+.tablink {
+   /* visibility: hidden; */
+   /* position: absolute;  */
+}
+
 
 
 /* #day-btn:checked ~ .glider {
@@ -287,7 +288,7 @@
     color: var(--color-light-text);
  }
  
- .times button, .day-times button{
+ .timeBtn{
    background-image: var(--color-background-gradient);
    border-radius: 30px;
    color: var(--color-light-text);
@@ -295,15 +296,20 @@
    font-size: var(--medium-size);
    font-family: var(--font-family-1);
    border: none;
+   cursor: pointer;
    width: 5em;
    height: 2em;
 }
 .day-times button{
    color: var(--color-text);
 }
-.times button:hover, .day-times button:hover{
+.timeBtn:hover{
    box-shadow: var(--shadow-1);
 }
+.timeBtnClick{
+   background-color: var(--color-primary);
+   color: var(--color-white);
+ }
 
  /* ----- Week Section LAYOUT -----  */
 #week-tab{
