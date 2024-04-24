@@ -43,16 +43,22 @@ document.getElementById("main-desc").innerHTML = mainInfoHTML;
 fetch("https://api.npoint.io/70107af397f4a981c076")
   .then((response) => response.json())
   .then((responseObj) => {
-    let tempDepart;
+    let tempDepart, tempType;
     if (classObj.Хичээлийн_байр == "E-lib") tempDepart = "Е-Номын сан";
     else if (classObj.Хичээлийн_байр == "1") tempDepart = "Хичээлийн төв байр";
     else if (classObj.Хичээлийн_байр == "Хууль")
       tempDepart = "Улаанбаатар сургуулийн хичээлийн байр";
     else tempDepart = "Хичээлийн байр " + classObj.Хичээлийн_байр;
 
+    if (classObj.Өрөөний_зориулалт == "Семинар") tempType = "Семинарын танхим";
+    else if (classObj.Өрөөний_зориулалт == "Лекц") tempType = "Лекцийн танхим";
+    else if (classObj.Өрөөний_зориулалт == "Лаб")
+      tempType = "Сургалтын лаборатори";
+
     let filteredClasses = responseObj.filter(
       (similarClass) =>
         similarClass.Хичээлийн_байр == tempDepart &&
+        similarClass.Өрөөний_зориулалт == tempType &&
         similarClass.Хичээлийн_хуваарь_тавих_боломж != "Хуваарь тавих боломжгүй"
     );
 
@@ -90,7 +96,7 @@ fetch("https://api.npoint.io/144f8502239edcab18c5")
 // const profileBtn = document.getElementById("profile-btn");
 
 // profileBtn.addEventListener("click", () => {
-//   const userPopUp = document.getElementById("user-popup");
+//   const userPopUp = document.querySelector("#user-popup");
 //   userPopUp.classList.add("active");
 // });
 
@@ -100,7 +106,7 @@ fetch("https://api.npoint.io/144f8502239edcab18c5")
 //   console.log(modal.style);
 // }
 
-// const timeBtn = document.getElementsByClassName("timeBtn");
+// const timeBtn = document.querySelector(".timeBtn");
 // timeBtn.addEventListener("click", () => {
 //   timeBtn.classList.add("timeBtnClick");
 // });
