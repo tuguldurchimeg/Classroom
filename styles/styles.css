@@ -81,7 +81,6 @@ html {
 .calendar-wrapper {
   width: 15rem;
   background: var(--color-white);
-
   border-radius: 30px;
   box-shadow: var(--shadow-2);
 }

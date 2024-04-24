@@ -9,13 +9,13 @@ let mainInfoHTML = "";
 
 classTitleHTML += `
     <h2 class="heading-3">
-      <span>${classObj.Хичээлийн_байр} - ${classObj.Өрөөний_дугаар}</span>
+      <span class="room">${classObj.Хичээлийн_байр} - ${classObj.Өрөөний_дугаар}</span>
     <h2>
     <img src="styles/assets/class.jpg" alt="class image" class="class-img">
   `;
 
 mainInfoHTML += `
-    <li><span class="type-m heading-6">${classObj.Өрөөний_зориулалт}</span></li>
+    <li><span class="main-type">${classObj.Өрөөний_зориулалт}</span></li>
     <li><div class="vl"></div></li>
     <li>
         <div class="info-desc">Суудлын тоо</div>
