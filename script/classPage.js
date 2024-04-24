@@ -1,3 +1,5 @@
+import ClassSec from "./ClassSection.js";
+
 const usp = new URLSearchParams(document.location.search);
 const classObj = JSON.parse(usp.get("id"));
 console.log(classObj);
@@ -36,6 +38,34 @@ mainInfoHTML += `
 
 document.getElementById("main-title").innerHTML = classTitleHTML;
 document.getElementById("main-desc").innerHTML = mainInfoHTML;
+
+// fetch similar classes
+fetch("https://api.npoint.io/70107af397f4a981c076")
+  .then((response) => response.json())
+  .then((responseObj) => {
+    let tempDepart;
+    if (classObj.Хичээлийн_байр == "E-lib") tempDepart = "Е-Номын сан";
+    else if (classObj.Хичээлийн_байр == "1") tempDepart = "Хичээлийн төв байр";
+    else if (classObj.Хичээлийн_байр == "Хууль")
+      tempDepart = "Улаанбаатар сургуулийн хичээлийн байр";
+    else tempDepart = "Хичээлийн байр " + classObj.Хичээлийн_байр;
+
+    let filteredClasses = responseObj.filter(
+      (similarClass) =>
+        similarClass.Хичээлийн_байр == tempDepart &&
+        similarClass.Хичээлийн_хуваарь_тавих_боломж != "Хуваарь тавих боломжгүй"
+    );
+
+    const simClassHTMLArray = filteredClasses.map((simClassObj) => {
+      const classI = new ClassSec(simClassObj);
+      return classI.Render();
+    });
+
+    const simClassHTML = simClassHTMLArray.reduce(
+      (prev, current) => prev + current
+    );
+    document.getElementById("s-class-list").innerHTML = simClassHTML;
+  });
 
 fetch("https://api.npoint.io/144f8502239edcab18c5")
   .then((response) => response.json())

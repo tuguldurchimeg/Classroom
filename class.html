@@ -19,6 +19,7 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
         <script defer type="module" src="script/classPage.js"></script>
+        <script type="module" src="script/calendar.js"></script>
      </head>
 <body>
     <header class="main-header-2">
@@ -163,47 +164,16 @@
         </menu>
         <section class="reservation">
             <section class="tabcontent" id="day-tab">
-                <section class="calendar-wrapper">
-                    <div>
-                        <span >&#8249;</span>
-                        <p class="current-date">03/04-03/17</p>
-                        <span >&#8250;</span>
-                    </div>
-                    <main class="calendar">
-                        <ul class="weeks">
-                            <li>Да</li>
-                            <li>Мя</li>
-                            <li>Лх</li>
-                            <li>Пү</li>
-                            <li>Ба</li>
-                            <li>Бя</li>
-                            <li>Ня</li>
-                        </ul>
-                        <ul class="days">
-                            <li>4</li>
-                            <li>5</li>
-                            <li>6</li>
-                            <li>7</li>
-                            <li>8</li>
-                            <li>9</li>
-                            <li>10</li>
-                            <li>11</li>
-                            <li>12</li>
-                            <li>13</li>
-                            <li>14</li>
-                            <li>15</li>
-                            <li>16</li>
-                            <li>17</li>
-                        </ul>
-                    </main>
-                </section>
-                <ul class="day-times">
-                    <li><button class="timeBtn timeBtnClick"><time datetime="16:00">16:00</time></button></li>
-                    <li><button class="timeBtn"><time datetime="16:00">16:45</time></button></li>
-                    <li><button class="timeBtn"><time datetime="16:00">17:40</time></button></li>
-                    <li><button class="timeBtn"><time datetime="16:00">18:25</time></button></li>
-                    <li><button class="timeBtn"><time datetime="16:00">18:25</time></button></li>
-                </ul>
+                <div class="time-selector">
+                    <calendar-cm class="calendar-wrapper"></calendar-cm>
+                    <ul class="day-times">
+                        <li><button class="timeBtn timeBtnClick"><time datetime="16:00">16:00</time></button></li>
+                        <li><button class="timeBtn"><time datetime="16:00">16:45</time></button></li>
+                        <li><button class="timeBtn"><time datetime="16:00">17:40</time></button></li>
+                        <li><button class="timeBtn"><time datetime="16:00">18:25</time></button></li>
+                        <li><button class="timeBtn"><time datetime="16:00">18:25</time></button></li>
+                    </ul>
+                </div>
                 <form class="reserve-form">
                     <ul>
                         <li>
@@ -397,116 +367,7 @@
     <aside class="similar-class">
         <h2>Төстэй ангиуд</h2>
         <div id="s-class-list"> 
-            <a href="class.html" class="class-section-1">
-                <article>
-                    <img
-                    src="styles/assets/class.jpg"
-                    alt="classroom-picture"
-                    class="image"
-                    />
-                    <div class="text-wrapper">
-                    <h3>1-407</h3>
-                    <img
-                        src="styles/assets/Heart-grey.svg"
-                        alt="like this class"
-                        class="heart-grey"
-                    />
-                    <div class="class-type">Лекц</div>
-                    <div class="class-info">
-                        <div class="seat-count">55</div>
-                        <div class="projector"></div>
-                    </div>
-                    </div>
-                </article>
-            </a>
-            <a href="class.html" class="class-section-1">
-                <article>
-                    <img
-                    src="styles/assets/class.jpg"
-                    alt="classroom-picture"
-                    class="image"
-                    />
-                    <div class="text-wrapper">
-                    <h3>1-407</h3>
-                    <img
-                        src="styles/assets/Heart-grey.svg"
-                        alt="like this class"
-                        class="heart-grey"
-                    />
-                    <div class="class-type">Лекц</div>
-                    <div class="class-info">
-                        <div class="seat-count">55</div>
-                        <div class="projector"></div>
-                    </div>
-                    </div>
-                </article>
-            </a>
-            <a href="class.html" class="class-section-1">
-                <article>
-                    <img
-                    src="styles/assets/class.jpg"
-                    alt="classroom-picture"
-                    class="image"
-                    />
-                    <div class="text-wrapper">
-                    <h3>1-407</h3>
-                    <img
-                        src="styles/assets/Heart-grey.svg"
-                        alt="like this class"
-                        class="heart-grey"
-                    />
-                    <div class="class-type">Лекц</div>
-                    <div class="class-info">
-                        <div class="seat-count">55</div>
-                        <div class="projector"></div>
-                    </div>
-                    </div>
-                </article>
-            </a>
-            <a href="class.html" class="class-section-1">
-                <article>
-                    <img
-                    src="styles/assets/class.jpg"
-                    alt="classroom-picture"
-                    class="image"
-                    />
-                    <div class="text-wrapper">
-                    <h3>1-407</h3>
-                    <img
-                        src="styles/assets/Heart-grey.svg"
-                        alt="like this class"
-                        class="heart-grey"
-                    />
-                    <div class="class-type">Лекц</div>
-                    <div class="class-info">
-                        <div class="seat-count">55</div>
-                        <div class="projector"></div>
-                    </div>
-                    </div>
-                </article>
-            </a>
-            <a href="class.html" class="class-section-1">
-                <article>
-                    <img
-                    src="styles/assets/class.jpg"
-                    alt="classroom-picture"
-                    class="image"
-                    />
-                    <div class="text-wrapper">
-                    <h3>1-407</h3>
-                    <img
-                        src="styles/assets/Heart-grey.svg"
-                        alt="like this class"
-                        class="heart-grey"
-                    />
-                    <div class="class-type">Лекц</div>
-                    <div class="class-info">
-                        <div class="seat-count">55</div>
-                        <div class="projector"></div>
-                    </div>
-                    </div>
-                </article>
-            </a>
+            
         </div>
     </aside>
     <nav class="mobile-nav">
