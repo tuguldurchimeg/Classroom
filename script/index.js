@@ -10,45 +10,49 @@ const tsagbtn = document.getElementById("tsag-button");
 const tsaglist = document.getElementById("tsag-list");
 const searchButton = document.getElementById("search");
 
-let startDay;
-let endDay;
-let startTsag;
-let endTsag;
 
-let firstSelectedDay = null;
-let lastSelectedDay = null;
+
+//-----------------------------------BAIR-LIST------------------------------------------------------------------
 
 document.getElementById('bair-1').addEventListener('click',() =>{
   bairVariable = "Хичээлийн төв байр";
   bairlist.classList.remove("open");
+  document.getElementById("bair-info").innerText = "1-р байр";
 });
 document.getElementById('bair-2').addEventListener('click',() =>{
   bairVariable = "Хичээлийн байр 2";
   bairlist.classList.remove("open");
+  document.getElementById("bair-info").innerText = "2-р байр";
 });
 document.getElementById('bair-4').addEventListener('click',() =>{
   bairVariable = "Хичээлийн байр 4";
   bairlist.classList.remove("open");
+  document.getElementById("bair-info").innerText = "4-р байр";
 });
 document.getElementById('bair-5').addEventListener('click',() =>{
   bairVariable = "Хичээлийн байр 5";
   bairlist.classList.remove("open");
+  document.getElementById("bair-info").innerText = "5-р байр";
 });
 document.getElementById('bair-7').addEventListener('click',() =>{
   bairVariable = "Хичээлийн байр 3А";
   bairlist.classList.remove("open");
+  document.getElementById("bair-info").innerText = "3А-р байр";
 });
 document.getElementById('bair-8').addEventListener('click',() =>{
   bairVariable = "Хичээлийн байр 8";
   bairlist.classList.remove("open");
+  document.getElementById("bair-info").innerText = "8-р байр";
 });
 document.getElementById('bair-e-lib').addEventListener('click',() =>{
   bairVariable = "E-Номын сан";
   bairlist.classList.remove("open");
+  document.getElementById("bair-info").innerText = "E-Номын сан";
 });
 document.getElementById('bair-huuli').addEventListener('click',() =>{
   bairVariable = "Хичээлийн байр 3Б";
   bairlist.classList.remove("open");
+  document.getElementById("bair-info").innerText = "3Б-р байр";
 });
 
 // function fetchData() {
@@ -81,6 +85,9 @@ document.getElementById('bair-huuli').addEventListener('click',() =>{
 //   });
 // }
 
+
+//-----------------------------------------ODOR-LIST---------------------------------------------------------------
+
 const currentDate = document.querySelector(".current-date"),
 daysTag = document.querySelector(".days"),
 prevNextIcon = document.querySelectorAll(".calendar-icons span");
@@ -92,6 +99,14 @@ let date = new Date(),
 currYear = date.getFullYear(),
 currMonth = date.getMonth()+1;
 let today = date.getDate();
+
+let startDay=today;
+let endDay=today;
+let startTsag="07:40";
+let endTsag="21:45";
+
+let firstSelectedDay = null;
+let lastSelectedDay = null;
 
 firstSelectedDay = null;
 lastSelectedDay = null;
@@ -145,6 +160,7 @@ const renderCalendar = () =>{
               for (let i = minIndex + 1; i < maxIndex; i++) {
                   day[i].classList.add("day-active");
               }
+              document.getElementById("odor-info").innerText = `${currMonth}/${startDay} - ${currMonth}/${endDay}`;
           } else if (dayTag.classList.contains("inactive")){
                //nothing;
           } else {
@@ -195,8 +211,11 @@ calendarTopFilter.forEach(tsag => {
       } else if (tsag.innerText == "2-7 хоног"){
          lastSelectedDay = a+14;
       }
+      document.getElementById("odor-info").innerText = `${firstSelectedDay} - ${lastSelectedDay}`;
    });
 });
+
+//--------------------------------------TSAG-LIST--------------------------------------------------------------------------
 
 let firstSelectedTsag = null;
 let lastSelectedTsag = null;
@@ -221,6 +240,7 @@ tsagGrid.forEach(tsag =>{
          for (let i = minIndex + 1; i < maxIndex; i++) {
              tsagGrid[i].classList.add("tsag-active");
          }
+         document.getElementById("tsag-info").innerText = `${startTsag} - ${endTsag}`;
      } else if (tsag.classList.contains("inactive")){
           //nothing;
      } else {
@@ -238,6 +258,8 @@ tsagGrid.forEach(tsag =>{
    });
 });
 
+//--------------------------------------HUWAARI-FETCH & CONVERSION-------------------------------------------------------------------
+function fetching() {
 fetch("https://api.npoint.io/144f8502239edcab18c5")
   .then((response) => response.json())
   .then((initialData) => {
@@ -275,34 +297,78 @@ fetch("https://api.npoint.io/144f8502239edcab18c5")
     // Group the data by "uruunii_khuviin_dugaar"
     const groupedByUruuniiDugaar = groupByUruuniiDugaar(initialData);
     // Convert the grouped data to the desired structure
-    const desiredStructure = convertToDesiredStructure(groupedByUruuniiDugaar);
+    const huwaariArray = convertToDesiredStructure(groupedByUruuniiDugaar);
 
-    console.log(desiredStructure);
+    let calculatingDate = new Date(currYear,currMonth-1,startDay);
+    let garagOfDate = calculatingDate.getDay();
+
+    const weekdays = ['Ням', 'Даваа', 'Мягмар', 'Лхагва', 'Пүрэв', 'Баасан', 'Бямба'];
+    const weekdayName = weekdays[garagOfDate];
+
+
+    let filteredClasses = [];
+
+    huwaariArray.forEach(element => {
+      const filteredGroup = {
+          uruunii_khuviin_dugaar: element.uruunii_khuviin_dugaar,
+          khicheeliin_tsag: []
+      };
+      for (let i = 0; i < element.khicheeliin_tsag.length; i++) {
+          if (element.khicheeliin_tsag[i].garag === weekdayName) {
+              filteredGroup.khicheeliin_tsag.push(element.khicheeliin_tsag[i]);
+          }
+      }
+
+      if (filteredGroup.khicheeliin_tsag.length > 0) {
+          filteredClasses.push(filteredGroup);
+      }
   });
+  
+
+    console.log(filteredClasses);
+    console.log(huwaariArray);
+  });
+
+}
+// ----------------------------------BAIR-BUTTON-LISTENERS----------------------------------------------------------------------
 
 
   bairbtn.addEventListener("click", ()=>{
     if(bairlist.classList.contains("open"))
        bairlist.classList.remove("open");
-    else 
+    else {
        bairlist.classList.add("open");
+       tsaglist.classList.remove("open");
+       calendarlist.classList.remove("open-flex");
+    }
  });
  
  calendarbtn.addEventListener('click',() => {
-    if(calendarlist.classList.contains("open-flex"))
+   if(calendarlist.classList.contains("open-flex")){
        calendarlist.classList.remove("open-flex");
-    else
+   } else{
        calendarlist.classList.add("open-flex");
+       tsaglist.classList.remove("open");
+       bairlist.classList.remove("open");
+   }
  });
  
  tsagbtn.addEventListener("click", () => {
     if(tsaglist.classList.contains("open")){
        tsaglist.classList.remove("open");
-    }
-    else 
+    } else{ 
        tsaglist.classList.add("open");
+       bairlist.classList.remove("open");
+       calendarlist.classList.remove("open-flex");
+    }
  });
- 
+
  searchButton.addEventListener("click", () => {
     console.log(`${bairVariable} / (${startDay} - ${endDay}) / ${startTsag} - ${endTsag}`);
+    bairlist.classList.remove("open");
+    tsaglist.classList.remove("open");
+    calendarlist.classList.remove("open-flex");
+
+    fetching();
  });
+
