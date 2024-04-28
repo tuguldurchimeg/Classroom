@@ -306,28 +306,54 @@ fetch("https://api.npoint.io/144f8502239edcab18c5")
     const weekdayName = weekdays[garagOfDate];
 
 
-    let filteredClasses = [];
+//     const filteredClassesSet = new Set();
+
+//     huwaariArray.forEach(element => {
+//       for (let i = 0; i < element.khicheeliin_tsag.length; i++) {
+//           if (element.khicheeliin_tsag[i].garag === weekdayName) {
+//               filteredClassesSet.add(element.uruunii_khuviin_dugaar);
+//           }
+//       }
+//   });
+
+    
+
+   // const filteredClasses = [];
+    const tsag= timeStringToN(endTsag) - timeStringToN(startTsag);
+    console.log(tsag);
 
     huwaariArray.forEach(element => {
-      const filteredGroup = {
-          uruunii_khuviin_dugaar: element.uruunii_khuviin_dugaar,
-          khicheeliin_tsag: []
-      };
-      for (let i = 0; i < element.khicheeliin_tsag.length; i++) {
-          if (element.khicheeliin_tsag[i].garag === weekdayName) {
-              filteredGroup.khicheeliin_tsag.push(element.khicheeliin_tsag[i]);
+      const AInMinutes = element.khicheeliin_tsag.map(slot => ({
+         start: convertToMinutes(slot.ekhlekh_tsag),
+         end: convertToMinutes(slot.duusakh_tsag)
+     })); 
+
+     const BStart = convertToMinutes(startTsag);
+     const BEnd = convertToMinutes(endTsag);
+     const C = [];
+
+     for (let i = BStart; i <= BEnd; i=i+5) {
+      let isInA = false;
+      for (let j = 0; j < AInMinutes.length; j++) {
+          if (i >= AInMinutes[j].start && i <= AInMinutes[j].end) {
+              isInA = true;
+              break;
           }
       }
-
-      if (filteredGroup.khicheeliin_tsag.length > 0) {
-          filteredClasses.push(filteredGroup);
+      if (!isInA) {
+          C.push(convertToTimeStamp(i));
       }
-  });
-  
+      }
+      
+      console.log(C);
 
-    console.log(filteredClasses);
+      });
+
+   // const filteredClasses = Array.from(filteredClassesSet);
+
+   //  console.log(filteredClasses);
     console.log(huwaariArray);
-  });
+  }); 
 
 }
 // ----------------------------------BAIR-BUTTON-LISTENERS----------------------------------------------------------------------
@@ -372,3 +398,25 @@ fetch("https://api.npoint.io/144f8502239edcab18c5")
     fetching();
  });
 
+// -------------------------------ADDITIONAL-FUNCTIONS-----------------------------------------------------------------------
+
+ function timeStringToN(timeString){
+   const [hoursStr, minutesStr] = timeString.split(':');
+
+   const hours = parseInt(hoursStr, 10);
+   const minutes = parseInt(minutesStr, 10);
+
+   const totalMinutes = hours * 60 + minutes;
+   return totalMinutes;
+ }
+
+ const convertToMinutes = (timeStr) => {
+   const [hoursStr, minutesStr] = timeStr.split(':');
+   return parseInt(hoursStr, 10) * 60 + parseInt(minutesStr, 10);
+};
+
+const convertToTimeStamp = (minutes) => {
+   const hours = Math.floor(minutes / 60);
+   const mins = minutes % 60;
+   return `${hours.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}`;
+};
