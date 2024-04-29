@@ -11,7 +11,7 @@
   align-items: center;
   flex-wrap: nowrap;
 
-  background-color: var(--color-white);
+  background:  var(--color-white);
   border-radius: 50px;
   border: 2px solid;
   border-color: var(--color-border);
@@ -46,7 +46,7 @@
   flex-direction: column;
   justify-content: center;
 
-  background-color: var(--color-white);
+  background:  var(--color-white);
   border-radius: 30px;
   border: none;
 
@@ -85,7 +85,7 @@
   width: 100%;
   height: 100%;
 
-  background-color: transparent;
+  background:  transparent;
 
   border-radius: 40px;
   border: none;
@@ -140,13 +140,13 @@
   font-size: var(--small);
   font-weight: var(--medium);
 
-  background-color: var(--color-background);
+  background:  var(--color-background);
 }
 .days li.inactive{
   color: var(--color-light-grey);
 }
 .days li.inactive:hover{
-  background-color: var(--color-white);
+  background:  var(--color-white);
   cursor:default;
 }
 .days li{
@@ -154,7 +154,7 @@
 }
 
 .day-active{
-  background-color: var(--color-primary);
+  background:  var(--color-primary);
   color: var(--color-white);
   border-radius: 0;
 }
@@ -209,8 +209,9 @@ aside.index-aside {
   margin-top: 15.25rem;
 
   border-radius: 20px;
-  border: 4px solid;
+  border: 3px solid;
   border-color: var(--color-border);
+  background: var(--color-white);
 }
 aside.index-aside section {
   display: grid;
@@ -398,7 +399,7 @@ main {
   border-radius: 30px;
   border: 1px solid var(--color-border);
 
-  background-color: var(--color-white);
+  background:  var(--color-white);
 
 }
 
@@ -443,7 +444,7 @@ main {
   border-radius: 30px;
   border: 1px solid var(--color-border);
 
-  background-color: var(--color-white);
+  background:  var(--color-white);
 }
 
 .tsag-list>li{

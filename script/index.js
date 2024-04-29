@@ -316,11 +316,8 @@ fetch("https://api.npoint.io/144f8502239edcab18c5")
 //       }
 //   });
 
-    
 
-   // const filteredClasses = [];
     const tsag= timeStringToN(endTsag) - timeStringToN(startTsag);
-    console.log(tsag);
 
     huwaariArray.forEach(element => {
       const AInMinutes = element.khicheeliin_tsag.map(slot => ({
@@ -328,11 +325,12 @@ fetch("https://api.npoint.io/144f8502239edcab18c5")
          end: convertToMinutes(slot.duusakh_tsag)
      })); 
 
+     console.log(AInMinutes);
      const BStart = convertToMinutes(startTsag);
      const BEnd = convertToMinutes(endTsag);
      const C = [];
 
-     for (let i = BStart; i <= BEnd; i=i+5) {
+     for (let i = BStart; i <= BEnd; i++) {
       let isInA = false;
       for (let j = 0; j < AInMinutes.length; j++) {
           if (i >= AInMinutes[j].start && i <= AInMinutes[j].end) {
@@ -344,14 +342,9 @@ fetch("https://api.npoint.io/144f8502239edcab18c5")
           C.push(convertToTimeStamp(i));
       }
       }
-      
-      console.log(C);
-
+      // console.log(C);
       });
 
-   // const filteredClasses = Array.from(filteredClassesSet);
-
-   //  console.log(filteredClasses);
     console.log(huwaariArray);
   }); 
 
