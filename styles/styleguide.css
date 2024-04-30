@@ -8,7 +8,7 @@
   --color-light-grey: rgba(171, 171, 171, 1);
   --color-dark-grey: rgba(122, 125, 125, 1);
   --color-light-text: rgba(129, 129, 129, 1);
-  --color-background: rgb(245, 255, 245);
+  --color-background: rgb(255, 255, 255);
   --color-background-gradient: linear-gradient(
     to bottom,
     rgba(240, 232, 245, 1),
@@ -55,6 +55,7 @@
   /* shadow */
   --shadow-1: 0 20px 24px -4px rgba(0, 0, 0, 0.08);
   --shadow-2: 0 2px 10px rgba(0, 0, 0, 0.15);
+  --shadow-3: 0 4px 15px rgba(0, 0, 0, 0.35);
 
   /* gap */
   --gap-1: 1.25rem;
