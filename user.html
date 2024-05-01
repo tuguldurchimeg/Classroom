@@ -16,6 +16,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"> 
+    <script defer type="module" src="script/user.js"></script>
+    <script type="module" src="./script/components/user/cmp-class.js"></script>
     <title>User Profile</title>
 </head>
 <body>
@@ -32,7 +34,9 @@
             <section>
                 <article class="info">
                     <button class="profile-button"><i class="fa-regular fa-user"></i></button>
+                    <div>
                     <p>User</p>
+                </div>
                     <ul class="hovers">
                         <li class="ordered">Захиалсан ангиуд</li>
                         <li class="liked">Дуртай</li>
@@ -43,120 +47,9 @@
             </section>
             <section class="right-section">
                 <h1>Баталгаажсан:</h1>
-                <section class="verified">
-                    <a href="./class.html">
-                        <article class="class-section-2">
-                            <div class="img">
-                                <img src="styles/assets/class.jpg" alt="classroom-picture" class="image">
-                            </div>
-                            <section class="details">
-                                <div class="heartdetailsgrid">
-                                    <div class="font">
-                                        <h3>1-407</h3>
-                                        <div class="class-type">Лекц</div>
-                                    </div>
-                                    <img src="styles/assets/Heart-grey.svg" alt="like this class" class="heart-grey">
-                                </div>
-                                <ul>
-                                    <li>03.05-Мя</li>
-                                    <li>
-                                        <button><span>16:00</span></button>
-                                    </li>
-                                    <li>
-                                        <button><span>16:00</span></button>
-                                    </li>
-                                </ul>
-                            </section>
-                            <div class="cancel">
-                                <button><img src="styles/assets/cancal.png" alt="cancel"></button>
-                            </div>
-                        </article>
-                    </a>
-                    <a href="./class.html">
-                        <article class="class-section-2">
-                            <div class="img">
-                                <img src="styles/assets/class.jpg" alt="classroom-picture" class="image">
-                            </div>
-                            <section class="details">
-                                <div class="heartdetailsgrid">
-                                    <div class="font">
-                                        <h3>1-407</h3>
-                                        <div class="class-type">Лекц</div>
-                                    </div>
-                                    <img src="styles/assets/Heart-grey.svg" alt="like this class" class="heart-grey">
-                                </div>
-                                <ul>
-                                    <li>03.05-Мя</li>
-                                    <li>
-                                        <button><span>16:00</span></button>
-                                    </li>
-                                    <li>
-                                        <button><span>16:00</span></button>
-                                    </li>
-                                </ul>
-                            </section>
-                            <div class="cancel">
-                                <button><img src="styles/assets/cancal.png" alt="cancel"></button>
-                            </div>
-                        </article>
-                    </a>
+                <class-component></class-component>
 
-                    <a href="./class.html">
-                        <article class="class-section-2">
-                            <div class="img">
-                                <img src="styles/assets/class.jpg" alt="classroom-picture" class="image">
-                            </div>
-                            <section class="details">
-                                <div class="heartdetailsgrid">
-                                    <div class="font">
-                                        <h3>1-407</h3>
-                                        <div class="class-type">Лекц</div>
-                                    </div>
-                                    <img src="styles/assets/Heart-grey.svg" alt="like this class" class="heart-grey">
-                                </div>
-                                <ul>
-                                    <li>03.05-Мя</li>
-                                    <li>
-                                        <button><span>16:00</span></button>
-                                    </li>
-                                    <li>
-                                        <button><span>16:00</span></button>
-                                    </li>
-                                </ul>
-                            </section>
-                            <div class="cancel">
-                                <button><img src="styles/assets/cancal.png" alt="cancel"></button>
-                            </div>
-                        </article>
-                    </a>
-                    <a href="./class.html">
-                        <article class="class-section-2">
-                            <div class="img">
-                                <img src="styles/assets/class.jpg" alt="classroom-picture" class="image">
-                            </div>
-                            <section class="details">
-                                <div class="heartdetailsgrid">
-                                    <div class="font">
-                                        <h3>1-407</h3>
-                                        <div class="class-type">Лекц</div>
-                                    </div>
-                                    <img src="styles/assets/Heart-grey.svg" alt="like this class" class="heart-grey">
-                                </div>
-                                <ul>
-                                    <li>03.05-Мя</li>
-                                    <li>
-                                        <button><span>16:00</span></button>
-                                    </li>
-                                    <li>
-                                        <button><span>16:00</span></button>
-                                    </li>
-                                </ul>
-                            </section>
-                            <div class="cancel">
-                                <button><img src="/styles/assets/cancal.png" alt="cancel"></button>
-                            </div>
-                        </article>
-                    </a>
+                <section class="verified">
                 </section>
                 <section>
                     <h1>Хүлээгдэж буй:</h1>
@@ -223,7 +116,6 @@
                 </section>
             </section>
         </section>
-
     </main>
     <nav class="mobile-nav">
         <ul>
@@ -248,4 +140,8 @@
         </ul>
       </nav>
 </body>
+<script>
+
+
+</script>
 </html>

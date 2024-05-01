@@ -211,6 +211,9 @@ text-align:center;
       margin: 0px auto;
     }
   }
+  .main{
+    /* margin: 0px auto; */
+  }
 }
 
 @media screen and (max-width: 600px) {
