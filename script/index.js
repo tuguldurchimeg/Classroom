@@ -262,7 +262,7 @@ tsagGrid.forEach((tsag) => {
 
 //--------------------------------------HUWAARI-FETCH & CONVERSION-------------------------------------------------------------------
 function fetching() {
-  fetch("https://api.npoint.io/144f8502239edcab18c5")
+  fetch("https://api.npoint.io/7915813b5c6c20fecb21")
     .then((response) => response.json())
     .then((initialData) => {
       // console.log(initialData );
@@ -270,39 +270,71 @@ function fetching() {
       const groupByUruuniiDugaar = (data) => {
         const groupedData = {};
         data.forEach((item) => {
-          const { uruunii_khuviin_dugaar, garag, ekhlekh_tsag, duusakh_tsag } =
-            item;
+          const { uruunii_khuviin_dugaar, garag, ekhlekh_tsag, duusakh_tsag, davtamj, oroltyn_too } = item;
           if (!groupedData[uruunii_khuviin_dugaar]) {
-            groupedData[uruunii_khuviin_dugaar] = [];
+            groupedData[uruunii_khuviin_dugaar] = {};
           }
-          groupedData[uruunii_khuviin_dugaar].push({
-            garag,
-            ekhlekh_tsag,
-            duusakh_tsag,
-          });
+          if (davtamj === "7 хоног тутам" && oroltyn_too === 16) {
+            if (!groupedData[uruunii_khuviin_dugaar][garag]) {
+              groupedData[uruunii_khuviin_dugaar][garag] = [];
+            }
+            groupedData[uruunii_khuviin_dugaar][garag].push({
+              ekhlekh_tsag,
+              duusakh_tsag,
+            });
+          }
         });
         return groupedData;
       };
-
+  
       // Function to convert grouped data to the desired structure
       const convertToDesiredStructure = (groupedData) => {
         const result = [];
         for (const uruunii_khuviin_dugaar in groupedData) {
+          const garagGroup = [];
+          for (const garag in groupedData[uruunii_khuviin_dugaar]) {
+            garagGroup.push({
+              garag,
+              khicheeliin_tsag: groupedData[uruunii_khuviin_dugaar][garag],
+            });
+          }
           result.push({
             uruunii_khuviin_dugaar,
-            khicheeliin_tsag: groupedData[uruunii_khuviin_dugaar],
+            garagGroup,
           });
         }
         return result;
       };
-
-      // Group the data by "uruunii_khuviin_dugaar"
+  
+      // Group the data by "uruunii_khuviin_dugaar" and then by "garag"
       const groupedByUruuniiDugaar = groupByUruuniiDugaar(initialData);
       // Convert the grouped data to the desired structure
-      const huwaariArray = convertToDesiredStructure(groupedByUruuniiDugaar);
+      let huwaariArray = convertToDesiredStructure(groupedByUruuniiDugaar);
+  
 
       let calculatingDate = new Date(currYear, currMonth - 1, startDay);
       let garagOfDate = calculatingDate.getDay();
+
+      const classHours = [
+        740,
+        825,
+        920,
+        1005,
+        1100,
+        1145,
+        1240,
+        1325,
+        1420,
+        1505,
+        1600,
+        1645,
+        1740,
+        1825,
+        1920,
+        2005,
+        2100,
+        2145
+      ]
 
       const weekdays = [
         "Ням",
@@ -315,44 +347,13 @@ function fetching() {
       ];
       const weekdayName = weekdays[garagOfDate];
 
-      //     const filteredClassesSet = new Set();
 
-      //     huwaariArray.forEach(element => {
-      //       for (let i = 0; i < element.khicheeliin_tsag.length; i++) {
-      //           if (element.khicheeliin_tsag[i].garag === weekdayName) {
-      //               filteredClassesSet.add(element.uruunii_khuviin_dugaar);
-      //           }
-      //       }
-      //   });
-
-      const tsag = timeStringToN(endTsag) - timeStringToN(startTsag);
-
-      huwaariArray.forEach((element) => {
-        const AInMinutes = element.khicheeliin_tsag.map((slot) => ({
-          start: convertToMinutes(slot.ekhlekh_tsag),
-          end: convertToMinutes(slot.duusakh_tsag),
-        }));
-
-        //   console.log(AInMinutes);
-        const BStart = convertToMinutes(startTsag);
-        const BEnd = convertToMinutes(endTsag);
-        const C = [];
-
-        for (let i = BStart; i <= BEnd; i++) {
-          let isInA = false;
-          for (let j = 0; j < AInMinutes.length; j++) {
-            if (i >= AInMinutes[j].start && i <= AInMinutes[j].end) {
-              isInA = true;
-              break;
-            }
-          }
-          if (!isInA) {
-            C.push(convertToTimeStamp(i));
-          }
-        }
-        // console.log(C);
-      });
-
+        // huwaariArray.forEach(element => {
+        //     for (let i = 0; i < element.khicheeliin_tsag.length; i++) {
+        //       ;
+        //     }
+        // });
+      
       console.log(huwaariArray);
     });
 }
@@ -400,24 +401,15 @@ searchButton.addEventListener("click", () => {
 
 // -------------------------------ADDITIONAL-FUNCTIONS-----------------------------------------------------------------------
 
-function timeStringToN(timeString) {
-  const [hoursStr, minutesStr] = timeString.split(":");
 
-  const hours = parseInt(hoursStr, 10);
-  const minutes = parseInt(minutesStr, 10);
-
-  const totalMinutes = hours * 60 + minutes;
-  return totalMinutes;
-}
-
-const convertToMinutes = (timeStr) => {
+const convertToNumber = (timeStr) => {
   const [hoursStr, minutesStr] = timeStr.split(":");
-  return parseInt(hoursStr, 10) * 60 + parseInt(minutesStr, 10);
+  return parseInt(hoursStr, 10) * 100 + parseInt(minutesStr, 10);
 };
 
 const convertToTimeStamp = (minutes) => {
-  const hours = Math.floor(minutes / 60);
-  const mins = minutes % 60;
+  const hours = Math.floor(minutes / 100);
+  const mins = minutes % 100;
   return `${hours.toString().padStart(2, "0")}:${mins
     .toString()
     .padStart(2, "0")}`;
