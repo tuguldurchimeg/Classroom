@@ -262,7 +262,7 @@ tsagGrid.forEach((tsag) => {
 
 //--------------------------------------HUWAARI-FETCH & CONVERSION-------------------------------------------------------------------
 function fetching() {
-  fetch("https://api.npoint.io/7915813b5c6c20fecb21")
+  return fetch("https://api.npoint.io/7915813b5c6c20fecb21")
     .then((response) => response.json())
     .then((initialData) => {
       // console.log(initialData );
@@ -366,8 +366,8 @@ function fetching() {
         });
       });
 
-      console.log(huwaariArray);
-      console.log(freeHuwaariArray);
+      // console.log(freeHuwaariArray);
+      return freeHuwaariArray;
     });
 }
 // ----------------------------------BAIR-BUTTON-LISTENERS----------------------------------------------------------------------
@@ -409,7 +409,13 @@ searchButton.addEventListener("click", () => {
   tsaglist.classList.remove("open");
   calendarlist.classList.remove("open-flex");
 
-  fetching();
+  fetching()
+    .then((freeHuwaariArray) => {
+      console.log(freeHuwaariArray);
+    })
+    .catch((error) => {
+      console.error("Error fetching data: ", error);
+    });
 });
 
 // -------------------------------ADDITIONAL-FUNCTIONS-----------------------------------------------------------------------
