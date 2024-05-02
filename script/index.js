@@ -270,7 +270,14 @@ function fetching() {
       const groupByUruuniiDugaar = (data) => {
         const groupedData = {};
         data.forEach((item) => {
-          const { uruunii_khuviin_dugaar, garag, ekhlekh_tsag, duusakh_tsag, davtamj, oroltyn_too } = item;
+          const {
+            uruunii_khuviin_dugaar,
+            garag,
+            ekhlekh_tsag,
+            duusakh_tsag,
+            davtamj,
+            oroltyn_too,
+          } = item;
           if (!groupedData[uruunii_khuviin_dugaar]) {
             groupedData[uruunii_khuviin_dugaar] = {};
           }
@@ -286,7 +293,7 @@ function fetching() {
         });
         return groupedData;
       };
-  
+
       // Function to convert grouped data to the desired structure
       const convertToDesiredStructure = (groupedData) => {
         const result = [];
@@ -305,36 +312,14 @@ function fetching() {
         }
         return result;
       };
-  
+
       // Group the data by "uruunii_khuviin_dugaar" and then by "garag"
       const groupedByUruuniiDugaar = groupByUruuniiDugaar(initialData);
       // Convert the grouped data to the desired structure
       let huwaariArray = convertToDesiredStructure(groupedByUruuniiDugaar);
-  
 
       let calculatingDate = new Date(currYear, currMonth - 1, startDay);
       let garagOfDate = calculatingDate.getDay();
-
-      const classHours = [
-        740,
-        825,
-        920,
-        1005,
-        1100,
-        1145,
-        1240,
-        1325,
-        1420,
-        1505,
-        1600,
-        1645,
-        1740,
-        1825,
-        1920,
-        2005,
-        2100,
-        2145
-      ]
 
       const weekdays = [
         "Ням",
@@ -347,14 +332,42 @@ function fetching() {
       ];
       const weekdayName = weekdays[garagOfDate];
 
+      let freeHuwaariArray = [];
 
-        huwaariArray.forEach(element => {
-            for (let i = 0; i < element.garagGroup.length; i++) {
-              ;
+      huwaariArray.forEach((element) => {
+        let updatedGaragGroups = [];
+
+        element.garagGroup.forEach((garagGroup) => {
+          const classHoursSet = new Set([
+            740, 825, 920, 1005, 1100, 1145, 1240, 1325, 1420, 1505, 1600, 1645,
+            1740, 1825, 1920, 2005, 2100, 2145,
+          ]);
+
+          garagGroup.khicheeliin_tsag.forEach((khicheel) => {
+            const ekhlekh_tsag = convertToNumber(khicheel.ekhlekh_tsag);
+            const duusakh_tsag = convertToNumber(khicheel.duusakh_tsag);
+
+            for (const item of classHoursSet) {
+              if (item >= ekhlekh_tsag && item <= duusakh_tsag) {
+                classHoursSet.delete(item);
+              }
             }
+          });
+
+          updatedGaragGroups.push({
+            garag: garagGroup.garag,
+            classHoursSet: Array.from(classHoursSet),
+          });
         });
-      
+
+        freeHuwaariArray.push({
+          uruunii_khuviin_dugaar: element.uruunii_khuviin_dugaar,
+          garagGroup: updatedGaragGroups,
+        });
+      });
+
       console.log(huwaariArray);
+      console.log(freeHuwaariArray);
     });
 }
 // ----------------------------------BAIR-BUTTON-LISTENERS----------------------------------------------------------------------
@@ -400,7 +413,6 @@ searchButton.addEventListener("click", () => {
 });
 
 // -------------------------------ADDITIONAL-FUNCTIONS-----------------------------------------------------------------------
-
 
 const convertToNumber = (timeStr) => {
   const [hoursStr, minutesStr] = timeStr.split(":");
