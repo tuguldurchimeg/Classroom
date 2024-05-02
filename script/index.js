@@ -348,11 +348,11 @@ function fetching() {
       const weekdayName = weekdays[garagOfDate];
 
 
-        // huwaariArray.forEach(element => {
-        //     for (let i = 0; i < element.khicheeliin_tsag.length; i++) {
-        //       ;
-        //     }
-        // });
+        huwaariArray.forEach(element => {
+            for (let i = 0; i < element.garagGroup.length; i++) {
+              ;
+            }
+        });
       
       console.log(huwaariArray);
     });
