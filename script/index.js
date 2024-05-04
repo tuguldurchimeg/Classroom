@@ -1,7 +1,7 @@
-import ClassSec from "./ClassSection.js";
+import ClassSec from "./ClassRender.js";
 
-let bairVariable = "Хичээлийн төв байр";
-// fetchData();
+let bairVariable = "2";
+
 const bairbtn = document.getElementById("bair-button");
 const bairlist = document.getElementById("bair-list");
 const calendarbtn = document.getElementById("calendar-button");
@@ -13,75 +13,68 @@ const searchButton = document.getElementById("search");
 //-----------------------------------BAIR-LIST------------------------------------------------------------------
 
 document.getElementById("bair-1").addEventListener("click", () => {
-  bairVariable = "Хичээлийн төв байр";
+  bairVariable = "1";
   bairlist.classList.remove("open");
   document.getElementById("bair-info").innerText = "1-р байр";
 });
 document.getElementById("bair-2").addEventListener("click", () => {
-  bairVariable = "Хичээлийн байр 2";
+  bairVariable = "2";
   bairlist.classList.remove("open");
   document.getElementById("bair-info").innerText = "2-р байр";
 });
 document.getElementById("bair-4").addEventListener("click", () => {
-  bairVariable = "Хичээлийн байр 4";
+  bairVariable = "4";
   bairlist.classList.remove("open");
   document.getElementById("bair-info").innerText = "4-р байр";
 });
 document.getElementById("bair-5").addEventListener("click", () => {
-  bairVariable = "Хичээлийн байр 5";
+  bairVariable = "5";
   bairlist.classList.remove("open");
   document.getElementById("bair-info").innerText = "5-р байр";
 });
 document.getElementById("bair-7").addEventListener("click", () => {
-  bairVariable = "Хичээлийн байр 3А";
+  bairVariable = "3А";
   bairlist.classList.remove("open");
   document.getElementById("bair-info").innerText = "3А-р байр";
 });
 document.getElementById("bair-8").addEventListener("click", () => {
-  bairVariable = "Хичээлийн байр 8";
+  bairVariable = "8";
   bairlist.classList.remove("open");
   document.getElementById("bair-info").innerText = "8-р байр";
 });
 document.getElementById("bair-e-lib").addEventListener("click", () => {
-  bairVariable = "E-Номын сан";
+  bairVariable = "E-Lib";
   bairlist.classList.remove("open");
   document.getElementById("bair-info").innerText = "E-Номын сан";
 });
 document.getElementById("bair-huuli").addEventListener("click", () => {
-  bairVariable = "Хичээлийн байр 3Б";
+  bairVariable = "3Б";
   bairlist.classList.remove("open");
   document.getElementById("bair-info").innerText = "3Б-р байр";
 });
 
-// function fetchData() {
-//   fetch("https://api.npoint.io/70107af397f4a981c076")
-//   .then((response) => response.json())
-//   .then((responseObj) => {
-//     let filteredClasses = responseObj.filter(function (availableClass) {
-//       return (
-//         availableClass["Хичээлийн_хуваарь_тавих_боломж"] != "Хуваарь тавих боломжгүй" &&
-//         availableClass["Хичээлийн_байр"] == bairVariable
-//       );
-//     });
-
-//     const urlParams = new URLSearchParams(window.location.search);
-//     urlParams.set('filtered',true);
-
-//     const newUrl = window.location.origin + window.location.pathname + '?' + urlParams.toString();
-//     window.history.pushState({path: newUrl}, '', newUrl);
-
-//     const classSection1HTMLArray = filteredClasses.map((classObj) => {
-//       const classI = new ClassSec(classObj);
-//       return classI.Render();
-//     });
-
-//     const classSection1HTML = classSection1HTMLArray.reduce(
-//       (prev, current) => prev + current
-//     );
-//     document.getElementById("class-section1").innerHTML = classSection1HTML;
-//     console.log(filteredClasses);
-//   });
-// }
+function fetchData() {
+  return fetch("https://api.npoint.io/70107af397f4a981c076")
+    .then((response) => response.json())
+    .then((responseObj) => {
+      let filteredClasses = responseObj.filter((availableClass) => {
+        return (
+          availableClass.Хичээлийн_хуваарь_тавих_боломж !=
+            "Хуваарь тавих боломжгүй" &&
+          availableClass.Хичээлийн_байр != "Цөмийн судалгааны төв" &&
+          availableClass.Хичээлийн_байр !=
+            "Ховд сургуулийн хичээлийн 1-р байр" &&
+          availableClass.Хичээлийн_байр !=
+            "Ховд сургуулийн хичээлийн 2-р байр" &&
+          availableClass.Хичээлийн_байр != "Дорнод сургуулийн хичээлийн байр" &&
+          availableClass.Хичээлийн_байр != "Завхан сургуулийн хичээлийн байр" &&
+          availableClass.Хичээлийн_байр != "Орхон сургуулийн хичээлийн байр" &&
+          availableClass.Өрөөний_зориулалт != "Биеийн тамирын зал "
+        );
+      });
+      return filteredClasses;
+    });
+}
 
 //-----------------------------------------ODOR-LIST---------------------------------------------------------------
 
@@ -409,9 +402,33 @@ searchButton.addEventListener("click", () => {
   tsaglist.classList.remove("open");
   calendarlist.classList.remove("open-flex");
 
+  let classArrayObj = {};
   fetching()
     .then((freeHuwaariArray) => {
-      console.log(freeHuwaariArray);
+      // console.log(freeHuwaariArray);
+      fetchData().then((filteredClasses) => {
+        classArrayObj = filteredClasses.map((classObj) => {
+          let schedule = freeHuwaariArray.filter(
+            (huwaari) =>
+              huwaari.uruunii_khuviin_dugaar == classObj.Өрөөний_хувийн_дугаар
+          );
+
+          if (schedule.length > 0) {
+            const classI = new ClassSec(classObj, schedule);
+            return classI;
+          } else return null;
+        });
+        classArrayObj = classArrayObj.filter((classObj) => classObj !== null);
+
+        let classMap = classArrayObj.map((classObj) => {
+          return classObj.Render();
+        });
+        const classSectionHTML = classMap.reduce(
+          (prev, current) => prev + current
+        );
+        // console.log(classSectionHTML);
+        document.getElementById("class-section1").innerHTML = classSectionHTML;
+      });
     })
     .catch((error) => {
       console.error("Error fetching data: ", error);

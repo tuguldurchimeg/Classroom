@@ -1,4 +1,4 @@
-import ClassSec from "./ClassSection.js";
+import ClassSec from "./ClassRender.js";
 
 const usp = new URLSearchParams(document.location.search);
 const classObj = JSON.parse(usp.get("id"));
@@ -9,24 +9,24 @@ let mainInfoHTML = "";
 
 classTitleHTML += `
     <h2 class="heading-3">
-      <span class="room">${classObj.Хичээлийн_байр} - ${classObj.Өрөөний_дугаар}</span>
+      <span class="room">${classObj.building} - ${classObj.roomNo}</span>
     <h2>
     <img src="styles/assets/class.jpg" alt="class image" class="class-img">
   `;
 
 mainInfoHTML += `
-    <li><span class="main-type">${classObj.Өрөөний_зориулалт}</span></li>
+    <li><span class="main-type">${classObj.type}</span></li>
     <li><div class="vl"></div></li>
     <li>
         <div class="info-desc">Суудлын тоо</div>
-        <div class="seat-count-m heading-6">${classObj.Суудлын_тоо}</div>
+        <div class="seat-count-m heading-6">${classObj.capacity}</div>
     </li>
     <li><div class="vl"></div></li>
     <li>
         <div class="info-desc" id="projector-info">Проектор</div>
         <img
           src="${
-            classObj.Проектортой_эсэх === "Проектортой"
+            classObj.projector === "Проектортой"
               ? "styles/assets/Check.svg"
               : "styles/assets/X.svg"
           }"
@@ -44,16 +44,15 @@ fetch("https://api.npoint.io/70107af397f4a981c076")
   .then((response) => response.json())
   .then((responseObj) => {
     let tempDepart, tempType;
-    if (classObj.Хичээлийн_байр == "E-lib") tempDepart = "Е-Номын сан";
-    else if (classObj.Хичээлийн_байр == "1") tempDepart = "Хичээлийн төв байр";
-    else if (classObj.Хичээлийн_байр == "Хууль")
+    if (classObj.building == "E-lib") tempDepart = "Е-Номын сан";
+    else if (classObj.building == "1") tempDepart = "Хичээлийн төв байр";
+    else if (classObj.building == "Хууль")
       tempDepart = "Улаанбаатар сургуулийн хичээлийн байр";
-    else tempDepart = "Хичээлийн байр " + classObj.Хичээлийн_байр;
+    else tempDepart = "Хичээлийн байр " + classObj.building;
 
-    if (classObj.Өрөөний_зориулалт == "Семинар") tempType = "Семинарын танхим";
-    else if (classObj.Өрөөний_зориулалт == "Лекц") tempType = "Лекцийн танхим";
-    else if (classObj.Өрөөний_зориулалт == "Лаб")
-      tempType = "Сургалтын лаборатори";
+    if (classObj.type == "Семинар") tempType = "Семинарын танхим";
+    else if (classObj.type == "Лекц") tempType = "Лекцийн танхим";
+    else if (classObj.type == "Лаб") tempType = "Сургалтын лаборатори";
 
     let filteredClasses = responseObj.filter(
       (similarClass) =>
@@ -71,16 +70,6 @@ fetch("https://api.npoint.io/70107af397f4a981c076")
       (prev, current) => prev + current
     );
     document.getElementById("s-class-list").innerHTML = simClassHTML;
-  });
-
-fetch("https://api.npoint.io/144f8502239edcab18c5")
-  .then((response) => response.json())
-  .then((scheduleObj) => {
-    scheduleObj = scheduleObj.filter(
-      (schedules) =>
-        schedules.uruunii_khuviin_dugaar == classObj.Өрөөний_хувийн_дугаар
-    );
-    console.log(scheduleObj);
   });
 
 // let addRatingBtn = document.getElementById("add-rating-btn");
