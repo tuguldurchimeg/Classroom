@@ -398,16 +398,15 @@
    background-image: var(--color-background-gradient);
    border: 1px solid var(--color-border);
    border-radius: 70px;
-   display: flex;
+   display: none;
    flex-direction: column;
    justify-content: space-evenly;
    align-items: center;
+   position: absolute;
    width: 30rem;
    height: 35rem;
-   position: absolute;
-   /* left: 30rem;
-   top: 7rem; */
  }
+
 .rate-title-p{
    font-size: var(--heading-4);
    font-weight: var(--bold);

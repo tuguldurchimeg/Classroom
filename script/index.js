@@ -10,6 +10,17 @@ const tsagbtn = document.getElementById("tsag-button");
 const tsaglist = document.getElementById("tsag-list");
 const searchButton = document.getElementById("search");
 
+const profileBtn = document.getElementById("profile-btn");
+const userPopUp = document.getElementById("user-popup");
+
+profileBtn.addEventListener("click", () => {
+  if (userPopUp.classList.contains("open")) {
+    userPopUp.classList.remove("open");
+  } else {
+    userPopUp.classList.add("open");
+  }
+});
+
 //-----------------------------------BAIR-LIST------------------------------------------------------------------
 
 document.getElementById("bair-1").addEventListener("click", () => {
@@ -393,6 +404,7 @@ tsagbtn.addEventListener("click", () => {
     calendarlist.classList.remove("open-flex");
   }
 });
+let classArrayObj = {};
 
 searchButton.addEventListener("click", () => {
   console.log(
@@ -402,7 +414,6 @@ searchButton.addEventListener("click", () => {
   tsaglist.classList.remove("open");
   calendarlist.classList.remove("open-flex");
 
-  let classArrayObj = {};
   fetching()
     .then((freeHuwaariArray) => {
       // console.log(freeHuwaariArray);
@@ -421,7 +432,6 @@ searchButton.addEventListener("click", () => {
         });
 
         classArrayObj = classArrayObj.filter((classObj) => classObj !== null);
-        console.log(classArrayObj);
 
         let classSectionHTMLArray = classArrayObj
           .map((classObj) => {
@@ -441,16 +451,18 @@ searchButton.addEventListener("click", () => {
                       " " +
                       time
                   );
+
                   temp = classObj.Render();
                   return;
-                } else console.log("Not available time");
+                }
               });
               return;
             });
             return temp != null ? temp : null;
           })
           .filter((classObj) => classObj != null);
-        console.log(classSectionHTMLArray);
+
+        // console.log(classSectionHTMLArray);
 
         const classSectionHTML = classSectionHTMLArray.reduce(
           (prev, current) => prev + current

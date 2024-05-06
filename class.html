@@ -22,6 +22,8 @@
         <script type="module" src="script/components/calendar.js"></script>
         <script type="module" src="script/components/ReserveForm.js"></script>
         <script type="module" src="script/components/MobileNav.js"></script>
+        <script type="module" src="script/components/PopUpUser.js"></script>
+
      </head>
 <body>
     <header class="main-header-2">
@@ -29,25 +31,14 @@
             <a href="index.html">
                 <img class="logo" src="styles/assets/Logo.svg" alt="logo image">
             </a>
-            <button class="pop-up-btn" id="profile-btn"><i class="fa-regular fa-user"></i></button>
+            <button class="pop-up-btn" id="profile-btn">
+                <i class="fa-regular fa-user"></i>
+            </button>
+            <pop-up-user class="pop-up" id="user-popup">  
+            </pop-up-user>
         </nav>
     </header>
-    <nav class="pop-up" id="user-popup">
-        <ul>
-            <li>
-                <a href="user.html" class="button">Нэвтрэх</a>
-            </li>
-            <li>
-                <a href="user.html" class="reserved-menu menu"><span>Захиалсан ангиуд</span></a>
-            </li>
-            <li>
-                <a href="user.html" class="liked-menu menu"><span>Дуртай ангиуд</span></a>
-            </li>
-            <li>
-                <a href="contact.html" class="contact-menu menu"><span>Холбогдох</span></a>
-            </li>
-        </ul>
-    </nav>
+    
     <main>
         <section class="main-class-info">
             <article class="main-class-title" id="main-title">

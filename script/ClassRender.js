@@ -13,7 +13,7 @@ export default class ClassSec {
     else if (this.building == "Хичээлийн төв байр") this.building = "1";
     else if (this.building == "Улаанбаатар сургуулийн хичээлийн байр")
       this.building = "Хууль";
-    else this.building = this.building.slice(-2);
+    else this.building = this.building.slice(-1);
 
     if (this.type == "Хичээлийн танхим" || this.type == "Семинарын танхим")
       this.type = "Семинар";

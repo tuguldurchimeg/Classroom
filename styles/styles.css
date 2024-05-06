@@ -271,11 +271,15 @@ hr {
   background-color: var(--color-white);
   border: 1px solid var(--color-border);
   border-radius: 20px;
-  /* margin-top: 0.5rem; */
   width: 20rem;
   height: auto;
   position: absolute;
   right: 6rem;
+  top: 7rem;
+  display: none;
+}
+.open{
+  display: block !important;
 }
 #user-popup > ul {
   display: flex;
@@ -325,13 +329,6 @@ hr {
   cursor: pointer;
   background-color: var(--color-primary);
   color: var(--color-white);
-}
-
-.pop-up{
-  display: none !important;
-}
-.pop-up.active{
-  display: block;
 }
 
 /* ------ User PopUp END ------ */
