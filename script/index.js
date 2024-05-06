@@ -414,19 +414,47 @@ searchButton.addEventListener("click", () => {
           );
 
           if (schedule.length > 0) {
-            const classI = new ClassSec(classObj, schedule);
+            const classI = new ClassSec(classObj, schedule[0].garagGroup);
             return classI;
-          } else return null;
+          }
+          return null;
         });
-        classArrayObj = classArrayObj.filter((classObj) => classObj !== null);
 
-        let classMap = classArrayObj.map((classObj) => {
-          return classObj.Render();
-        });
-        const classSectionHTML = classMap.reduce(
+        classArrayObj = classArrayObj.filter((classObj) => classObj !== null);
+        console.log(classArrayObj);
+
+        let classSectionHTMLArray = classArrayObj
+          .map((classObj) => {
+            let temp;
+            classObj.schedule.forEach((weekday) => {
+              weekday.classHoursSet.forEach((time) => {
+                if (
+                  time >= convertToNumber(startTsag) &&
+                  time <= convertToNumber(endTsag)
+                ) {
+                  console.log(
+                    classObj.building +
+                      "-" +
+                      classObj.roomNo +
+                      " " +
+                      weekday.garag +
+                      " " +
+                      time
+                  );
+                  temp = classObj.Render();
+                  return;
+                } else console.log("Not available time");
+              });
+              return;
+            });
+            return temp != null ? temp : null;
+          })
+          .filter((classObj) => classObj != null);
+        console.log(classSectionHTMLArray);
+
+        const classSectionHTML = classSectionHTMLArray.reduce(
           (prev, current) => prev + current
         );
-        // console.log(classSectionHTML);
         document.getElementById("class-section1").innerHTML = classSectionHTML;
       });
     })
