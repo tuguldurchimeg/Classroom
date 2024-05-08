@@ -17,13 +17,15 @@ class ClassSection extends HTMLElement {
                 class="image"
               />
               <div class="text-wrapper">
-                <h3>${this.data.building} - 
-                ${this.data.roomNo}</h3>
-                <img
-                  src="styles/assets/Heart-grey.svg"
-                  alt="like this class"
-                  class="heart-grey"
-                />
+                <div class="head-wrapper">
+                  <h3>${this.data.building} -
+                  ${this.data.roomNo}</h3>
+                  <img
+                    src="styles/assets/Heart-grey.svg"
+                    alt="like this class"
+                    class="heart-grey"
+                  />
+                </div>
                 <div class="class-type">${this.data.type}</div>
                 <div class="class-info">
                   <div class="seat-count">${this.data.capacity}</div>

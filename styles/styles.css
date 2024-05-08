@@ -44,6 +44,19 @@ html {
 }
 /* -----------------NAVBAR-------------------- */
 
+class-section {
+  padding: 0.5rem 0.2rem;
+  border: 3px solid;
+  border-color: var(--color-border);
+  border-radius: 20px;
+  transition: all 0.2s ease-out;
+  box-shadow: var(--shadow-1);
+}
+class-section:hover {
+  border-color: rgba(42, 71, 28, 0.8);
+  box-shadow: var(--shadow-3);
+}
+
 .main-header {
   position: fixed;
   top: 0;
@@ -61,7 +74,6 @@ html {
 
   justify-content: space-between;
   align-items: center;
-  
 }
 .main-header-2 {
   position: sticky;
@@ -138,21 +150,21 @@ html {
   gap: 1.5em;
 
   padding: 1.5em;
-  
+
   border-radius: 30px;
   border: 1px solid var(--color-border);
 
   background: var(--color-white);
 }
-.calendar-icons span{
-  cursor:pointer
+.calendar-icons span {
+  cursor: pointer;
 }
-.button-list{
+.button-list {
   display: flex;
   gap: 1.25em;
   justify-content: center;
 }
-.button-list li button{
+.button-list li button {
   width: 90px;
   height: 30px;
 
@@ -162,21 +174,21 @@ html {
   font-size: var(--small);
   font-weight: var(--medium);
 
-  background:  var(--color-background);
+  background: var(--color-background);
 }
-.days li.inactive{
+.days li.inactive {
   color: var(--color-light-grey);
 }
-.days li.inactive:hover{
-  background:  var(--color-white);
-  cursor:default;
+.days li.inactive:hover {
+  background: var(--color-white);
+  cursor: default;
 }
-.days li{
+.days li {
   cursor: pointer;
 }
 
-.day-active{
-  background:  var(--color-primary);
+.day-active {
+  background: var(--color-primary);
   color: var(--color-white);
   border-radius: 0;
 }
@@ -188,12 +200,6 @@ html {
   height: 64px;
 }
 
-.class-section-1 {
-  /* width: 18.75rem; */
-  /* height: 10.75rem; */
-  position: relative;
-}
-
 .class-section-1 > article {
   display: flex;
   /* width: 18.75rem; */
@@ -203,17 +209,19 @@ html {
   /* border: 3px solid; */
   /* border-color: var(--color-border); */
 }
+.class-section-1 .head-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
 .class-section-1 .image {
-  position: relative;
   width: 50%;
-  /* height: 10.585rem; */
 
   border-radius: 20px 0 0 20px;
-  border: 1px solid;
-  border-color: var(--color-border);
+  /* border-color: var(--color-border); */
 }
 .class-section-1 .heart-grey {
-  position: absolute;
+  width: 1rem;
   right: 0.8em;
 }
 .class-section-1 .text-wrapper {
@@ -248,7 +256,7 @@ html {
   color: var(--color-light-grey);
 }
 .seat-count::before {
-  position: relative;
+  /* position: relative; */
   top: 0.3rem;
   content: url("assets/Seat-logo.svg");
   width: 0.9rem;
@@ -256,16 +264,16 @@ html {
   margin-right: 5px;
 }
 .projector {
-  position: relative;
+  /* position: relative; */
   top: 0.2rem;
   width: 1.6rem;
   height: 1.4rem;
   margin-right: 5px;
 }
-.proj-off::before{
+.proj-off::before {
   content: url("assets/Projector-off.svg");
 }
-.proj-on::before{
+.proj-on::before {
   content: url("assets/Projector.svg");
 }
 #profile-btn {
@@ -277,7 +285,6 @@ html {
   width: 3rem;
   height: 3rem;
   cursor: pointer;
-  
 }
 
 .class-section-3 {
@@ -333,7 +340,7 @@ hr {
   top: 5rem;
   display: none;
 }
-.open{
+.open {
   display: block !important;
 }
 #user-popup > ul {
@@ -439,9 +446,8 @@ footer {
 
     border-radius: 0px 0 20px 20px;
   }
-  .class-section-1 .heart-grey {
-    position: absolute;
-    right: 0.8em;
+  .class-section-1 .head-wrapper {
+    justify-content: space-between;
   }
   .class-section-1 .text-wrapper {
     margin: 0.875em 0.5em 0.75em;

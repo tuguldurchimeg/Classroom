@@ -11,7 +11,7 @@
   align-items: center;
   flex-wrap: nowrap;
 
-  background:  var(--color-white);
+  background: var(--color-white);
   border-radius: 50px;
   border: 2px solid;
   border-color: var(--color-border);
@@ -41,12 +41,11 @@
   width: 100%;
   height: 100%;
 
-  
   display: flex;
   flex-direction: column;
   justify-content: center;
 
-  background:  var(--color-white);
+  background: var(--color-white);
   border-radius: 30px;
   border: none;
 
@@ -65,7 +64,7 @@
     padding-left: 0.9em;
   }
 }
-.search-bar button{
+.search-bar button {
   cursor: pointer;
 }
 .search-button-background {
@@ -85,7 +84,7 @@
   width: 100%;
   height: 100%;
 
-  background:  transparent;
+  background: transparent;
 
   border-radius: 40px;
   border: none;
@@ -94,15 +93,13 @@
   padding-top: 0.3em;
   width: 1.6rem;
 }
-.search-bar .bair-list li{
+.search-bar .bair-list li {
   border-radius: 10px;
-  transition: all .2s ease-out;
+  transition: all 0.2s ease-out;
 }
-.search-bar .bair-list li:hover{
+.search-bar .bair-list li:hover {
   box-shadow: var(--shadow-1);
-
 }
-
 
 /* -------------------------------MAIN HOMEPAGE------------------------------- */
 
@@ -260,7 +257,7 @@ main {
       display: none;
     }
   }
-  .line-svg{
+  .line-svg {
     display: none;
   }
   .search-bar {
@@ -268,7 +265,7 @@ main {
     justify-content: space-evenly;
     margin: 0 1.2em;
   }
-  .search-bar .bair{
+  .search-bar .bair {
     width: 80%;
   }
 
@@ -279,64 +276,52 @@ main {
   .class-filter {
     margin-top: 1em;
   }
-  .main-header nav{
+  .main-header nav {
     animation: none;
-   }
+  }
 }
 
-
-.class-section-1{
-  border: 3px solid;
-  border-color: var(--color-border); 
-  border-radius: 20px;
-  transition: all .2s ease-out;
-}
-.class-section-1:hover{
-  border: 3px solid;
-  border-color: rgba(42, 71, 28, 0.8);
-  /* box-shadow: var(--shadow-1); */
-}
-.class-section-3{
+.class-section-3 {
   border: 2px solid;
   border-radius: 20px;
   border-color: var(--color-border);
-  transition: all .2s ease-out;
+  transition: all 0.2s ease-out;
 }
-.class-section-3:hover{
+.class-section-3:hover {
   border: 2px solid;
   border-color: rgba(42, 71, 28, 0.8);
 }
-.main-header nav{
- animation: nav-animation linear forwards;
- animation-timeline: view(); 
- animation-range-start: 100vh;
- animation-range-end: 140vh;
+.main-header nav {
+  animation: nav-animation linear forwards;
+  animation-timeline: view();
+  animation-range-start: 100vh;
+  animation-range-end: 140vh;
 }
-.line-svg{
+.line-svg {
   margin-top: 0.75em;
   height: 70%;
-  fill:black;
+  fill: black;
 }
 
-@keyframes nav-animation{
-  100%{
-      margin-top: 1.5em ;
-      margin-bottom: 1.5em;
+@keyframes nav-animation {
+  100% {
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
   }
 }
 
 /* ------------------------POP- UPS------------------------ */
 
-.bair-list{
+.bair-list {
   display: none;
   position: absolute;
   z-index: 999;
   width: 20rem;
 
   top: 4.5rem;
-  
+
   gap: 1.5rem;
-  grid-template-columns: repeat( auto-fit,minmax(5rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(5rem, 1fr));
   /* repeat(var(--destination-card-columns,3),minmax(0,1fr)) */
 
   padding: 1.4em;
@@ -344,25 +329,24 @@ main {
   border-radius: 30px;
   border: 1px solid var(--color-border);
 
-  background:  var(--color-white);
-
+  background: var(--color-white);
 }
 
-.bair-list>li{
+.bair-list > li {
   width: 100%;
-  & button{
+  & button {
     width: 100%;
-    padding:0.3em;
+    padding: 0.3em;
     border-radius: 10px;
     background: var(--color-white);
-    & img{
-      width:inherit;
+    & img {
+      width: inherit;
       border-radius: inherit;
     }
   }
-  & span{
+  & span {
     margin-left: 0.2em;
-    
+
     font-size: var(--small);
     font-weight: var(--medium);
     color: var(--color-dark-grey);
@@ -372,7 +356,7 @@ main {
 .bair-list.open {
   display: grid;
 }
-.tsag-list{
+.tsag-list {
   display: none;
   display: none;
   position: absolute;
@@ -380,23 +364,23 @@ main {
   width: 15rem;
 
   top: 4.5rem;
-  
+
   gap: 1.5rem;
-  grid-template-columns: repeat( auto-fit,minmax(3rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(3rem, 1fr));
 
   padding: 1.4em;
 
   border-radius: 30px;
   border: 1px solid var(--color-border);
 
-  background:  var(--color-white);
+  background: var(--color-white);
 }
 
-.tsag-list>li{
+.tsag-list > li {
   width: 100%;
-  & button{
+  & button {
     width: 100%;
-    padding:0.3em;
+    padding: 0.3em;
     border-radius: 10px;
     background: var(--color-background);
 
@@ -405,14 +389,14 @@ main {
   }
 }
 
-.tsag-list.open{
+.tsag-list.open {
   display: grid;
 }
-.open-flex{
+.open-flex {
   display: flex;
 }
 
-.tsag-active >button{
-  background:var(--color-primary) !important;
+.tsag-active > button {
+  background: var(--color-primary) !important;
   color: var(--color-white);
 }
