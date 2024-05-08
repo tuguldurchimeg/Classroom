@@ -81,6 +81,7 @@ function fetchData() {
           availableClass.Хичээлийн_байр != "Завхан сургуулийн хичээлийн байр" &&
           availableClass.Хичээлийн_байр != "Орхон сургуулийн хичээлийн байр" &&
           availableClass.Өрөөний_зориулалт != "Биеийн тамирын зал "
+          // availableClass.Хичээлийн_байр == bairVariable
         );
       });
       return filteredClasses;
@@ -180,7 +181,7 @@ const renderCalendar = () => {
     });
   });
 };
-renderCalendar();
+// renderCalendar();
 
 prevNextIcon.forEach((icon) => {
   today = 0;
