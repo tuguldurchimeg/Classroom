@@ -92,9 +92,8 @@
  }
  .rate::before, .rate::after, .rate-title-p::before, .rate-title-p::after{
     content: url("assets/Star.svg");
-    font-size: 0.5em;
-    margin: 0.5em;
-    color: var(--color-accent);
+    /* margin: 0.5em; */
+    fill: var(--color-accent);
  }
  
  .rate-criteria{
@@ -406,6 +405,9 @@
    width: 30rem;
    height: 35rem;
  }
+ #rating-pop-up.open{
+   display: flex !important;
+ }
 
 .rate-title-p{
    font-size: var(--heading-4);
@@ -418,9 +420,7 @@
  }
  .star::before{
    content: url("assets/Star.svg");
-   height: 1.5rem;
-   width: 1.5rem;
-   transition: all 0.2s ease;
+   fill: var(--color-primary);
  } 
  .star-wid input{
    display: none;
@@ -543,10 +543,10 @@
       font-size: var(--tiny);
       font-weight: var(600);
    }
-   .rate-title-p{
+   /* .rate-title-p{
       font-size: var(--heading-5);
       font-weight: var(--bold);
-   }
+   } */
  }
  @media (max-width: 768px) {
    /* .class-title{

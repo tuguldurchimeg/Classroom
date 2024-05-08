@@ -109,9 +109,6 @@ let endTsag = "21:45";
 let firstSelectedDay = null;
 let lastSelectedDay = null;
 
-firstSelectedDay = null;
-lastSelectedDay = null;
-
 const renderCalendar = () => {
   let firstDayOfMonth = new Date(currYear, currMonth - 1, 1).getDay(); // Subtract 1 from currMonth
   let lastDateOfMonth = new Date(currYear, currMonth, 0).getDate(); // No need to add 1 to currMonth here

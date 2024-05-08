@@ -125,6 +125,61 @@ html {
 .calendar .days {
   margin-bottom: 25px;
 }
+/* Calendar interactive style */
+.calendar-box {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+
+  position: absolute;
+  z-index: 999;
+
+  top: 4.5rem;
+  gap: 1.5em;
+
+  padding: 1.5em;
+  
+  border-radius: 30px;
+  border: 1px solid var(--color-border);
+
+  background: var(--color-white);
+}
+.calendar-icons span{
+  cursor:pointer
+}
+.button-list{
+  display: flex;
+  gap: 1.25em;
+  justify-content: center;
+}
+.button-list li button{
+  width: 90px;
+  height: 30px;
+
+  border-radius: 30px;
+
+  text-wrap: nowrap;
+  font-size: var(--small);
+  font-weight: var(--medium);
+
+  background:  var(--color-background);
+}
+.days li.inactive{
+  color: var(--color-light-grey);
+}
+.days li.inactive:hover{
+  background:  var(--color-white);
+  cursor:default;
+}
+.days li{
+  cursor: pointer;
+}
+
+.day-active{
+  background:  var(--color-primary);
+  color: var(--color-white);
+  border-radius: 0;
+}
 /* ---------------CALENDAR-END---------------- */
 
 /* ---------------COMPONENT-------------------- */
@@ -275,7 +330,7 @@ hr {
   height: auto;
   position: absolute;
   right: 6rem;
-  top: 7rem;
+  top: 5rem;
   display: none;
 }
 .open{

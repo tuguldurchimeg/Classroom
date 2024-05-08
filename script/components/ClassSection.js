@@ -6,12 +6,13 @@ class ClassSection extends HTMLElement {
   }
   Render() {
     const encodedData = encodeURIComponent(JSON.stringify(this.data));
+    let i = Math.floor(Math.random() * 10000) + 1;
 
     return `
             <a href="class.html?id=${encodedData}" class="class-section-1">
             <article>
               <img
-                src="styles/assets/class.jpg"
+                src="https://source.unsplash.com/random/400x250/?classroom,class,room&${i}"
                 alt="classroom-picture"
                 class="image"
               />

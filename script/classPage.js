@@ -11,11 +11,18 @@ profileBtn.addEventListener("click", () => {
 const addRatingBtn = document.getElementById("add-rating-btn");
 const ratingPopUP = document.getElementById("rating-pop-up");
 
-addRatingBtn.addEventListener("click", function () {
+addRatingBtn.addEventListener("click", () => {
   if (ratingPopUP.classList.contains("open"))
     ratingPopUP.classList.remove("open");
   else ratingPopUP.classList.add("open");
 });
+
+// const timeBtn = document.getElementsByClassName("timeBtn");
+// timeBtn.addEventListener("click", () => {
+//   if (timeBtn.classList.contains("timeBtnClick"))
+//     timeBtn.classList.remove("timeBtnClick");
+//   else timeBtn.classList.add("timeBtnClick");
+// });
 
 const usp = new URLSearchParams(document.location.search);
 const classObj = JSON.parse(usp.get("id"));
@@ -88,8 +95,3 @@ document.getElementById("main-desc").innerHTML = mainInfoHTML;
 //     );
 //     document.getElementById("s-class-list").innerHTML = simClassHTML;
 //   });
-
-// const timeBtn = document.querySelector(".timeBtn");
-// timeBtn.addEventListener("click", () => {
-//   timeBtn.classList.add("timeBtnClick");
-// });
