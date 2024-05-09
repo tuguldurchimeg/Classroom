@@ -22,7 +22,7 @@ html{
 .main{
   display: grid;
   grid-template-columns: 20% 80%;
-  background-color: white;
+  background-color:  var(--color-background);
   margin: 2rem 5rem;
   height: 110%;
   border-radius: 20px;
@@ -185,7 +185,13 @@ text-align:center;
   & li{
     padding-left: 0.6rem !important;
    padding-top: 0.5rem !important;
+   color: var(--color-text);
   }
+}
+.username{
+  color: var(--color-text);
+  font-weight: var(--semi-bold);
+  font-size: var(--color-tiny);
 }
 /* @media screen and (max-width: 1200px) {
   .right-section {

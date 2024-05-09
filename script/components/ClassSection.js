@@ -12,7 +12,7 @@ class ClassSection extends HTMLElement {
             <a href="class.html?id=${encodedData}" class="class-section-1">
             <article>
               <img
-                src="https://source.unsplash.com/random/400x250/?classroom,class,room&${i}"
+                src="https://source.unsplash.com/random/400x250/?classroom,lesson&${i}"
                 alt="classroom-picture"
                 class="image"
               />
