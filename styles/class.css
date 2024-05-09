@@ -5,7 +5,9 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
+    align-items: center;
     margin-top: 2rem;
+   font-size: 1rem;
  }
  text{
    color: var(--color-text);
@@ -15,7 +17,7 @@
     /* background: var(--color-background); */
     border-radius: 20px;
     width: 31em;
-    height: 20rem;
+    height: 20em;
     border: 1px solid var(--color-border);
     box-shadow: var(--shadow-3);
  }
@@ -37,14 +39,14 @@
  .class-img{   
     border-radius: 0 0 20px 20px;
     width: 100%;
-    height: 14.5rem;
+    height: 14.5em;
  }
 
  .main-class-info > section {
    display: flex;
    flex-direction: column;
    align-items: center;
-   row-gap: 1.5rem;
+   row-gap: 1em;
    font-size: var(--medium);
 }
  .main-info{
@@ -59,27 +61,25 @@
     width: 22em;
     height: 5.5em;
  }
- .main-type{
-   font-size: var(--medium-size);
-   font-weight: var(--bold);
+ .info-type{
+   font-size: 1em;
    color: var(--color-text);
  }
  
  .info-desc, .rate-title{
-    font-size: var(--small);
+    font-size: 0.8em;
     font-weight: var(--medium);
     color: var(--color-light-text);
     text-align: center;
  }
-.seat-count-m{
+.info-attr{
    color: var(--color-text);
    fill: var(--color-text);
 }
-.proj-state{
-    padding-top: 0.4em;
-    width: 1.5rem;
-    height: 1.5rem;
-    color: var(--color-text);
+#proj-state{
+    padding-top: 0.5em;
+    width: 1.5em;
+    height: 1.5em;
  }
  .vl {
     border-left: 1px solid var(--color-border);
@@ -95,16 +95,21 @@
  .rate{
     display: flex;
     align-items: center;
-    font-size: var(--heading-4);
+    font-size: 2em;
     font-weight: var(--bold);
     color: var(--color-text);
+    margin-bottom: 0.4em;
  }
  .rate::before, .rate::after, .rate-title-p::before, .rate-title-p::after{
-    content: url("assets/Star.svg");
-    margin-top: 0.5em;
+    content: url("assets/Star-2.svg");
+    margin-top: 0.2em;
+    margin-right: 0.1em;
     fill: var(--color-accent);
  }
- 
+ .rate::after{
+   transform: rotateY(3.142rad);
+   margin-left: 0.1em;
+ }
  .rate-criteria{
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -206,7 +211,7 @@
  /* --- Reserve FORM --- */
  .reserve-form{
     background: var(--color-background);
-    box-shadow: var(--shadow-3);
+    box-shadow: var(--shadow-2);
     border-radius: 30px;
     width: 21rem;
     height: auto;
@@ -283,9 +288,10 @@
    display: flex;
    align-items: center;
    justify-content: space-evenly;
-   margin: 2rem 7rem 0rem 7rem;
+   margin: 2em 7em 0em 7em;
    font-weight: 600;
    font-size: var(--large);
+   color: var(--color-text);
 }
  .day > div{
     background: var(--color-background);
@@ -321,7 +327,7 @@
    height: 2em;
 }
 .day-times button{
-   color: var(--color-black);
+   color: var(--color-text);
 }
 .timeBtn:hover{
    box-shadow: var(--shadow-3);
@@ -341,13 +347,13 @@
  .week > ul{
     display: flex;
     justify-content: space-evenly;
-    padding: 1.5rem;
+    padding: 1.5em;
  }
  .times{
     display: grid;
     gap: 1em;
     justify-content: center;
-    margin-top: 1rem;
+    margin-top: 1em;
  }
  
  /* ----- Week SECTION END-----  */
@@ -365,7 +371,7 @@
  .day-times{
     display: flex;
     flex-wrap: wrap;
-    max-width: 23rem;
+    max-width: 23em;
     gap: 1rem;
  }
  .time-selector{
@@ -376,7 +382,7 @@
  }
 
  .calendar-wrapper{
-   width: 25rem;
+   width: 25em;
  }
  /* Day Section END */
  
@@ -478,11 +484,8 @@
 
  /* ---------- Media Query --------- */
  @media (max-width: 640px) {
-   html{
-      font-size: 14px;
-   }
    .available-days, .calendar-wrapper{
-      width: 23rem;
+      width: 28em;
    }
    .main-class-title{
       width: 100%;
@@ -490,7 +493,7 @@
    }
    .class-img{
       border-radius: 0;
-      height: 11rem;
+      height: 11em;
    }
    /* --- WEEK SECTION Vertical layout on mobile --- */
    .week > ul{
@@ -520,20 +523,23 @@
    }
    .rating h6{
       grid-area: title;
+      margin-top: 1.5rem;
    }
    .rate-criteria{
       grid-area: crit;
       column-gap: 9rem;
    }
-
    #add-rating-btn{
       grid-area: but;
-      margin-top: 5rem;
-      width: 4.5rem;
+      margin-top: 4rem;
+      width: 4.5em;
+      border: none;
+      &:hover{
+         border: 1px solid var(--color-border);
+      }
    }
-
    .main-info{
-      height: 4.3rem;
+      height: 4.3em;
    }
    .option-tab{
       justify-content: space-evenly;
@@ -560,22 +566,20 @@
       font-size: var(--tiny);
       font-weight: var(600);
    }
-   /* .rate-title-p{
-      font-size: var(--heading-5);
-      font-weight: var(--bold);
-   } */
  }
- @media (max-width: 768px) {
-   /* .class-title{
-      width: 20rem;
-      height: 15.5rem;  
+ @media (max-width: 703px) {
+   .main-class-info, #day-tab{
+      font-size: 0.8rem;
    }
    .class-img{
-      height: 10rem;
+      height: 13.1em;
    }
-   .main-info{
-      font-size: var(--medium-size);
-      width: 16rem;
-      height: 4.5rem;
-   } */
+ }
+ @media (max-width: 968px) {
+   .main-class-info, #day-tab, .available-days{
+      font-size: 0.8rem;
+   }
+   .class-img{
+      height: 13.1em;
+   }
  }

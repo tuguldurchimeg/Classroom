@@ -72,7 +72,7 @@ class-section:hover {
 
   margin: 2.875rem 6rem;
 
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
 }
 .main-header-2 {
@@ -85,14 +85,15 @@ class-section:hover {
 
 .main-header-2 nav {
   display: flex;
-  padding: 1rem 6rem;
+  margin: 0rem 6rem;
+  padding: 1rem;
   justify-content: space-between;
   align-items: center;
 }
 
 /* -----------------CALENDAR------------------ */
 .calendar-wrapper {
-  width: 15rem;
+  width: 15em;
   background-color: var(--color-background);
   border-radius: 30px;
   box-shadow: var(--shadow-2);
@@ -148,7 +149,7 @@ class-section:hover {
   position: absolute;
   z-index: 999;
 
-  top: 4.5rem;
+  top: 4.5em;
   gap: 1.5em;
 
   padding: 1.5em;
@@ -282,7 +283,6 @@ class-section:hover {
 }
 #profile-btn {
   background: var(--color-background);
-  border: 2px solid var(--color-border);
   box-shadow: var(--shadow-1);
   border-radius: 50%;
   font-size: 1.5em;
@@ -290,6 +290,9 @@ class-section:hover {
   height: 3rem;
   cursor: pointer;
   color: var(--color-text);
+  &:hover{
+    border: 2px solid var(--color-border);
+  }
 }
 
 .class-section-3 {
@@ -333,6 +336,7 @@ class-section:hover {
 hr {
   border-top: 0.5px solid var(--color-border);
   opacity: 0.2;
+  margin-top: 1.5em;
 }
 /* ------ User PopUp ------ */
 #user-popup {
