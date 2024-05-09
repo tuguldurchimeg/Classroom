@@ -62,8 +62,8 @@
   --gap-1: 1.25rem;
   --margin-1: 6rem;
 }
-@media(prefers-color-scheme:dark){
-  :root{
+@media (prefers-color-scheme: dark) {
+  :root {
     --color-text: rgb(255, 255, 255);
     --color-background: rgba(0, 0, 0, 1);
     --color-white: rgba(255, 255, 255, 1);

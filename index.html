@@ -36,6 +36,8 @@
     <script defer src="script/components/ClassSection.js"></script>
     <script type="module" src="script/components/PopUpUser.js"></script>
     <script defer src="script/components/Calendar.js"></script>
+    <script defet src="script/components/BairList.js"></script>
+    <script defer src="script/components/Bair.js"></script>
   </head>
   <body>
     <app></app>
@@ -50,62 +52,7 @@
           <img class="logo" src="styles/assets/Logo.svg" />
         </a>
         <ul class="search-bar">
-          <li class="bair">
-            <button id="bair-button">
-              <span>Хичээлийн байр</span>
-              <span class="light-grey" id="bair-info">2-р байр</span>
-            </button>
-            <ul class="bair-list" id="bair-list">
-              <li>
-                <button id="bair-1">
-                  <img src="styles/assets/class.jpg" alt="classroom-picture" />
-                </button>
-                <span>1-р байр</span>
-              </li>
-              <li>
-                <button id="bair-2">
-                  <img src="styles/assets/class.jpg" alt="classroom-picture" />
-                </button>
-                <span>2-р байр</span>
-              </li>
-              <li>
-                <button id="bair-4">
-                  <img src="styles/assets/class.jpg" alt="classroom-picture" />
-                </button>
-                <span>4-р байр</span>
-              </li>
-              <li>
-                <button id="bair-5">
-                  <img src="styles/assets/class.jpg" alt="classroom-picture" />
-                </button>
-                <span>5-р байр</span>
-              </li>
-              <li>
-                <button id="bair-7">
-                  <img src="styles/assets/class.jpg" alt="classroom-picture" />
-                </button>
-                <span>7-р байр</span>
-              </li>
-              <li>
-                <button id="bair-8">
-                  <img src="styles/assets/class.jpg" alt="classroom-picture" />
-                </button>
-                <span>8-р байр</span>
-              </li>
-              <li>
-                <button id="bair-e-lib">
-                  <img src="styles/assets/class.jpg" alt="classroom-picture" />
-                </button>
-                <span>E-Lib</span>
-              </li>
-              <li>
-                <button id="bair-huuli">
-                  <img src="styles/assets/class.jpg" alt="classroom-picture" />
-                </button>
-                <span>Хууль зүй</span>
-              </li>
-            </ul>
-          </li>
+          <bair-list class="bair"></bair-list>
           <img src="styles/assets/Line.svg" alt="none" class="line-svg" />
           <li class="odor">
             <button id="calendar-button">
