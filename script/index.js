@@ -23,45 +23,57 @@ profileBtn.addEventListener("click", () => {
 
 //-----------------------------------BAIR-LIST------------------------------------------------------------------
 
-document.getElementById("bair-1").addEventListener("click", () => {
-  bairVariable = "1";
-  bairlist.classList.remove("open");
-  document.getElementById("bair-info").innerText = "1-р байр";
-});
-document.getElementById("bair-2").addEventListener("click", () => {
-  bairVariable = "2";
-  bairlist.classList.remove("open");
-  document.getElementById("bair-info").innerText = "2-р байр";
-});
-document.getElementById("bair-4").addEventListener("click", () => {
-  bairVariable = "4";
-  bairlist.classList.remove("open");
-  document.getElementById("bair-info").innerText = "4-р байр";
-});
-document.getElementById("bair-5").addEventListener("click", () => {
-  bairVariable = "5";
-  bairlist.classList.remove("open");
-  document.getElementById("bair-info").innerText = "5-р байр";
-});
-document.getElementById("bair-7").addEventListener("click", () => {
-  bairVariable = "3А";
-  bairlist.classList.remove("open");
-  document.getElementById("bair-info").innerText = "3А-р байр";
-});
-document.getElementById("bair-8").addEventListener("click", () => {
-  bairVariable = "8";
-  bairlist.classList.remove("open");
-  document.getElementById("bair-info").innerText = "8-р байр";
-});
-document.getElementById("bair-e-lib").addEventListener("click", () => {
-  bairVariable = "E-Lib";
-  bairlist.classList.remove("open");
-  document.getElementById("bair-info").innerText = "E-Номын сан";
-});
-document.getElementById("bair-huuli").addEventListener("click", () => {
-  bairVariable = "3Б";
-  bairlist.classList.remove("open");
-  document.getElementById("bair-info").innerText = "3Б-р байр";
+// document.getElementById("bair-1").addEventListener("click", () => {
+//   bairVariable = "1";
+//   bairlist.classList.remove("open");
+//   document.getElementById("bair-info").innerText = "1-р байр";
+// });
+// document.getElementById("bair-2").addEventListener("click", () => {
+//   bairVariable = "2";
+//   bairlist.classList.remove("open");
+//   document.getElementById("bair-info").innerText = "2-р байр";
+// });
+// document.getElementById("bair-4").addEventListener("click", () => {
+//   bairVariable = "4";
+//   bairlist.classList.remove("open");
+//   document.getElementById("bair-info").innerText = "4-р байр";
+// });
+// document.getElementById("bair-5").addEventListener("click", () => {
+//   bairVariable = "5";
+//   bairlist.classList.remove("open");
+//   document.getElementById("bair-info").innerText = "5-р байр";
+// });
+// document.getElementById("bair-7").addEventListener("click", () => {
+//   bairVariable = "3А";
+//   bairlist.classList.remove("open");
+//   document.getElementById("bair-info").innerText = "3А-р байр";
+// });
+// document.getElementById("bair-8").addEventListener("click", () => {
+//   bairVariable = "8";
+//   bairlist.classList.remove("open");
+//   document.getElementById("bair-info").innerText = "8-р байр";
+// });
+// document.getElementById("bair-e-lib").addEventListener("click", () => {
+//   bairVariable = "E-Lib";
+//   bairlist.classList.remove("open");
+//   document.getElementById("bair-info").innerText = "E-Номын сан";
+// });
+// document.getElementById("bair-huuli").addEventListener("click", () => {
+//   bairVariable = "3Б";
+//   bairlist.classList.remove("open");
+//   document.getElementById("bair-info").innerText = "3Б-р байр";
+// });
+
+// document.querySelector("single-bair").addEventListener("click", () => {
+//   bairlist.classList.remove("open");
+// });
+let bairelements = document.querySelectorAll("single-bair");
+
+bairelements.forEach(function (bairelement) {
+  bairelement.addEventListener("click", () => {
+    bairlist.classList.remove("open");
+    bairelement.changeBair();
+  });
 });
 
 function fetchData() {

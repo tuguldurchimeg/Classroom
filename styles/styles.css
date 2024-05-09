@@ -63,7 +63,7 @@ class-section:hover {
   width: 100%;
   z-index: 4;
   background-color: var(--color-background);
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.18);
+  box-shadow: var(--shadow-1);
 }
 
 .main-header nav {
@@ -110,7 +110,7 @@ class-section:hover {
   font-weight: var(--semi-bold);
   font-size: var(--medium-size);
   line-height: var(--line-height-4);
-  color: var(--color-text)
+  color: var(--color-text);
 }
 .calendar {
   padding: 0 16px 0 16px;
@@ -134,7 +134,7 @@ class-section:hover {
   font-size: var(--small);
   line-height: 24px;
   margin-top: 10px;
-  color: var(--color-text)
+  color: var(--color-text);
 }
 .calendar .days {
   margin-bottom: 25px;
@@ -159,9 +159,9 @@ class-section:hover {
   background-color: var(--color-background);
 }
 
-.calendar-icons span{
-  cursor:pointer;
-  color: var(--color-text)
+.calendar-icons span {
+  cursor: pointer;
+  color: var(--color-text);
 }
 .button-list {
   display: flex;

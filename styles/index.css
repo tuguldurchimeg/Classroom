@@ -10,7 +10,7 @@
   justify-content: space-evenly;
   align-items: center;
   flex-wrap: nowrap;
-  background:  var(--color-background);
+  background: var(--color-background);
   border-radius: 50px;
   border: 2px solid;
   border-color: var(--color-border);
@@ -44,7 +44,7 @@
   flex-direction: column;
   justify-content: center;
   color: var(--color-text);
-  background:  var(--color-background);
+  background: var(--color-background);
   border-radius: 30px;
   border: none;
 
@@ -92,11 +92,11 @@
   padding-top: 0.3em;
   width: 1.6rem;
 }
-.search-bar .bair-list li {
+.search-bar .bair-list single-bair {
   border-radius: 10px;
   transition: all 0.2s ease-out;
 }
-.search-bar .bair-list li:hover {
+.search-bar .bair-list single-bair:hover {
   box-shadow: var(--shadow-1);
 }
 
@@ -121,7 +121,7 @@
   width: 5.31rem;
   height: 2rem;
 
-  background:  var(--color-background);
+  background: var(--color-background);
   color: var(--color-light-grey);
 
   font-size: var(--small);
@@ -151,7 +151,7 @@ aside.index-aside {
   border-radius: 20px;
   border: 3px solid;
   border-color: var(--color-border);
-  background:  var(--color-background);
+  background: var(--color-background);
 }
 aside.index-aside section {
   display: grid;
@@ -306,7 +306,6 @@ main {
   100% {
     margin-top: 1em;
     margin-bottom: 1em;
-    
   }
 }
 
@@ -328,18 +327,19 @@ main {
 
   border-radius: 30px;
   border: 1px solid var(--color-border);
-  background:  var(--color-background);
+  background: var(--color-background);
 }
 
-.bair-list > li {
+.bair-list > single-bair {
   width: 100%;
   & button {
     width: 100%;
     padding: 0.3em;
     border-radius: 10px;
-    background:  var(--color-background);
-    & img{
-      width:inherit;
+    background: var(--color-background);
+    color: var(--color-text);
+    & img {
+      width: inherit;
       border-radius: inherit;
     }
   }
@@ -353,7 +353,7 @@ main {
 }
 
 .bair-list.open {
-  display: grid;
+  display: grid !important;
 }
 .tsag-list {
   display: none;
@@ -371,7 +371,7 @@ main {
 
   border-radius: 30px;
   border: 1px solid var(--color-border);
-  background:  var(--color-background);
+  background: var(--color-background);
 }
 
 .tsag-list > li {
@@ -384,6 +384,7 @@ main {
 
     font-size: var(--small);
     font-weight: var(--medium);
+    color: var(--color-text);
   }
 }
 
