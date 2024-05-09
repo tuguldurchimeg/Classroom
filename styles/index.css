@@ -10,8 +10,7 @@
   justify-content: space-evenly;
   align-items: center;
   flex-wrap: nowrap;
-
-  background: var(--color-white);
+  background:  var(--color-background);
   border-radius: 50px;
   border: 2px solid;
   border-color: var(--color-border);
@@ -44,8 +43,8 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-
-  background: var(--color-white);
+  color: var(--color-text);
+  background:  var(--color-background);
   border-radius: 30px;
   border: none;
 
@@ -122,7 +121,7 @@
   width: 5.31rem;
   height: 2rem;
 
-  background: var(--color-white);
+  background:  var(--color-background);
   color: var(--color-light-grey);
 
   font-size: var(--small);
@@ -152,7 +151,7 @@ aside.index-aside {
   border-radius: 20px;
   border: 3px solid;
   border-color: var(--color-border);
-  background: var(--color-white);
+  background:  var(--color-background);
 }
 aside.index-aside section {
   display: grid;
@@ -328,8 +327,7 @@ main {
 
   border-radius: 30px;
   border: 1px solid var(--color-border);
-
-  background: var(--color-white);
+  background:  var(--color-background);
 }
 
 .bair-list > li {
@@ -338,9 +336,9 @@ main {
     width: 100%;
     padding: 0.3em;
     border-radius: 10px;
-    background: var(--color-white);
-    & img {
-      width: inherit;
+    background:  var(--color-background);
+    & img{
+      width:inherit;
       border-radius: inherit;
     }
   }
@@ -372,8 +370,7 @@ main {
 
   border-radius: 30px;
   border: 1px solid var(--color-border);
-
-  background: var(--color-white);
+  background:  var(--color-background);
 }
 
 .tsag-list > li {

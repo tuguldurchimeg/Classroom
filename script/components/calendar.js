@@ -7,7 +7,7 @@ class Calendar extends HTMLElement {
     this.currYear = this.date.getFullYear();
     this.currMonth = this.date.getMonth() + 1;
 
-    this.type = 2;
+    this.type = this.getAttribute("type-clndr");
   }
 
   Render() {

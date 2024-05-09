@@ -7,9 +7,12 @@
     justify-content: space-evenly;
     margin-top: 2rem;
  }
+ text{
+   color: var(--color-text);
+ }
  
  .main-class-title{
-    /* background-color: var(--color-white); */
+    /* background: var(--color-background); */
     border-radius: 20px;
     width: 31em;
     height: 20rem;
@@ -29,6 +32,7 @@
  }
  .main-class-title > h2{
     width: inherit;
+    color: var(--color-text);
  }
  .class-img{   
     border-radius: 0 0 20px 20px;
@@ -44,8 +48,8 @@
    font-size: var(--medium);
 }
  .main-info{
-    background-color: var(--color-white);
-    box-shadow: var(--shadow-1);
+    background: var(--color-background);
+    box-shadow: var(--shadow-3);
     border-radius: 40px;
     display: flex;
     align-items: center;
@@ -58,12 +62,14 @@
  .main-type{
    font-size: var(--medium-size);
    font-weight: var(--bold);
+   color: var(--color-text);
  }
  
  .info-desc, .rate-title{
     font-size: var(--small);
     font-weight: var(--medium);
     color: var(--color-light-text);
+    text-align: center;
  }
 
 .proj-state{
@@ -81,18 +87,17 @@
     display: grid;
     justify-items: center;
  }
- .rate-title{
-    text-align: center;
- }
+
  .rate{
     display: flex;
     align-items: center;
     font-size: var(--heading-4);
     font-weight: var(--bold);
+    color: var(--color-text);
  }
  .rate::before, .rate::after, .rate-title-p::before, .rate-title-p::after{
     content: url("assets/Star.svg");
-    /* margin: 0.5em; */
+    margin-top: 0.5em;
     fill: var(--color-accent);
  }
  
@@ -109,7 +114,8 @@
     -moz-appearance: meter;
     appearance: none;
     
-    background: var(--color-white);
+    background: var(--color-background);
+    color: var(--color-text);
     box-shadow: var(--shadow-2);
     border-radius: 30px;
     display: flex;
@@ -126,7 +132,7 @@
   }
  
   #add-rating-btn{
-    background-color: var(--color-white);
+    background: var(--color-background);
     border: 1px solid var(--color-border);
     font-size: var(--large);
     font-weight: var(--semi-bold);
@@ -163,7 +169,7 @@
  }
 
 #week-tab {
-   display: none !important;
+   /* display: none !important; */
 }
 
 #day-btn:checked + label + .reservation #day-tab,
@@ -188,15 +194,15 @@
    width: 10rem;
    height: 3px;
    background: var(--color-primary-gradient);
-   box-shadow: var(--shadow-1);
+   box-shadow: var(--shadow-3);
    position: absolute;
  }
  /* ------ MENU END ----- */
  
  /* --- Reserve FORM --- */
  .reserve-form{
-    background-color: var(--color-white);
-    box-shadow: var(--shadow-1);
+    background: var(--color-background);
+    box-shadow: var(--shadow-3);
     border-radius: 30px;
     width: 21rem;
     height: auto;
@@ -240,7 +246,8 @@
     margin-bottom: 0.5em;
  }
  .form-attr{
-    background-image: var(--color-background-gradient);
+    background: var(--color-background);
+    box-shadow: var(--shadow-2);
     font-size: var(--regular);
     font-weight: var(--medium);
     color: var(--color-light-text);
@@ -259,7 +266,7 @@
  
  /* --------- Week SECTION ---------  */
  .available-days{
-    background-color: var(--color-white);
+    background: var(--color-background);
     border-radius: 30px;
     width: 45rem;
     height: auto;
@@ -274,7 +281,7 @@
    font-size: var(--large);
 }
  .day > div{
-    background-color: var(--color-white);
+    background: var(--color-background);
     box-shadow: var(--shadow-2);
     border-radius: 30px;
     text-align: center;
@@ -294,7 +301,8 @@
  }
  
  .timeBtn{
-   background-image: var(--color-background-gradient);
+   background: var(--color-background);
+   box-shadow: var(--shadow-2);
    border-radius: 30px;
    color: var(--color-light-text);
    font-weight: var(--semi-bold);
@@ -306,10 +314,10 @@
    height: 2em;
 }
 .day-times button{
-   color: var(--color-text);
+   color: var(--color-black);
 }
 .timeBtn:hover{
-   box-shadow: var(--shadow-1);
+   box-shadow: var(--shadow-3);
 }
 .timeBtnClick{
    background-color: var(--color-primary);
@@ -371,7 +379,7 @@
     margin-left: 5rem;
  }
  .similar-class h2{
-    text-shadow: var(--shadow-1);
+    text-shadow: var(--shadow-3);
     font-size: var(--heading-5);
     font-weight: var(--bold);
  }
@@ -387,14 +395,15 @@
  }
  .similar-class a{
    min-width: 18rem;
-   box-shadow: var(--shadow-1);
+   box-shadow: var(--shadow-3);
  }
  .similar-class article{
    border: none;
  }
 
  #rating-pop-up{
-   background-image: var(--color-background-gradient);
+   background: var(--color-background);
+   box-shadow: var(--shadow-2);
    border: 1px solid var(--color-border);
    border-radius: 70px;
    display: none;
@@ -442,7 +451,7 @@
    align-items: center;
  }
  .star-wid, .add-rate{
-   background-color: var(--color-white);
+   background: var(--color-background);
    border: 1px solid var(--color-border);
    border-radius: 40px;
    margin-top: 0.2rem;
