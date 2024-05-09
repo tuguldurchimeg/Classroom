@@ -48,15 +48,11 @@ mainInfoHTML += `
     <li><div class="vl"></div></li>
     <li>
         <div class="info-desc" id="projector-info">Проектор</div>
-        <img
-          src="${
-            classObj.projector === "Проектортой"
-              ? "styles/assets/Check.svg"
-              : "styles/assets/X.svg"
-          }"
-          alt="projector"
-          class="proj-state"
-        />
+        ${
+          classObj.projector === "Проектортой"
+            ? "<i class='fa-solid fa-check proj-state'></i>"
+            : "<i class='fa-solid fa-xmark proj-state'></i>"
+        }
     </li>
   `;
 

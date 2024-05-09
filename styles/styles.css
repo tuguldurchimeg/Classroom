@@ -332,6 +332,7 @@ class-section:hover {
 
 hr {
   border-top: 0.5px solid var(--color-border);
+  opacity: 0.2;
 }
 /* ------ User PopUp ------ */
 #user-popup {
@@ -410,6 +411,8 @@ footer {
   width: 100%;
   height: 10rem;
   margin-top: 5rem;
+  position: relative;
+  bottom: 0;
 }
 /* --------- MEDIA QUERIES --------- */
 @media (max-width: 660px) {

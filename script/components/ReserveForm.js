@@ -8,15 +8,13 @@ class ReserveForm extends HTMLElement {
         <ul>
             <li>
                 <label for="purpose1">Ашиглах зорилго</label>
-                <div>
-                    <select class="form-attr" name="purpose" id="purpose1" required>
-                        <option value="клуб">Клубын уулзалт</option>
-                        <option value="хурал">Хурал, цуглаан</option>
-                        <option value="сургалт">Сургалт, давтлага</option>
-                        <option value="хичээл">Хичээл хийх</option>
-                        <option value="чөлөөт">Урлагийн наадам</option>
-                    </select>
-                </div>
+                  <select class="form-attr" name="purpose" id="purpose1" required>
+                      <option value="клуб">Клубын уулзалт</option>
+                      <option value="хурал">Хурал, цуглаан</option>
+                      <option value="сургалт">Сургалт, давтлага</option>
+                      <option value="хичээл">Хичээл хийх</option>
+                      <option value="чөлөөт">Урлагийн наадам</option>
+                  </select>
             </li>
             <li>
                 <label for="description2">Нэмэлт тайлбар</label>

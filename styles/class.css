@@ -71,11 +71,15 @@
     color: var(--color-light-text);
     text-align: center;
  }
-
+.seat-count-m{
+   color: var(--color-text);
+   fill: var(--color-text);
+}
 .proj-state{
-    padding-top: 0.1em;
+    padding-top: 0.4em;
     width: 1.5rem;
     height: 1.5rem;
+    color: var(--color-text);
  }
  .vl {
     border-left: 1px solid var(--color-border);
@@ -220,6 +224,7 @@
     grid-template-rows: auto;
     grid-template-areas: "people phone1"
                          " . phone2";
+    justify-content: space-between;
  }
  .phone-number1{
     grid-area: phone1;
@@ -253,7 +258,7 @@
     color: var(--color-light-text);
     border-radius: 30px;
     border: none;
-    width: 17em;
+    width: 100%;
     height: 2.5rem;
  }
  .form-attr:focus{
@@ -263,7 +268,9 @@
     width: 100%;
     font-size: 1.2em;
  }
- 
+ label{
+   color: var(--color-text);
+ }
  /* --------- Week SECTION ---------  */
  .available-days{
     background: var(--color-background);
@@ -382,6 +389,7 @@
     text-shadow: var(--shadow-3);
     font-size: var(--heading-5);
     font-weight: var(--bold);
+    color: var(--color-text);
  }
  .similar-class div{
     display: flex;
