@@ -15,11 +15,11 @@ class BtnLike extends HTMLElement {
         }
     </style>
     
-            ${
-              this.liked == "checked"
-                ? '<i class="fa-solid fa-heart heart-grey"></i>'
-                : '<i class="fa-regular fa-heart heart-grey"></i>'
-            }
+    ${
+      this.liked == "checked"
+        ? '<i class="fa-solid fa-heart heart-grey"></i>'
+        : '<i class="fa-regular fa-heart heart-grey"></i>'
+    }
             
     `;
   }
@@ -30,9 +30,9 @@ class BtnLike extends HTMLElement {
     // a
     this.addEventListener("click", (event) => {
       event.preventDefault();
-      console.log("hjfdkshdkl");
-      this.liked == "checked" ? (this.liked = "") : (this.liked = "checked");
-      this.#Render();
+      this.liked = this.liked == "checked" ? "" : "checked";
+      const cart = document.querySelector(".verified");
+      this.innerHTML = this.#Render();
     });
   }
 
