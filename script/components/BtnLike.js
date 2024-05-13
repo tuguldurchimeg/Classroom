@@ -27,6 +27,7 @@ class BtnLike extends HTMLElement {
 
   connectedCallback() {
     this.innerHTML = this.#Render();
+    // a
     this.addEventListener("click", (event) => {
       event.preventDefault();
       console.log("hjfdkshdkl");
