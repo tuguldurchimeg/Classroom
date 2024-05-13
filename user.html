@@ -15,9 +15,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"> 
     <script defer type="module" src="script/user.js"></script>
     <script type="module" src="./script/components/user/cmp-class.js"></script>
+    <script type="module" src="script/components/MobileNav.js"></script>
     <title>User Profile</title>
 </head>
 <body>
@@ -33,22 +35,30 @@
         <section class="main">
             <section>
                 <article class="info">
-                    <button class="profile-button"><i class="fa-regular fa-user"></i></button>
+                    <button class="profile-button"><i class="far fa-user"></i>
+                    </button>
                     <div>
                     <p class="username">User</p>
                 </div>
                     <ul class="hovers">
-                        <li class="ordered">Захиалсан ангиуд</li>
-                        <li class="liked">Дуртай</li>
-                        <li class="account">Аккаунт</li>
+                        <li>
+                        <button class="ordered">Захиалсан ангиуд</button>
+                        </li>
+                        <li>
+                        <button class="liked">Дуртай</button>
+                        </li>
+                        <li>
+                        <button class="account">Аккаунт</button>
+                        </li>
                     </ul>
                 </article>
-                <article class="log-out">Гарах</article>
+                <li>
+                <button class="log-out">Гарах</button>
+            </li>
             </section>
             <section class="right-section">
                 <h1>Баталгаажсан:</h1>
                 <class-component></class-component>
-
                 <section class="verified">
                 </section>
                 <section>
@@ -67,7 +77,7 @@
                                         </div>
                                         <img src="styles/assets/Heart-grey.svg" alt="like this class" class="heart-grey">
                                     </div>
-                                    <ul>
+                                    <ul class="details-list">
                                         <li>03.05-Мя</li>
                                         <li>
                                             <button><span>16:00</span></button>
@@ -119,32 +129,26 @@
     </main>
     <nav class="mobile-nav">
         <ul>
-          <li>
+        <li>
             <a href="index.html"><img src="styles/assets/Logo.svg" alt="Home" /></a>
-          </li>
-          <li>
-            <a href="user.html"
-              ><img src="styles/assets/Navbar-heart.svg" alt="Liked Classes"
-            /></a>
-          </li>
-          <li>
+        </li>
+        <li>
+            <a href="user.html"><img src="styles/assets/Navbar-heart.svg" alt="Liked Classes"/></a>
+        </li>
+        <li>
             <a href="user.html"
               ><img src="styles/assets/Waiting.svg" alt="Zahialguud"
             /></a>
           </li>
           <li>
             <a href="user.html"
-              ><img src="styles/assets/Navbar-profile.svg" alt="Profile"
+            ><img src="styles/assets/Navbar-profile.svg" alt="Profile"
             /></a>
           </li>
         </ul>
       </nav>
       <footer>
-
       </footer>
 </body>
-<script>
-
-
-</script>
+<script src="user.js"></script>
 </html>

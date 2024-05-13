@@ -44,6 +44,7 @@ header{
   display: grid;
   grid-template-columns: 30% 30% 30%;
   gap: 1rem;
+  background: var(--color-background);
   & .class-section-2{
     gap: 2px;
     border-style: solid;
@@ -159,13 +160,28 @@ header{
   color: var(--color-light-grey);
   white-space: nowrap;
 text-align:center;
+margin-left: 3rem;
 }
+
+.far.fa-user {
+  color:black; 
+  font-size: 40px; 
+  /* margin-left: 2rem; */
+
+  /* background-color: transparent; */
+}
+
+/* --------------------HOVERS--------------- */
 .ordered:hover {
   height: 25px ;
   width: 80% !important;
   background-color: var(--color-primary);
   color: var(--color-white);
   border-radius: 10px ;
+  background-color: transparent; 
+  border: 2px solid green;
+  padding: 2px 4px;
+  cursor: pointer;
 }
 .liked:hover:hover {
   height: 25px ;
@@ -173,6 +189,10 @@ text-align:center;
   background-color: var(--color-primary);
   color: var(--color-white);
   border-radius: 10px;
+  background-color: transparent; 
+  border: 2px solid green;
+  padding: 2px 4px;
+  cursor: pointer;
 }
 .account:hover {
   height: 25px ;
@@ -180,6 +200,17 @@ text-align:center;
   background-color: var(--color-primary);
   color: var(--color-white);
   border-radius: 10px;
+  background-color: transparent; 
+  border: 2px solid green;
+  padding: 2px 4px;
+  cursor: pointer;
+}
+.log-out:hover{
+  border-radius: 10px;
+  background-color: transparent; 
+  border: 2px solid green;
+  padding: 2px 4px;
+  cursor: pointer;
 }
 .hovers{
   & li{
@@ -192,6 +223,10 @@ text-align:center;
   color: var(--color-text);
   font-weight: var(--semi-bold);
   font-size: var(--color-tiny);
+}
+.class-section-2:hover {
+  border: 2px solid;
+  border-color: rgba(42, 71, 28, 0.8);
 }
 /* @media screen and (max-width: 1200px) {
   .right-section {
@@ -222,13 +257,16 @@ text-align:center;
   }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 695px) {
   .main {
     display: block;
   }
 }
-/* --------- MEDIA QUERIES --------- */
-@media (max-width: 660px) {
+
+  
+
+/* --------- MEDIA QUERIES MOBILE--------- */
+@media (max-width: 695px) {
   .mobile-nav {
     display: block;
     position: fixed;
@@ -297,5 +335,9 @@ text-align:center;
   width: 100% !important;
   text-align: center !important;
   justify-content: center !important;
+}
+.details-list{
+  font-size: 15px !important;
+  margin-top: 20px !important;
 }
 }
