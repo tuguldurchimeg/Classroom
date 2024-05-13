@@ -14,20 +14,25 @@ class BtnLike extends HTMLElement {
           display: none;
         }
     </style>
-    <label> 
+    
             ${
               this.liked == "checked"
                 ? '<i class="fa-solid fa-heart heart-grey"></i>'
                 : '<i class="fa-regular fa-heart heart-grey"></i>'
             }
-            <input type="checkbox" ${this.liked}>
-    </label>
+            
     `;
   }
   Liked() {}
 
   connectedCallback() {
     this.innerHTML = this.#Render();
+    this.addEventListener("click", (event) => {
+      event.preventDefault();
+      console.log("hjfdkshdkl");
+      this.liked == "checked" ? (this.liked = "") : (this.liked = "checked");
+      this.#Render();
+    });
   }
 
   disconnectedCallback() {
