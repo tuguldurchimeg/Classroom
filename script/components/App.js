@@ -1,25 +1,9 @@
-class App extends HTMLElement {
+export default class App {
   constructor() {
     super();
     //implementation
   }
-  Render() {}
-
-  connectedCallback() {
-    this.innerHTML = this.Render();
-  }
-
-  disconnectedCallback() {
-    //implementation
-  }
-
-  attributeChangedCallback(name, oldVal, newVal) {
-    //implementation
-  }
-
-  adoptedCallback() {
-    //implementation
+  Render() {
+    return ``;
   }
 }
-
-window.customElements.define("app", App);

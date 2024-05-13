@@ -1,4 +1,4 @@
-export default class ClassSec {
+export default class ClassRen {
   constructor(classObj, garagGroup) {
     this.roomID = classObj.Өрөөний_хувийн_дугаар;
 
@@ -21,8 +21,14 @@ export default class ClassSec {
     else if (this.type == "Сургалтын лаборатори") this.type = "Лаб";
   }
   Render() {
-    return ` <class-section data=${encodeURIComponent(
-      JSON.stringify(this)
-    )}> </class-section> `;
+    return ` <class-section 
+                build=${this.building} 
+                roomNo=${this.roomNo} 
+                roomID=${this.roomID}
+                type=${this.type}
+                cap=${this.capacity}
+                proj=${this.projector}
+                sched=${this.schedule}
+    > </class-section> `;
   }
 }

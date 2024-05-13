@@ -1,4 +1,4 @@
-import ClassSec from "./ClassRender.js";
+import ClassRen from "./classRender.js";
 
 const profileBtn = document.getElementById("profile-btn");
 const userPopUp = document.getElementById("user-popup");
@@ -36,7 +36,7 @@ let mainInfoHTML = "";
 
 classTitleHTML += `
     <h2 class="heading-3 title">
-      <span class="room">${classObj.building} - ${classObj.roomNo}</span>
+      <span class="room">${classObj.build} - ${classObj.roomNo}</span>
     <h2>
     <img src="styles/assets/class.jpg" alt="class image" class="class-img">
   `;
@@ -47,14 +47,14 @@ mainInfoHTML += `
     <li>
         <div class="info-desc">Суудлын тоо</div>
         <div class="info-attr heading-6 " id="seat-count-m">${
-          classObj.capacity
+          classObj.capac
         }</div>
     </li>
       <li><div class="vl"></div></li>
     <li>
         <div class="info-desc">Проектор</div>
         ${
-          classObj.projector === "Проектортой"
+          classObj.proj === "Проектортой"
             ? "<i class='fa-solid fa-check info-attr' id='proj-state'></i>"
             : "<i class='fa-solid fa-xmark info-attr' id='proj-state'></i>"
         }
@@ -69,11 +69,11 @@ fetch("https://api.npoint.io/70107af397f4a981c076")
   .then((response) => response.json())
   .then((responseObj) => {
     let tempDepart, tempType;
-    if (classObj.building == "E-lib") tempDepart = "Е-Номын сан";
-    else if (classObj.building == "1") tempDepart = "Хичээлийн төв байр";
-    else if (classObj.building == "Хууль")
+    if (classObj.build == "E-lib") tempDepart = "Е-Номын сан";
+    else if (classObj.build == "1") tempDepart = "Хичээлийн төв байр";
+    else if (classObj.build == "Хууль")
       tempDepart = "Улаанбаатар сургуулийн хичээлийн байр";
-    else tempDepart = "Хичээлийн байр " + classObj.building;
+    else tempDepart = "Хичээлийн байр " + classObj.build;
 
     if (classObj.type == "Семинар") tempType = "Семинарын танхим";
     else if (classObj.type == "Лекц") tempType = "Лекцийн танхим";
@@ -81,13 +81,14 @@ fetch("https://api.npoint.io/70107af397f4a981c076")
 
     let filteredClasses = responseObj.filter(
       (similarClass) =>
+        similarClass.Өрөөний_хувийн_дугаар != classObj.roomID &&
         similarClass.Хичээлийн_байр == tempDepart &&
         similarClass.Өрөөний_зориулалт == tempType &&
         similarClass.Хичээлийн_хуваарь_тавих_боломж != "Хуваарь тавих боломжгүй"
     );
 
     const simClassHTMLArray = filteredClasses.map((simClassObj) => {
-      const classI = new ClassSec(simClassObj, "");
+      const classI = new ClassRen(simClassObj, "");
       return classI.Render();
     });
 

@@ -1,15 +1,20 @@
 class ClassSection extends HTMLElement {
   constructor() {
     super();
-    this.data = JSON.parse(decodeURIComponent(this.getAttribute("data")));
-    this.schedule = this.data.schedule;
+    this.build = this.getAttribute("build");
+    this.roomNo = this.getAttribute("roomNo");
+    this.roomID = this.getAttribute("roomID");
+    this.type = this.getAttribute("type");
+    this.capac = this.getAttribute("cap");
+    this.proj = this.getAttribute("proj");
+    this.schedule = this.getAttribute("sched");
+
+    this.liked = false;
   }
   Render() {
-    const encodedData = encodeURIComponent(JSON.stringify(this.data));
+    const encodedData = encodeURIComponent(JSON.stringify(this));
     let i = Math.floor(Math.random() * 10000) + 1;
-
-    return `
-            <a href="class.html?id=${encodedData}" class="class-section-1">
+    return `<a href="class.html?id=${encodedData}" class="class-section-1">
             <article>
               <img
                 src="https://source.unsplash.com/random/400x250/?classroom,lesson&${i}"
@@ -17,29 +22,26 @@ class ClassSection extends HTMLElement {
                 class="image"
               />
               <div class="text-wrapper">
-                <div class="head-wrapper">
-                  <h3>${this.data.building} -
-                  ${this.data.roomNo}</h3>
-                  <img
-                    src="styles/assets/Heart-grey.svg"
-                    alt="like this class"
-                    class="heart-grey"
-                  />
-                </div>
-                <div class="class-type">${this.data.type}</div>
+                <h3>
+                  ${this.build} - 
+                  ${this.roomNo}
+                </h3>
+                <btn-like roomId=${this.roomID}></btn-like>
+                <div class="class-type">${this.type}</div>
                 <div class="class-info">
-                  <div class="seat-count">${this.data.capacity}</div>
-                  <div class="projector">${
-                    this.data.projector === "Проектортой"
+                  <div class="seat-count">${this.capac}</div>
+                  ${
+                    this.proj === "Проектортой"
                       ? '<div class="projector proj-on"></div>'
                       : '<div class="projector proj-off"></div>'
-                  }</div>
+                  }
                 </div>
               </div>
             </article>
           </a>
-        `;
+      `;
   }
+  Liked() {}
 
   connectedCallback() {
     this.innerHTML = this.Render();

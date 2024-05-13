@@ -1,4 +1,4 @@
-import ClassSec from "./ClassRender.js";
+import ClassRen from "./classRender.js";
 
 let bairVariable = "2";
 
@@ -345,7 +345,7 @@ searchButton.addEventListener("click", () => {
           );
 
           if (schedule.length > 0) {
-            const classI = new ClassSec(classObj, schedule[0].garagGroup);
+            const classI = new ClassRen(classObj, schedule[0].garagGroup);
             return classI;
           }
           return null;

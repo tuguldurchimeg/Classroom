@@ -79,9 +79,10 @@ class-section:hover {
   position: sticky;
   top: 0;
   z-index: 4;
-  background: var(--color-background);
+  background: rgba(0, 0, 0, 0);
   box-shadow: var(--shadow-2);
 }
+
 
 .main-header-2 nav {
   display: flex;
@@ -331,12 +332,6 @@ class-section:hover {
   font-weight: var(--normal);
   color: var(--color-dark-grey);
   line-height: var(--line-height-4);
-}
-
-hr {
-  border-top: 0.5px solid var(--color-border);
-  opacity: 0.2;
-  margin-top: 1.5em;
 }
 /* ------ User PopUp ------ */
 #user-popup {
