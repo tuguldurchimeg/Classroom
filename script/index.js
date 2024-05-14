@@ -1,4 +1,4 @@
-import ClassRen from "./classRender.js";
+import ClassRen from "./ClassRender.js";
 
 let bairVariable = "2";
 
@@ -69,12 +69,12 @@ profileBtn.addEventListener("click", () => {
 // });
 let bairelements = document.querySelectorAll("single-bair");
 
-bairelements.forEach(function (bairelement) {
-  bairelement.addEventListener("click", () => {
-    bairlist.classList.remove("open");
-    bairelement.changeBair();
-  });
-});
+// bairelements.forEach(function (bairelement) {
+//   bairelement.addEventListener("click", () => {
+//     bairlist.classList.remove("open");
+//     bairelement.changeBair();
+//   });
+// });
 
 function fetchData() {
   return fetch("https://api.npoint.io/70107af397f4a981c076")
@@ -295,15 +295,6 @@ function fetching() {
     });
 }
 // ----------------------------------BAIR-BUTTON-LISTENERS----------------------------------------------------------------------
-
-bairbtn.addEventListener("click", () => {
-  if (bairlist.classList.contains("open")) bairlist.classList.remove("open");
-  else {
-    bairlist.classList.add("open");
-    tsaglist.classList.remove("open");
-    calendarlist.classList.remove("open-flex");
-  }
-});
 
 calendarbtn.addEventListener("click", () => {
   if (calendarlist.classList.contains("open-flex")) {

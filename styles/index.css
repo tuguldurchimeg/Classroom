@@ -312,7 +312,7 @@ main {
 /* ------------------------POP- UPS------------------------ */
 
 .bair-list {
-  display: none;
+  display: grid;
   position: absolute;
   z-index: 999;
   width: 20rem;
