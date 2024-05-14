@@ -1,8 +1,24 @@
-class bair extends HTMLElement {
+class Bair extends HTMLElement {
   constructor() {
     super();
 
-    //  let bairNumb = this.getAttribute("bairNum");
+    // Bind event listener
+    this.addEventListener("click", this.handleClick.bind(this));
+  }
+
+  handleClick() {
+    // Dispatch custom event when clicked
+    const event = new CustomEvent("bairChanged", {
+      bubbles: true,
+      detail: {
+        bairNum: this.getAttribute("bairId"),
+      },
+    });
+    this.dispatchEvent(event);
+  }
+
+  connectedCallback() {
+    // Set bairNum based on bairId
     switch (this.getAttribute("bairId")) {
       case "1":
         this.bairNum = "1-р байр";
@@ -29,43 +45,18 @@ class bair extends HTMLElement {
         this.bairNum = "Хууль зүй";
         break;
       default:
-        this.bairNum = "2-р байр";
+        this.bairNum = "2-р байр"; // Default value
         break;
     }
 
-    this.bairId = this.getAttribute("bairId");
-  }
-
-  #Render() {
-    return `
-      <button bairId = "${this.bairId}">
+    // Render the component
+    this.innerHTML = `
+      <button>
         <img src="styles/assets/class.jpg" alt="classroom-picture" />
       </button>
       <span>${this.bairNum}</span>
     `;
   }
-
-  changeBair() {
-    const listofbair = document.querySelector("bair-list");
-    listofbair.changeBair(this.bairNum);
-    //  const event = new Event("BairTitleChanged", { bubbles: true });
-    //  this.dispatchEvent(event);
-  }
-
-  connectedCallback() {
-    this.innerHTML = this.#Render();
-  }
-  disconnectedCallback() {
-    //implementation
-  }
-
-  attributeChangedCallback(name, oldVal, newVal) {
-    //implementation
-  }
-
-  adoptedCallback() {
-    //implementation
-  }
 }
 
-window.customElements.define("single-bair", bair);
+window.customElements.define("single-bair", Bair);
