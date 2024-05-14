@@ -26,7 +26,7 @@ class ClassSection extends HTMLElement {
                   ${this.build} - 
                   ${this.roomNo}
                 </h3>
-                <btn-like roomId=${this.roomID}></btn-like>
+                <btn-like roomId=${encodedData}></btn-like>
                 <div class="class-type">${this.type}</div>
                 <div class="class-info">
                   <div class="seat-count">${this.capac}</div>

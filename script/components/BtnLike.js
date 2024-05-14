@@ -31,7 +31,8 @@ class BtnLike extends HTMLElement {
     this.addEventListener("click", (event) => {
       event.preventDefault();
       this.liked = this.liked == "checked" ? "" : "checked";
-      const cart = document.querySelector(".verified");
+      const cart = document.querySelector(".test");
+      cart.LikedClass(this.roomId);
       this.innerHTML = this.#Render();
     });
   }

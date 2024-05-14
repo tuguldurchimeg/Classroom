@@ -1,11 +1,37 @@
 class Cart extends HTMLElement {
   constructor() {
     super();
-    //implementation
+    this.likedClasses = new Map();
+  }
+  #Render() {
+    let temp = Array.from(this.likedClasses.values)
+      .map((classL) => {
+        return `<class-section 
+                build=${classL.build} 
+                roomNo=${classL.roomNo} 
+                roomID=${classL.roomID}
+                type=${classL.type}
+                cap=${classL.capac}
+                proj=${classL.proj}
+                sched=${classL.schedule}
+            > </class-section>`;
+      })
+      .reduce((prev, current) => prev + current);
+    return temp;
+  }
+
+  LikedClass(classData) {
+    let t = JSON.parse(decodeURIComponent(classData));
+    if (this.likedClasses.has(t.roomID)) {
+      this.likedClasses.delete(t.roomID);
+    } else {
+      this.likedClasses.set(t.roomID, t);
+    }
+    this.innerHTML = this.#Render();
   }
 
   connectedCallback() {
-    //implementation
+    this.innerHTML = this.#Render();
   }
 
   disconnectedCallback() {
@@ -21,4 +47,4 @@ class Cart extends HTMLElement {
   }
 }
 
-window.customElements.define("cart", Cart);
+window.customElements.define("cart-class", Cart);
