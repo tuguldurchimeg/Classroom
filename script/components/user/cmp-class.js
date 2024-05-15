@@ -28,5 +28,4 @@ class ClassComponent extends HTMLElement {
         });
     }
 }
-
 window.customElements.define('class-component', ClassComponent);
