@@ -19,6 +19,7 @@
     <script defer type="module" src="script/user.js"></script>
     <script type="module" src="./script/components/user/cmp-class.js"></script>
     <script defer src="script/components/Cart.js"></script>
+    <script defer src="script/components/BtnLike.js"></script>
 
     <title>User Profile</title>
 </head>
@@ -33,25 +34,55 @@
     </header>
     <main class="body">
         <section class="main">
-            <section>
+            <section class="left-section">
                 <article class="info">
-                    <button class="profile-button"><i class="fa-regular fa-user"></i></button>
+                    <button class="pop-up-btn" id="profile-btn"><i class="fa-regular fa-user"></i></button>
                     <div>
-                    <p class="username">User</p>
                 </div>
-                    <ul class="hovers">
-                        <li class="ordered">Захиалсан ангиуд</li>
-                        <li class="liked">Дуртай</li>
-                        <li class="account">Аккаунт</li>
+                <cart-class class="test">                </cart-class>
+                <ul>
+                    <li class="username">User</li>
+                    <li class="ordered">Захиалсан ангиуд</li>
+                    <li class="liked">Дуртай</li>
+                    <li class="account">Аккаунт</li>
                     </ul>
                 </article>
                 <article class="log-out">Гарах</article>
             </section>
             <section class="right-section">
                 <h1>Баталгаажсан:</h1>
-                <class-component></class-component>
-
-                <section>
+                <section class="verified">
+                <a href="./class.html">
+                            <article class="class-section-2">
+                                <div class="img">
+                                    <img src="styles/assets/class.jpg" alt="classroom-picture" class="image">
+                                </div>
+                                <section class="details">
+                                    <div class="heartdetailsgrid">
+                                        <div class="font">
+                                            <h3>1-407</h3>
+                                            <div class="class-type">Лекц</div>
+                                        </div>
+                                        <img src="styles/assets/Heart-grey.svg" alt="like this class" class="heart-grey">
+                                    </div>
+                                    <ul>
+                                        <li>03.05-Мя</li>
+                                        <li>
+                                            <button><span>16:00</span></button>
+                                        </li>
+                                        <li>
+                                            <button><span>16:00</span></button>
+                                        </li>
+                                    </ul>
+                                </section>
+                                <div class="cancel">
+                                    <button><img src="styles/assets/cancal.png" alt="cancel"></button>
+                                </div>
+                            </article>
+                        </a>
+                </section>
+            <class-component></class-component>
+                <section class="waiting">
                     <h1>Хүлээгдэж буй:</h1>
                     <section class="verified">
                         <a href="./class.html">
@@ -111,7 +142,7 @@
                                 </div>
                             </article>
                         </a>
-                                            <article></article>
+                            <article></article>
                     <article></article>
                 </section>
             </section>
@@ -143,8 +174,9 @@
 
       </footer>
 </body>
+<cart-class class="test"></cart-class>
 <script>
-
-
+</script>
+<script>
 </script>
 </html>
