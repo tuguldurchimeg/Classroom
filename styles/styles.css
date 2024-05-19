@@ -226,9 +226,10 @@ class-section:hover {
   border-radius: 20px 0 0 20px;
   /* border-color: var(--color-border); */
 }
-.class-section-1 .heart-grey {
-  width: 1.3rem;
-  right: 0.8em;
+.class-head-ttl{
+  display: flex;
+  justify-content: space-between;
+
 }
 .class-section-1 .text-wrapper {
   display: flex;

@@ -22,11 +22,13 @@ class ClassSection extends HTMLElement {
                 class="image"
               />
               <div class="text-wrapper">
-                <h3>
-                  ${this.build} - 
-                  ${this.roomNo}
-                </h3>
-                <btn-like roomId=${encodedData}></btn-like>
+                <div class="class-head-ttl">
+                    <h3>
+                    ${this.build} - 
+                    ${this.roomNo}
+                  </h3>
+                  <btn-like roomId=${encodedData}></btn-like>
+                </div>
                 <div class="class-type">${this.type}</div>
                 <div class="class-info">
                   <div class="seat-count">${this.capac}</div>

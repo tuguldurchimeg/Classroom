@@ -9,6 +9,7 @@ class BtnLike extends HTMLElement {
     <style> 
         .heart-grey{
           color: var(--color-primary);
+          font-size: 1.3em;
         }
         input{
           display: none;
