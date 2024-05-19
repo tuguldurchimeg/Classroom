@@ -31,7 +31,7 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
-    
+
     <script defer type="module" src="script/index.js"></script>
     <script defer src="script/indexButtons.js"></script>
     <script defer src="script/components/ClassSection.js"></script>
@@ -41,6 +41,8 @@
     <script defer src="script/components/Bair.js"></script>
     <script defer src="script/components/BtnLike.js"></script>
     <script defer src="script/components/Cart.js"></script>
+    <script defer src="script/components/Searchbar.js"></script>
+    <script defer src="script/components/TsagList.js"></script>
   </head>
   <body>
     <app></app>
@@ -54,56 +56,8 @@
         <a href="index.html" class="header-logo">
           <img class="logo" src="styles/assets/Logo.svg" />
         </a>
-        <ul class="search-bar">
-          <bair-list class="bair"></bair-list>
-          <img src="styles/assets/Line.svg" alt="none" class="line-svg" />
-          <li class="odor">
-            <button id="calendar-button">
-              <span>Өдөр</span>
-              <time id="odor-info" class="light-grey">03.05-03.19</time>
-            </button>
-            <div class="calendar-box" id="calendar-list">
-              <ul class="button-list">
-                <li><button>1 өдөр</button></li>
-                <li><button>7 хоног</button></li>
-                <li><button>2-7 хоног</button></li>
-              </ul>
-              <calendar-cm class="calendar-wrapper"></calendar-cm>
-            </div>
-          </li>
-          <img src="styles/assets/Line.svg" alt="none" class="line-svg" />
-          <li class="tsag">
-            <button id="tsag-button">
-              <span>Цаг</span>
-              <time id="tsag-info" class="light-grey">16:00 - 19:20</time>
-            </button>
-            <ul class="tsag-list" id="tsag-list">
-              <li><button>07:40</button></li>
-              <li><button>08:25</button></li>
-              <li><button>09:20</button></li>
-              <li><button>10:05</button></li>
-              <li><button>11:00</button></li>
-              <li><button>11:45</button></li>
-              <li><button>12:40</button></li>
-              <li><button>13:25</button></li>
-              <li><button>14:20</button></li>
-              <li><button>15:05</button></li>
-              <li><button>16:00</button></li>
-              <li><button>16:45</button></li>
-              <li><button>17:40</button></li>
-              <li><button>18:25</button></li>
-              <li><button>19:20</button></li>
-              <li><button>20:05</button></li>
-              <li><button>21:00</button></li>
-              <li><button>21:45</button></li>
-            </ul>
-          </li>
-          <li class="search-button-background" id="search">
-            <button class="search-button">
-              <img src="styles/assets/Search-button.svg" alt="search" />
-            </button>
-          </li>
-        </ul>
+        <search-bar class="search-bar"></search-bar>
+
         <button class="pop-up-btn" id="profile-btn">
           <i class="fa-regular fa-user"></i>
         </button>

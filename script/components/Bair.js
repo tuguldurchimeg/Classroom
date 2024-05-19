@@ -11,10 +11,19 @@ class Bair extends HTMLElement {
     const event = new CustomEvent("bairChanged", {
       bubbles: true,
       detail: {
-        bairNum: this.getAttribute("bairId"),
+        bairNum: this.bairNum,
       },
     });
     this.dispatchEvent(event);
+  }
+
+  Render() {
+    return `
+      <button>
+        <img src="styles/assets/class.jpg" alt="classroom-picture" />
+      </button>
+      <span>${this.bairNum}</span>
+    `;
   }
 
   connectedCallback() {
@@ -48,14 +57,7 @@ class Bair extends HTMLElement {
         this.bairNum = "2-р байр"; // Default value
         break;
     }
-
-    // Render the component
-    this.innerHTML = `
-      <button>
-        <img src="styles/assets/class.jpg" alt="classroom-picture" />
-      </button>
-      <span>${this.bairNum}</span>
-    `;
+    this.innerHTML = this.Render();
   }
 }
 

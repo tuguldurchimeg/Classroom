@@ -25,6 +25,7 @@ class BairList extends HTMLElement {
   connectedCallback() {
     this.innerHTML = this.#Render("2-р байр"); // Default value
     // Listen for custom event dispatched from single-bair
+
     document.addEventListener("bairChanged", (event) => {
       const { bairNum } = event.detail;
       this.innerHTML = this.#Render(bairNum); // Update bair list with new value

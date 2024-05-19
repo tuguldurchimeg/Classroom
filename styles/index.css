@@ -2,7 +2,7 @@
 .hero-image {
   display: none;
 }
-.search-bar {
+search-bar.search-bar {
   width: 55%;
   height: 4.375rem;
 
@@ -23,6 +23,8 @@
   & .odor,
   & .tsag {
     display: flex;
+    flex-direction: column;
+
     width: 25%;
     height: 3.125rem;
     align-items: flex-start;
@@ -312,7 +314,8 @@ main {
 /* ------------------------POP- UPS------------------------ */
 
 .bair-list {
-  display: grid;
+  /* display: grid; */
+  display: none;
   position: absolute;
   z-index: 999;
   width: 20rem;
@@ -395,7 +398,7 @@ main {
   display: flex;
 }
 
-.tsag-active > button {
+.tsag-active {
   background: var(--color-primary) !important;
-  color: var(--color-white);
+  color: var(--color-white) !important;
 }

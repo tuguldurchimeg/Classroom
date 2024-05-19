@@ -83,7 +83,6 @@ class-section:hover {
   box-shadow: var(--shadow-2);
 }
 
-
 .main-header-2 nav {
   display: flex;
   margin: 0rem 6rem;
@@ -99,15 +98,16 @@ class-section:hover {
   border-radius: 30px;
   box-shadow: var(--shadow-2);
 }
-.calendar-wrapper div:first-child {
+/* .calendar-wrapper div:first-child {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin: 1em 1em 1.5em 1em;
-}
+} */
 .calendar-wrapper span {
   font-size: 35px;
 }
+
 .calendar-wrapper .current-date {
   font-weight: var(--semi-bold);
   font-size: var(--medium-size);
@@ -160,8 +160,16 @@ class-section:hover {
 
   background-color: var(--color-background);
 }
+p.current-date {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
 
 .calendar-icons span {
+  position: absolute;
+  right: 2.4rem;
   cursor: pointer;
   color: var(--color-text);
 }
@@ -195,7 +203,7 @@ class-section:hover {
 
 .day-active {
   background: var(--color-primary);
-  color: var(--color-white);
+  color: var(--color-white) !important;
   border-radius: 0;
 }
 /* ---------------CALENDAR-END---------------- */
@@ -226,10 +234,9 @@ class-section:hover {
   border-radius: 20px 0 0 20px;
   /* border-color: var(--color-border); */
 }
-.class-head-ttl{
+.class-head-ttl {
   display: flex;
   justify-content: space-between;
-
 }
 .class-section-1 .text-wrapper {
   display: flex;
@@ -292,7 +299,7 @@ class-section:hover {
   height: 3rem;
   cursor: pointer;
   color: var(--color-text);
-  &:hover{
+  &:hover {
     border: 2px solid var(--color-border);
   }
 }
@@ -347,7 +354,7 @@ class-section:hover {
   display: none;
 }
 .open {
-  display: block !important;
+  display: block;
 }
 #user-popup > ul {
   display: flex;
