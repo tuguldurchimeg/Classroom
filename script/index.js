@@ -321,7 +321,7 @@ searchButton.addEventListener("click", () => {
   console.log(
     `${bairVariable} / (${startDay} - ${endDay}) / ${startTsag} - ${endTsag}`
   );
-  bairlist.classList.remove("open");
+  // bairlist.classList.remove("open");
   tsaglist.classList.remove("open");
   calendarlist.classList.remove("open-flex");
 

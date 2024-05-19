@@ -4,20 +4,23 @@ class Cart extends HTMLElement {
     this.likedClasses = new Map();
   }
   #Render() {
-    let temp = Array.from(this.likedClasses.values)
-      .map((classL) => {
-        return `<class-section 
-                build=${classL.build} 
-                roomNo=${classL.roomNo} 
-                roomID=${classL.roomID}
-                type=${classL.type}
-                cap=${classL.capac}
-                proj=${classL.proj}
-                sched=${classL.schedule}
-            > </class-section>`;
-      })
-      .reduce((prev, current) => prev + current);
-    return temp;
+    if (this.likedClasses != null) {
+      let temp = Array.from(this.likedClasses.values())
+        .map((classL) => {
+          return `<class-section 
+              build=${classL.build} 
+              roomNo=${classL.roomNo} 
+              roomID=${classL.roomID}
+              type=${classL.type}
+              cap=${classL.capac}
+              proj=${classL.proj}
+              sched=${classL.schedule}
+          > </class-section>`;
+        })
+        .reduce((prev, current) => prev + current, "");
+      return temp;
+    }
+    return "";
   }
 
   LikedClass(classData) {
