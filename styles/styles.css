@@ -78,7 +78,6 @@ class-section:hover {
 .main-header-2 {
   position: sticky;
   top: 0;
-  z-index: 4;
   background: rgba(0, 0, 0, 0);
   box-shadow: var(--shadow-2);
 }
@@ -89,6 +88,21 @@ class-section:hover {
   padding: 1rem;
   justify-content: space-between;
   align-items: center;
+}
+#notif{
+  width: 1rem;
+  height: 1rem;
+  font-size: 0.7rem;
+  text-align: center;
+  border-radius: 50%;
+  background-color: red;
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: none;
+}
+#notif.open{
+  display: block !important;
 }
 
 /* -----------------CALENDAR------------------ */
@@ -148,7 +162,7 @@ class-section:hover {
   align-items: center;
 
   position: absolute;
-  z-index: 999;
+  z-index: 4;
 
   top: 4.5em;
   gap: 1.5em;
@@ -299,6 +313,7 @@ p.current-date {
   height: 3rem;
   cursor: pointer;
   color: var(--color-text);
+  position: relative;
   &:hover {
     border: 2px solid var(--color-border);
   }
@@ -427,7 +442,7 @@ footer {
     display: block;
     position: fixed;
     width: 100%;
-    z-index: 999;
+    z-index: 5;
     bottom: 0;
     background: var(--color-background);
     border-radius: 35px;

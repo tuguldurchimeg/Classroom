@@ -2,17 +2,6 @@ import ClassRen from "./ClassRender.js";
 
 const searchButton = document.getElementById("search");
 
-const profileBtn = document.getElementById("profile-btn");
-const userPopUp = document.getElementById("user-popup");
-
-profileBtn.addEventListener("click", () => {
-  if (userPopUp.classList.contains("open")) {
-    userPopUp.classList.remove("open");
-  } else {
-    userPopUp.classList.add("open");
-  }
-});
-
 let bairfinal = "Хичээлийн байр 2";
 let startMonth = "5";
 let startDay = "21";

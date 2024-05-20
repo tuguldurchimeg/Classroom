@@ -430,18 +430,15 @@
  }
 
  #rating-pop-up{
-   background: var(--color-background);
-   box-shadow: var(--shadow-2);
-   border: 1px solid var(--color-border);
-   border-radius: 70px;
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100vh;
+   background-color: var(--color-pop-up-background);
    display: none;
-   flex-direction: column;
-   justify-content: space-evenly;
-   align-items: center;
-   position: absolute;
-   left: 33%;
-   width: 30rem;
-   height: 35rem;
+   justify-content: center;
+   align-items: flex-start;
  }
  #rating-pop-up.open{
    display: flex !important;
@@ -452,52 +449,60 @@
    font-weight: var(--bold);
    color: var(--color-text);
 }
- .rate-crits > span{
+.rate-crits > span{
    font-size: var(--regular);
    font-weight: var(--normal);
    color: var(--color-light-text);
  }
- .star::before{
-   content: url("assets/Star.svg");
-   fill: var(--color-primary);
- } 
- .star-wid input{
-   display: none;
- }
- .star-wid input:not(:checked) ~ label:hover,
- .star-wid input:not(:checked) ~ label:hover ~ label{
-   color: var(--color-primary);
- }
-
- .star-wid input:checked ~ label{
-   color: var(--color-primary);
- }
-.star-wid input#rate-5:checked ~ label{
-   color: var(--color-border);
-}
- .star-wid{
+ .rate-crits{
    display: flex;
-   justify-content: space-evenly;
+   flex-direction: column;
+   /* width: 80%;
+   align-items: center; */
+
+ }
+ .popup-inner{
+   z-index: 10;
+   padding: 0 5rem ;
+   min-width: 20em;
+   height: auto;
+   display: flex;
+   flex-direction: column;
    align-items: center;
- }
- .star-wid, .add-rate{
+   row-gap: 2rem;
+   margin: 35px;
+   margin-top: 15vh;
    background: var(--color-background);
+   border-radius: 30px;
+   position: relative;
+}
+ .post-rate{
+   background-color: var(--color-background);
+   box-shadow: var(--shadow-3);
    border: 1px solid var(--color-border);
-   border-radius: 40px;
-   margin-top: 0.2rem;
-   width: 16rem;
-   height: 4rem;
- }
- .add-rate{
+   color: var(--color-text);
+   border-radius: 20px;
+   width: 80%;
+   height: 2rem;
+   margin-bottom: 2rem;
+   &:hover{
+       background-color: var(--color-primary);
+       color: white;
+   }
+}
+.fa-xmark{
+   position: absolute;
+   top: 1.5rem;
+   right: 2rem;
+   font-size: 1.5rem;
+   color: var(--color-text);
+}
+#close-rating{
+   background: none;
    border: none;
-   color: var(--color-light-text);
-   font-size: var(--heading-5);
-   font-weight: bold;
- }
- .add-rate:hover{
-   background-color: var(--color-primary);
-   color: var(--color-white);
- }
+   cursor: pointer;
+}
+
 
  /* ---------- Media Query --------- */
  @media (max-width: 640px) {

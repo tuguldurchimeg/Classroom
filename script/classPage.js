@@ -1,20 +1,11 @@
 import ClassRen from "./classRender.js";
 
-const profileBtn = document.getElementById("profile-btn");
-const userPopUp = document.getElementById("user-popup");
-
-profileBtn.addEventListener("click", () => {
-  if (userPopUp.classList.contains("open")) userPopUp.classList.remove("open");
-  else userPopUp.classList.add("open");
-});
-
 const addRatingBtn = document.getElementById("add-rating-btn");
 const ratingPopUP = document.getElementById("rating-pop-up");
+const closePopUp = document.getElementById("close-rating");
 
 addRatingBtn.addEventListener("click", () => {
-  if (ratingPopUP.classList.contains("open"))
-    ratingPopUP.classList.remove("open");
-  else ratingPopUP.classList.add("open");
+  ratingPopUP.classList.add("open");
 });
 
 let timeButtons = {};

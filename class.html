@@ -26,6 +26,9 @@
         <script type="module" src="script/ClassRender.js"></script>
         <script type="module" src="script/components/ClassSection.js"></script>
         <script type="module" src="script/components/RatingPopUp.js"></script>
+        <script type="module" src="script/components/Stars.js"></script>
+        <script type="module" src="script/components/Star.js"></script>
+        <script type="module" src="script/components/ProfileBtn.js"></script>
 
     </head>
 <body>
@@ -34,9 +37,7 @@
             <a href="index.html">
                 <img class="logo" src="styles/assets/Logo.svg" alt="logo image">
             </a>
-            <button class="pop-up-btn" id="profile-btn">
-                <i class="fa-regular fa-user"></i>
-            </button>
+            <profile-btn id="profile-comp"></profile-btn>
             <pop-up-user class="pop-up" id="user-popup">  
             </pop-up-user>
         </nav>
