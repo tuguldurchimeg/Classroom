@@ -3,22 +3,33 @@ class Stars extends HTMLElement {
     super();
     this.totalStars = 5;
     this.type = this.getAttribute("tp");
-    this.rating;
+    this.rating = 0;
     this.hover;
 
-    this.setRating = (rate) => (this.rating = rate);
     this.setHover = (hv) => (this.hover = hv);
   }
   #Render() {
-    const stars = [...Array(this.totalStars)].map((star, index) => {
-      const currentRating = index + 1;
-      return `<star-rating tp=${this.type}></star-rating>`;
-    });
-    return stars;
+    const stars = this.setStarsMap();
+    return `<span style="color: var(--color-text)">${this.rating}</span>
+            ${stars}`;
   }
   connectedCallback() {
     this.innerHTML = this.#Render();
   }
+  setRating = (rate) => {
+    this.rating = rate;
+    this.innerHTML = this.#Render();
+  };
+  setStarsMap = () => {
+    return [...Array(this.totalStars)].map((star, index) => {
+      const currentRating = index + 1;
+      return `<star-rating color = ${
+        currentRating <= this.rating
+          ? "var(--color-primary)"
+          : "var(--color-border)"
+      }" tp=${this.type} val=${currentRating}></star-rating>`;
+    });
+  };
 
   disconnectedCallback() {
     //implementation

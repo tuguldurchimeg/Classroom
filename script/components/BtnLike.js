@@ -34,6 +34,7 @@ class BtnLike extends HTMLElement {
       this.liked = this.liked == "checked" ? "" : "checked";
       const cart = document.querySelector(".test");
       cart.LikedClass(this.roomId);
+
       const profile = document.getElementById("profile-comp");
       if (this.liked == "checked") profile.newNotif();
       else profile.readNotif();

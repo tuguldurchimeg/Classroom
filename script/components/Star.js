@@ -3,6 +3,7 @@ class Star extends HTMLElement {
     super();
     this.value = this.getAttribute("val");
     this.type = this.getAttribute("tp");
+    this.color = this.getAttribute("color");
     this.setHover = () => {
       this.style.display;
     };
@@ -15,7 +16,7 @@ class Star extends HTMLElement {
             name="rating"
             value=${this.value}
             />
-            <span class="star"
+            <span class="star" style="color: ${this.color}"
             >
             &#9733;
             </span>
@@ -26,11 +27,12 @@ class Star extends HTMLElement {
   connectedCallback() {
     this.innerHTML = this.#Render();
     this.addEventListener("click", (event) => {
-      const stars = document.getElementById(this.type);
+      const stars = document.getElementById(`${this.type}`);
       stars.setRating(this.value);
     });
     this.addEventListener("mouseenter", function () {
-      //   setRating(currentRating !== null ? currentRating : null);
+      const stars = document.getElementById(`${this.type}`);
+      stars.setRating(this.value);
     });
     this.addEventListener("mouseleave", function () {
       //   setHover(null);
