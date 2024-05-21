@@ -27,7 +27,9 @@ let mainInfoHTML = "";
 
 classTitleHTML += `
     <h2 class="heading-3 title">
-      <span class="room">${classObj.build} - ${classObj.roomNo}</span>
+      <span class="room">${classObj.build} - ${classObj.roomNo}
+        <btn-like roomId=${classObj.roomID} id="btn-like"></btn-like>
+      </span>
     <h2>
     <img src="styles/assets/class.jpg" alt="class image" class="class-img">
   `;

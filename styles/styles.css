@@ -58,7 +58,7 @@ class-section:hover {
 }
 
 .main-header {
-  position: fixed;
+  position: sticky;
   top: 0;
   width: 100%;
   z-index: 4;
@@ -69,26 +69,11 @@ class-section:hover {
 .main-header nav {
   display: flex;
   flex-wrap: nowrap;
-
-  margin: 2.875rem 6rem;
-
-  justify-content: space-around;
-  align-items: center;
-}
-.main-header-2 {
-  position: sticky;
-  top: 0;
-  background: rgba(0, 0, 0, 0);
-  box-shadow: var(--shadow-2);
-}
-
-.main-header-2 nav {
-  display: flex;
-  margin: 0rem 6rem;
-  padding: 1rem;
+  padding: 2.875rem 6rem;
   justify-content: space-between;
   align-items: center;
 }
+
 #notif{
   width: 1rem;
   height: 1rem;
@@ -457,10 +442,6 @@ footer {
   .mobile-nav img {
     width: auto;
     height: 1.5rem;
-  }
-
-  .main-header-2 {
-    display: none;
   }
 
   .class-section-1 {

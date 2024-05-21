@@ -1,4 +1,10 @@
 /* ---------- CLASS page ---------- */
+search-bar{
+   display: none;
+}
+.main-header nav{
+   padding: 1rem 6rem;
+}
 
  /* ---------- CLASS INFO SECTION ---------- */
  .main-class-info{
@@ -21,11 +27,9 @@
     border: 1px solid var(--color-border);
     box-shadow: var(--shadow-3);
  }
- .main-class-title > h2 >span::after{
-    font-family: "Material Symbols Outlined";
-    content: "\e87d";
+ #btn-like{
     color: var(--color-accent);
-    font-size: 1.2em;
+    font-size: 1.2rem;
  }
  .main-class-title > h2 span{
     margin: 0.5em 0.9em;
