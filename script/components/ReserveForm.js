@@ -35,7 +35,7 @@ class ReserveForm extends HTMLElement {
                 </li>
             </ul>       
         </ul>
-        <button class="submit button" type="submit">Захиалах</button>
+        <button class="submit" type="submit">Захиалах</button>
     `;
   }
 

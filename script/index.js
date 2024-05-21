@@ -39,7 +39,6 @@ document.addEventListener("searched", (event) => {
       break;
     case "E-Lib":
       bairfinal = "E-Номын сан";
-      bairfinal = "E-Номын сан";
       break;
     case "Хууль зүй":
       bairfinal = "Улаанбаатар сургуулийн хичээлийн байр";

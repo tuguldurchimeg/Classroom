@@ -8,7 +8,6 @@
     align-items: center;
     padding: 2rem 0;
    font-size: 1rem;
-   box-shadow: var(--shadow-2);
  }
  text{
    color: var(--color-text);
@@ -46,7 +45,6 @@
  }
  .class-img-back{
    position: absolute;
-   z-index: -1;
    top: 0;
    left: 0;
    width: 100%;
@@ -106,7 +104,7 @@
     justify-items: center;
  }
 
- .rate{
+ .main-rate{
     display: flex;
     align-items: center;
     font-size: 2em;
@@ -114,13 +112,13 @@
     color: var(--color-text);
     margin-bottom: 0.4em;
  }
- .rate::before, .rate::after, .rate-title-p::before, .rate-title-p::after{
+ .main-rate::before, .main-rate::after, .rate-title-p::before, .rate-title-p::after{
     content: url("assets/Star-2.svg");
     margin-top: 0.2em;
     margin-right: 0.1em;
     fill: var(--color-accent);
  }
- .rate::after, .rate-title-p::after{
+ .main-rate::after, .rate-title-p::after{
    transform: rotateY(3.142rad);
    margin-left: 0.1em;
  }
@@ -132,26 +130,41 @@
     row-gap: 0.9em;
  }
  
- .rate-criteria meter {
-    -webkit-appearance: meter;
-    -moz-appearance: meter;
-    appearance: none;
-    
-    background: var(--color-background);
-    color: var(--color-text);
-    box-shadow: var(--shadow-2);
-    border-radius: 30px;
+ .rate-criteria  meter {
     display: flex;
     align-items: center;
-    justify-content: center;
-    font-size: var(--small);
-    font-weight: var(--semi-bold);
-    
+    font-size: var(--small);    
     width: 10em;
     height: 3.2em;
   }
-  meter::-webkit-meter-optimum-value {
-    background-color: var(--color-accent);
+  meter::-webkit-meter-bar{
+   background: var(--color-background);
+   box-shadow: var(--shadow-2);
+   width: 10em;
+   height: 2.2em;
+  }
+  meter::-webkit-meter-optimum-value{
+   background: var(--color-primary);
+   opacity: 0.7;
+  }
+
+  meter::after{
+   left:-2.5rem;
+   position:relative;  
+   color: var(--color-text);
+   width: 100%;
+  }
+  #air-meter::after{
+   content: "Агаар";
+  }
+  #comfort-meter::after{
+   content: "Тохижилт";
+  }
+  #wifi-meter::after{
+   content: "NUM-Wifi";
+  }
+  #socket-meter::after{
+   content: "Залгуур";
   }
  
   #add-rating-btn{
@@ -175,50 +188,46 @@
  
  /* ---- MENU -----  */
  .option-tab{
-    display: flex;
+    
     justify-content: center;
-    gap: 10rem;
     margin-top: 1.5vw;
     padding: 0;
+    position: relative;
  }
- .option-tab label{
+
+ .menu-option > label{
     font-size: var(--heading-6);
     line-height: var(--line-height-3);
-    font-weight: var(--medium);
-    background: none;
-    border: none;
     cursor: pointer;
-
+    color: var(--color-light-text);
+    position: absolute;
+    top: -1rem
+ }
+ #day-btn-lbl{
+   left: 35%;
+ }
+ #week-btn-lbl{
+   right: 30%;
+ }
+ #odor-info{
+   display: none;
  }
 
-#week-tab {
-   /* display: none !important; */
-}
-.option-tab:has(input[type="radio"]:not(:checked)){
-   &.tabcontent{
-      display: none;
+.menu-option:has(input[type="radio"]:checked){
+   & > label {
+      font-weight: 550;
+      color: var(--color-text);
+      border-bottom: 3px solid var(--color-primary);
+   }
+   & > .tabcontent {
+      display: flex !important;
+      width: 100%;
    }
 }
-
-.tablink {
-   display: none;
+.tabcontent{
+   display: none !important;
 }
 
-
-
-/* #day-btn:checked ~ .glider {
-   left: 0px;
- }
- #week-btn:checked ~ .glider {
-   left: 10rem;
- } */
- .glider{
-   width: 10rem;
-   height: 3px;
-   background: var(--color-primary-gradient);
-   box-shadow: var(--shadow-3);
-   position: absolute;
- }
  /* ------ MENU END ----- */
  
  /* --- Reserve FORM --- */
@@ -233,7 +242,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 2em 3em;
+    margin: 2em 3em 0 2em;
     gap: 0.5em;
  }
  .reserve-form > ul > ul{
@@ -278,6 +287,7 @@
     border: none;
     width: 100%;
     height: 2.5rem;
+    align-items: center;
  }
  .form-attr:focus{
     outline: 0.5px solid var(--color-border);
@@ -285,6 +295,19 @@
  .submit{
     width: 100%;
     font-size: 1.2em;
+    background: none;
+    color: var(--color-primary);
+    border-radius: 30px;
+    padding: 0.5rem 0;
+    margin: 0.5rem 0;
+    font-weight: 550;
+    border-bottom: 1px dashed var(--color-primary);
+    opacity: 0.5;
+    &:hover{
+      background-color: var(--color-primary);
+      color: var(--color-text);
+      opacity: 1;
+    }
  }
  label{
    color: var(--color-text);
@@ -356,6 +379,7 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-evenly; 
+    padding-top: 2rem;
  }
  .week > ul{
     display: flex;
@@ -377,7 +401,7 @@
     justify-content: space-evenly;
     align-items: flex-start;
     gap: 1.5em;
-    margin: 2rem;
+    padding-top: 4rem;
     flex-wrap: wrap;
  }
 
@@ -438,6 +462,7 @@
    display: none;
    justify-content: center;
    align-items: flex-start;
+   z-index: 10;
  }
  #rating-pop-up.open{
    display: flex !important;
@@ -588,6 +613,12 @@
       font-size: var(--tiny);
       font-weight: var(600);
    }
+   #day-btn-lbl{
+      left: 24%;
+    }
+    #week-btn-lbl{
+      right: 18%;
+    }
  }
  @media (max-width: 703px) {
    .main-class-info, #day-tab{
