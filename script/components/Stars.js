@@ -4,9 +4,6 @@ class Stars extends HTMLElement {
     this.totalStars = 5;
     this.type = this.getAttribute("tp");
     this.rating = 0;
-    this.hover;
-
-    this.setHover = (hv) => (this.hover = hv);
   }
   #Render() {
     const stars = this.setStarsMap();

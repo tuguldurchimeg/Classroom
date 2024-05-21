@@ -194,15 +194,14 @@
 #week-tab {
    /* display: none !important; */
 }
-
-#day-btn:checked + label + .reservation #day-tab,
-#week-btn:checked + label + .reservation #week-tab {
-   display: flex !important;
+.option-tab:has(input[type="radio"]:not(:checked)){
+   &.tabcontent{
+      display: none;
+   }
 }
 
 .tablink {
-   visibility: hidden;
-   position: absolute; 
+   display: none;
 }
 
 
@@ -502,6 +501,7 @@
    border: none;
    cursor: pointer;
 }
+
 
 
  /* ---------- Media Query --------- */
