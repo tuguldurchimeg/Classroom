@@ -140,6 +140,7 @@ function fetching() {
     .then((initialData) => {
       const groupByUruuniiDugaar = (data) => {
         const groupedData = {};
+
         data.forEach((item) => {
           const {
             khicheellekh_bair,
