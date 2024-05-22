@@ -456,22 +456,6 @@ search-bar{
    border: none;
  }
 
- #rating-pop-up{
-   position: fixed;
-   top: 0;
-   left: 0;
-   width: 100%;
-   height: 100vh;
-   background-color: var(--color-pop-up-background);
-   display: none;
-   justify-content: center;
-   align-items: flex-start;
-   z-index: 10;
- }
- #rating-pop-up.open{
-   display: flex !important;
- }
-
 .rate-title-p{
    font-size: var(--heading-4);
    font-weight: var(--bold);
@@ -489,42 +473,7 @@ search-bar{
    align-items: center; */
 
  }
- .popup-inner{
-   z-index: 10;
-   padding: 0 5rem ;
-   min-width: 20em;
-   height: auto;
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   row-gap: 2rem;
-   margin: 35px;
-   margin-top: 15vh;
-   background: var(--color-background);
-   border-radius: 30px;
-   position: relative;
-}
- .post-rate{
-   background-color: var(--color-background);
-   box-shadow: var(--shadow-3);
-   border: 1px solid var(--color-border);
-   color: var(--color-text);
-   border-radius: 20px;
-   width: 80%;
-   height: 2rem;
-   margin-bottom: 2rem;
-   &:hover{
-       background-color: var(--color-primary);
-       color: white;
-   }
-}
-.fa-xmark{
-   position: absolute;
-   top: 1.5rem;
-   right: 2rem;
-   font-size: 1.5rem;
-   color: var(--color-text);
-}
+
 #close-rating{
    background: none;
    border: none;

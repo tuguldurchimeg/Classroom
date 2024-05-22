@@ -11,7 +11,8 @@ class Header extends HTMLElement {
             <search-bar class="search-bar"></search-bar>
 
             <profile-btn id="profile-comp"></profile-btn>
-            <pop-up-user class="pop-up" id="user-popup"> </pop-up-user>
+            <pop-up-user class="pop-up-user"></pop-up-user>
+            <pop-up-login class="pop-up" id="login-pop-up"></pop-up-login>
         </nav>
     `;
   }

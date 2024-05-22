@@ -8,14 +8,17 @@ class BtnLike extends HTMLElement {
     return ` 
     <style> 
         .heart-grey{
-          color: var(--color-primary);
+          color: var(--color-border);
           font-size: 1.3em;
+          &:hover{
+            color: var(--color-primary);
+          }
         }
     </style>
     
     ${
       this.liked == "checked"
-        ? '<i class="fa-solid fa-heart heart-grey"></i>'
+        ? '<i class="fa-solid fa-heart heart-grey" style="color: var(--color-primary)"></i>'
         : '<i class="fa-regular fa-heart heart-grey"></i>'
     }
             

@@ -1,4 +1,4 @@
-import ClassRen from "./classRender.js";
+import ClassRen from "./ClassRender.js";
 
 const addRatingBtn = document.getElementById("add-rating-btn");
 const ratingPopUP = document.getElementById("rating-pop-up");

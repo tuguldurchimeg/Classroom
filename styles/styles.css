@@ -342,7 +342,7 @@ p.current-date {
   line-height: var(--line-height-4);
 }
 /* ------ User PopUp ------ */
-#user-popup {
+.pop-up-user {
   background: var(--color-background);
   border: 1px solid var(--color-border);
   border-radius: 20px;
@@ -356,7 +356,7 @@ p.current-date {
 .open {
   display: block;
 }
-#user-popup > ul {
+.pop-up-user > ul {
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
@@ -408,6 +408,85 @@ p.current-date {
 
 /* ------ User PopUp END ------ */
 
+/* --------- LOGIN Pop UP ---------- */
+.pop-up{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: var(--color-pop-up-background);
+  display: none;
+  justify-content: center;
+  align-items: flex-start;
+  z-index: 10;
+}
+.pop-up.open{
+  display: flex !important;
+}
+.popup-inner{
+  z-index: 10;
+  padding: 0 5rem ;
+  min-width: 20em;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 2rem;
+  margin: 35px;
+  margin-top: 15vh;
+  background: var(--color-background);
+  border-radius: 30px;
+  color: var(--color-text);
+  position: relative;
+}
+.post-rate, .btn-login{
+  background-color: var(--color-background);
+  box-shadow: var(--shadow-3);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  border-radius: 20px;
+  width: 70%;
+  height: 2rem;
+  margin-bottom: 2rem;
+  &:hover{
+      background-color: var(--color-primary);
+      color: white;
+  }
+}
+.popup-inner > div {
+  width: 70%;
+}
+.popup-inner > p, label {
+  color: var(--color-border);
+  width: 70%;
+  text-align: center;
+  font-size: 0.9rem;
+}
+input[type="email"]{
+  height: 2rem;
+  width: 100%;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  &:focus{
+    outline: 0.5px solid var(--color-primary-gradient);
+  }
+}
+.fa-xmark{
+  position: absolute;
+  top: 1.5rem;
+  right: 2rem;
+  font-size: 1.5rem;
+  color: var(--color-text);
+  cursor: pointer;
+  &:hover{
+    transform: scale(1.1);
+    color: var(--color-primary);
+  }
+}
+
+
+
 .mobile-nav {
   display: none;
 }
@@ -421,6 +500,8 @@ footer {
   position: relative;
   bottom: 0;
 }
+
+
 /* --------- MEDIA QUERIES --------- */
 @media (max-width: 660px) {
   .mobile-nav {

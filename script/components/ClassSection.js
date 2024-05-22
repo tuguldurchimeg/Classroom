@@ -14,6 +14,16 @@ class ClassSection extends HTMLElement {
   Render() {
     const encodedData = encodeURIComponent(JSON.stringify(this));
     let i = Math.floor(Math.random() * 10000) + 1;
+    const rating = 3; //  !will later fetch rating data from db using fetchget
+    let ratingStars = [...Array(rating)]
+      .map((star, index) => {
+        const currentRating = index + 1;
+        return `<span style="color: var(--color-primary)">
+        &#9733;
+        </span>`;
+      })
+      .reduce((prev, current) => prev + current);
+
     return `<a href="class.html?id=${encodedData}" class="class-section-1">
             <article>
               <img
@@ -26,7 +36,7 @@ class ClassSection extends HTMLElement {
                     <h3>
                     ${this.build} - 
                     ${this.roomNo}
-                  </h3>
+                    </h3>
                   <btn-like roomId=${encodedData}></btn-like>
                 </div>
                 <div class="class-type">${this.type}</div>
@@ -37,6 +47,9 @@ class ClassSection extends HTMLElement {
                       ? '<div class="projector proj-on"></div>'
                       : '<div class="projector proj-off"></div>'
                   }
+                </div>
+                <div> 
+                ${ratingStars}
                 </div>
               </div>
             </article>

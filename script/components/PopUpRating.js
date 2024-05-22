@@ -53,18 +53,6 @@ class RatingPopUp extends HTMLElement {
       this.closePop
     );
   }
-
-  disconnectedCallback() {
-    //implementation
-  }
-
-  attributeChangedCallback(name, oldVal, newVal) {
-    //implementation
-  }
-
-  adoptedCallback() {
-    //implementation
-  }
 }
 
-window.customElements.define("rating-pop-up", RatingPopUp);
+window.customElements.define("pop-up-rating", RatingPopUp);

@@ -18,7 +18,7 @@ class ProfileBtn extends HTMLElement {
   connectedCallback() {
     this.innerHTML = this.#Render();
     this.addEventListener("click", () => {
-      const userPopUp = document.getElementById("user-popup");
+      const userPopUp = document.querySelector(".pop-up-user");
       if (userPopUp.classList.contains("open")) {
         userPopUp.classList.remove("open");
       } else {
