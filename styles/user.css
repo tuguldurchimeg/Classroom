@@ -150,7 +150,7 @@ header{
 }
 .log-out{
   position:relative;
-  margin-right: 3 rem;
+  margin-left: 1rem;
   margin-top:3rem;
   border-top: 1px solid black;
   height: 100%;
@@ -159,7 +159,7 @@ header{
   line-height: var(--line-height-4);
   color: var(--color-light-grey);
   white-space: nowrap;
-text-align:left;
+text-align: left
 margin-left: 3rem;
 }
 
@@ -238,6 +238,7 @@ margin-left: 3rem;
   cursor: pointer;
 }
 .username{
+  margin-left: 2rem;
   color: var(--color-text);
   font-weight: var(--semi-bold);
   font-size: var(--color-tiny);
