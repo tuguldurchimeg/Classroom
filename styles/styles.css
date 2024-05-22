@@ -350,7 +350,7 @@ p.current-date {
   height: auto;
   position: absolute;
   right: 6rem;
-  top: 5rem;
+  top: 6.5rem;
   display: none;
 }
 .open {
@@ -442,11 +442,11 @@ p.current-date {
 }
 .post-rate, .btn-login{
   background-color: var(--color-background);
-  box-shadow: var(--shadow-3);
+  box-shadow: var(--shadow-2);
   border: 1px solid var(--color-border);
   color: var(--color-text);
   border-radius: 20px;
-  width: 70%;
+  width: 80%;
   height: 2rem;
   margin-bottom: 2rem;
   &:hover{
@@ -455,10 +455,10 @@ p.current-date {
   }
 }
 .popup-inner > div {
-  width: 70%;
+  width: 80%;
 }
-.popup-inner > p, label {
-  color: var(--color-border);
+.popup-inner > p, .popup-inner label {
+  color: var(--color-dark-grey);
   width: 70%;
   text-align: center;
   font-size: 0.9rem;
@@ -484,8 +484,10 @@ input[type="email"]{
     color: var(--color-primary);
   }
 }
-
-
+stars-rating{
+  display: flex;
+  justify-content: space-between;
+}
 
 .mobile-nav {
   display: none;
