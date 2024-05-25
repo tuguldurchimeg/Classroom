@@ -81,6 +81,7 @@ class-section:hover {
   text-align: center;
   border-radius: 50%;
   background-color: red;
+  color: white;
   position: absolute;
   right: 0;
   top: 0;
