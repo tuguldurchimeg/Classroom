@@ -1,12 +1,17 @@
+import { useAuth } from "../src_private/authprovider.mjs";
+
 class PopUpUser extends HTMLElement {
   constructor() {
     super();
     //implementation
   }
   #Render() {
+    const auth = useAuth();
     return `<ul>
               <li>
-                  <span class="button" id="user-login">Нэвтрэх</span>
+                  <span class="button" id="user-login">${
+                    auth.user ? auth.email : "Нэвтрэх"
+                  }</span>
               </li>
               <li>
                   <a href="user.html" class="reserved-menu menu"><span>Захиалсан ангиуд</span></a>
