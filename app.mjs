@@ -1,4 +1,5 @@
 import express from "express";
+import bodyParser from "express";
 import cors from "cors";
 import swaggerUi from "swagger-ui-express";
 import swaggerJsondoc from "swagger-jsdoc";
@@ -11,6 +12,7 @@ const port = 3000;
 //middleware
 app.use(cors());
 app.use(express.json()); // req.body
+app.use(bodyParser.json());
 
 const options = {
   swaggerDefinition: {
@@ -90,6 +92,56 @@ app.post("/time_slots", (req, res) => {
       res.status(201).send(result.rows);
     }
   );
+});
+
+app.get("/time_slots", (req, res) => {
+  pool.query("SELECT * FROM time_slots", (error, result) => {
+    if (error) {
+      console.error("Error retrieving time slots:", error);
+      res.status(500).json({ error: "Internal Server Error" });
+    } else {
+      res.status(200).json(result.rows);
+    }
+  });
+});
+
+app.get("/filtered_classes", async (req, res) => {
+  try {
+    const {
+      bairfinal,
+      // startMonth,
+      // startDay,
+      // endMonth,
+      // endDay,
+      startTsag,
+      endTsag,
+      garag,
+    } = req.query;
+
+    const query = `
+    SELECT sc.room_id,sc.week_id,sc.garag,sc.time,cl.roomno,cl.building,cl.type,cl.capacity,cl.projector,sc.status
+      FROM schedule as sc
+      INNER JOIN classes as cl ON sc.room_id = cl.room_id
+	    WHERE cl.building = $1
+      AND sc.time BETWEEN $2 AND $3
+      AND sc.garag = $4;
+  `;
+
+    const { rows } = await pool.query(query, [
+      bairfinal,
+      // startMonth,
+      // startDay,
+      // endMonth,
+      // endDay,
+      startTsag,
+      endTsag,
+      garag,
+    ]);
+    res.json({ data: rows });
+  } catch (error) {
+    console.error("Error:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
 });
 
 const authenticateUser = async (email, password) => {
