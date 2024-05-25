@@ -159,7 +159,7 @@ header{
   line-height: var(--line-height-4);
   color: var(--color-light-grey);
   white-space: nowrap;
-text-align:center;
+text-align:left;
 margin-left: 3rem;
 }
 
@@ -167,57 +167,75 @@ margin-left: 3rem;
   color:black; 
   font-size: 40px; 
   /* margin-left: 2rem; */
-
   /* background-color: transparent; */
 }
+        .ordered {
+            padding: 10px 20px;
+            color: var(--color-text);
+            font-size: 16px;
+            color: black
+            border: none;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        .liked {
+          padding: 10px 20px;
+          color: var(--color-text);
+          font-size: 16px;
+          color: black
+          border: none;
+          border-radius: 5px;
+          transition: all 0.3s ease;
 
+      }
+      .account{
+        padding: 10px 20px;
+        color: var(--color-text);
+        font-size: 16px;
+        color: black
+        border: none;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+      }
 /* --------------------HOVERS--------------- */
 .ordered:hover {
-  height: 25px ;
-  width: 80% !important;
-  background-color: var(--color-primary);
-  color: var(--color-white);
-  border-radius: 10px ;
-  background-color: transparent; 
+  height: 25px;
+  width: 80%;
+  background-color: transparent;
+  color: var(--color-text);
+  border-radius: 10px;
   border: 2px solid green;
   padding: 2px 4px;
   cursor: pointer;
 }
 .liked:hover:hover {
-  height: 25px ;
-  width: 80% !important;
-  background-color: var(--color-primary);
-  color: var(--color-white);
+  height: 25px;
+  width: 80%;
+  background-color: transparent;
+  color: var(--color-text);
   border-radius: 10px;
-  background-color: transparent; 
   border: 2px solid green;
   padding: 2px 4px;
   cursor: pointer;
 }
 .account:hover {
-  height: 25px ;
-  width: 80% !important;
-  background-color: var(--color-primary);
-  color: var(--color-white);
+  height: 25px;
+  width: 80%;
+  background-color: transparent;
+  color: var(--color-text);
   border-radius: 10px;
-  background-color: transparent; 
   border: 2px solid green;
   padding: 2px 4px;
   cursor: pointer;
 }
 .log-out:hover{
+  height: 25px;
+  width: 80%;
   border-radius: 10px;
   background-color: transparent; 
   border: 2px solid green;
   padding: 2px 4px;
   cursor: pointer;
-}
-.hovers{
-  & li{
-    padding-left: 0.6rem !important;
-   padding-top: 0.5rem !important;
-   color: var(--color-text);
-  }
 }
 .username{
   color: var(--color-text);
