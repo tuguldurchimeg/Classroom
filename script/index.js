@@ -111,13 +111,61 @@ document.addEventListener("searched", (event) => {
 });
 
 async function fetchClasses() {
-  try {
-    const response = await fetch("http://localhost:3000/classes");
-    if (response.ok) return await response.json();
-    console.error("Failed to retrieve classes. HTTP status:", response.status);
-  } catch (error) {
-    console.error("Error retrieving classes:", error);
-  }
+  const response = await fetch("https://api.npoint.io/70107af397f4a981c076");
+  const responseObj = await response.json();
+  let filteredClasses = responseObj.filter((availableClass) => {
+    return (
+      availableClass.Хичээлийн_хуваарь_тавих_боломж !=
+        "Хуваарь тавих боломжгүй" &&
+      availableClass.Хичээлийн_байр != "Цөмийн судалгааны төв" &&
+      availableClass.Хичээлийн_байр != "Ховд сургуулийн хичээлийн 1-р байр" &&
+      availableClass.Хичээлийн_байр != "Ховд сургуулийн хичээлийн 2-р байр" &&
+      availableClass.Хичээлийн_байр != "Дорнод сургуулийн хичээлийн байр" &&
+      availableClass.Хичээлийн_байр != "Завхан сургуулийн хичээлийн байр" &&
+      availableClass.Хичээлийн_байр != "Орхон сургуулийн хичээлийн байр" &&
+      availableClass.Өрөөний_зориулалт != "Биеийн тамирын зал "
+      // availableClass.Хичээлийн_байр == bairVariable
+    );
+  });
+  const classesData = {
+    room_id: "",
+    roomNo: 0,
+    building: "",
+    type: "",
+    capacity: "",
+    projector: false,
+  };
+  filteredClasses.forEach(async (classD) => {
+    classesData.room_id = classD.Өрөөний_хувийн_дугаар;
+    classesData.roomNo = classD.Өрөөний_дугаар;
+    classesData.building = classD.Хичээлийн_байр;
+    classesData.type = classD.Өрөөний_зориулалт;
+    classesData.capacity = classD.Суудлын_тоо;
+    classesData.projector =
+      classD.Проектортой_эсэх == "Проектортой" ? true : false;
+
+    try {
+      const response_1 = await fetch("http://localhost:3000/classes", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(classesData),
+      });
+
+      if (response_1.ok) {
+        console.log("Classes data inserted successfully.");
+      } else {
+        console.error(
+          "Failed to insert classes data. HTTP status:",
+          response_1.status
+        );
+      }
+    } catch (error) {
+      console.error("Error inserting classes data:", error);
+    }
+  });
+  return filteredClasses;
 }
 
 //--------------------------------------HUWAARI-FETCH & CONVERSION-------------------------------------------------------------------
@@ -248,40 +296,8 @@ function fetchSchedule() {
       };
 
       const processedData = freeHuwaariToDesiredStructure(freeHuwaariArray);
-      console.log(processedData);
-      const timeSlotData = {
-        room_id: "",
-        garag: "",
-        time: 0,
-      };
-      processedData.forEach(async (time) => {
-        timeSlotData.room_id = time.uruunii_khuviin_dugaar;
-        timeSlotData.garag = time.garag;
-        timeSlotData.time = time.time;
-
-        try {
-          const response = await fetch("http://localhost:3000/time_slots", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(timeSlotData),
-          });
-
-          if (response.ok) {
-            console.log("time_slots data inserted successfully.");
-          } else {
-            console.error(
-              "Failed to insert time_slots data. HTTP status:",
-              response.status
-            );
-          }
-        } catch (error) {
-          console.error("Error inserting time_slots data:", error);
-        }
-      });
-
-      return freeHuwaariArray;
+      console.log(processedData); //aa
+      return free;
     });
 }
 
