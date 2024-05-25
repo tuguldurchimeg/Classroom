@@ -1,5 +1,4 @@
 import ClassRen from "./ClassRender.js";
-
 const searchButton = document.getElementById("search");
 
 let bairfinal = "Хичээлийн байр 2";
@@ -50,13 +49,12 @@ document.addEventListener("searched", (event) => {
 
   fetchSchedule()
     .then((freeHuwaariArray) => {
-      // console.log(freeHuwaariArray);
+      console.log(freeHuwaariArray);
       fetchClasses().then((filteredClasses) => {
         console.log(filteredClasses);
         classArrayObj = filteredClasses.map((classObj) => {
           let schedule = freeHuwaariArray.filter(
-            (huwaari) =>
-              huwaari.uruunii_khuviin_dugaar == classObj.Өрөөний_хувийн_дугаар
+            (huwaari) => huwaari.uruunii_khuviin_dugaar == classObj.room_id
           );
 
           if (schedule.length > 0) {
@@ -67,7 +65,7 @@ document.addEventListener("searched", (event) => {
         });
 
         classArrayObj = classArrayObj.filter((classObj) => classObj !== null);
-        console.log(classArrayObj);
+        // console.log(classArrayObj);
         let classSectionHTMLArray = classArrayObj
           .map((classObj) => {
             let temp;
@@ -97,8 +95,6 @@ document.addEventListener("searched", (event) => {
           })
           .filter((classObj) => classObj != null);
 
-        // console.log(classSectionHTMLArray);
-
         const classSectionHTML = classSectionHTMLArray.reduce(
           (prev, current) => prev + current
         );
@@ -111,61 +107,13 @@ document.addEventListener("searched", (event) => {
 });
 
 async function fetchClasses() {
-  const response = await fetch("https://api.npoint.io/70107af397f4a981c076");
-  const responseObj = await response.json();
-  let filteredClasses = responseObj.filter((availableClass) => {
-    return (
-      availableClass.Хичээлийн_хуваарь_тавих_боломж !=
-        "Хуваарь тавих боломжгүй" &&
-      availableClass.Хичээлийн_байр != "Цөмийн судалгааны төв" &&
-      availableClass.Хичээлийн_байр != "Ховд сургуулийн хичээлийн 1-р байр" &&
-      availableClass.Хичээлийн_байр != "Ховд сургуулийн хичээлийн 2-р байр" &&
-      availableClass.Хичээлийн_байр != "Дорнод сургуулийн хичээлийн байр" &&
-      availableClass.Хичээлийн_байр != "Завхан сургуулийн хичээлийн байр" &&
-      availableClass.Хичээлийн_байр != "Орхон сургуулийн хичээлийн байр" &&
-      availableClass.Өрөөний_зориулалт != "Биеийн тамирын зал "
-      // availableClass.Хичээлийн_байр == bairVariable
-    );
-  });
-  const classesData = {
-    room_id: "",
-    roomNo: 0,
-    building: "",
-    type: "",
-    capacity: "",
-    projector: false,
-  };
-  filteredClasses.forEach(async (classD) => {
-    classesData.room_id = classD.Өрөөний_хувийн_дугаар;
-    classesData.roomNo = classD.Өрөөний_дугаар;
-    classesData.building = classD.Хичээлийн_байр;
-    classesData.type = classD.Өрөөний_зориулалт;
-    classesData.capacity = classD.Суудлын_тоо;
-    classesData.projector =
-      classD.Проектортой_эсэх == "Проектортой" ? true : false;
-
-    try {
-      const response_1 = await fetch("http://localhost:3000/classes", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(classesData),
-      });
-
-      if (response_1.ok) {
-        console.log("Classes data inserted successfully.");
-      } else {
-        console.error(
-          "Failed to insert classes data. HTTP status:",
-          response_1.status
-        );
-      }
-    } catch (error) {
-      console.error("Error inserting classes data:", error);
-    }
-  });
-  return filteredClasses;
+  try {
+    const response = await fetch("http://localhost:3000/classes");
+    if (response.ok) return await response.json();
+    console.error("Failed to retrieve classes. HTTP status:", response.status);
+  } catch (error) {
+    console.error("Error retrieving classes:", error);
+  }
 }
 
 //--------------------------------------HUWAARI-FETCH & CONVERSION-------------------------------------------------------------------
@@ -223,20 +171,6 @@ function fetchSchedule() {
         return result;
       };
 
-      const convertToNumber = (timeString) => {
-        const [hours, minutes] = timeString.split(":").map(Number);
-        return hours * 60 + minutes;
-      };
-
-      const convertToTimeString = (timeNumber) => {
-        const hours = Math.floor(timeNumber / 60);
-        const minutes = timeNumber % 60;
-        return `${String(hours).padStart(2, "0")}:${String(minutes).padStart(
-          2,
-          "0"
-        )}`;
-      };
-
       // Group the data by "uruunii_khuviin_dugaar" and then by "garag"
       const groupedByUruuniiDugaar = groupByUruuniiDugaar(initialData);
       // Convert the grouped data to the desired structure
@@ -276,28 +210,42 @@ function fetchSchedule() {
         });
       });
 
-      // Convert freeHuwaariArray to the desired data structure
-      const freeHuwaariToDesiredStructure = (freeHuwaariArray) => {
-        const desiredStructure = [];
+      const timeSlotData = {
+        room_id: "",
+        garag: "",
+        time: 0,
+      };
+      freeHuwaariArray.forEach((room) => {
+        room.garagGroup.forEach((garagG) => {
+          garagG.classHoursSet.forEach(async (time) => {
+            timeSlotData.room_id = room.uruunii_khuviin_dugaar;
+            timeSlotData.garag = garagG.garag;
+            timeSlotData.time = time;
 
-        freeHuwaariArray.forEach((element) => {
-          element.garagGroup.forEach((garagGroup) => {
-            garagGroup.classHoursSet.forEach((hour) => {
-              desiredStructure.push({
-                uruunii_khuviin_dugaar: element.uruunii_khuviin_dugaar,
-                garag: garagGroup.garag,
-                time: hour,
+            try {
+              const response = await fetch("http://localhost:3000/time_slots", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify(timeSlotData),
               });
-            });
+
+              if (response.ok) {
+                console.log("time_slots data inserted successfully.");
+              } else {
+                console.error(
+                  "Failed to insert time_slots data. HTTP status:",
+                  response.status
+                );
+              }
+            } catch (error) {
+              console.error("Error inserting time_slots data:", error);
+            }
           });
         });
-
-        return desiredStructure;
-      };
-
-      const processedData = freeHuwaariToDesiredStructure(freeHuwaariArray);
-      console.log(processedData); //aa
-      return free;
+      });
+      return freeHuwaariArray;
     });
 }
 
@@ -308,8 +256,11 @@ let classArrayObj = {};
 // -------------------------------ADDITIONAL-FUNCTIONS-----------------------------------------------------------------------
 
 const convertToNumber = (timeStr) => {
-  const [hoursStr, minutesStr] = timeStr.split(":");
-  return parseInt(hoursStr, 10) * 100 + parseInt(minutesStr, 10);
+  if (timeStr) {
+    const [hoursStr, minutesStr] = timeStr.split(":");
+    return parseInt(hoursStr, 10) * 100 + parseInt(minutesStr, 10);
+  }
+  return 740;
 };
 
 const convertToTimeStamp = (minutes) => {
