@@ -66,7 +66,7 @@ document.addEventListener("searched", (event) => {
         });
 
         classArrayObj = classArrayObj.filter((classObj) => classObj !== null);
-
+        console.log(classArrayObj);
         let classSectionHTMLArray = classArrayObj
           .map((classObj) => {
             let temp;
@@ -143,7 +143,6 @@ function fetching() {
 
         data.forEach((item) => {
           const {
-            khicheellekh_bair,
             uruunii_khuviin_dugaar,
             garag,
             ekhlekh_tsag,
@@ -157,7 +156,6 @@ function fetching() {
           if (
             davtamj === "7 хоног тутам" &&
             oroltyn_too === 16 &&
-            khicheellekh_bair === bairfinal
           ) {
             if (!groupedData[uruunii_khuviin_dugaar][garag]) {
               groupedData[uruunii_khuviin_dugaar][garag] = [];
