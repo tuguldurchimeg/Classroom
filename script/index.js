@@ -48,10 +48,10 @@ document.addEventListener("searched", (event) => {
       break;
   }
 
-  fetching()
+  fetchSchedule()
     .then((freeHuwaariArray) => {
       // console.log(freeHuwaariArray);
-      fetchData().then((filteredClasses) => {
+      fetchClasses().then((filteredClasses) => {
         classArrayObj = filteredClasses.map((classObj) => {
           let schedule = freeHuwaariArray.filter(
             (huwaari) =>
@@ -109,7 +109,7 @@ document.addEventListener("searched", (event) => {
     });
 });
 
-function fetchData() {
+function fetchClasses() {
   return fetch("https://api.npoint.io/70107af397f4a981c076")
     .then((response) => response.json())
     .then((responseObj) => {
@@ -134,7 +134,7 @@ function fetchData() {
 }
 
 //--------------------------------------HUWAARI-FETCH & CONVERSION-------------------------------------------------------------------
-function fetching() {
+function fetchSchedule() {
   return fetch("https://api.npoint.io/7915813b5c6c20fecb21")
     .then((response) => response.json())
     .then((initialData) => {
