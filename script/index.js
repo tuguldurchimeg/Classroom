@@ -117,136 +117,151 @@ async function fetchClasses() {
 }
 
 //--------------------------------------HUWAARI-FETCH & CONVERSION-------------------------------------------------------------------
-function fetchSchedule() {
-  return fetch("https://api.npoint.io/7915813b5c6c20fecb21")
-    .then((response) => response.json())
-    .then((initialData) => {
-      const groupByUruuniiDugaar = (data) => {
-        const groupedData = {};
+async function fetchSchedule() {
+  try {
+    const response = await fetch("https://api.npoint.io/7915813b5c6c20fecb21");
+    const initialData = await response.json();
 
-        data.forEach((item) => {
-          const {
-            uruunii_khuviin_dugaar,
-            garag,
+    const groupByUruuniiDugaar = (data) => {
+      const groupedData = {};
+
+      data.forEach((item) => {
+        const {
+          uruunii_khuviin_dugaar,
+          garag,
+          ekhlekh_tsag,
+          duusakh_tsag,
+          davtamj,
+          oroltyn_too,
+        } = item;
+        if (!groupedData[uruunii_khuviin_dugaar]) {
+          groupedData[uruunii_khuviin_dugaar] = {};
+        }
+        if (davtamj === "7 хоног тутам" && oroltyn_too === 16) {
+          if (!groupedData[uruunii_khuviin_dugaar][garag]) {
+            groupedData[uruunii_khuviin_dugaar][garag] = [];
+          }
+          groupedData[uruunii_khuviin_dugaar][garag].push({
             ekhlekh_tsag,
             duusakh_tsag,
-            davtamj,
-            oroltyn_too,
-          } = item;
-          if (!groupedData[uruunii_khuviin_dugaar]) {
-            groupedData[uruunii_khuviin_dugaar] = {};
-          }
-          if (davtamj === "7 хоног тутам" && oroltyn_too === 16) {
-            if (!groupedData[uruunii_khuviin_dugaar][garag]) {
-              groupedData[uruunii_khuviin_dugaar][garag] = [];
+          });
+        }
+      });
+      return groupedData;
+    };
+
+    const convertToDesiredStructure = (groupedData) => {
+      const result = [];
+      for (const uruunii_khuviin_dugaar in groupedData) {
+        const garagGroup = [];
+        for (const garag in groupedData[uruunii_khuviin_dugaar]) {
+          garagGroup.push({
+            garag,
+            khicheeliin_tsag: groupedData[uruunii_khuviin_dugaar][garag],
+          });
+        }
+        if (garagGroup.length > 0) {
+          result.push({
+            uruunii_khuviin_dugaar,
+            garagGroup,
+          });
+        }
+      }
+      return result;
+    };
+
+    const convertToNumber = (timeString) => {
+      const [hours, minutes] = timeString.split(":").map(Number);
+      return hours * 60 + minutes;
+    };
+
+    const convertToTimeString = (timeNumber) => {
+      const hours = Math.floor(timeNumber / 60);
+      const minutes = timeNumber % 60;
+      return `${String(hours).padStart(2, "0")}:${String(minutes).padStart(
+        2,
+        "0"
+      )}`;
+    };
+
+    const groupedByUruuniiDugaar = groupByUruuniiDugaar(initialData);
+    const huwaariArray = convertToDesiredStructure(groupedByUruuniiDugaar);
+
+    let freeHuwaariArray = [];
+
+    huwaariArray.forEach((element) => {
+      let updatedGaragGroups = [];
+
+      element.garagGroup.forEach((garagGroup) => {
+        const classHoursSet = new Set([
+          740, 825, 920, 1005, 1100, 1145, 1240, 1325, 1420, 1505, 1600, 1645,
+          1740, 1825, 1920, 2005, 2100, 2145,
+        ]);
+
+        garagGroup.khicheeliin_tsag.forEach((khicheel) => {
+          const ekhlekh_tsag = convertToNumber(khicheel.ekhlekh_tsag);
+          const duusakh_tsag = convertToNumber(khicheel.duusakh_tsag);
+
+          for (const item of classHoursSet) {
+            if (item >= ekhlekh_tsag && item <= duusakh_tsag) {
+              classHoursSet.delete(item);
             }
-            groupedData[uruunii_khuviin_dugaar][garag].push({
-              ekhlekh_tsag,
-              duusakh_tsag,
-            });
           }
         });
-        return groupedData;
-      };
 
-      // Function to convert grouped data to the desired structure
-      const convertToDesiredStructure = (groupedData) => {
-        const result = [];
-        for (const uruunii_khuviin_dugaar in groupedData) {
-          const garagGroup = [];
-          for (const garag in groupedData[uruunii_khuviin_dugaar]) {
-            garagGroup.push({
-              garag,
-              khicheeliin_tsag: groupedData[uruunii_khuviin_dugaar][garag],
+        updatedGaragGroups.push({
+          garag: garagGroup.garag,
+          classHoursSet: Array.from(classHoursSet),
+        });
+      });
+
+      freeHuwaariArray.push({
+        uruunii_khuviin_dugaar: element.uruunii_khuviin_dugaar,
+        garagGroup: updatedGaragGroups,
+      });
+    });
+
+    const timeSlotData = {
+      room_id: "",
+      garag: "",
+      time: 0,
+    };
+
+    for (const room of freeHuwaariArray) {
+      for (const garagG of room.garagGroup) {
+        for (const time of garagG.classHoursSet) {
+          timeSlotData.room_id = room.uruunii_khuviin_dugaar;
+          timeSlotData.garag = garagG.garag;
+          timeSlotData.time = time;
+
+          try {
+            const response = await fetch("http://localhost:3000/time_slots", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(timeSlotData),
             });
-          }
-          // Only push if garagGroup is not empty
-          if (garagGroup.length > 0) {
-            result.push({
-              uruunii_khuviin_dugaar,
-              garagGroup,
-            });
+
+            if (response.ok) {
+              console.log("time_slots data inserted successfully.");
+            } else {
+              console.error(
+                "Failed to insert time_slots data. HTTP status:",
+                response.status
+              );
+            }
+          } catch (error) {
+            console.error("Error inserting time_slots data:", error);
           }
         }
-        return result;
-      };
+      }
+    }
 
-      // Group the data by "uruunii_khuviin_dugaar" and then by "garag"
-      const groupedByUruuniiDugaar = groupByUruuniiDugaar(initialData);
-      // Convert the grouped data to the desired structure
-      let huwaariArray = convertToDesiredStructure(groupedByUruuniiDugaar);
-
-      let freeHuwaariArray = [];
-
-      huwaariArray.forEach((element) => {
-        let updatedGaragGroups = [];
-
-        element.garagGroup.forEach((garagGroup) => {
-          const classHoursSet = new Set([
-            740, 825, 920, 1005, 1100, 1145, 1240, 1325, 1420, 1505, 1600, 1645,
-            1740, 1825, 1920, 2005, 2100, 2145,
-          ]);
-
-          garagGroup.khicheeliin_tsag.forEach((khicheel) => {
-            const ekhlekh_tsag = convertToNumber(khicheel.ekhlekh_tsag);
-            const duusakh_tsag = convertToNumber(khicheel.duusakh_tsag);
-
-            for (const item of classHoursSet) {
-              if (item >= ekhlekh_tsag && item <= duusakh_tsag) {
-                classHoursSet.delete(item);
-              }
-            }
-          });
-
-          updatedGaragGroups.push({
-            garag: garagGroup.garag,
-            classHoursSet: Array.from(classHoursSet),
-          });
-        });
-
-        freeHuwaariArray.push({
-          uruunii_khuviin_dugaar: element.uruunii_khuviin_dugaar,
-          garagGroup: updatedGaragGroups,
-        });
-      });
-
-      const timeSlotData = {
-        room_id: "",
-        garag: "",
-        time: 0,
-      };
-      freeHuwaariArray.forEach((room) => {
-        room.garagGroup.forEach((garagG) => {
-          garagG.classHoursSet.forEach(async (time) => {
-            timeSlotData.room_id = room.uruunii_khuviin_dugaar;
-            timeSlotData.garag = garagG.garag;
-            timeSlotData.time = time;
-
-            try {
-              const response = await fetch("http://localhost:3000/time_slots", {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify(timeSlotData),
-              });
-
-              if (response.ok) {
-                console.log("time_slots data inserted successfully.");
-              } else {
-                console.error(
-                  "Failed to insert time_slots data. HTTP status:",
-                  response.status
-                );
-              }
-            } catch (error) {
-              console.error("Error inserting time_slots data:", error);
-            }
-          });
-        });
-      });
-      return freeHuwaariArray;
-    });
+    return freeHuwaariArray;
+  } catch (error) {
+    console.error("Error fetching schedule data:", error);
+  }
 }
 
 // ----------------------------------BAIR-BUTTON-LISTENERS----------------------------------------------------------------------

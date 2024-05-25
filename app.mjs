@@ -69,15 +69,24 @@ app.get("/classes", (req, res) => {
 });
 app.post("/time_slots", (req, res) => {
   const { room_id, garag, time } = req.body;
+  console.log("Received data:", { room_id, garag, time });
+
+  if (!room_id || !garag || !time) {
+    const errorMessage = "Missing required fields";
+    console.error(errorMessage);
+    return res.status(400).send(errorMessage);
+  }
+
   pool.query(
-    "INSERT INTO time_slots(room_id,garag,time) VALUES($1,$2,$3)",
+    "INSERT INTO time_slots(room_id, garag, time) VALUES($1, $2, $3)",
     [room_id, garag, time],
     (err, result) => {
-      if (!err) {
-        res.status(201).send(result.rows);
-      } else {
-        res.status(500).send(err.message);
+      if (err) {
+        console.error("Error executing query:", err);
+        return res.status(500).send(err.message);
       }
+      console.log("Data inserted successfully:", result.rows);
+      res.status(201).send(result.rows);
     }
   );
 });
