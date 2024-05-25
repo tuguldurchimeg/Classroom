@@ -2,10 +2,11 @@ import express from "express";
 import cors from "cors";
 import swaggerUi from "swagger-ui-express";
 import swaggerJsondoc from "swagger-jsdoc";
+import pool from "./db.mjs";
 const app = express();
 
 const hostname = "localhost";
-const port = 5000;
+const port = 3000;
 //middleware
 app.use(cors());
 app.use(express.json()); // req.body
@@ -20,11 +21,11 @@ const options = {
     },
     license: {
       name: "Classroom",
-      url: "http://localhost:5000/",
+      url: "http://localhost:3000/",
     },
     contact: {
       name: "WebDevAdmin",
-      url: "http://localhost:5000/",
+      url: "http://localhost:3000/",
       email: "tgldrchmg0730@gmail.com",
     },
     servers: [
@@ -45,6 +46,21 @@ app.get(
     explorer: true,
   })
 );
+
+app.post("/classes", (req, res) => {
+  const { id, roomNo, building, type, capacity, projector } = req.body;
+  pool.query(
+    "INSERT INTO classes(id,roomNo,building,type,capacity, projector) VALUES($1,$2,$3,$4,$5,$6)",
+    [id, roomNo, building, type, capacity, projector],
+    (err, result) => {
+      if (!err) {
+        res.status(201).send(result.rows);
+      } else {
+        res.status(500).send(err.message);
+      }
+    }
+  );
+});
 
 app.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);

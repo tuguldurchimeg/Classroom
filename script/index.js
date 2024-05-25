@@ -66,7 +66,7 @@ document.addEventListener("searched", (event) => {
         });
 
         classArrayObj = classArrayObj.filter((classObj) => classObj !== null);
-
+        console.log(classArrayObj);
         let classSectionHTMLArray = classArrayObj
           .map((classObj) => {
             let temp;
