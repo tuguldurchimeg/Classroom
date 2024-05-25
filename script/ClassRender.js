@@ -1,12 +1,11 @@
 export default class ClassRen {
   constructor(classObj, garagGroup) {
-    this.roomID = classObj.Өрөөний_хувийн_дугаар;
-
-    this.building = classObj.Хичээлийн_байр;
-    this.roomNo = classObj.Өрөөний_дугаар;
-    this.type = classObj.Өрөөний_зориулалт;
-    this.capacity = classObj.Суудлын_тоо;
-    this.projector = classObj.Проектортой_эсэх;
+    this.roomID = classObj.room_id;
+    this.building = classObj.building;
+    this.roomNo = classObj.roomno;
+    this.type = classObj.type;
+    this.capacity = classObj.capacity;
+    this.projector = classObj.projector;
     this.schedule = garagGroup;
 
     if (this.building == "E-Номын сан") this.building = "Е-lib";

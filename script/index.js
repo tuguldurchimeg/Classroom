@@ -297,6 +297,7 @@ function fetchSchedule() {
 
       const processedData = freeHuwaariToDesiredStructure(freeHuwaariArray);
       console.log(processedData);
+
       return freeHuwaariArray;
     });
 }

@@ -1,19 +1,12 @@
 CREATE TABLE  classes  (
    room_id  varchar PRIMARY KEY,
    roomNo  int,
-   building  int,
+   building  varchar,
    type  varchar,
    capacity  int,
    projector  boolean
 );
 
-CREATE TABLE  schedules  (
-   room_id  varchar,
-   week  varchar,
-   garag  varchar,
-   time  int,
-   status  varchar
-);
 
 CREATE TABLE  users  (
    user_id  varchar PRIMARY KEY,
@@ -45,12 +38,6 @@ CREATE TABLE  reservations  (
    cancelled  bool,
    status  varchar
 );
-
-CREATE TABLE  times  (
-   time  int,
-   res_id  varchar
-);
-
 CREATE TABLE  liked  (
    user_id  varchar,
    room_id  varchar
@@ -59,6 +46,26 @@ CREATE TABLE  liked  (
 CREATE TABLE  reserved  (
    user_id  varchar,
    res_id  varchar
+);
+
+CREATE TABLE  schedules  (
+   room_id  varchar,
+   garag  varchar,
+   time  int
+);
+
+
+CREATE TABLE  res_times  (
+   time  int,
+   res_id  varchar
+);
+
+CREATE TABLE  week  (
+   week_id  varchar,
+   room_id  varchar,
+   garag  varchar,
+   time  int,
+   status  bool
 );
 
 ALTER TABLE  ratings  ADD FOREIGN KEY ( user_id ) REFERENCES  users  ( user_id );
@@ -71,7 +78,7 @@ ALTER TABLE  reservations  ADD FOREIGN KEY ( room_id ) REFERENCES  classes  ( ro
 
 ALTER TABLE  schedules  ADD FOREIGN KEY ( room_id ) REFERENCES  classes  ( room_id );
 
-ALTER TABLE  times  ADD FOREIGN KEY ( res_id ) REFERENCES  reservations  ( res_id );
+ALTER TABLE  res_times  ADD FOREIGN KEY ( res_id ) REFERENCES  reservations  ( res_id );
 
 ALTER TABLE  liked  ADD FOREIGN KEY ( user_id ) REFERENCES  users  ( user_id );
 
@@ -80,3 +87,5 @@ ALTER TABLE  liked  ADD FOREIGN KEY ( room_id ) REFERENCES  classes  ( room_id )
 ALTER TABLE  reserved  ADD FOREIGN KEY ( user_id ) REFERENCES  users  ( user_id );
 
 ALTER TABLE  reserved  ADD FOREIGN KEY ( res_id ) REFERENCES  reservations  ( res_id );
+
+ALTER TABLE  week  ADD FOREIGN KEY ( room_id ) REFERENCES  classes  ( room_id );

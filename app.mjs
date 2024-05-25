@@ -61,6 +61,26 @@ app.post("/classes", (req, res) => {
     }
   );
 });
+app.get("/classes", (req, res) => {
+  pool.query("SELECT * FROM classes", (error, result) => {
+    if (error) throw error;
+    res.status(200).json(result.rows);
+  });
+});
+app.post("/time_slots", (req, res) => {
+  const { room_id, garag, time } = req.body;
+  pool.query(
+    "INSERT INTO time_slots(room_id,garag,time) VALUES($1,$2,$3)",
+    [room_id, garag, time],
+    (err, result) => {
+      if (!err) {
+        res.status(201).send(result.rows);
+      } else {
+        res.status(500).send(err.message);
+      }
+    }
+  );
+});
 
 app.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
