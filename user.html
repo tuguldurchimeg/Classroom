@@ -17,7 +17,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"> 
     <script defer type="module" src="script/user.js"></script>
-    <script type="module" src="./script/components/user/cmp-class.js"></script>
+    <script type="module" src="./components/user/cmp-class.js"></script>
     <script defer src="script/components/Cart.js"></script>
     <script defer src="script/components/BtnLike.js"></script>
     <script defer src="script/components/MobileNav.js"></script>
@@ -40,52 +40,24 @@
                     <div>
                 </div>
                 <cart-class class="test">                </cart-class>
+
                 <ul>
-                    <li class="username">User</li>
-                    <li class="ordered">Захиалсан ангиуд</li>
-                    <li class="liked">Дуртай</li>
-                    <li class="account">Аккаунт</li>
-                    </ul>
+                    <a href="./user.html?state=verified"><li  class="ordered">Захиалсан ангиуд</li></a>
+                    <a href="./user.html?state=liked"><li  class="liked">Дуртай</li></a>
+                    <a href="./user.html?state=account"><li  class="account">Аккаунт</li></a>
+                </ul>
                 </article>
                 <article class="log-out">Гарах</article>
             </section>
             <section class="right-section">
                 <h1>Баталгаажсан:</h1>
                 <section class="verified">
-                <a href="./class.html">
-                            <article class="class-section-2">
-                                <div class="img">
-                                    <img src="styles/assets/class.jpg" alt="classroom-picture" class="image">
-                                </div>
-                                <section class="details">
-                                    <div class="heartdetailsgrid">
-                                        <div class="font">
-                                            <h3>1-407</h3>
-                                            <div class="class-type">Лекц</div>
-                                        </div>
-                                        <img src="styles/assets/Heart-grey.svg" alt="like this class" class="heart-grey">
-                                    </div>
-                                    <ul>
-                                        <li>03.05-Мя</li>
-                                        <li>
-                                            <button><span>16:00</span></button>
-                                        </li>
-                                        <li>
-                                            <button><span>16:00</span></button>
-                                        </li>
-                                    </ul>
-                                </section>
-                                <div class="cancel">
-                                    <button><img src="styles/assets/cancal.png" alt="cancel"></button>
-                                </div>
-                            </article>
-                        </a>
                 </section>
             <class-component></class-component>
                 <section class="waiting">
                     <h1>Хүлээгдэж буй:</h1>
                     <section class="verified">
-                        <a href="./class.html">
+                        <!-- <a href="./class.html">
                             <article class="class-section-2">
                                 <div class="img">
                                     <img src="styles/assets/class.jpg" alt="classroom-picture" class="image">
@@ -141,9 +113,7 @@
                                     <button><img src="styles/assets/cancal.png" alt="cancel"></button>
                                 </div>
                             </article>
-                        </a>
-                            <article></article>
-                    <article></article>
+                        </a> -->
                 </section>
             </section>
         </section>

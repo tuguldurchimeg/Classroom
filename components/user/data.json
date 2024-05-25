@@ -11,7 +11,9 @@
         "startTime": "16:00",
         "endTime": "16:00",
         "cancelImgSrc": "styles/assets/cancal.png",
-        "cancelImgAlt": "cancel"
+        "cancelImgAlt": "cancel",
+        "state": "verified",
+        "id": 1
     },
     {
         "href": "./class.html",
@@ -25,7 +27,10 @@
         "startTime": "09:00",
         "endTime": "12:00",
         "cancelImgSrc": "styles/assets/cancal.png",
-        "cancelImgAlt": "cancel"
+        "cancelImgAlt": "cancel",
+        "state": "verified",
+        "id": 2
+
     },
     {
         "href": "./class.html",
@@ -39,6 +44,26 @@
         "startTime": "14:00",
         "endTime": "18:00",
         "cancelImgSrc": "styles/assets/cancal.png",
-        "cancelImgAlt": "cancel"
+        "cancelImgAlt": "cancel",
+        "state": "liked",
+        "id": 3
+
+    },
+    {
+        "href": "./class.html",
+        "imgSrc": "styles/assets/class.jpg",
+        "imgAlt": "classroom-picture-3",
+        "header": "3-502",
+        "classType": "Лаборатор",
+        "heartImgSrc": "styles/assets/Heart-grey.svg",
+        "heartImgAlt": "favorite session",
+        "date": "05.05-Мя",
+        "startTime": "14:00",
+        "endTime": "18:00",
+        "cancelImgSrc": "styles/assets/cancal.png",
+        "cancelImgAlt": "cancel",
+        "state": "account",
+        "id": 4
+
     }
 ]
