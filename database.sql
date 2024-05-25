@@ -31,7 +31,7 @@ CREATE TABLE  reservations  (
    room_id  varchar,
    date  date,
    purpose  varchar,
-   desc  varchar,
+   description  varchar,
    people  int,
    phone1  varchar,
    phone2  varchar,
@@ -48,7 +48,7 @@ CREATE TABLE  reserved  (
    res_id  varchar
 );
 
-CREATE TABLE  schedules  (
+CREATE TABLE  time_slots  (
    room_id  varchar,
    garag  varchar,
    time  int
@@ -60,7 +60,7 @@ CREATE TABLE  res_times  (
    res_id  varchar
 );
 
-CREATE TABLE  week  (
+CREATE TABLE  schedules  (
    week_id  varchar,
    room_id  varchar,
    garag  varchar,
