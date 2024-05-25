@@ -48,10 +48,10 @@ app.get(
 );
 
 app.post("/classes", (req, res) => {
-  const { id, roomNo, building, type, capacity, projector } = req.body;
+  const { room_id, roomNo, building, type, capacity, projector } = req.body;
   pool.query(
-    "INSERT INTO classes(id,roomNo,building,type,capacity, projector) VALUES($1,$2,$3,$4,$5,$6)",
-    [id, roomNo, building, type, capacity, projector],
+    "INSERT INTO classes(room_id,roomNo,building,type,capacity, projector) VALUES($1,$2,$3,$4,$5,$6)",
+    [room_id, roomNo, building, type, capacity, projector],
     (err, result) => {
       if (!err) {
         res.status(201).send(result.rows);
