@@ -223,6 +223,20 @@ function fetchSchedule() {
         return result;
       };
 
+      const convertToNumber = (timeString) => {
+        const [hours, minutes] = timeString.split(":").map(Number);
+        return hours * 60 + minutes;
+      };
+
+      const convertToTimeString = (timeNumber) => {
+        const hours = Math.floor(timeNumber / 60);
+        const minutes = timeNumber % 60;
+        return `${String(hours).padStart(2, "0")}:${String(minutes).padStart(
+          2,
+          "0"
+        )}`;
+      };
+
       // Group the data by "uruunii_khuviin_dugaar" and then by "garag"
       const groupedByUruuniiDugaar = groupByUruuniiDugaar(initialData);
       // Convert the grouped data to the desired structure
@@ -262,6 +276,27 @@ function fetchSchedule() {
         });
       });
 
+      // Convert freeHuwaariArray to the desired data structure
+      const freeHuwaariToDesiredStructure = (freeHuwaariArray) => {
+        const desiredStructure = [];
+
+        freeHuwaariArray.forEach((element) => {
+          element.garagGroup.forEach((garagGroup) => {
+            garagGroup.classHoursSet.forEach((hour) => {
+              desiredStructure.push({
+                uruunii_khuviin_dugaar: element.uruunii_khuviin_dugaar,
+                garag: garagGroup.garag,
+                time: hour,
+              });
+            });
+          });
+        });
+
+        return desiredStructure;
+      };
+
+      const processedData = freeHuwaariToDesiredStructure(freeHuwaariArray);
+      console.log(processedData);
       return freeHuwaariArray;
     });
 }
