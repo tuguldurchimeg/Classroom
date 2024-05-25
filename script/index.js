@@ -153,10 +153,7 @@ function fetching() {
           if (!groupedData[uruunii_khuviin_dugaar]) {
             groupedData[uruunii_khuviin_dugaar] = {};
           }
-          if (
-            davtamj === "7 хоног тутам" &&
-            oroltyn_too === 16 &&
-          ) {
+          if (davtamj === "7 хоног тутам" && oroltyn_too === 16) {
             if (!groupedData[uruunii_khuviin_dugaar][garag]) {
               groupedData[uruunii_khuviin_dugaar][garag] = [];
             }
