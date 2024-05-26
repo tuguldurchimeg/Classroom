@@ -27,7 +27,7 @@ export const authenticate = async (req, res) => {
   }
 };
 
-const users = async (email) => {
+export const users = async (email) => {
   try {
     const result = await pool.query("SELECT * FROM users WHERE email = $1", [
       email,
@@ -39,7 +39,6 @@ const users = async (email) => {
   }
 };
 
-// Get the maximum user_id from the database
 const getMaxUserId = async () => {
   try {
     const result = await pool.query("SELECT MAX(user_id) FROM users");

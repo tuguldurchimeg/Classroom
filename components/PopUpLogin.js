@@ -10,22 +10,21 @@ class PopUpLogin extends HTMLElement {
             <div class="log-option"> 
               <input type="radio" class="tablink" id="log-btn" name="log-btns" checked>
               <label for="log-btn" id="log-btn-lbl">Нэвтрэх</label>
-              <div class="logcontent">  
+              <form action="/private/auth" method="POST" class="logcontent">  
                 <div>
                     <label for="email-reg">Цахим шуудан</label>
                     <input type="email" id="email" size="30" placeholder="21B1NUM1402@stud.num.edu.mn" required />
                 </div>
-                <div>
+                <form>
                     <label for="password">Нууц үг</label>
                     <input type="password" id="password"  size="30" placeholder="Нууц үг" required />
-                </div>
-                <button class="btn-login" onclick="this.login">Нэвтрэх</button>
-              </div>
-            </div>
+                <button type="submit" class="btn-login">Нэвтрэх</button>
+              </form>
+            </form>
             <div class="log-option"> 
               <input type="radio" class="tablink" id="reg-btn" name="log-btns">
               <label for="reg-btn" id="reg-btn-lbl">Бүртгүүлэх</label>
-              <div class="logcontent"> 
+              <form action="/private/auth" method="POST" class="logcontent login"> 
                   <div>
                       <label for="email">Цахим шуудан</label>
                       <input type="email" id="email-reg" size="30" placeholder="21B1NUM1402@stud.num.edu.mn" required />
@@ -38,8 +37,8 @@ class PopUpLogin extends HTMLElement {
                       <label for="password-reg">Нууц үг</label>
                       <input type="password" id="password-reg"  size="30" placeholder="Нууц үг" required />
                   </div>
-                  <button class="btn-add-reg" onclick="this.handleReg">Бүртгэл үүсгэх</button>
-              </div>
+                  <button type="submit" class="btn-add-reg">Бүртгэл үүсгэх</button>
+              </form>
             </div>
         </div>
     `;
@@ -51,11 +50,15 @@ class PopUpLogin extends HTMLElement {
       this.classList.remove("open");
     });
 
-    this.querySelector(".btn-login").addEventListener("click", this.login);
-    this.querySelector(".btn-add-reg").addEventListener(
-      "click",
-      this.handleReg
-    );
+    this.querySelector(".logcontent").addEventListener("submit", (event) => {
+      event.preventDefault(); // Prevent default form submission
+
+      if (event.target.classList.contains("login")) {
+        this.login();
+      } else {
+        this.handleReg();
+      }
+    });
   }
 
   async login() {
@@ -74,19 +77,17 @@ class PopUpLogin extends HTMLElement {
             password: pass,
           }),
         });
-        if (response.ok) {
+        if (response) {
           alert("амжилттай нэвтэрлээ!");
         } else {
           const data = await response.json();
           throw new Error(data.message);
         }
       } catch (error) {
-        console.log(response);
         console.error("Login error:", error);
         alert("Амжилтгүй боллоо. Дахин оролдоно уу!");
       }
-    }
-    alert("Нэвтрэх нэр, нууц үгээ оруулна уу!");
+    } else alert("Нэвтрэх нэр, нууц үгээ оруулна уу!");
   }
 
   async handleReg() {
@@ -107,7 +108,7 @@ class PopUpLogin extends HTMLElement {
           phone: phone,
         }),
       });
-      if (response.ok) {
+      if (response) {
         alert("Бүртгэл амжилттай нэвтэрнэ үү!");
       } else {
         const data = await response.json();
