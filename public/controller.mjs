@@ -165,3 +165,30 @@ export const insertReservations = async (req, res) => {
     }
   );
 };
+export const insertLiked = async (req, res) => {
+  const { user_id, room_id } = req.body;
+  pool.query(
+    "INSERT INTO liked(user_id, room_id) VALUES($1,$2)",
+    [user_id, room_id],
+    (err, result) => {
+      if (!err) {
+        res.status(201).send(result.rows);
+      } else {
+        res.status(500).send(err.message);
+      }
+    }
+  );
+};
+export const getLikedClasses = async (req, res) => {
+  try {
+    const { user_id } = req.params;
+    const { rows } = await pool.query(
+      "SELECT room_id FROM liked WHERE user_id = $1",
+      [user_id]
+    );
+    res.json({ data: rows });
+  } catch (error) {
+    console.error("Error:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};

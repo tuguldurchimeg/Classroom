@@ -8,6 +8,8 @@ import {
   getRating,
   insertRating,
   insertReservations,
+  getLikedClasses,
+  insertLiked,
 } from "./controller.mjs";
 const router = Router();
 
@@ -22,5 +24,7 @@ router.get("/classes", getClasses);
 router.get("/rating/:room_id", getRating);
 router.post("/rating", insertRating);
 router.post("/reservations", insertReservations);
+router.get("/liked/:user_id", getLikedClasses);
+router.post("/liked", insertLiked);
 
 export default router;
