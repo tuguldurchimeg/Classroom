@@ -103,7 +103,7 @@ export const getRating = async (req, res) => {
   try {
     const { room_id } = req.params;
     const { rows } = await pool.query(
-      "SELECT AVG(air-rate), AVG(comfort-rate), AVG(wifi-rate), AVG(slot-rate) FROM ratings GROUPBY $1",
+      "SELECT AVG(air-rate) as air, AVG(comfort-rate) as comfort, AVG(wifi-rate) as wifi, AVG(slot-rate) as slot FROM ratings GROUPBY $1",
       [room_id]
     );
     res.json({ data: rows });

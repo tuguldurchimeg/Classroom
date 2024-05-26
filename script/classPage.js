@@ -24,6 +24,8 @@ console.log(classObj);
 
 let classTitleHTML = "";
 let mainInfoHTML = "";
+let ratingHTML = "";
+let ratingData;
 
 classTitleHTML += `
     <h2 class="heading-3 title">
@@ -53,9 +55,55 @@ mainInfoHTML += `
         }
     </li>
   `;
+try {
+  const response = await fetch(
+    `http://localhost:3000/rating/${classObj.roomID}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+
+  if (response.ok) {
+    console.log("ratings retrieved successfully.");
+    ratingData = await response.json();
+    displayProducts(productsData);
+  } else {
+    console.error("Failed to retrieve rating. HTTP status:", response.status);
+  }
+} catch (error) {
+  console.error("Error retrieving rating:", error);
+}
+ratingHTML = `
+    <h6>
+      <div class="main-rate">${
+        (ratingData.air +
+          ratingData.comfort +
+          ratingData.wifi +
+          ratingData.slot) /
+        4
+      }</div>
+    </h6>
+    <nav class="rate-criteria">
+      <meter min="0" max="5" value="${ratingData.air}" id="air-meter">
+      </meter>
+      <meter min="0" max="5" value="${ratingData.comfort}" id="comfort-meter">
+      </meter>
+      <meter min="0" max="5" value="${ratingData.wifi}" id="wifi-meter">
+      </meter>
+      <meter min="0" max="5" value="${ratingData.slot}" id="socket-meter">
+      </meter>
+    </nav>  
+    <button id="add-rating-btn">
+      <div><i class="fa-solid fa-plus"></i></div>
+    </button>
+  `;
 
 document.getElementById("main-title").innerHTML = classTitleHTML;
 document.getElementById("main-desc").innerHTML = mainInfoHTML;
+document.querySelector(".rating").innerHTML = mainInfoHTML;
 
 // fetch similar classes
 fetch("https://api.npoint.io/70107af397f4a981c076")
