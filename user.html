@@ -21,33 +21,30 @@
     <script defer src="script/components/Cart.js"></script>
     <script defer src="script/components/BtnLike.js"></script>
     <script defer src="script/components/MobileNav.js"></script>
+    <script type="module" src="/components/ProfileBtn.js"></script>
+        <script type="module" src="/components/Header.js"></script>
     <title>User Profile</title>
 </head>
 <body>
-    <header class="main-header-2">
-        <nav>
-            <a href="index.html">
-                <img class="logo" src="styles/assets/Logo.svg" alt="logo image">
-            </a>
-            <button class="pop-up-btn" id="profile-btn"><i class="fa-regular fa-user"></i></button>
-        </nav>
+    <header class="main-header">
+        <main-header></main-header>
     </header>
     <main class="body">
         <section class="main">
             <section class="left-section">
                 <article class="info">
-                    <button class="pop-up-btn" id="profile-btn"><i class="fa-regular fa-user"></i></button>
+                    <button class="prof-btn pop-up-btn" id="profile-btn"><i class="fa-regular fa-user"></i></button>
                     <div>
                 </div>
                 <cart-class class="test">                </cart-class>
 
-                <ul>
+                <ul class="left-titles">
                     <a href="./user.html?state=verified"><li  class="ordered">Захиалсан ангиуд</li></a>
                     <a href="./user.html?state=liked"><li  class="liked">Дуртай</li></a>
                     <a href="./user.html?state=account"><li  class="account">Аккаунт</li></a>
                 </ul>
                 </article>
-                <article class="log-out">Гарах</article>
+                <button class="log-out">Гарах</button>
             </section>
             <section class="right-section">
                 <h1>Баталгаажсан:</h1>
