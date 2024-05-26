@@ -71,7 +71,7 @@ export const getFilteredClasses = async (req, res) => {
       startTsag,
       endTsag,
       garag,
-    } = req.query;
+    } = req.params;
 
     const query = `
       SELECT sc.room_id,sc.week_id,sc.garag,sc.time,cl.roomno,cl.building,cl.type,cl.capacity,cl.projector,sc.status

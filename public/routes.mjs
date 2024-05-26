@@ -8,7 +8,10 @@ import {
 } from "./controller.mjs";
 const router = Router();
 
-router.get("/filtered_classes", getFilteredClasses);
+router.get(
+  "/filtered_classes/:bairfinal/:startTsag/:endTsag/:garag",
+  getFilteredClasses
+);
 router.post("/classes", insertClasses);
 router.post("/time_slots", insertTimeSlots);
 router.get("/time_slots", getTimeSlots);

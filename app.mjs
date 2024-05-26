@@ -31,13 +31,6 @@ app.use(express.static(__dirname + "/styles"));
 app.use(express.static(__dirname + "/component"));
 app.use(express.static(__dirname + "/script"));
 
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "./index.html"));
-});
-app.get("/index", (req, res) => {
-  res.sendFile(path.join(__dirname, "./index.html"));
-});
-
 const options = {
   swaggerDefinition: {
     openapi: "3.0.0",

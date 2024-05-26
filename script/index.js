@@ -50,11 +50,11 @@ document.addEventListener("searched", async (event) => {
     }
 
     // Construct the query string with parameters
-    let queryString = `http://localhost:3000/filtered_classes?bairfinal=${encodeURIComponent(
+    let queryString = `http://localhost:3000/filtered_classes/${encodeURIComponent(
       bairfinal
-    )}&startTsag=${encodeURIComponent(startTsag)}&endTsag=${encodeURIComponent(
+    )}/${encodeURIComponent(startTsag)}/${encodeURIComponent(
       endTsag
-    )}&garag=${encodeURIComponent(garag)}`;
+    )}/${encodeURIComponent(garag)}`;
 
     const response = await fetch(queryString);
 

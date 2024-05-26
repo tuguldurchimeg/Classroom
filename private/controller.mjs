@@ -77,7 +77,7 @@ export const register = async (req, res) => {
 export const logout = (req, res) => {
   if (req.session.loggedin) {
     req.session.destroy((err) => {
-      // res.redirect("/");
+      res.redirect("/");
     });
   } else {
     const errorMessage = "Error";
