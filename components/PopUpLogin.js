@@ -1,4 +1,5 @@
-import { useAuth } from "../src_private/authprovider.mjs";
+import { response } from "express";
+import { authenticateUser } from "../authprovider.mjs";
 
 class PopUpLogin extends HTMLElement {
   constructor() {
@@ -52,7 +53,7 @@ class PopUpLogin extends HTMLElement {
     this.querySelector("#close-login").addEventListener("click", () => {
       this.classList.remove("open");
     });
-    // You can attach event listeners after rendering the HTML
+
     this.querySelector(".btn-login").addEventListener("click", this.login);
     this.querySelector(".btn-add-reg").addEventListener(
       "click",
@@ -60,17 +61,33 @@ class PopUpLogin extends HTMLElement {
     );
   }
 
-  login() {
-    console.log("logged");
+  async login() {
     const email = document.getElementById("email").value;
     const pass = document.getElementById("password").value;
-    // If useAuth is a custom hook, make sure it's imported correctly and used here
-    // const auth = useAuth();
 
     if (email !== "" && pass !== "") {
-      // auth.loginAction(email, pass);
-      console.log("Authenticating...");
-      return;
+      try {
+        const response = await fetch(`http://localhost:3000/private/auth`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: email,
+            password: pass,
+          }),
+        });
+        if (response.ok) {
+          alert("амжилттай нэвтэрлээ!");
+        } else {
+          const data = await response.json();
+          throw new Error(data.message);
+        }
+      } catch (error) {
+        console.log(response);
+        console.error("Login error:", error);
+        alert("Амжилтгүй боллоо. Дахин оролдоно уу!");
+      }
     }
     alert("Нэвтрэх нэр, нууц үгээ оруулна уу!");
   }
@@ -82,22 +99,27 @@ class PopUpLogin extends HTMLElement {
     const phone = document.getElementById("telPhone").value;
 
     try {
-      const response = await fetch(`http://localhost:3000/reg`, {
+      const response = await fetch(`http://localhost:3000/private/authreg`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
+          email: email,
           password: pass,
           phone: phone,
-          email: email,
         }),
       });
+      if (response.ok) {
+        alert("Бүртгэл амжилттай нэвтэрнэ үү!");
+      } else {
+        const data = await response.json();
+        throw new Error(data.message);
+      }
     } catch (error) {
-      console.error(error);
+      console.error("Registration error:", error);
+      alert("Бүртгэл амжилтгүй боллоо. Дахин оролдоно уу!");
     }
-    alert("Бүртгэл амжилттай нэвтэрнэ үү!");
   }
 }
-
 window.customElements.define("pop-up-login", PopUpLogin);
