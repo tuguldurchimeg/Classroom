@@ -71,6 +71,10 @@ app.get(
 
 app.use("/", classRoutes);
 app.use("/private", privateRoutes);
+
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "index.html"));
+});
 app.get("/:htmlFile", (req, res) => {
   const { htmlFile } = req.params;
   res.sendFile(path.join(__dirname, `${htmlFile}`));
