@@ -74,13 +74,13 @@ export const getFilteredClasses = async (req, res) => {
     } = req.params;
 
     const query = `
-      SELECT sc.room_id,sc.week_id,sc.garag,sc.time,cl.roomno,cl.building,cl.type,cl.capacity,cl.projector,sc.status
-        FROM schedule as sc
-        INNER JOIN classes as cl ON sc.room_id = cl.room_id
-          WHERE cl.building = $1
-        AND sc.time BETWEEN $2 AND $3
-        AND sc.garag = $4;
-    `;
+    SELECT DISTINCT ON (sc.room_id) sc.room_id,sc.week_id,sc.garag,sc.time,cl.roomno,cl.building,cl.type,cl.capacity,cl.projector,sc.status
+      FROM schedule as sc
+      INNER JOIN classes as cl ON sc.room_id = cl.room_id
+	    WHERE cl.building = $1
+      AND sc.time BETWEEN $2 AND $3
+      AND sc.garag = $4;
+  `;
 
     const { rows } = await pool.query(query, [
       bairfinal,
