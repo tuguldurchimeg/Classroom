@@ -33,42 +33,6 @@ app.use(express.static(__dirname + "/styles"));
 app.use(express.static(__dirname + "/component"));
 app.use(express.static(__dirname + "/script"));
 
-const options = {
-  swaggerDefinition: {
-    openapi: "3.0.0",
-    info: {
-      title: "Classroom API",
-      version: "1.0.0",
-      description: "API for managing classroom",
-    },
-    license: {
-      name: "Classroom",
-      url: "http://localhost:3000/",
-    },
-    contact: {
-      name: "WebDevAdmin",
-      url: "http://localhost:3000/",
-      email: "tgldrchmg0730@gmail.com",
-    },
-    servers: [
-      {
-        url: "http://localhost:3000/",
-      },
-    ],
-  },
-  apis: ["./app.mjs"],
-};
-
-const swaggerSpecs = swaggerJsdoc(options);
-//swagger document
-app.use("/docs", swaggerUi.serve);
-app.get(
-  "/docs",
-  swaggerUi.setup(swaggerSpecs, {
-    explorer: true,
-  })
-);
-
 app.use("/", classRoutes);
 app.use("/private", privateRoutes);
 
