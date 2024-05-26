@@ -1,6 +1,3 @@
-import { response } from "express";
-import { authenticateUser } from "../authprovider.mjs";
-
 class PopUpLogin extends HTMLElement {
   constructor() {
     super();
@@ -117,8 +114,7 @@ class PopUpLogin extends HTMLElement {
         throw new Error(data.message);
       }
     } catch (error) {
-      console.error("Registration error:", error);
-      alert("Бүртгэл амжилтгүй боллоо. Дахин оролдоно уу!");
+      console.error(error);
     }
   }
 }

@@ -50,7 +50,6 @@ const getMaxUserId = async () => {
   }
 };
 
-// register user
 export const register = async (req, res) => {
   const { user_id, password, phone, email } = req.body;
   try {
@@ -62,12 +61,11 @@ export const register = async (req, res) => {
     const maxUserId = await getMaxUserId();
     const newUser_id = maxUserId + 1;
 
-    const insertResult = await pool.query(
+    await pool.query(
       "INSERT INTO users(user_id, password, phone, email) VALUES ($1, $2, $3, $4)",
       [newUser_id, password, phone, email]
     );
-    res.status(201).send(insertResult.rows);
-    res.redirect("/");
+    res.redirect("/"); // Redirect after registration
   } catch (err) {
     console.error(err.message);
     res.status(500).send(err.message);

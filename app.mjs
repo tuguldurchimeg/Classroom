@@ -7,6 +7,7 @@ import classRoutes from "./public/routes.mjs";
 import privateRoutes from "./private/routes.mjs";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
+import bodyParser from "express";
 import path from "path";
 const app = express();
 
@@ -19,6 +20,7 @@ const port = 3000;
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json()); // req.body
+app.use(bodyParser.json());
 app.use(
   session({
     secret: "secret",
