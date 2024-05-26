@@ -61,73 +61,21 @@ document.addEventListener("searched", async (event) => {
     if (!response.ok) {
       throw new Error("Network response was not ok");
     }
-
     // Handle the response from the backend if needed
     const responseData = await response.json();
     console.log(responseData);
+
+    let classSectionHTMLArray = responseData.data.map((classObj) => {
+      const garagGroup = { day: garag, time: `${startTsag} - ${endTsag}` };
+      const classInstance = new ClassRen(classObj, garagGroup);
+      return classInstance.Render();
+    });
+    const classSectionHTML = classSectionHTMLArray.join("");
+    document.getElementById("class-section1").innerHTML = classSectionHTML;
   } catch (error) {
     console.error("Error:", error);
   }
 });
-
-//   fetchSchedule()
-//     .then((freeHuwaariArray) => {
-//       console.log(freeHuwaariArray);
-//       fetchClasses().then((filteredClasses) => {
-//         console.log(filteredClasses);
-//         classArrayObj = filteredClasses.map((classObj) => {
-//           let schedule = freeHuwaariArray.filter(
-//             (huwaari) => huwaari.room_id == classObj.room_id
-//           );
-
-//           if (schedule.length > 0) {
-//             const classI = new ClassRen(classObj, schedule[0].garagGroup);
-//             return classI;
-//           }
-//           return null;
-//         });
-
-//         classArrayObj = classArrayObj.filter((classObj) => classObj !== null);
-//         // console.log(classArrayObj);
-//         let classSectionHTMLArray = classArrayObj
-//           .map((classObj) => {
-//             let temp;
-//             classObj.schedule.forEach((weekday) => {
-//               weekday.classHoursSet.forEach((time) => {
-//                 if (
-//                   time >= convertToNumber(startTsag) &&
-//                   time <= convertToNumber(endTsag)
-//                 ) {
-//                   console.log(
-//                     classObj.building +
-//                       "-" +
-//                       classObj.roomNo +
-//                       " " +
-//                       weekday.garag +
-//                       " " +
-//                       time
-//                   );
-
-//                   temp = classObj.Render();
-//                   return;
-//                 }
-//               });
-//               return;
-//             });
-//             return temp != null ? temp : null;
-//           })
-//           .filter((classObj) => classObj != null);
-
-//         const classSectionHTML = classSectionHTMLArray.reduce(
-//           (prev, current) => prev + current
-//         );
-//         document.getElementById("class-section1").innerHTML = classSectionHTML;
-//       });
-//     })
-//     .catch((error) => {
-//       console.error("Error fetching data: ", error);
-//     });
-// });
 
 async function fetchClasses() {
   try {

@@ -36,6 +36,7 @@ search-bar.search-bar {
     }
   }
 }
+
 .odor > button,
 .tsag > button,
 .bair > button {
@@ -105,6 +106,7 @@ search-bar.search-bar {
 /* -------------------------------MAIN HOMEPAGE------------------------------- */
 
 .class-filter {
+  display: none;
   margin-bottom: 1.25em;
   margin-top: 1.6em;
   position: relative;
@@ -138,6 +140,8 @@ search-bar.search-bar {
   gap: var(--gap-1);
   grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
   justify-content: center;
+
+  margin-top: 1.6em;
 }
 
 .wrapper {
@@ -148,7 +152,7 @@ search-bar.search-bar {
 aside.index-aside {
   width: 25%;
   margin-left: auto;
-  margin-top: 5rem;
+  margin-top: 2rem;
 
   border-radius: 20px;
   border: 3px solid;
@@ -181,6 +185,11 @@ main {
 }
 .mobile-nav {
   display: none;
+}
+
+.class-head-ttl {
+  justify-content: space-between;
+  /* gap: 15%; */
 }
 
 /* --------------------MEDIA-QUERIES----------------- */
@@ -216,6 +225,7 @@ main {
 
   .main-content {
     margin: 0 1.5rem;
+    margin-top: 1.6em;
     display: grid;
     gap: 0.75rem;
     grid-template-columns: repeat(auto-fill, minmax(9.8rem, 1fr));
@@ -249,12 +259,17 @@ main {
     width: 100%;
   }
   .main-header nav {
+    justify-content: center;
     margin: -1.5em 0 0 0;
+    padding: 0;
     & .header-logo {
       display: none;
     }
     & #profile-btn {
       display: none;
+    }
+    & .search-bar {
+      width: 100%;
     }
   }
   .line-svg {
@@ -279,6 +294,10 @@ main {
   .main-header nav {
     animation: none;
   }
+}
+
+.class-head-ttl {
+  margin-right: 0.7rem;
 }
 
 .class-section-3 {
