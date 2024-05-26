@@ -49,7 +49,7 @@ mainInfoHTML += `
     <li>
         <div class="info-desc">Проектор</div>
         ${
-          classObj.proj === "Проектортой"
+          classObj.proj
             ? "<i class='fa-solid fa-check info-attr' id='proj-state'></i>"
             : "<i class='fa-solid fa-xmark info-attr' id='proj-state'></i>"
         }
@@ -69,14 +69,14 @@ try {
   if (response.ok) {
     console.log("ratings retrieved successfully.");
     ratingData = await response.json();
-    displayProducts(productsData);
   } else {
     console.error("Failed to retrieve rating. HTTP status:", response.status);
   }
 } catch (error) {
   console.error("Error retrieving rating:", error);
 }
-ratingHTML = `
+if (ratingData == null)
+  ratingHTML = `
     <h6>
       <div class="main-rate">${
         (ratingData.air +
@@ -95,7 +95,7 @@ ratingHTML = `
       </meter>
       <meter min="0" max="5" value="${ratingData.slot}" id="socket-meter">
       </meter>
-    </nav>  
+    </nav>
     <button id="add-rating-btn">
       <div><i class="fa-solid fa-plus"></i></div>
     </button>
@@ -103,7 +103,7 @@ ratingHTML = `
 
 document.getElementById("main-title").innerHTML = classTitleHTML;
 document.getElementById("main-desc").innerHTML = mainInfoHTML;
-document.querySelector(".rating").innerHTML = ratingHTML;
+// document.querySelector(".rating").innerHTML = ratingHTML;
 
 // fetch similar classes
 fetch("https://api.npoint.io/70107af397f4a981c076")

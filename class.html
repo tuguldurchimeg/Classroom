@@ -1,227 +1,332 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Classroom</title>
-        <meta name="description" content="College classroom booking system for students.">
-        <meta name="author" content="Chinkhusel">
-        <meta name="author" content="Tuguldurchimeg">
-        <meta name="author" content="Enkh-Erdem">
-        <meta name="keywords" content="МУИС, МУИС анги захиалах, Оюутан, Монгол Улсын Их Сургууль">
-        <link rel="stylesheet" href="styles/styleguide.css">
-        <link rel="stylesheet" href="styles/styles.css">
-        <link rel="stylesheet" href="styles/class.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Classroom</title>
+    <meta
+      name="description"
+      content="College classroom booking system for students."
+    />
+    <meta name="author" content="Chinkhusel" />
+    <meta name="author" content="Tuguldurchimeg" />
+    <meta name="author" content="Enkh-Erdem" />
+    <meta
+      name="keywords"
+      content="МУИС, МУИС анги захиалах, Оюутан, Монгол Улсын Их Сургууль"
+    />
+    <link rel="stylesheet" href="styles/styleguide.css" />
+    <link rel="stylesheet" href="styles/styles.css" />
+    <link rel="stylesheet" href="styles/class.css" />
 
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
 
-        <script defer type="module" src="script/classPage.js"></script>
-        <script type="module" src="ClassRender.js"></script>
-        <script type="module" src="/components/calendar.js"></script>
-        <script type="module" src="/components/ReserveForm.js"></script>
-        <script type="module" src="/components/MobileNav.js"></script>
-        <script type="module" src="/components/PopUpUser.js"></script>
-        <script type="module" src="/components/PopUpLogin.js"></script>
-        <script type="module" src="/components/PopUpRating.js"></script>
-        <script type="module" src="components/ClassSection.js"></script>
-        <script type="module" src="components/BtnLike.js"></script>
-        <script type="module" src="/components/Stars.js"></script>
-        <script type="module" src="/components/Star.js"></script>
-        <script type="module" src="/components/ProfileBtn.js"></script>
-        <script type="module" src="/components/Header.js"></script>
-
-    </head>
-<body>
+    <script defer type="module" src="script/classPage.js"></script>
+    <script type="module" src="/script/ClassRender.js"></script>
+    <script type="module" src="/components/calendar.js"></script>
+    <script type="module" src="/components/ReserveForm.js"></script>
+    <script type="module" src="/components/MobileNav.js"></script>
+    <script type="module" src="/components/PopUpUser.js"></script>
+    <script type="module" src="/components/PopUpLogin.js"></script>
+    <script type="module" src="/components/PopUpRating.js"></script>
+    <script type="module" src="components/ClassSection.js"></script>
+    <script type="module" src="components/BtnLike.js"></script>
+    <script type="module" src="/components/Stars.js"></script>
+    <script type="module" src="/components/Star.js"></script>
+    <script type="module" src="/components/ProfileBtn.js"></script>
+    <script type="module" src="/components/Header.js"></script>
+  </head>
+  <body>
     <header class="main-header">
-        <main-header></main-header>
+      <main-header></main-header>
     </header>
-    
+
     <main>
-        <section class="main-class-info">
-            <article class="main-class-title" id="main-title">            
-            </article>
+      <section class="main-class-info">
+        <article class="main-class-title" id="main-title"></article>
 
-            <section>
-                <nav>
-                    <ul class="main-info" id="main-desc">
-                    </ul>
-                </nav>
-                <section class="rating">
-                    <h6>
-                        <div class="main-rate">3.8</div>
-                    </h6>
-                    <nav class="rate-criteria">
-                        <meter min="0" max="5" value="3.4" id="air-meter">
-                        </meter>
-                        <meter min="0" max="5" value="1" id="comfort-meter">
-                        </meter>
-                        <meter min="0" max="5" value="2" id="wifi-meter">
-                        </meter>
-                        <meter min="0" max="5" value="3" id="socket-meter">
-                        </meter>
-                    </nav>  
-                    <button id="add-rating-btn">
-                        <div><i class="fa-solid fa-plus"></i></div>
-                    </button>       
-                </section>  
-            </section>          
+        <section>
+          <nav>
+            <ul class="main-info" id="main-desc"></ul>
+          </nav>
+          <section class="rating">
+            <h6>
+              <div class="main-rate">3.8</div>
+            </h6>
+            <nav class="rate-criteria">
+              <meter min="0" max="5" value="3.4" id="air-meter"></meter>
+              <meter min="0" max="5" value="1" id="comfort-meter"></meter>
+              <meter min="0" max="5" value="2" id="wifi-meter"></meter>
+              <meter min="0" max="5" value="3" id="socket-meter"></meter>
+            </nav>
+            <button id="add-rating-btn">
+              <div><i class="fa-solid fa-plus"></i></div>
+            </button>
+          </section>
         </section>
-        <pop-up-rating class="pop-up" id="rating-pop-up"></pop-up-rating>
+      </section>
+      <pop-up-rating class="pop-up" id="rating-pop-up"></pop-up-rating>
 
-        <menu class="option-tab">
-            <div class="menu-option">
-                <input type="radio" class="tablink" id="day-btn" name="tab-btn" checked>
-                <label for="day-btn" id="day-btn-lbl">Өдрөөр</label>
-                <section class="tabcontent" id="day-tab">
-                    <div class="time-selector">
-                        <calendar-cm class="calendar-wrapper"></calendar-cm>
-                        <ul class="day-times">
-                            <li><button class="timeBtn" id="timeBtn1"><time datetime="16:00">16:00</time></button></li>
-                            <li><button class="timeBtn"><time datetime="16:00">16:45</time></button></li>
-                            <li><button class="timeBtn"><time datetime="16:00">17:40</time></button></li>
-                            <li><button class="timeBtn"><time datetime="16:00">18:25</time></button></li>
-                            <li><button class="timeBtn"><time datetime="16:00">18:25</time></button></li>
-                        </ul>
-                    </div>
-                    <reserve-form class="reserve-form"></reserve-form>
-                </section>
+      <menu class="option-tab">
+        <div class="menu-option">
+          <input
+            type="radio"
+            class="tablink"
+            id="day-btn"
+            name="tab-btn"
+            checked
+          />
+          <label for="day-btn" id="day-btn-lbl">Өдрөөр</label>
+          <section class="tabcontent" id="day-tab">
+            <div class="time-selector">
+              <calendar-cm class="calendar-wrapper"></calendar-cm>
+              <ul class="day-times">
+                <li>
+                  <button class="timeBtn" id="timeBtn1">
+                    <time datetime="16:00">16:00</time>
+                  </button>
+                </li>
+                <li>
+                  <button class="timeBtn">
+                    <time datetime="16:00">16:45</time>
+                  </button>
+                </li>
+                <li>
+                  <button class="timeBtn">
+                    <time datetime="16:00">17:40</time>
+                  </button>
+                </li>
+                <li>
+                  <button class="timeBtn">
+                    <time datetime="16:00">18:25</time>
+                  </button>
+                </li>
+                <li>
+                  <button class="timeBtn">
+                    <time datetime="16:00">18:25</time>
+                  </button>
+                </li>
+              </ul>
             </div>
-            <div class="menu-option">
-                <input type="radio" class="tablink" id="week-btn" name="tab-btn">     
-                <label for="week-btn" id="week-btn-lbl">7 хоногоор</label>
-                <section class="tabcontent" id="week-tab">
-                    <section class="available-days">
-                        <div class="date-range-chooser">
-                            <span >&#8249;</span>
-                            <p class="current-date">03/04-03/17</p>
-                            <span >&#8250;</span>
-                        </div>
-                        <nav class="week">
-                            <ul>
-                                <li class="day">
-                                    <div>
-                                        <div>Да</div>
-                                        <time datetime="03.04">03.04</time>
-                                    </div>
-                                    <ul class="times">
-                                        <li><button class="timeBtn"><time datetime="16:00">16:00</time></button></li>
-                                    </ul>
-                                </li>
-                                <li class="day">
-                                    <div>
-                                        <div>Мя</div>
-                                        <time datetime="03.05">03.05</time>
-                                    </div>
-                                    <ul class="times">
-                                        <li><button class="timeBtn"><time datetime="16:00">16:00</time></button></li>
-                                        <li><button class="timeBtn"><time datetime="16:00">16:00</time></button></li>
-                                    </ul>
-                                </li>
-                                <li class="day">
-                                    <div>
-                                        <div>Лх</div>
-                                        <time datetime="03.06">03.06</time>
-                                    </div>
-                                    <ul class="times">
-                                        <li><button class="timeBtn"><time datetime="16:00">16:00</time></button></li>
-                                    </ul>
-                                </li>
-                                <li class="day">
-                                    <div>
-                                        <div>Пү</div>
-                                        <time datetime="03.07">03.07</time>
-                                    </div>
-                                    <ul class="times">
-                                        <li><button class="timeBtn"><time datetime="16:00">16:00</time></button></li>
-                                        <li><button class="timeBtn"><time datetime="16:00">16:00</time></button></li>
-                                        <li><button class="timeBtn"><time datetime="16:00">16:00</time></button></li>
-                                        <li><button class="timeBtn"><time datetime="16:00">16:00</time></button></li>
-                                    </ul>
-                                </li>
-                                <li class="day">
-                                    <div>
-                                        <div>Ба</div>
-                                        <time datetime="03.08">03.08</time>
-                                    </div>
-                                    <ul class="times">
-                                        <li><button class="timeBtn"><time datetime="16:00">16:00</time></button></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </nav>  
-                        <nav class="week">
-                            <ul>
-                                <li class="day">
-                                    <div>
-                                        <div>Да</div>
-                                        <time datetime="03.11">03.11</time>
-                                    </div>
-                                    <ul class="times">
-                                        <li><button class="timeBtn"><time datetime="16:00">16:00</time></button></li>
-                                    </ul>
-                                </li>
-                                <li class="day">
-                                    <div>
-                                        <div>Мя</div>
-                                        <time datetime="03.12">03.12</time>
-                                    </div>
-                                    <ul class="times">
-                                        <li><button class="timeBtn"><time datetime="16:00">16:00</time></button></li>
-                                        <li><button class="timeBtn"><time datetime="16:00">16:00</time></button></li>
-                                    </ul>
-                                </li>
-                                <li class="day">
-                                    <div>
-                                        <div>Лх</div>
-                                        <time datetime="03.13">03.13</time>
-                                    </div>
-                                    <ul class="times">
-                                        <li><button class="timeBtn"><time datetime="16:00">16:00</time></button></li>
-                                    </ul>
-                                </li>
-                                <li class="day">
-                                    <div>
-                                        <div>Пү</div>
-                                        <time datetime="03.14">03.14</time>
-                                    </div>
-                                    <ul class="times">
-                                        <li><button class="timeBtn"><time datetime="16:00">16:00</time></button></li>
-                                        <li><button class="timeBtn"><time datetime="16:00">16:00</time></button></li>
-                                        <li><button class="timeBtn"><time datetime="16:00">16:00</time></button></li>
-                                        <li><button class="timeBtn"><time datetime="16:00">16:00</time></button></li>
-                                    </ul>
-                                </li>
-                                <li class="day">
-                                    <div>
-                                        <div>Ба</div>
-                                        <time datetime="03.15">03.15</time>
-                                    </div>
-                                    <ul class="times">
-                                        <li><button class="timeBtn"class="timeBtn"><time datetime="16:00">16:00</time></button></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </nav>
-                    </section>
-                    <reserve-form class="reserve-form"></reserve-form>
-                </section>
-            </div>
-        </menu>
-    
-    </main>
-        
-    <aside class="similar-class">
-        <h2 class="title">Төстэй ангиуд</h2>
-        <div class="main-content" id="s-class-list"> 
+            <reserve-form class="reserve-form"></reserve-form>
+          </section>
         </div>
-    </aside>
-     <mobile-nav class="mobile-nav"></mobile-nav>
-    
-    <footer>
+        <div class="menu-option">
+          <input type="radio" class="tablink" id="week-btn" name="tab-btn" />
+          <label for="week-btn" id="week-btn-lbl">7 хоногоор</label>
+          <section class="tabcontent" id="week-tab">
+            <section class="available-days">
+              <div class="date-range-chooser">
+                <span>&#8249;</span>
+                <p class="current-date">03/04-03/17</p>
+                <span>&#8250;</span>
+              </div>
+              <nav class="week">
+                <ul>
+                  <li class="day">
+                    <div>
+                      <div>Да</div>
+                      <time datetime="03.04">03.04</time>
+                    </div>
+                    <ul class="times">
+                      <li>
+                        <button class="timeBtn">
+                          <time datetime="16:00">16:00</time>
+                        </button>
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="day">
+                    <div>
+                      <div>Мя</div>
+                      <time datetime="03.05">03.05</time>
+                    </div>
+                    <ul class="times">
+                      <li>
+                        <button class="timeBtn">
+                          <time datetime="16:00">16:00</time>
+                        </button>
+                      </li>
+                      <li>
+                        <button class="timeBtn">
+                          <time datetime="16:00">16:00</time>
+                        </button>
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="day">
+                    <div>
+                      <div>Лх</div>
+                      <time datetime="03.06">03.06</time>
+                    </div>
+                    <ul class="times">
+                      <li>
+                        <button class="timeBtn">
+                          <time datetime="16:00">16:00</time>
+                        </button>
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="day">
+                    <div>
+                      <div>Пү</div>
+                      <time datetime="03.07">03.07</time>
+                    </div>
+                    <ul class="times">
+                      <li>
+                        <button class="timeBtn">
+                          <time datetime="16:00">16:00</time>
+                        </button>
+                      </li>
+                      <li>
+                        <button class="timeBtn">
+                          <time datetime="16:00">16:00</time>
+                        </button>
+                      </li>
+                      <li>
+                        <button class="timeBtn">
+                          <time datetime="16:00">16:00</time>
+                        </button>
+                      </li>
+                      <li>
+                        <button class="timeBtn">
+                          <time datetime="16:00">16:00</time>
+                        </button>
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="day">
+                    <div>
+                      <div>Ба</div>
+                      <time datetime="03.08">03.08</time>
+                    </div>
+                    <ul class="times">
+                      <li>
+                        <button class="timeBtn">
+                          <time datetime="16:00">16:00</time>
+                        </button>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </nav>
+              <nav class="week">
+                <ul>
+                  <li class="day">
+                    <div>
+                      <div>Да</div>
+                      <time datetime="03.11">03.11</time>
+                    </div>
+                    <ul class="times">
+                      <li>
+                        <button class="timeBtn">
+                          <time datetime="16:00">16:00</time>
+                        </button>
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="day">
+                    <div>
+                      <div>Мя</div>
+                      <time datetime="03.12">03.12</time>
+                    </div>
+                    <ul class="times">
+                      <li>
+                        <button class="timeBtn">
+                          <time datetime="16:00">16:00</time>
+                        </button>
+                      </li>
+                      <li>
+                        <button class="timeBtn">
+                          <time datetime="16:00">16:00</time>
+                        </button>
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="day">
+                    <div>
+                      <div>Лх</div>
+                      <time datetime="03.13">03.13</time>
+                    </div>
+                    <ul class="times">
+                      <li>
+                        <button class="timeBtn">
+                          <time datetime="16:00">16:00</time>
+                        </button>
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="day">
+                    <div>
+                      <div>Пү</div>
+                      <time datetime="03.14">03.14</time>
+                    </div>
+                    <ul class="times">
+                      <li>
+                        <button class="timeBtn">
+                          <time datetime="16:00">16:00</time>
+                        </button>
+                      </li>
+                      <li>
+                        <button class="timeBtn">
+                          <time datetime="16:00">16:00</time>
+                        </button>
+                      </li>
+                      <li>
+                        <button class="timeBtn">
+                          <time datetime="16:00">16:00</time>
+                        </button>
+                      </li>
+                      <li>
+                        <button class="timeBtn">
+                          <time datetime="16:00">16:00</time>
+                        </button>
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="day">
+                    <div>
+                      <div>Ба</div>
+                      <time datetime="03.15">03.15</time>
+                    </div>
+                    <ul class="times">
+                      <li>
+                        <button class="timeBtn" class="timeBtn">
+                          <time datetime="16:00">16:00</time>
+                        </button>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </nav>
+            </section>
+            <reserve-form class="reserve-form"></reserve-form>
+          </section>
+        </div>
+      </menu>
+    </main>
 
-    </footer>
-</body>
+    <aside class="similar-class">
+      <h2 class="title">Төстэй ангиуд</h2>
+      <div class="main-content" id="s-class-list"></div>
+    </aside>
+    <mobile-nav class="mobile-nav"></mobile-nav>
+
+    <footer></footer>
+  </body>
 </html>
