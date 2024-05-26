@@ -75,8 +75,13 @@ try {
 } catch (error) {
   console.error("Error retrieving rating:", error);
 }
-if (ratingData == null)
-  ratingHTML = `
+if (ratingData == null) {
+  ratingData.air = 0;
+  ratingData.comfort = 0;
+  ratingData.wifi = 0;
+  ratingData.slot = 0;
+}
+ratingHTML = `
     <h6>
       <div class="main-rate">${
         (ratingData.air +
