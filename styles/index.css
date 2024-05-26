@@ -187,6 +187,11 @@ main {
   display: none;
 }
 
+.class-head-ttl {
+  justify-content: space-between;
+  /* gap: 15%; */
+}
+
 /* --------------------MEDIA-QUERIES----------------- */
 @media (max-width: 1140px) {
   aside {
@@ -292,8 +297,7 @@ main {
 }
 
 .class-head-ttl {
-  justify-content: flex-start;
-  gap: 15%;
+  margin-right: 0.7rem;
 }
 
 .class-section-3 {
