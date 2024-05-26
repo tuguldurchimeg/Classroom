@@ -103,7 +103,7 @@ ratingHTML = `
 
 document.getElementById("main-title").innerHTML = classTitleHTML;
 document.getElementById("main-desc").innerHTML = mainInfoHTML;
-document.querySelector(".rating").innerHTML = mainInfoHTML;
+document.querySelector(".rating").innerHTML = ratingHTML;
 
 // fetch similar classes
 fetch("https://api.npoint.io/70107af397f4a981c076")
