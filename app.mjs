@@ -71,6 +71,10 @@ app.get(
 
 app.use("/", classRoutes);
 app.use("/private", privateRoutes);
+app.get("/:htmlFile", (req, res) => {
+  const { htmlFile } = req.params;
+  res.sendFile(path.join(__dirname, `${htmlFile}`));
+});
 
 app.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
