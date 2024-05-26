@@ -206,6 +206,9 @@ header {
   background-color: var(--color-primary);
   color: var(--color-white);
 }
+.verified li{
+  color: var(--color-white);
+}
 /* --------------------HOVERS--------------- */
 /* .ordered:hover {
   height: 25px;

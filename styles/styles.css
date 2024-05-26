@@ -293,7 +293,7 @@ p.current-date {
 .proj-on::before {
   content: url("assets/Projector.svg");
 }
-#profile-btn {
+#profile-btn , #profile-btn2{
   background: var(--color-background);
   box-shadow: var(--shadow-1);
   border-radius: 50%;
@@ -307,6 +307,7 @@ p.current-date {
     border: 2px solid var(--color-border);
   }
 }
+
 
 .class-section-3 {
   /* width: 258px; */
