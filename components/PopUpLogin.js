@@ -50,15 +50,11 @@ class PopUpLogin extends HTMLElement {
       this.classList.remove("open");
     });
 
-    this.querySelector(".logcontent").addEventListener("submit", (event) => {
-      event.preventDefault(); // Prevent default form submission
-
-      if (event.target.classList.contains("login")) {
-        this.login();
-      } else {
-        this.handleReg();
-      }
-    });
+    this.querySelector(".btn-login").addEventListener("click", this.login);
+    this.querySelector(".btn-add-reg").addEventListener(
+      "click",
+      this.handleReg
+    );
   }
 
   async login() {
