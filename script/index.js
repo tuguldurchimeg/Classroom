@@ -66,8 +66,7 @@ document.addEventListener("searched", async (event) => {
     console.log(responseData);
 
     let classSectionHTMLArray = responseData.data.map((classObj) => {
-      const garagGroup = { day: garag, time: `${startTsag} - ${endTsag}` };
-      const classInstance = new ClassRen(classObj, garagGroup);
+      const classInstance = new ClassRen(classObj);
       return classInstance.Render();
     });
     const classSectionHTML = classSectionHTMLArray.join("");
@@ -76,31 +75,6 @@ document.addEventListener("searched", async (event) => {
     console.error("Error:", error);
   }
 });
-
-async function fetchClasses() {
-  try {
-    const response = await fetch("http://localhost:3000/classes");
-    if (response.ok) return await response.json();
-    console.error("Failed to retrieve classes. HTTP status:", response.status);
-  } catch (error) {
-    console.error("Error retrieving classes:", error);
-  }
-}
-
-//--------------------------------------HUWAARI-FETCH & CONVERSION-------------------------------------------------------------------
-async function fetchSchedule() {
-  try {
-    const response = await fetch("http://localhost:3000/time_slots");
-    if (response.ok) return await response.json();
-    console.error("Failed to retrieve classes. HTTP status:", response.status);
-  } catch (error) {
-    console.error("Error retrieving classes:", error);
-  }
-}
-
-// ----------------------------------BAIR-BUTTON-LISTENERS----------------------------------------------------------------------
-
-let classArrayObj = {};
 
 // -------------------------------ADDITIONAL-FUNCTIONS-----------------------------------------------------------------------
 
@@ -112,13 +86,6 @@ const convertToNumber = (timeStr) => {
   return 740;
 };
 
-const convertToTimeStamp = (minutes) => {
-  const hours = Math.floor(minutes / 100);
-  const mins = minutes % 100;
-  return `${hours.toString().padStart(2, "0")}:${mins
-    .toString()
-    .padStart(2, "0")}`;
-};
 function getWeekday(month, day) {
   const year = 2024;
   const date = new Date(year, month - 1, day);

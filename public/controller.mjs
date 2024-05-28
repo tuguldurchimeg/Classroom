@@ -14,15 +14,18 @@ export const insertClasses = async (req, res) => {
     }
   );
 };
-export const getClasses = async (req, res) => {
-  pool.query("SELECT * FROM classes", (error, result) => {
-    if (error) {
-      console.error("Error retrieving classes:", error);
-      res.status(500).json({ error: "Internal Server Error" });
-    } else {
-      res.status(200).json(result.rows);
-    }
-  });
+export const getSimClasses = async (req, res) => {
+  try {
+    const { room_id, build } = req.params;
+    const { rows } = await pool.query(
+      "SELECT * FROM classes WHERE room_id != $1 AND building = $2",
+      [room_id, build]
+    );
+    res.json({ data: rows });
+  } catch (error) {
+    console.error("Error:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
 };
 
 export const insertTimeSlots = async (req, res) => {
@@ -103,7 +106,7 @@ export const getRating = async (req, res) => {
   try {
     const { room_id } = req.params;
     const { rows } = await pool.query(
-      "SELECT AVG(air-rate) as air, AVG(comfort-rate) as comfort, AVG(wifi-rate) as wifi, AVG(slot-rate) as slot FROM ratings GROUPBY $1",
+      `SELECT AVG("air_rate") as air, AVG("comfort_rate") as comfort, AVG("wifi_rate") as wifi, AVG("slot_rate") as slot FROM ratings WHERE room_id = $1 GROUP BY room_id`,
       [room_id]
     );
     res.json({ data: rows });
@@ -112,6 +115,7 @@ export const getRating = async (req, res) => {
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
+
 export const insertRating = async (req, res) => {
   const { id, user_id, room_id, air_rate, comfort_rate, wifi_rate, slot_rate } =
     req.body;

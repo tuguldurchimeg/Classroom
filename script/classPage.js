@@ -1,13 +1,5 @@
 import ClassRen from "./ClassRender.js";
 
-const addRatingBtn = document.getElementById("add-rating-btn");
-const ratingPopUP = document.getElementById("rating-pop-up");
-const closePopUp = document.getElementById("close-rating");
-
-addRatingBtn.addEventListener("click", () => {
-  ratingPopUP.classList.add("open");
-});
-
 let timeButtons = {};
 const timeBtns = document.getElementsByClassName("timeBtn");
 for (let i = 0; i < timeBtns.length; i++) {
@@ -25,7 +17,6 @@ console.log(classObj);
 let classTitleHTML = "";
 let mainInfoHTML = "";
 let ratingHTML = "";
-let ratingData;
 
 classTitleHTML += `
     <h2 class="heading-3 title">
@@ -55,6 +46,9 @@ mainInfoHTML += `
         }
     </li>
   `;
+
+// fetch class's rating data
+let ratingData;
 try {
   const response = await fetch(
     `http://localhost:3000/rating/${classObj.roomID}`,
@@ -75,30 +69,30 @@ try {
 } catch (error) {
   console.error("Error retrieving rating:", error);
 }
-if (ratingData == null) {
-  ratingData.air = 0;
-  ratingData.comfort = 0;
-  ratingData.wifi = 0;
-  ratingData.slot = 0;
+
+let air = 0,
+  comfort = 0,
+  wifi = 0,
+  slot = 0;
+if (ratingData.length > 0) {
+  air = ratingData.air;
+  comfort = ratingData.comfort;
+  wifi = ratingData.wifi;
+  slot = ratingData.slot;
 }
+
 ratingHTML = `
     <h6>
-      <div class="main-rate">${
-        (ratingData.air +
-          ratingData.comfort +
-          ratingData.wifi +
-          ratingData.slot) /
-        4
-      }</div>
+      <div class="main-rate">${(air + comfort + wifi + slot) / 4}</div>
     </h6>
     <nav class="rate-criteria">
-      <meter min="0" max="5" value="${ratingData.air}" id="air-meter">
+      <meter min="0" max="5" value="${air}" id="air-meter">
       </meter>
-      <meter min="0" max="5" value="${ratingData.comfort}" id="comfort-meter">
+      <meter min="0" max="5" value="${comfort}" id="comfort-meter">
       </meter>
-      <meter min="0" max="5" value="${ratingData.wifi}" id="wifi-meter">
+      <meter min="0" max="5" value="${wifi}" id="wifi-meter">
       </meter>
-      <meter min="0" max="5" value="${ratingData.slot}" id="socket-meter">
+      <meter min="0" max="5" value="${slot}" id="socket-meter">
       </meter>
     </nav>
     <button id="add-rating-btn">
@@ -108,38 +102,40 @@ ratingHTML = `
 
 document.getElementById("main-title").innerHTML = classTitleHTML;
 document.getElementById("main-desc").innerHTML = mainInfoHTML;
-// document.querySelector(".rating").innerHTML = ratingHTML;
+document.querySelector(".rating").innerHTML = ratingHTML;
 
-// fetch similar classes
-fetch("https://api.npoint.io/70107af397f4a981c076")
-  .then((response) => response.json())
-  .then((responseObj) => {
-    let tempDepart, tempType;
-    if (classObj.build == "E-lib") tempDepart = "Е-Номын сан";
-    else if (classObj.build == "1") tempDepart = "Хичээлийн төв байр";
-    else if (classObj.build == "Хууль")
-      tempDepart = "Улаанбаатар сургуулийн хичээлийн байр";
-    else tempDepart = "Хичээлийн байр " + classObj.build;
+// rating event listener
+const addRatingBtn = document.getElementById("add-rating-btn");
+const ratingPopUP = document.getElementById("rating-pop-up");
 
-    if (classObj.type == "Семинар") tempType = "Семинарын танхим";
-    else if (classObj.type == "Лекц") tempType = "Лекцийн танхим";
-    else if (classObj.type == "Лаб") tempType = "Сургалтын лаборатори";
+addRatingBtn.addEventListener("click", () => {
+  ratingPopUP.classList.add("open");
+});
 
-    let filteredClasses = responseObj.filter(
-      (similarClass) =>
-        similarClass.Өрөөний_хувийн_дугаар != classObj.roomID &&
-        similarClass.Хичээлийн_байр == tempDepart &&
-        similarClass.Өрөөний_зориулалт == tempType &&
-        similarClass.Хичээлийн_хуваарь_тавих_боломж != "Хуваарь тавих боломжгүй"
-    );
+// fetch similar classes from db
+let tempBuild, tempType;
+if (classObj.build == "E-lib") tempBuild = "Е-Номын сан";
+else if (classObj.build == "1") tempBuild = "Хичээлийн төв байр";
+else if (classObj.build == "Хууль")
+  tempBuild = "Улаанбаатар сургуулийн хичээлийн байр";
+else tempBuild = "Хичээлийн байр " + classObj.build;
 
-    const simClassHTMLArray = filteredClasses.map((simClassObj) => {
-      const classI = new ClassRen(simClassObj, "");
-      return classI.Render();
-    });
+if (classObj.type == "Семинар") tempType = "Хичээлийн танхим";
+else if (classObj.type == "Лекц") tempType = "Лекцийн танхим";
+else if (classObj.type == "Лаб") tempType = "Сургалтын лаборатори";
 
-    const simClassHTML = simClassHTMLArray.reduce(
-      (prev, current) => prev + current
-    );
-    document.getElementById("s-class-list").innerHTML = simClassHTML;
-  });
+const simClassResponse = await fetch(
+  `http://localhost:3000/classes/${encodeURIComponent(
+    classObj.roomID
+  )}/${encodeURIComponent(tempBuild)}`
+);
+if (!simClassResponse.ok) {
+  throw new Error("Network response was not ok");
+}
+const simClassData = await simClassResponse.json();
+console.log(simClassData);
+let simClassHTML = simClassData.data.map((classObj) => {
+  const classInstance = new ClassRen(classObj);
+  return classInstance.Render();
+});
+document.getElementById("s-class-list").innerHTML = simClassHTML;

@@ -1,7 +1,7 @@
 import { Router } from "express";
 import {
   getFilteredClasses,
-  getClasses,
+  getSimClasses,
   insertClasses,
   insertTimeSlots,
   getTimeSlots,
@@ -20,7 +20,7 @@ router.get(
 router.post("/classes", insertClasses);
 router.post("/time_slots", insertTimeSlots);
 router.get("/time_slots", getTimeSlots);
-router.get("/classes", getClasses);
+router.get("/classes/:room_id/:build", getSimClasses);
 router.get("/rating/:room_id", getRating);
 router.post("/rating", insertRating);
 router.post("/reservations", insertReservations);

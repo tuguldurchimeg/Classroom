@@ -476,8 +476,9 @@ label {
 .rate-crits {
   display: flex;
   flex-direction: column;
-  /* width: 80%;
-   align-items: center; */
+}
+stars-rating{
+  gap: 1rem;
 }
 
 #close-rating {

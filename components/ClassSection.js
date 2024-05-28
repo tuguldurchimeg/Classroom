@@ -7,9 +7,6 @@ class ClassSection extends HTMLElement {
     this.type = this.getAttribute("type");
     this.capac = this.getAttribute("cap");
     this.proj = this.getAttribute("proj");
-    this.schedule = this.getAttribute("sched");
-
-    this.liked = false;
   }
   Render() {
     const encodedData = encodeURIComponent(JSON.stringify(this));
@@ -56,22 +53,9 @@ class ClassSection extends HTMLElement {
           </a>
       `;
   }
-  Liked() {}
 
   connectedCallback() {
     this.innerHTML = this.Render();
-  }
-
-  disconnectedCallback() {
-    //implementation
-  }
-
-  attributeChangedCallback(name, oldVal, newVal) {
-    //implementation
-  }
-
-  adoptedCallback() {
-    //implementation
   }
 }
 
