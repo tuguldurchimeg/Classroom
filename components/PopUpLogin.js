@@ -15,23 +15,24 @@ class PopUpLogin extends HTMLElement {
                     <label for="email-reg">Цахим шуудан</label>
                     <input type="email" id="email" size="30" placeholder="21B1NUM1402@stud.num.edu.mn" required />
                 </div>
-                <form>
+                <div>
                     <label for="password">Нууц үг</label>
                     <input type="password" id="password"  size="30" placeholder="Нууц үг" required />
+                </div>
                 <button type="submit" class="btn-login">Нэвтрэх</button>
               </form>
-            </form>
+            </div>
             <div class="log-option"> 
               <input type="radio" class="tablink" id="reg-btn" name="log-btns">
               <label for="reg-btn" id="reg-btn-lbl">Бүртгүүлэх</label>
-              <form action="/private/auth" method="POST" class="logcontent login"> 
+              <form action="/private/auth" method="POST" class="logcontent reg"> 
                   <div>
                       <label for="email">Цахим шуудан</label>
                       <input type="email" id="email-reg" size="30" placeholder="21B1NUM1402@stud.num.edu.mn" required />
                   </div>
                   <div>
                       <label for="telPhone">Утас</label>
-                      <input type="tel" id="telPhone"  placeholder="Утасны дугаар" required />
+                      <input type="tel" id="telPhone" size="30" placeholder="Утасны дугаар" required />
                   </div>
                   <div>
                       <label for="password-reg">Нууц үг</label>
