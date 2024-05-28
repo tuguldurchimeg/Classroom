@@ -10,6 +10,7 @@ import {
   insertReservations,
   getLikedClasses,
   insertLiked,
+  getTimes,
 } from "./controller.mjs";
 const router = Router();
 
@@ -19,12 +20,14 @@ router.get(
 );
 router.post("/classes", insertClasses);
 router.post("/time_slots", insertTimeSlots);
+router.post("/liked", insertLiked);
+router.post("/rating", insertRating);
+router.post("/reservations", insertReservations);
+
 router.get("/time_slots", getTimeSlots);
 router.get("/classes/:room_id/:build", getSimClasses);
 router.get("/rating/:room_id", getRating);
-router.post("/rating", insertRating);
-router.post("/reservations", insertReservations);
 router.get("/liked/:user_id", getLikedClasses);
-router.post("/liked", insertLiked);
+router.get("/times/:room_id/:week/:garag", getTimes);
 
 export default router;

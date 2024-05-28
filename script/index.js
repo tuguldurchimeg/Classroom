@@ -1,5 +1,4 @@
 import ClassRen from "./ClassRender.js";
-const searchButton = document.getElementById("search");
 
 let bairfinal = "Хичээлийн байр 2";
 let startMonth = "5";
@@ -13,6 +12,7 @@ document.addEventListener("searched", async (event) => {
   try {
     let { bair, startMonth, startDay, endMonth, endDay, startTsag, endTsag } =
       event.detail;
+    console.log(event.detail);
 
     startTsag = convertToNumber(startTsag);
     endTsag = convertToNumber(endTsag);
@@ -58,9 +58,6 @@ document.addEventListener("searched", async (event) => {
 
     const response = await fetch(queryString);
 
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
-    }
     // Handle the response from the backend if needed
     const responseData = await response.json();
     console.log(responseData);

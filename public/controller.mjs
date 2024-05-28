@@ -82,7 +82,8 @@ export const getFilteredClasses = async (req, res) => {
       INNER JOIN classes as cl ON sc.room_id = cl.room_id
 	    WHERE cl.building = $1
       AND sc.time BETWEEN $2 AND $3
-      AND sc.garag = $4;
+      AND sc.garag = $4
+      AND sc.status = true;
   `;
 
     const { rows } = await pool.query(query, [
@@ -194,5 +195,18 @@ export const getLikedClasses = async (req, res) => {
   } catch (error) {
     console.error("Error:", error);
     res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+export const getTimes = async (req, res) => {
+  try {
+    const { room_id, week, garag } = req.params;
+    const { rows } = pool.query(
+      "SELECT time, status FROM schedule WHERE room_id = $1 AND week_id = $2 AND garag = $3",
+      [room_id, week, garag]
+    );
+    res.json({ data: rows });
+  } catch (error) {
+    console.log("Error: ", error);
   }
 };

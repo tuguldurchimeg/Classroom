@@ -1,6 +1,6 @@
 import ClassRen from "./ClassRender.js";
+import TimeBtn from "./TimeBtnRender.js";
 
-let timeButtons = {};
 const timeBtns = document.getElementsByClassName("timeBtn");
 for (let i = 0; i < timeBtns.length; i++) {
   timeBtns[i].addEventListener("click", () => {
@@ -61,7 +61,6 @@ try {
   );
 
   if (response.ok) {
-    console.log("ratings retrieved successfully.");
     ratingData = await response.json();
   } else {
     console.error("Failed to retrieve rating. HTTP status:", response.status);
@@ -133,9 +132,65 @@ if (!simClassResponse.ok) {
   throw new Error("Network response was not ok");
 }
 const simClassData = await simClassResponse.json();
-console.log(simClassData);
 let simClassHTML = simClassData.data.map((classObj) => {
   const classInstance = new ClassRen(classObj);
   return classInstance.Render();
 });
 document.getElementById("s-class-list").innerHTML = simClassHTML;
+
+// Get month day
+document.addEventListener("dayChanged", async (event) => {
+  try {
+    let { startMonth, startDay } = event.detail;
+    const garag = getWeekday(startMonth, startDay);
+    const currentDate = new Date();
+    const lastDayOfWeek = new Date(
+      currentDate.getFullYear(),
+      currentDate.getMonth(),
+      currentDate.getDate() + (6 - currentDate.getDay())
+    );
+    const selectedDate = new Date(
+      currentDate.getFullYear(),
+      startMonth,
+      startDay
+    );
+
+    const week = selectedDate > lastDayOfWeek ? 2 : 1;
+    const dayResponse = await fetch(
+      `http://localhost:3000/times/${encodeURIComponent(
+        classObj.roomID
+      )}/${encodeURIComponent(`w${week}`)}/${encodeURIComponent(garag)}`
+    );
+
+    if (!dayResponse.ok) {
+      throw new Error("Network response was not ok");
+    }
+
+    const dayData = await dayResponse.json();
+    console.log(dayData);
+    const timeButtons = document.querySelector(".day-times");
+    const timeBtnsHTML = dayData.data.map((timeObj) => {
+      const timeInstance = new TimeBtn(timeObj);
+      return timeInstance.Render();
+    });
+    console.log(timeBtnsHTML);
+    timeButtons.innerHTML = timeBtnsHTML.join("");
+  } catch (error) {
+    console.error("Error:", error);
+  }
+});
+
+function getWeekday(month, day) {
+  const year = 2024;
+  const date = new Date(year, month - 1, day);
+  const weekdays = [
+    "Ням",
+    "Даваа",
+    "Мягмар",
+    "Лхагва",
+    "Пүрэв",
+    "Баасан",
+    "Бямба",
+  ];
+  return weekdays[date.getDay()];
+}
