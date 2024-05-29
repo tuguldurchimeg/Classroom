@@ -201,12 +201,13 @@ export const getLikedClasses = async (req, res) => {
 export const getTimes = async (req, res) => {
   try {
     const { room_id, week, garag } = req.params;
-    const { rows } = pool.query(
+    const { rows } = await pool.query(
       "SELECT time, status FROM schedule WHERE room_id = $1 AND week_id = $2 AND garag = $3",
       [room_id, week, garag]
     );
     res.json({ data: rows });
   } catch (error) {
     console.log("Error: ", error);
+    res.status(500).json({ error: "Internal Server Error" });
   }
 };

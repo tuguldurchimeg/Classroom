@@ -12,7 +12,6 @@ document.addEventListener("searched", async (event) => {
   try {
     let { bair, startMonth, startDay, endMonth, endDay, startTsag, endTsag } =
       event.detail;
-    console.log(event.detail);
 
     startTsag = convertToNumber(startTsag);
     endTsag = convertToNumber(endTsag);

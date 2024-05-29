@@ -1,15 +1,6 @@
 import ClassRen from "./ClassRender.js";
 import TimeBtn from "./TimeBtnRender.js";
 
-const timeBtns = document.getElementsByClassName("timeBtn");
-for (let i = 0; i < timeBtns.length; i++) {
-  timeBtns[i].addEventListener("click", () => {
-    if (timeBtns[i].classList.contains("timeBtnClick"))
-      timeBtns[i].classList.remove("timeBtnClick");
-    else timeBtns[i].classList.add("timeBtnClick");
-  });
-}
-
 const usp = new URLSearchParams(document.location.search);
 const classObj = JSON.parse(usp.get("id"));
 console.log(classObj);
@@ -165,7 +156,6 @@ document.addEventListener("dayChanged", async (event) => {
     if (!dayResponse.ok) {
       throw new Error("Network response was not ok");
     }
-
     const dayData = await dayResponse.json();
     console.log(dayData);
     const timeButtons = document.querySelector(".day-times");
@@ -173,7 +163,6 @@ document.addEventListener("dayChanged", async (event) => {
       const timeInstance = new TimeBtn(timeObj);
       return timeInstance.Render();
     });
-    console.log(timeBtnsHTML);
     timeButtons.innerHTML = timeBtnsHTML.join("");
   } catch (error) {
     console.error("Error:", error);

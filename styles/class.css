@@ -447,7 +447,6 @@ label {
 }
 .similar-class div {
   display: flex;
-  justify-content: space-between;
   margin-top: 2em;
   overflow: scroll;
   column-gap: 2rem;
