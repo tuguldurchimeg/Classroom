@@ -5,6 +5,7 @@ import swaggerUi from "swagger-ui-express";
 import swaggerJsdoc from "swagger-jsdoc";
 import classRoutes from "./public/routes.mjs";
 import privateRoutes from "./private/routes.mjs";
+import userAuth from "./middleware/userAuth.mjs";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
 import bodyParser from "express";

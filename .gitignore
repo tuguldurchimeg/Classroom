@@ -1,0 +1,4 @@
+# ignore .env to protect secret key
+.env
+# ignore local db
+db.mjs

@@ -1,25 +1,14 @@
-import { Router } from "express";
-import path from "path";
-import { logout, authenticate, register } from "./controller.mjs";
-const router = Router();
+import express from "express";
+import userAuth from "../middleware/userAuth.mjs";
+import { signup, login } from "./users_controller.mjs";
 
-router.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname + "../index.html"));
-});
+const router = express.Router();
 
-router.get("/index", (req, res) => {
-  if (req.session.loggedin) {
-    res.sendFile(path.join(__dirname + "../index.html"));
-  } else {
-    const errorMessage = "You must login to see this page";
-    res.send(
-      `<script>alert('${errorMessage}'); window.location.href='/';</script>`
-    );
-  }
-});
+//signup endpoint
+//passing the middleware function to the signup
+router.post("/signup", userAuth.saveUser, signup);
 
-router.post("/auth", authenticate);
-router.post("/authreg", register);
-router.post("/logout", logout);
+//login route
+router.post("/login", login);
 
 export default router;
