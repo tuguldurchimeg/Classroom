@@ -67,11 +67,11 @@ CREATE TABLE  schedule  (
    status  bool
 );
 
-ALTER TABLE  ratings  ADD FOREIGN KEY ( user_id ) REFERENCES  users  ( user_id );
+ALTER TABLE  ratings  ADD FOREIGN KEY ( user_id ) REFERENCES  users  ( id );
 
 ALTER TABLE  ratings  ADD FOREIGN KEY ( room_id ) REFERENCES  classes  ( room_id );
 
-ALTER TABLE  reservations  ADD FOREIGN KEY ( user_id ) REFERENCES  users  ( user_id );
+ALTER TABLE  reservations  ADD FOREIGN KEY ( user_id ) REFERENCES  users  ( id );
 
 ALTER TABLE  reservations  ADD FOREIGN KEY ( room_id ) REFERENCES  classes  ( room_id );
 
@@ -79,11 +79,11 @@ ALTER TABLE  time_slots  ADD FOREIGN KEY ( room_id ) REFERENCES  classes  ( room
 
 ALTER TABLE  res_times  ADD FOREIGN KEY ( res_id ) REFERENCES  reservations  ( res_id );
 
-ALTER TABLE  liked  ADD FOREIGN KEY ( user_id ) REFERENCES  users  ( user_id );
+ALTER TABLE  liked  ADD FOREIGN KEY ( user_id ) REFERENCES  users  ( id );
 
 ALTER TABLE  liked  ADD FOREIGN KEY ( room_id ) REFERENCES  classes  ( room_id );
 
-ALTER TABLE  reserved  ADD FOREIGN KEY ( user_id ) REFERENCES  users  ( user_id );
+ALTER TABLE  reserved  ADD FOREIGN KEY ( user_id ) REFERENCES  users  ( id );
 
 ALTER TABLE  reserved  ADD FOREIGN KEY ( res_id ) REFERENCES  reservations  ( res_id );
 

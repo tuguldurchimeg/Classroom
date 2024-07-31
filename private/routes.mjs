@@ -1,14 +1,14 @@
 import express from "express";
-import userAuth from "../middleware/userAuth.mjs";
-import { signup, login } from "./users_controller.mjs";
+import authenticateToken from "../userAuth.mjs";
+import {
+  registerUser,
+  loginUser,
+  getUserProfile,
+} from "./users_controller.mjs";
 
 const router = express.Router();
-
-//signup endpoint
-//passing the middleware function to the signup
-router.post("/signup", userAuth.saveUser, signup);
-
-//login route
-router.post("/login", login);
+router.post("/register", registerUser);
+router.post("/login", loginUser);
+router.get("/profile", authenticateToken, getUserProfile);
 
 export default router;

@@ -1,55 +1,90 @@
-// users_controller.mjs
-
-import User from "../models/user.mjs";
+import pool from "../db.mjs";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
 
-// Signup controller
-export const signup = async (req, res) => {
+dotenv.config();
+const saltRounds = 10;
+const secretKey = process.env.SECRET_KEY;
+
+export const registerUser = async (req, res) => {
+  const { id, email, password, phone } = req.body;
+
   try {
-    const { userName, email, password } = req.body;
-    const hashedPassword = await bcrypt.hash(password, 10);
-    const newUser = await User.create({
-      userName,
-      email,
-      password: hashedPassword,
-    });
+    // Check if user already exists
+    const existingUser = await pool.query(
+      "SELECT * FROM users WHERE email = $1",
+      [email]
+    );
+    if (existingUser.rows.length > 0) {
+      return res.status(400).json({ error: "User already exists" });
+    }
 
-    const token = jwt.sign({ id: newUser.id }, process.env.SECRET_KEY, {
-      expiresIn: "1d",
-    });
-    res.cookie("jwt", token, { maxAge: 24 * 60 * 60 * 1000, httpOnly: true });
+    // Hash the password
+    const hashedPassword = await bcrypt.hash(password, saltRounds);
 
-    res.status(201).send(newUser);
+    // Insert the new user into the database
+    const newUser = await pool.query(
+      "INSERT INTO users (id, phone, email, password) VALUES ($1, $2, $3, $4) RETURNING *",
+      [id, phone, email, hashedPassword]
+    );
+
+    res.status(201).json(newUser.rows[0]);
   } catch (error) {
-    console.error(error);
-    res.status(500).send("Internal server error");
+    console.error("Error registering user:", error);
+    res.status(500).json({ error: "Internal Server Error" });
   }
 };
 
-// Login controller
-export const login = async (req, res) => {
+export const loginUser = async (req, res) => {
+  const { email, password } = req.body;
+
   try {
-    const { email, password } = req.body;
-    const user = await User.findOne({ where: { email } });
+    // Find the user by email
+    const userResult = await pool.query(
+      "SELECT * FROM users WHERE email = $1",
+      [email]
+    );
+    const user = userResult.rows[0];
 
     if (!user) {
-      return res.status(401).send("Authentication failed");
+      return res.status(401).json({ error: "Invalid email or password" });
     }
 
-    const isSame = await bcrypt.compare(password, user.password);
-    if (!isSame) {
-      return res.status(401).send("Authentication failed");
+    // Compare the password
+    const passwordMatch = await bcrypt.compare(password, user.password);
+    if (!passwordMatch) {
+      return res.status(401).json({ error: "Invalid email or password" });
     }
 
-    const token = jwt.sign({ id: user.id }, process.env.SECRET_KEY, {
-      expiresIn: "1d",
+    // Create a JWT token
+    const token = jwt.sign({ userId: user.id, email: user.email }, secretKey, {
+      expiresIn: "1h",
     });
-    res.cookie("jwt", token, { maxAge: 24 * 60 * 60 * 1000, httpOnly: true });
 
-    res.status(200).send(user);
+    res.status(200).json({ token });
   } catch (error) {
-    console.error(error);
-    res.status(500).send("Internal server error");
+    console.error("Error logging in user:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+export const getUserProfile = async (req, res) => {
+  const { userId } = req.user;
+
+  try {
+    const userResult = await pool.query("SELECT * FROM users WHERE id = $1", [
+      userId,
+    ]);
+    const user = userResult.rows[0];
+
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    res.status(200).json({ user });
+  } catch (error) {
+    console.error("Error fetching user profile:", error);
+    res.status(500).json({ error: "Internal Server Error" });
   }
 };
