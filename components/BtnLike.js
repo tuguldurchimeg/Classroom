@@ -29,9 +29,25 @@ class BtnLike extends HTMLElement {
   connectedCallback() {
     this.innerHTML = this.#Render();
     // a
-    this.addEventListener("click", (event) => {
+    this.addEventListener("click", async (event) => {
       event.preventDefault();
       this.liked = this.liked == "checked" ? "" : "checked";
+      if (this.liked == "checked") {
+        this.liked = "";
+        try {
+          const response = await fetch(`http:://localhost:3000/liked`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              room_id: this.roomId,
+            }),
+          });
+        } catch (error) {
+          console.log("Error: ", error.message);
+        }
+      }
       const cart = document.querySelector(".test");
       cart.LikedClass(this.roomId);
 

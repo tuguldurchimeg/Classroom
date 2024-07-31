@@ -67,6 +67,7 @@ CREATE TABLE  schedule  (
    status  bool
 );
 
+-- FOREIGN KEYS
 ALTER TABLE  ratings  ADD FOREIGN KEY ( user_id ) REFERENCES  users  ( id );
 
 ALTER TABLE  ratings  ADD FOREIGN KEY ( room_id ) REFERENCES  classes  ( room_id );
@@ -88,3 +89,10 @@ ALTER TABLE  reserved  ADD FOREIGN KEY ( user_id ) REFERENCES  users  ( id );
 ALTER TABLE  reserved  ADD FOREIGN KEY ( res_id ) REFERENCES  reservations  ( res_id );
 
 ALTER TABLE  schedule  ADD FOREIGN KEY ( room_id ) REFERENCES  classes  ( room_id );
+
+-- CONSTRAINTS
+CREATE UNIQUE INDEX unique_user_room ON liked (user_id, room_id) WHERE delete_flag = FALSE;
+
+ALTER TABLE liked ADD COLUMN delete_flag BOOLEAN DEFAULT FALSE;
+ALTER TABLE reservations ADD COLUMN delete_flag BOOLEAN DEFAULT FALSE;
+ALTER TABLE reserved ADD COLUMN delete_flag BOOLEAN DEFAULT FALSE;

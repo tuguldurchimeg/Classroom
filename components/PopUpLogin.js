@@ -10,7 +10,7 @@ class PopUpLogin extends HTMLElement {
             <div class="log-option"> 
               <input type="radio" class="tablink" id="log-btn" name="log-btns" checked>
               <label for="log-btn" id="log-btn-lbl">Нэвтрэх</label>
-              <form action="/private/auth" method="POST" class="logcontent">  
+              <div class="logcontent">  
                 <div>
                     <label for="email-reg">Цахим шуудан</label>
                     <input type="email" id="email" size="30" placeholder="21B1NUM1402@stud.num.edu.mn" required />
@@ -20,12 +20,12 @@ class PopUpLogin extends HTMLElement {
                     <input type="password" id="password"  size="30" placeholder="Нууц үг" required />
                 </div>
                 <button type="submit" class="btn-login">Нэвтрэх</button>
-              </form>
+              </div>
             </div>
             <div class="log-option"> 
               <input type="radio" class="tablink" id="reg-btn" name="log-btns">
               <label for="reg-btn" id="reg-btn-lbl">Бүртгүүлэх</label>
-              <form action="/private/auth" method="POST" class="logcontent reg"> 
+              <div class="logcontent reg"> 
                   <div>
                       <label for="email">Цахим шуудан</label>
                       <input type="email" id="email-reg" size="30" placeholder="21B1NUM1402@stud.num.edu.mn" required />
@@ -39,7 +39,7 @@ class PopUpLogin extends HTMLElement {
                       <input type="password" id="password-reg"  size="30" placeholder="Нууц үг" required />
                   </div>
                   <button type="submit" class="btn-add-reg">Бүртгэл үүсгэх</button>
-              </form>
+              </div>
             </div>
         </div>
     `;
@@ -64,7 +64,7 @@ class PopUpLogin extends HTMLElement {
 
     if (email !== "" && pass !== "") {
       try {
-        const response = await fetch(`http://localhost:3000/private/login`, {
+        const response = await fetch(`http://localhost:3000/auth/login`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -94,7 +94,7 @@ class PopUpLogin extends HTMLElement {
     const phone = document.getElementById("telPhone").value;
 
     try {
-      const response = await fetch(`http://localhost:3000/private/signup`, {
+      const response = await fetch(`http://localhost:3000/auth/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

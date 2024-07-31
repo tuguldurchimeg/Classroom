@@ -1,8 +1,4 @@
-import {
-  getUserFromLocalStorage,
-  clearUserFromLocalStorage,
-} from "../authprovider.mjs";
-
+import authenticateToken from "../userAuth.mjs";
 class PopUpUser extends HTMLElement {
   constructor() {
     super();
@@ -13,12 +9,6 @@ class PopUpUser extends HTMLElement {
       return `<ul>
                 <li>
                     <span class="button" id="user-login">${userData.email}</span>
-                </li>
-                <li>
-                    <a href="user.html" class="reserved-menu menu"><span>Захиалсан ангиуд</span></a>
-                </li>
-                <li>
-                    <a href="user.html" class="liked-menu menu"><span>Дуртай ангиуд</span></a>
                 </li>
                 <li>
                     <a href="contact.html" class="contact-menu menu"><span>Холбогдох</span></a>

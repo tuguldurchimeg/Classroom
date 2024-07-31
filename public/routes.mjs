@@ -1,7 +1,8 @@
 import { Router } from "express";
+import authenticateToken from "../userAuth.mjs";
 import {
   getFilteredClasses,
-  getSimClasses,
+  getSimilarClasses,
   insertClasses,
   insertTimeSlots,
   getTimeSlots,
@@ -11,6 +12,8 @@ import {
   getLikedClasses,
   insertLiked,
   getTimes,
+  deleteLikedClass,
+  getOneRoom,
 } from "./controller.mjs";
 const router = Router();
 
@@ -20,14 +23,16 @@ router.get(
 );
 router.post("/classes", insertClasses);
 router.post("/time_slots", insertTimeSlots);
-router.post("/liked", insertLiked);
-router.post("/rating", insertRating);
-router.post("/reservations", insertReservations);
+router.post("/liked", authenticateToken, insertLiked);
+router.post("/rating", authenticateToken, insertRating);
+router.post("/reservations", authenticateToken, insertReservations);
 
 router.get("/time_slots", getTimeSlots);
-router.get("/classes/:room_id/:build", getSimClasses);
-router.get("/rating/:room_id", getRating);
-router.get("/liked/:user_id", getLikedClasses);
 router.get("/times/:room_id/:week/:garag", getTimes);
+router.get("/classes/:room_id/:build", getSimilarClasses);
+router.get("/rating/:room_id", getRating);
+router.get("/classes/:room_id", getOneRoom);
+router.get("/liked", authenticateToken, getLikedClasses);
+router.put("/liked", authenticateToken, deleteLikedClass);
 
 export default router;

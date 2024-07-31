@@ -71,7 +71,6 @@ export const loginUser = async (req, res) => {
 
 export const getUserProfile = async (req, res) => {
   const { userId } = req.user;
-
   try {
     const userResult = await pool.query("SELECT * FROM users WHERE id = $1", [
       userId,

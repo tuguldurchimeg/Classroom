@@ -35,7 +35,7 @@ app.use(express.static(path.join(__dirname, "components")));
 app.use(express.static(path.join(__dirname, "script")));
 
 app.use("/", classRoutes);
-app.use("/private", privateRoutes);
+app.use("/auth", privateRoutes);
 
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "index.html"));
