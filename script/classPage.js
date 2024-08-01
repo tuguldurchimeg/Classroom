@@ -60,20 +60,16 @@ try {
   console.error("Error retrieving rating:", error);
 }
 
-let air = 0,
-  comfort = 0,
-  wifi = 0,
-  slot = 0;
-if (ratingData.length > 0) {
-  air = ratingData.air;
-  comfort = ratingData.comfort;
-  wifi = ratingData.wifi;
-  slot = ratingData.slot;
-}
+const data = ratingData.data[0];
+let air = parseFloat(data.air) || 0,
+  comfort = parseFloat(data.comfort) || 0,
+  wifi = parseFloat(data.wifi) || 0,
+  slot = parseFloat(data.slot) || 0;
 
 ratingHTML = `
     <h6>
-      <div class="main-rate">${(air + comfort + wifi + slot) / 4}</div>
+      <div class="main-rate">${((air + comfort + wifi + slot) / 4).toFixed(1)}
+      </div>
     </h6>
     <nav class="rate-criteria">
       <meter min="0" max="5" value="${air}" id="air-meter">

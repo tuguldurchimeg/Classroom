@@ -199,6 +199,20 @@ export const getLikedClasses = async (req, res) => {
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
+export const getLikedClass = async (req, res) => {
+  try {
+    const { userId } = req.user;
+    const { room_id } = req.params;
+    const { room } = await pool.query(
+      "SELECT * FROM liked WHERE user_id = $1 AND room_id = $2 AND delete_flag = FALSE",
+      [userId, room_id]
+    );
+    res.json({ data: room });
+  } catch (error) {
+    console.error("Error:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
 
 export const getTimes = async (req, res) => {
   try {

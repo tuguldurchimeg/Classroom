@@ -14,6 +14,7 @@ import {
   getTimes,
   deleteLikedClass,
   getOneRoom,
+  getLikedClass,
 } from "./controller.mjs";
 const router = Router();
 
@@ -33,6 +34,7 @@ router.get("/classes/:room_id/:build", getSimilarClasses);
 router.get("/rating/:room_id", getRating);
 router.get("/classes/:room_id", getOneRoom);
 router.get("/liked", authenticateToken, getLikedClasses);
+router.get("/liked/:room_id", authenticateToken, getLikedClass);
 router.put("/liked", authenticateToken, deleteLikedClass);
 
 export default router;
