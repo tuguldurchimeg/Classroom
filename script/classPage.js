@@ -60,7 +60,7 @@ try {
   console.error("Error retrieving rating:", error);
 }
 
-const data = ratingData.data[0];
+const data = ratingData[0];
 let air = parseFloat(data.air) || 0,
   comfort = parseFloat(data.comfort) || 0,
   wifi = parseFloat(data.wifi) || 0,

@@ -6,7 +6,7 @@ class BairList extends HTMLElement {
   #Render(bair) {
     return `
       <button id="bair-button">
-        <span>Хичээлийн байр</span>
+        <span>Байр</span>
         <span class="light-grey">${bair}</span>
       </button>
       <ul class="bair-list">

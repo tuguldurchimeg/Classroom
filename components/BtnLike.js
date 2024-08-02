@@ -5,8 +5,8 @@ class BtnLike extends HTMLElement {
     this.liked = "";
   }
 
-  #Render() {
-    return ` 
+  Render() {
+    return `
     <style> 
         .heart-grey {
           color: var(--color-border);
@@ -19,76 +19,79 @@ class BtnLike extends HTMLElement {
     </style>
     
     ${
-      this.liked == "checked"
+      this.liked === "checked"
         ? '<i class="fa-solid fa-heart heart-grey" style="color: var(--color-primary)"></i>'
         : '<i class="fa-regular fa-heart heart-grey"></i>'
     }
     `;
   }
 
-  async checkIfLiked() {
-    const token = localStorage.getItem("token");
-    try {
-      const response = await fetch(
-        `http://localhost:3000/liked/${this.roomId}`,
-        {
-          method: "GET",
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+  connectedCallback() {
+    this.checkIfLiked().then(() => {
+      this.innerHTML = this.Render();
+    });
 
-      if (response.ok) {
-        const data = await response.json();
-        this.liked = data && Object.keys(data).length > 0 ? "checked" : "";
-        console.log(this.liked);
-      } else {
-        console.error("Failed to fetch like status.");
-      }
-    } catch (error) {
-      console.log("Error: ", error.message);
-    }
-    this.innerHTML = this.#Render();
+    this.addEventListener("click", (event) => {
+      event.preventDefault();
+      this.liked = this.liked === "checked" ? "" : "checked";
+      this.toggleLike().then(() => {
+        const profile = document.getElementById("profile-comp");
+        if (profile) {
+          if (this.liked === "checked") {
+            profile.newNotif();
+          } else {
+            profile.readNotif();
+          }
+        }
+        this.innerHTML = this.Render();
+      });
+    });
   }
 
-  connectedCallback() {
-    this.checkIfLiked();
-
-    this.addEventListener("click", async (event) => {
-      event.preventDefault();
-      this.liked = this.liked == "checked" ? "" : "checked";
-      if (this.liked == "checked") {
-        const token = localStorage.getItem("token");
-        try {
-          const response = await fetch("http://localhost:3000/liked", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${token}`,
-            },
-            body: JSON.stringify({
-              room_id: this.roomId,
-            }),
-          });
-
-          if (response.ok) {
-            const data = await response.json();
-          } else {
-            console.error("Failed to update like status.");
-          }
-        } catch (error) {
-          console.log("Error: ", error.message);
+  async checkIfLiked() {
+    const token = localStorage.getItem("token");
+    return fetch(`http://localhost:3000/liked/${this.roomId}`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          console.error("Failed to fetch like status.");
+          return {};
         }
-      }
+      })
+      .then((data) => {
+        this.liked = data.length == 0 ? "" : "checked";
+      })
+      .catch((error) => {
+        console.log("Error: ", error.message);
+      });
+  }
 
-      const profile = document.getElementById("profile-comp");
-      if (profile) {
-        if (this.liked == "checked") profile.newNotif();
-        else profile.readNotif();
-      }
-      this.innerHTML = this.#Render();
-    });
+  async toggleLike() {
+    const token = localStorage.getItem("token");
+    return fetch("http://localhost:3000/liked", {
+      method: this.liked === "checked" ? "POST" : "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        room_id: this.roomId,
+      }),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          console.error("Failed to update like status.");
+        }
+      })
+      .catch((error) => {
+        console.log("Error: ", error.message);
+      });
   }
 }
 

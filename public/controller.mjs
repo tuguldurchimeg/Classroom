@@ -110,7 +110,7 @@ export const getRating = async (req, res) => {
       `SELECT AVG("air_rate") as air, AVG("comfort_rate") as comfort, AVG("wifi_rate") as wifi, AVG("slot_rate") as slot FROM ratings WHERE room_id = $1 GROUP BY room_id`,
       [room_id]
     );
-    res.json({ data: rows });
+    res.json(rows);
   } catch (error) {
     console.error("Error:", error);
     res.status(500).json({ error: "Internal Server Error" });
@@ -203,11 +203,11 @@ export const getLikedClass = async (req, res) => {
   try {
     const { userId } = req.user;
     const { room_id } = req.params;
-    const { room } = await pool.query(
+    const { rows } = await pool.query(
       "SELECT * FROM liked WHERE user_id = $1 AND room_id = $2 AND delete_flag = FALSE",
       [userId, room_id]
     );
-    res.json({ data: room });
+    res.json(rows);
   } catch (error) {
     console.error("Error:", error);
     res.status(500).json({ error: "Internal Server Error" });
