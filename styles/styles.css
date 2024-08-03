@@ -392,6 +392,13 @@ p.current-date {
 .contact-menu::before {
   content: "\f590";
 }
+.logout-menu::before, .logout-menu{
+  content: "\f08b";
+  margin-left: 2.8rem;
+  &:hover{
+    color: red;
+  }
+}
 .button {
   font-size: var(--regular);
   font-weight: var(--semi-bold);

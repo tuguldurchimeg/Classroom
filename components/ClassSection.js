@@ -12,7 +12,6 @@ class ClassSection extends HTMLElement {
 
   Render() {
     const encodedData = encodeURIComponent(JSON.stringify(this));
-    let i = Math.floor(Math.random() * 10000) + 1;
 
     const ratingStars = [...Array(5)]
       .map((_, index) => {

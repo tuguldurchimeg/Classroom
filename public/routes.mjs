@@ -15,6 +15,7 @@ import {
   deleteLikedClass,
   getOneRoom,
   getLikedClass,
+  getRecommendedClasses,
 } from "./controller.mjs";
 const router = Router();
 
@@ -31,6 +32,7 @@ router.post("/reservations", authenticateToken, insertReservations);
 router.get("/time_slots", getTimeSlots);
 router.get("/times/:room_id/:week/:garag", getTimes);
 router.get("/classes/:room_id/:build", getSimilarClasses);
+router.get("/recommended", getRecommendedClasses);
 router.get("/rating/:room_id", getRating);
 router.get("/classes/:room_id", getOneRoom);
 router.get("/liked", authenticateToken, getLikedClasses);

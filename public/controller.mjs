@@ -231,10 +231,23 @@ export const getTimes = async (req, res) => {
 export const getOneRoom = async (req, res) => {
   const { room_id } = req.params;
   try {
-    const { room } = pool.query("SELECT * FROM classes WHERE room_id = $1", [
-      room_id,
-    ]);
-    res.json({ room: room });
+    const { rows } = await pool.query(
+      "SELECT * FROM classes WHERE room_id = $1",
+      [room_id]
+    );
+    res.json({ room: rows });
+  } catch (error) {
+    console.log("Error: ", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+export const getRecommendedClasses = async (req, res) => {
+  try {
+    const { rows } = await pool.query(
+      "SELECT classes.*, ( AVG(air_rate) + AVG(wifi_rate) + AVG(comfort_rate) + AVG(slot_rate)) / 4 as totalRating FROM ratings LEFT JOIN classes ON classes.room_id = ratings.room_id WHERE delete_flag = FALSE GROUP BY classes.room_id ORDER BY totalRating DESC LIMIT 10"
+    );
+    res.json({ recommend: rows });
   } catch (error) {
     console.log("Error: ", error);
     res.status(500).json({ error: "Internal Server Error" });

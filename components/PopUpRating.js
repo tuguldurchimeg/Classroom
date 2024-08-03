@@ -64,7 +64,7 @@ class RatingPopUp extends HTMLElement {
       const classObj = JSON.parse(usp.get("id"));
 
       const ratingData = {
-        id: "5",
+        id: "8",
         room_id: classObj.roomID,
         air_rate: parseInt(document.getElementById("air").rating, 10),
         wifi_rate: parseInt(document.getElementById("wifi").rating, 10),

@@ -77,7 +77,6 @@ class PopUpLogin extends HTMLElement {
         if (response) {
           alert("амжилттай нэвтэрлээ!");
           const data = await response.json();
-          console.log("token", data.token);
           localStorage.setItem("token", data.token);
         } else {
           const data = await response.json();

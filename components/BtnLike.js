@@ -33,23 +33,35 @@ class BtnLike extends HTMLElement {
 
     this.addEventListener("click", (event) => {
       event.preventDefault();
-      this.liked = this.liked === "checked" ? "" : "checked";
-      this.toggleLike().then(() => {
-        const profile = document.getElementById("profile-comp");
-        if (profile) {
-          if (this.liked === "checked") {
-            profile.newNotif();
-          } else {
-            profile.readNotif();
+      const token = localStorage.getItem("token");
+
+      if (!token || this.#isTokenExpired(token)) {
+        alert("Энэ үйлдлийг хийхийн тулд нэвтэрч орно уу!");
+      } else {
+        this.liked = this.liked === "checked" ? "" : "checked";
+        this.toggleLike().then(() => {
+          const profile = document.getElementById("profile-comp");
+          if (profile) {
+            if (this.liked === "checked") {
+              profile.newNotif();
+            } else {
+              profile.readNotif();
+            }
           }
-        }
-        this.innerHTML = this.Render();
-      });
+          this.innerHTML = this.Render();
+        });
+      }
     });
   }
 
   async checkIfLiked() {
     const token = localStorage.getItem("token");
+
+    if (!token || this.#isTokenExpired(token)) {
+      this.liked = "";
+      return;
+    }
+
     return fetch(`http://localhost:3000/liked/${this.roomId}`, {
       method: "GET",
       headers: {
@@ -65,7 +77,7 @@ class BtnLike extends HTMLElement {
         }
       })
       .then((data) => {
-        this.liked = data.length == 0 ? "" : "checked";
+        this.liked = data.length === 0 ? "" : "checked";
       })
       .catch((error) => {
         console.log("Error: ", error.message);
@@ -74,6 +86,12 @@ class BtnLike extends HTMLElement {
 
   async toggleLike() {
     const token = localStorage.getItem("token");
+
+    if (!token || this.#isTokenExpired(token)) {
+      alert("Please login to continue");
+      return;
+    }
+
     return fetch("http://localhost:3000/liked", {
       method: this.liked === "checked" ? "POST" : "PUT",
       headers: {
@@ -92,6 +110,11 @@ class BtnLike extends HTMLElement {
       .catch((error) => {
         console.log("Error: ", error.message);
       });
+  }
+
+  #isTokenExpired(token) {
+    const payload = JSON.parse(atob(token.split(".")[1]));
+    return payload.exp * 1000 < Date.now();
   }
 }
 

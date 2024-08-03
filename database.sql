@@ -96,3 +96,4 @@ CREATE UNIQUE INDEX unique_user_room ON liked (user_id, room_id) WHERE delete_fl
 ALTER TABLE liked ADD COLUMN delete_flag BOOLEAN DEFAULT FALSE;
 ALTER TABLE reservations ADD COLUMN delete_flag BOOLEAN DEFAULT FALSE;
 ALTER TABLE reserved ADD COLUMN delete_flag BOOLEAN DEFAULT FALSE;
+ALTER TABLE ratings ADD COLUMN delete_flag BOOLEAN DEFAULT FALSE;

@@ -20,9 +20,17 @@ class PopUpUser extends HTMLElement {
                           <span class="button" id="user-login">Нэвтрэх</span>
                       </li>`
                 }          
-                <li>
-                    <a href="contact.html" class="contact-menu menu"><span>Холбогдох</span></a>
-                </li>
+                  <li>
+                      <a href="contact.html" class="contact-menu menu"><span>Холбогдох</span></a>
+                  </li>
+                ${
+                  user
+                    ? `
+                  <li>
+                    <a href="#" class="logout-menu menu"><span>Гарах</span></a>
+                  </li>`
+                    : ``
+                }
             </ul>`;
   }
 
@@ -30,42 +38,48 @@ class PopUpUser extends HTMLElement {
     const token = localStorage.getItem("token");
 
     if (token) {
-      fetch("http://localhost:3000/auth/profile", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      })
-        .then((profileResponse) => {
-          if (profileResponse.ok) {
-            return profileResponse.json();
-          } else {
-            console.error(
-              "Failed to fetch profile:",
-              profileResponse.statusText
-            );
-            return null;
-          }
-        })
-        .then((profile) => {
-          let user = profile.user;
-          this.innerHTML = this.#Render(user);
-          this.addLoginButtonEventListener();
-        })
-        .catch((error) => {
-          console.error("Error fetching profile:", error);
-          this.innerHTML = this.#Render(null);
-          this.addLoginButtonEventListener();
-        });
+      const payload = JSON.parse(atob(token.split(".")[1]));
+      if (payload.exp * 1000 < Date.now()) {
+        this.#handleInvalidToken();
+      } else {
+        this.#fetchUserProfile(token);
+      }
     } else {
-      console.error("No token found in localStorage");
-      this.innerHTML = this.#Render(null);
-      this.addLoginButtonEventListener();
+      this.#handleInvalidToken();
     }
   }
 
-  addLoginButtonEventListener() {
+  #handleInvalidToken() {
+    console.error("Invalid or expired token");
+    this.innerHTML = this.#Render(null);
+    this.login();
+  }
+
+  #fetchUserProfile(token) {
+    fetch("http://localhost:3000/auth/profile", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((response) =>
+        response.ok ? response.json() : Promise.reject(response.statusText)
+      )
+      .then((profile) => {
+        const user = profile ? profile.user : null;
+        this.innerHTML = this.#Render(user);
+        this.login();
+        this.logout();
+      })
+      .catch((error) => {
+        console.error("Error fetching profile:", error);
+        this.innerHTML = this.#Render(null);
+        this.login();
+      });
+  }
+
+  login() {
     this.querySelector("#user-login").addEventListener("click", () => {
       const userPopUp = document.querySelector("#login-pop-up");
       if (userPopUp.classList.contains("open")) {
@@ -74,6 +88,20 @@ class PopUpUser extends HTMLElement {
         userPopUp.classList.add("open");
       }
     });
+  }
+
+  logout() {
+    const logoutBtn = this.querySelector(".logout-menu");
+    if (logoutBtn) {
+      logoutBtn.addEventListener("click", (event) => {
+        event.preventDefault();
+        localStorage.removeItem("token");
+        alert("Log out success");
+        // Optionally, re-render to show the login option
+        this.innerHTML = this.#Render(null);
+        this.login();
+      });
+    }
   }
 }
 
