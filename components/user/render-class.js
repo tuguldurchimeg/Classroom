@@ -1,3 +1,5 @@
+import ClassFormatter from "../../script/ClassFormatter.js";
+
 export class RenderClass {
   constructor(data) {
     this.data = data;
@@ -5,35 +7,37 @@ export class RenderClass {
 
   render_class_list() {
     const { data } = this;
-
+    const encodedData = encodeURIComponent(JSON.stringify(data));
+    const formatter = new ClassFormatter();
+    data.building = formatter.formatBuilding(data.building);
+    data.type = formatter.formatType(data.type);
+    data.date = formatter.formatDate(data.date);
     return `
             <article class="class-section-2">
                 <div class="img">
-                    <img src="${data.imgSrc}" alt="${data.imgAlt}" class="image">
+                    <img src="styles/assets/class.jpg" alt="classroom pic" class="image">
                 </div>
                 <section class="details">
-                <a href="${data.href}">
-
+                <a href="class.html?id=${encodedData}">
                     <div class="heartdetailsgrid">
                         <div class="font">
-                            <h3>${data.header}</h3>
-                            <div class="class-type">${data.classType}</div>
+                            <h3>${data.building} - ${data.roomno}</h3>
+                            <div class="class-type">${data.type}</div>
                         </div>
-                        <img src="${data.heartImgSrc}" alt="${data.heartImgAlt}" class="heart-grey">
                     </div>
                     <ul class="details-list">
                         <li>${data.date}</li>
                         <li>
-                            <button class="start-time-btn"><span>${data.startTime}</span></button>
+                            <button class="start-time-btn"><span> time </span></button>
                         </li>
                         <li>
-                            <button class="end-time-btn"><span>${data.endTime}</span></button>
+                            <button class="end-time-btn"><span> time </span></button>
                         </li>
                     </ul>
                  </a>
                 </section>
                 <div class="cancel">
-                    <button class="cancel-btn" data-id="${data.id}"><img src="${data.cancelImgSrc}" alt="${data.cancelImgAlt}"></button>
+                    <button class="cancel-btn" data-id="${data.room_id}"><img src="styles/assets/cancal.png" alt="cancel"></button>
                 </div>
             </article>
         `;

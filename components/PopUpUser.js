@@ -8,13 +8,13 @@ class PopUpUser extends HTMLElement {
                 ${
                   user
                     ? `<li>
-                      <span class="button" id="user-login">${user.email}</span>
+                      <a href="user.html?state=account"><span class="button" id="user-login">${user.email}</span></a>
                   </li>
                   <li>
-                      <a href="user.html" class="reserved-menu menu"><span>Захиалсан ангиуд</span></a>
+                      <a href="user.html?state=reservations" class="reserved-menu menu"><span>Захиалсан ангиуд</span></a>
                   </li>
                   <li>
-                      <a href="user.html" class="liked-menu menu"><span>Дуртай ангиуд</span></a>
+                      <a href="user.html?state=liked" class="liked-menu menu"><span>Дуртай ангиуд</span></a>
                   </li>`
                     : `<li>
                           <span class="button" id="user-login">Нэвтрэх</span>
@@ -38,11 +38,22 @@ class PopUpUser extends HTMLElement {
     const token = localStorage.getItem("token");
 
     if (token) {
-      const payload = JSON.parse(atob(token.split(".")[1]));
-      if (payload.exp * 1000 < Date.now()) {
+      const tokenParts = token.split(".");
+      if (tokenParts.length !== 3) {
         this.#handleInvalidToken();
-      } else {
-        this.#fetchUserProfile(token);
+        return;
+      }
+
+      try {
+        const payload = JSON.parse(atob(tokenParts[1]));
+        if (payload.exp * 1000 < Date.now()) {
+          this.#handleInvalidToken();
+        } else {
+          this.#fetchUserProfile(token);
+        }
+      } catch (e) {
+        console.error("Failed to decode token:", e);
+        this.#handleInvalidToken();
       }
     } else {
       this.#handleInvalidToken();

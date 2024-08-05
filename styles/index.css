@@ -173,9 +173,7 @@ aside.index-aside h2 {
   color: var(--color-text);
   text-align: center;
 }
-aside.index-aside class-section{
-  /* margin: 1.5em; */
-}
+
 main.index-main {
   width: 75%;
   background: var(--color-background);

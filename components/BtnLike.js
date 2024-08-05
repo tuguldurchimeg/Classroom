@@ -62,26 +62,27 @@ class BtnLike extends HTMLElement {
       return;
     }
 
-    return fetch(`http://localhost:3000/liked/${this.roomId}`, {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          console.error("Failed to fetch like status.");
-          return {};
+    try {
+      const response = await fetch(
+        `http://localhost:3000/liked/${this.roomId}`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         }
-      })
-      .then((data) => {
-        this.liked = data.length === 0 ? "" : "checked";
-      })
-      .catch((error) => {
-        console.log("Error: ", error.message);
-      });
+      );
+
+      if (!response.ok) {
+        console.error("Failed to fetch like status.");
+        return;
+      }
+
+      const data = await response.json();
+      this.liked = data.length === 0 ? "" : "checked";
+    } catch (error) {
+      console.log("Error: ", error.message);
+    }
   }
 
   async toggleLike() {
@@ -92,29 +93,34 @@ class BtnLike extends HTMLElement {
       return;
     }
 
-    return fetch("http://localhost:3000/liked", {
-      method: this.liked === "checked" ? "POST" : "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify({
-        room_id: this.roomId,
-      }),
-    })
-      .then((response) => {
-        if (!response.ok) {
-          console.error("Failed to update like status.");
-        }
-      })
-      .catch((error) => {
-        console.log("Error: ", error.message);
+    try {
+      const response = await fetch("http://localhost:3000/liked", {
+        method: this.liked === "checked" ? "POST" : "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          room_id: this.roomId,
+        }),
       });
+
+      if (!response.ok) {
+        console.error("Failed to update like status.");
+      }
+    } catch (error) {
+      console.log("Error: ", error.message);
+    }
   }
 
   #isTokenExpired(token) {
-    const payload = JSON.parse(atob(token.split(".")[1]));
-    return payload.exp * 1000 < Date.now();
+    try {
+      const payload = JSON.parse(atob(token.split(".")[1]));
+      return payload.exp * 1000 < Date.now();
+    } catch (e) {
+      console.error("Failed to decode token:", e);
+      return true; // Treat any error as an expired token
+    }
   }
 }
 

@@ -144,14 +144,13 @@ export const insertReservations = async (req, res) => {
     people,
     phone1,
     phone2,
-    cancelled,
-    status,
   } = req.body;
+  const { userId } = req.user;
   pool.query(
-    "INSERT INTO reservations(res_id, user_id, room_id, date, purpose, description, people, phone1, phone2, cancelled, status) VALUES($1,$2,$3,$4,$5,$6, $7, $8, $9, $10, $11)",
+    "INSERT INTO reservations(res_id, user_id, room_id, date, purpose, description, people, phone1, phone2) VALUES($1,$2,$3,$4,$5,$6, $7, $8, $9)",
     [
       res_id,
-      user_id,
+      userId,
       room_id,
       date,
       purpose,
@@ -159,8 +158,6 @@ export const insertReservations = async (req, res) => {
       people,
       phone1,
       phone2,
-      cancelled,
-      status,
     ],
     (err, result) => {
       if (!err) {
@@ -190,7 +187,7 @@ export const getLikedClasses = async (req, res) => {
   try {
     const { userId } = req.user;
     const { rows } = await pool.query(
-      "SELECT * FROM liked WHERE user_id = $1 AND delete_flag = FALSE",
+      "SELECT classes.* FROM liked LEFT JOIN classes ON classes.room_id = liked.room_id WHERE user_id = $1 AND delete_flag = FALSE",
       [userId]
     );
     res.json({ liked_rooms: rows });
@@ -208,6 +205,39 @@ export const getLikedClass = async (req, res) => {
       [userId, room_id]
     );
     res.json(rows);
+  } catch (error) {
+    console.error("Error:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+export const getReservations = async (req, res) => {
+  try {
+    const { userId } = req.user;
+    const { rows } = await pool.query(
+      "SELECT reservations.*, classes.building, classes.roomno, classes.type FROM reservations LEFT JOIN classes ON classes.room_id = reservations.room_id WHERE user_id = $1 AND delete_flag = FALSE",
+      [userId]
+    );
+    res.json(rows);
+  } catch (error) {
+    console.error("Error:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+export const cancelReservation = async (req, res) => {
+  try {
+    const { userId } = req.user;
+    const { res_id } = req.params;
+    const result = pool.query(
+      "UPDATE reservations SET delete_flag = TRUE WHERE user_id = $1 AND res_id = $2",
+      [userId, res_id]
+    );
+    if (result.rowCount == 0) {
+      res.status(404).json({ message: "No record found or already deleted" });
+    } else {
+      res.status(200).json({ message: "Record deleted" });
+    }
   } catch (error) {
     console.error("Error:", error);
     res.status(500).json({ error: "Internal Server Error" });

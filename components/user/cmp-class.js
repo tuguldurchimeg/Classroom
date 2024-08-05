@@ -1,67 +1,246 @@
+import ClassRen from "../../script/ClassRender.js";
 import { RenderClass } from "./render-class.js";
 
 class ClassComponent extends HTMLElement {
   constructor() {
     super();
     this.renderData = this.renderData.bind(this);
-    this.removeClass = this.removeClass.bind(this);
   }
 
   connectedCallback() {
     this.renderData();
   }
 
-  removeClass(event) {
-    console.log(event); // Log the event to see if it's being triggered
-    const id = event.target.closest("button").dataset.id; // Using closest to find the button element if the img inside the button was clicked
-    console.log("id:", id);
-    const element = document.querySelector(`article[data-id="${id}"]`);
-    if (element) {
-      element.parentNode.removeChild(element);
-      this.updateView(); // Re-render the view after removing the element
+  async renderData() {
+    const token = localStorage.getItem("token");
+    if (!token || this.#isTokenExpired(token)) {
+      alert("Энэ үйлдлийг хийхийн тулд нэвтэрч орно уу!");
+      window.location.href = "index.html"; // Redirect to the home page
+      return;
     }
-  }
 
-  async updateView() {
-    const container = this.querySelector(".verified");
-    if (container) {
+    const urlParams = new URLSearchParams(window.location.search);
+    const userMenu = urlParams.get("user-menu"); // get which menu it is 'user-menu'
+
+    let container = this.querySelector(".content-container");
+    if (!container) {
+      container = document.createElement("section");
+      container.classList.add("content-container");
+    } else {
       container.innerHTML = ""; // Clear the existing content
     }
-    await this.renderData(); // Re-fetch and re-render the data
+
+    if (userMenu == "reservations") {
+      container.classList.add("reservations");
+      const verifiedHeader = document.createElement("h1");
+      verifiedHeader.classList.add("reservations-status");
+      verifiedHeader.textContent = "Баталгаажсан:";
+      container.appendChild(verifiedHeader);
+
+      const verifiedHTML = document.createElement("section");
+      container.appendChild(verifiedHTML);
+
+      const waitingHeader = document.createElement("h1");
+      waitingHeader.classList.add("reservations-status");
+      waitingHeader.textContent = "Хүлээгдэж буй:";
+      container.appendChild(waitingHeader);
+
+      const waitingHTML = document.createElement("section");
+      container.appendChild(waitingHTML);
+      await this.renderReservations(verifiedHTML, waitingHTML);
+    } else if (userMenu == "liked") {
+      container.classList.add("liked-classes");
+      await this.renderLikedClasses(container);
+    } else if (userMenu == "account") {
+      container.classList.add("account");
+      await this.renderAccountProfile(container);
+    }
+
+    this.appendChild(container);
   }
 
-  async renderData() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const stateFilter = urlParams.get("state"); // Assuming the URL parameter is named 'state'
+  async renderReservations(verifiedHTML, waitingHTML) {
+    const token = localStorage.getItem("token");
 
-    const container =
-      this.querySelector(".verified") || document.createElement("div");
-    container.classList.add("verified");
-    this.appendChild(container);
+    if (!token || this.#isTokenExpired(token)) {
+      alert("Энэ үйлдлийг хийхийн тулд нэвтэрч орно уу!");
+      return;
+    }
 
     try {
-      const response = await fetch("components/user/data.json");
+      const response = await fetch("http://localhost:3000/reservations", {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
       const jsonData = await response.json();
 
-      jsonData.forEach((item) => {
-        if (item.state === stateFilter) {
-          const renderClass = new RenderClass(item);
-          const classElement = document.createElement("div");
-          classElement.innerHTML = renderClass.render_class_list();
-          container.appendChild(classElement);
+      const createNodeFromString = (htmlString) => {
+        const tempDiv = document.createElement("div");
+        tempDiv.innerHTML = htmlString.trim();
+        return tempDiv.firstChild;
+      };
 
-          // Attach the event listener here, ensuring it's done after elements are added to the DOM
-          const cancelButton = classElement.querySelector(
-            `button[data-id="${item.id}"]`
-          );
-          if (cancelButton) {
-            cancelButton.addEventListener("click", this.removeClass);
+      jsonData
+        .filter((item) => item.status === "verified")
+        .map((item) => new RenderClass(item).render_class_list())
+        .forEach((htmlString) => {
+          const node = createNodeFromString(htmlString);
+          if (node instanceof Node) {
+            verifiedHTML.appendChild(node);
           }
-        }
-      });
+        });
+
+      jsonData
+        .filter((item) => item.status === "waiting")
+        .map((item) => new RenderClass(item).render_class_list())
+        .forEach((htmlString) => {
+          const node = createNodeFromString(htmlString);
+          if (node instanceof Node) {
+            waitingHTML.appendChild(node);
+          }
+        });
     } catch (error) {
       console.error("Error fetching JSON data:", error);
     }
   }
+
+  async renderLikedClasses(container) {
+    const token = localStorage.getItem("token");
+    if (!token || this.#isTokenExpired(token)) {
+      alert("Энэ үйлдлийг хийхийн тулд нэвтэрч орно уу!");
+    } else {
+      try {
+        const response = await fetch("http://localhost:3000/liked", {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        const jsonData = await response.json();
+
+        const likedClassesHTML = jsonData.liked_rooms
+          .map((item) => {
+            const classObj = new ClassRen(item);
+            return classObj.Render();
+          })
+          .join("");
+        container.innerHTML = likedClassesHTML;
+      } catch (error) {
+        console.error("Error fetching JSON data:", error);
+      }
+    }
+  }
+
+  async renderAccountProfile(container) {
+    const token = localStorage.getItem("token");
+    if (!token || this.#isTokenExpired(token)) {
+      alert("Энэ үйлдлийг хийхийн тулд нэвтэрч орно уу!");
+    } else {
+      try {
+        const response = await fetch("http://localhost:3000/auth/profile", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error(response.statusText);
+        }
+
+        const profile = await response.json();
+        const user = profile ? profile.user : null;
+
+        if (user) {
+          // Create email label
+          const emailLabel = document.createElement("label");
+          emailLabel.textContent = `${user.email}`;
+          container.appendChild(emailLabel);
+
+          // Create current password input
+          const currentPasswordInput = document.createElement("input");
+          currentPasswordInput.type = "password";
+          currentPasswordInput.placeholder = "Хуучин нууц үг";
+          currentPasswordInput.id = "current-password";
+          container.appendChild(currentPasswordInput);
+
+          // Create new password input
+          const newPasswordInput = document.createElement("input");
+          newPasswordInput.type = "password";
+          newPasswordInput.placeholder = "Шинэ нууц үг";
+          newPasswordInput.id = "new-password";
+          container.appendChild(newPasswordInput);
+
+          // Create confirm password input
+          const confirmPasswordInput = document.createElement("input");
+          confirmPasswordInput.type = "password";
+          confirmPasswordInput.placeholder = "Шинэ нууц үг давтах";
+          confirmPasswordInput.id = "confirm-password";
+          container.appendChild(confirmPasswordInput);
+
+          // Create submit button
+          const submitButton = document.createElement("button");
+          submitButton.textContent = "Нууц үг солих";
+          container.appendChild(submitButton);
+
+          // Add event listener to submit button
+          submitButton.addEventListener("click", async () => {
+            const currentPassword = currentPasswordInput.value;
+            const newPassword = newPasswordInput.value;
+            const confirmPassword = confirmPasswordInput.value;
+
+            if (newPassword !== confirmPassword) {
+              alert("Passwords do not match");
+              return;
+            }
+
+            try {
+              const response = await fetch(
+                "http://localhost:3000/auth/change-password",
+                {
+                  method: "PUT",
+                  headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                  },
+                  body: JSON.stringify({
+                    currentPassword: currentPassword,
+                    newPassword: newPassword,
+                  }),
+                }
+              );
+
+              if (!response.ok) {
+                throw new Error(response.statusText);
+              }
+
+              alert("Password changed successfully");
+            } catch (error) {
+              console.error("Error changing password:", error);
+              alert("Error changing password");
+            }
+          });
+        } else {
+          console.error("User not found");
+        }
+      } catch (error) {
+        console.error("Error fetching profile:", error);
+      }
+    }
+  }
+
+  #isTokenExpired(token) {
+    const payload = JSON.parse(atob(token.split(".")[1]));
+    return payload.exp * 1000 < Date.now();
+  }
 }
+
 window.customElements.define("class-component", ClassComponent);
