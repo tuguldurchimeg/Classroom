@@ -7,7 +7,7 @@ CREATE TABLE  classes  (
    projector  boolean
 );
 
-CREATE TABLE  time_slots  (
+CREATE TABLE  default_time_slots  (
    room_id  varchar,
    garag  varchar,
    time  int
@@ -44,7 +44,7 @@ CREATE TABLE  reservations  (
    status  varchar
 );
 
-CREATE TABLE  res_times  (
+CREATE TABLE  reservation_times  (
    time  int,
    res_id  varchar
 );
@@ -52,11 +52,6 @@ CREATE TABLE  res_times  (
 CREATE TABLE  liked  (
    user_id  varchar,
    room_id  varchar
-);
-
-CREATE TABLE  reserved  (
-   user_id  varchar,
-   res_id  varchar
 );
 
 CREATE TABLE  schedule  (
@@ -76,7 +71,7 @@ ALTER TABLE  reservations  ADD FOREIGN KEY ( user_id ) REFERENCES  users  ( id )
 
 ALTER TABLE  reservations  ADD FOREIGN KEY ( room_id ) REFERENCES  classes  ( room_id );
 
-ALTER TABLE  time_slots  ADD FOREIGN KEY ( room_id ) REFERENCES  classes  ( room_id );
+ALTER TABLE  default_time_slots  ADD FOREIGN KEY ( room_id ) REFERENCES  classes  ( room_id );
 
 ALTER TABLE  res_times  ADD FOREIGN KEY ( res_id ) REFERENCES  reservations  ( res_id );
 
@@ -84,19 +79,15 @@ ALTER TABLE  liked  ADD FOREIGN KEY ( user_id ) REFERENCES  users  ( id );
 
 ALTER TABLE  liked  ADD FOREIGN KEY ( room_id ) REFERENCES  classes  ( room_id );
 
-ALTER TABLE  reserved  ADD FOREIGN KEY ( user_id ) REFERENCES  users  ( id );
-
-ALTER TABLE  reserved  ADD FOREIGN KEY ( res_id ) REFERENCES  reservations  ( res_id );
-
 ALTER TABLE  schedule  ADD FOREIGN KEY ( room_id ) REFERENCES  classes  ( room_id );
 
 -- CONSTRAINTS
 CREATE UNIQUE INDEX unique_user_room ON liked (user_id, room_id) WHERE delete_flag = FALSE;
 
 ALTER TABLE liked ADD COLUMN delete_flag BOOLEAN DEFAULT FALSE;
-ALTER TABLE reservations ADD COLUMN delete_flag BOOLEAN DEFAULT FALSE;
-ALTER TABLE reserved ADD COLUMN delete_flag BOOLEAN DEFAULT FALSE;
 ALTER TABLE ratings ADD COLUMN delete_flag BOOLEAN DEFAULT FALSE;
-
+ALTER TABLE reservations ADD COLUMN delete_flag BOOLEAN DEFAULT FALSE;
 ALTER TABLE reservations ALTER COLUMN status SET DEFAULT 'waiting';
 ALTER TABLE reservations DROP COLUMN cancelled 
+ALTER TABLE reservation_times ADD COLUMN date DATE
+ALTER TABLE reservation_times ADD COLUMN garag VARCHAR

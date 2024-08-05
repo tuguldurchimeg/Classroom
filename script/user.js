@@ -15,3 +15,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 });
+
+const logoutBtn = document.querySelector(".log-out");
+if (logoutBtn) {
+  logoutBtn.addEventListener("click", (event) => {
+    event.preventDefault();
+    localStorage.removeItem("token");
+    alert("Амжилттай гарлаа!");
+  });
+}

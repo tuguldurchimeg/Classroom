@@ -125,7 +125,7 @@ let simClassHTML = simClassData.data.map((classObj) => {
 });
 document.getElementById("s-class-list").innerHTML = simClassHTML;
 
-// Get month day
+// Get month day ( Get slot times by date START )
 document.addEventListener("dayChanged", async (event) => {
   try {
     let { startMonth, startDay } = event.detail;
@@ -164,6 +164,7 @@ document.addEventListener("dayChanged", async (event) => {
     console.error("Error:", error);
   }
 });
+// Get slot times by date END
 
 function getWeekday(month, day) {
   const year = 2024;

@@ -39,7 +39,7 @@ export const insertTimeSlots = async (req, res) => {
   }
 
   pool.query(
-    "INSERT INTO time_slots(room_id, garag, time) VALUES($1, $2, $3)",
+    "INSERT INTO default_time_slots(room_id, garag, time) VALUES($1, $2, $3)",
     [room_id, garag, time],
     (err, result) => {
       if (err) {
@@ -53,7 +53,7 @@ export const insertTimeSlots = async (req, res) => {
 };
 
 export const getTimeSlots = async (req, res) => {
-  pool.query("SELECT * FROM time_slots", (error, result) => {
+  pool.query("SELECT * FROM default_time_slots", (error, result) => {
     if (error) {
       console.error("Error retrieving time slots:", error);
       res.status(500).json({ error: "Internal Server Error" });
@@ -136,7 +136,6 @@ export const insertRating = async (req, res) => {
 export const insertReservations = async (req, res) => {
   const {
     res_id,
-    user_id,
     room_id,
     date,
     purpose,
@@ -144,11 +143,20 @@ export const insertReservations = async (req, res) => {
     people,
     phone1,
     phone2,
+    times,
   } = req.body;
   const { userId } = req.user;
-  pool.query(
-    "INSERT INTO reservations(res_id, user_id, room_id, date, purpose, description, people, phone1, phone2) VALUES($1,$2,$3,$4,$5,$6, $7, $8, $9)",
-    [
+
+  try {
+    await pool.query("BEGIN");
+
+    // Insert into reservations table
+    const insertReservationQuery = `
+      INSERT INTO reservations(res_id, user_id, room_id, date, purpose, description, people, phone1, phone2)
+      VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9)
+      RETURNING *
+    `;
+    const insertReservationValues = [
       res_id,
       userId,
       room_id,
@@ -158,15 +166,31 @@ export const insertReservations = async (req, res) => {
       people,
       phone1,
       phone2,
-    ],
-    (err, result) => {
-      if (!err) {
-        res.status(201).send(result.rows);
-      } else {
-        res.status(500).send(err.message);
-      }
-    }
-  );
+    ];
+
+    const result = await pool.query(
+      insertReservationQuery,
+      insertReservationValues
+    );
+
+    // Prepare the res_times data
+    const resTimesQueries = times.map((timeElement) => {
+      return pool.query(
+        "INSERT INTO reservation_times (res_id, time) VALUES ($1, $2)",
+        [res_id, timeElement]
+      );
+    });
+
+    // Execute all queries concurrently
+    await Promise.all(resTimesQueries);
+
+    await pool.query("COMMIT");
+
+    res.status(201).send(result.rows);
+  } catch (err) {
+    await pool.query("ROLLBACK");
+    res.status(500).send(err.message);
+  }
 };
 export const insertLiked = async (req, res) => {
   const { room_id } = req.body;
@@ -214,11 +238,21 @@ export const getLikedClass = async (req, res) => {
 export const getReservations = async (req, res) => {
   try {
     const { userId } = req.user;
-    const { rows } = await pool.query(
+    const { rows: reservations } = await pool.query(
       "SELECT reservations.*, classes.building, classes.roomno, classes.type FROM reservations LEFT JOIN classes ON classes.room_id = reservations.room_id WHERE user_id = $1 AND delete_flag = FALSE",
       [userId]
     );
-    res.json(rows);
+
+    // Iterate over each reservation to get the reservation times
+    for (let reservation of reservations) {
+      const { rows: times } = await pool.query(
+        "SELECT date, garag, time FROM reservation_times WHERE res_id = $1",
+        [reservation.res_id]
+      );
+      reservation.times = times; // Add the times to each reservation
+    }
+
+    res.json({ reservations });
   } catch (error) {
     console.error("Error:", error);
     res.status(500).json({ error: "Internal Server Error" });

@@ -42,18 +42,6 @@ class ReserveForm extends HTMLElement {
   connectedCallback() {
     this.innerHTML = this.Render();
   }
-
-  disconnectedCallback() {
-    //implementation
-  }
-
-  attributeChangedCallback(name, oldVal, newVal) {
-    //implementation
-  }
-
-  adoptedCallback() {
-    //implementation
-  }
 }
 
 window.customElements.define("reserve-form", ReserveForm);

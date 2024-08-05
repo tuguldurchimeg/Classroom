@@ -8,13 +8,13 @@ class PopUpUser extends HTMLElement {
                 ${
                   user
                     ? `<li>
-                      <a href="user.html?state=account"><span class="button" id="user-login">${user.email}</span></a>
+                      <a href="user.html?user-menu=account"><span class="button" id="user-login">${user.email}</span></a>
                   </li>
                   <li>
-                      <a href="user.html?state=reservations" class="reserved-menu menu"><span>Захиалсан ангиуд</span></a>
+                      <a href="user.html?user-menu=reservations" class="reserved-menu menu"><span>Захиалсан ангиуд</span></a>
                   </li>
                   <li>
-                      <a href="user.html?state=liked" class="liked-menu menu"><span>Дуртай ангиуд</span></a>
+                      <a href="user.html?user-menu=liked" class="liked-menu menu"><span>Дуртай ангиуд</span></a>
                   </li>`
                     : `<li>
                           <span class="button" id="user-login">Нэвтрэх</span>

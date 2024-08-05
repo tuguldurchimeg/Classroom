@@ -1,5 +1,7 @@
 export default class TimeBtn {
   constructor(timeObj) {
+    this.date = timeObj.date;
+    this.garag = timeObj.garag;
     this.time = timeObj.time;
     this.stat = timeObj.status;
     this.click = "";

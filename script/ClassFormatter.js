@@ -36,4 +36,13 @@ export default class ClassFormatter {
 
     return `${month}.${day} - ${weekday}`;
   }
+
+  formatTime(timeInteger) {
+    let hours = Math.floor(timeInteger / 100);
+    let minutes = timeInteger % 100;
+
+    hours = (hours < 10 ? "0" : "") + hours;
+    minutes = (minutes < 10 ? "0" : "") + minutes;
+    return `${hours}:${minutes}`;
+  }
 }
