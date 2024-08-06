@@ -1,3 +1,5 @@
+import ClassFormatter from "./ClassFormatter.js";
+
 export default class ClassRen {
   constructor(classObj) {
     this.roomID = classObj.room_id;
@@ -7,17 +9,11 @@ export default class ClassRen {
     this.capacity = classObj.capacity;
     this.projector = classObj.projector;
 
-    if (this.building == "E-Номын сан") this.building = "Е-lib";
-    else if (this.building == "Хичээлийн төв байр") this.building = "1";
-    else if (this.building == "Улаанбаатар сургуулийн хичээлийн байр")
-      this.building = "Хууль";
-    else this.building = this.building.slice(-1);
-
-    if (this.type == "Хичээлийн танхим" || this.type == "Семинарын танхим")
-      this.type = "Семинар";
-    else if (this.type == "Лекцийн танхим") this.type = "Лекц";
-    else if (this.type == "Сургалтын лаборатори") this.type = "Лаб";
+    const formatter = new ClassFormatter();
+    this.building = formatter.formatBuilding(this.building);
+    this.type = formatter.formatType(this.type);
   }
+
   Render() {
     return ` <class-section 
                 build=${this.building} 

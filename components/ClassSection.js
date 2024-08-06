@@ -7,24 +7,24 @@ class ClassSection extends HTMLElement {
     this.type = this.getAttribute("type");
     this.capac = this.getAttribute("cap");
     this.proj = this.getAttribute("proj");
+    this.rating = 0; // Initialize rating to a default value
   }
+
   Render() {
     const encodedData = encodeURIComponent(JSON.stringify(this));
-    let i = Math.floor(Math.random() * 10000) + 1;
-    const rating = 3; //  !will later fetch rating data from db using fetchget
-    let ratingStars = [...Array(rating)]
-      .map((star, index) => {
-        const currentRating = index + 1;
-        return `<span style="color: var(--color-primary)">
-        &#9733;
-        </span>`;
+
+    const ratingStars = [...Array(5)]
+      .map((_, index) => {
+        return index < this.rating
+          ? `<i class="fa-solid fa-star" style="color: var(--color-primary); font-size: 0.8em;"></i>`
+          : `<i class="fa-regular fa-star" style="color: var(--color-light-grey); font-size: 0.8em;"></i>`;
       })
-      .reduce((prev, current) => prev + current);
+      .join("");
 
     return `<a href="class.html?id=${encodedData}" class="class-section-1">
             <article>
               <img
-                src="https://source.unsplash.com/random/400x250/?classroom,lesson&${i}"
+                src="../styles/assets/class.jpg"
                 alt="classroom-picture"
                 class="image"
               />
@@ -34,7 +34,7 @@ class ClassSection extends HTMLElement {
                     ${this.build} - 
                     ${this.roomNo}
                     </h3>
-                  <btn-like roomId=${encodedData}></btn-like>
+                  <btn-like roomId=${this.roomID}></btn-like>
                 </div>
                 <div class="class-type">${this.type}</div>
                 <div class="class-info">
@@ -50,12 +50,24 @@ class ClassSection extends HTMLElement {
                 </div>
               </div>
             </article>
-          </a>
-      `;
+          </a>`;
   }
 
   connectedCallback() {
     this.innerHTML = this.Render();
+    this.getRating();
+  }
+
+  getRating() {
+    fetch(`http://localhost:3000/rating/${this.roomID}`)
+      .then((response) => response.json())
+      .then((data) => {
+        this.rating = data.avgRate;
+        this.innerHTML = this.Render(); // Re-render with the updated rating
+      })
+      .catch((error) => {
+        console.log("Error: ", error.message);
+      });
   }
 }
 

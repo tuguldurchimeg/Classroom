@@ -14,7 +14,7 @@ export const insertClasses = async (req, res) => {
     }
   );
 };
-export const getSimClasses = async (req, res) => {
+export const getSimilarClasses = async (req, res) => {
   try {
     const { room_id, build } = req.params;
     const { rows } = await pool.query(
@@ -39,7 +39,7 @@ export const insertTimeSlots = async (req, res) => {
   }
 
   pool.query(
-    "INSERT INTO time_slots(room_id, garag, time) VALUES($1, $2, $3)",
+    "INSERT INTO default_time_slots(room_id, garag, time) VALUES($1, $2, $3)",
     [room_id, garag, time],
     (err, result) => {
       if (err) {
@@ -53,7 +53,7 @@ export const insertTimeSlots = async (req, res) => {
 };
 
 export const getTimeSlots = async (req, res) => {
-  pool.query("SELECT * FROM time_slots", (error, result) => {
+  pool.query("SELECT * FROM default_time_slots", (error, result) => {
     if (error) {
       console.error("Error retrieving time slots:", error);
       res.status(500).json({ error: "Internal Server Error" });
@@ -77,7 +77,7 @@ export const getFilteredClasses = async (req, res) => {
     } = req.params;
 
     const query = `
-    SELECT DISTINCT ON (sc.room_id) sc.room_id,sc.week_id,sc.garag,sc.time,cl.roomno,cl.building,cl.type,cl.capacity,cl.projector,sc.status
+    SELECT DISTINCT ON (sc.room_id) sc.room_id,sc.garag,sc.time,cl.roomno,cl.building,cl.type,cl.capacity,cl.projector,sc.status
       FROM schedule as sc
       INNER JOIN classes as cl ON sc.room_id = cl.room_id
 	    WHERE cl.building = $1
@@ -106,11 +106,27 @@ export const getFilteredClasses = async (req, res) => {
 export const getRating = async (req, res) => {
   try {
     const { room_id } = req.params;
-    const { rows } = await pool.query(
-      `SELECT AVG("air_rate") as air, AVG("comfort_rate") as comfort, AVG("wifi_rate") as wifi, AVG("slot_rate") as slot FROM ratings WHERE room_id = $1 GROUP BY room_id`,
-      [room_id]
-    );
-    res.json({ data: rows });
+    const query = `
+      SELECT AVG("air_rate") as air, AVG("comfort_rate") as comfort, AVG("wifi_rate") as wifi, AVG("slot_rate") as slot 
+      FROM ratings 
+      WHERE room_id = $1 
+      GROUP BY room_id
+    `;
+
+    const { rows } = await pool.query(query, [room_id]);
+
+    const defaultRatings = { air: 0, comfort: 0, wifi: 0, slot: 0 };
+    const ratings = rows.length > 0 ? rows[0] : defaultRatings;
+
+    const avgRate = (
+      (parseFloat(ratings.air) +
+        parseFloat(ratings.comfort) +
+        parseFloat(ratings.wifi) +
+        parseFloat(ratings.slot)) /
+      4
+    ).toFixed(1);
+
+    res.json({ avgRate, rows: [ratings] });
   } catch (error) {
     console.error("Error:", error);
     res.status(500).json({ error: "Internal Server Error" });
@@ -118,11 +134,11 @@ export const getRating = async (req, res) => {
 };
 
 export const insertRating = async (req, res) => {
-  const { id, user_id, room_id, air_rate, comfort_rate, wifi_rate, slot_rate } =
-    req.body;
+  const { room_id, air_rate, comfort_rate, wifi_rate, slot_rate } = req.body;
+  const { userId } = req.user;
   pool.query(
-    "INSERT INTO ratings(id, user_id, room_id, air_rate, comfort_rate, wifi_rate, slot_rate ) VALUES($1,$2,$3,$4,$5,$6, $7)",
-    [id, user_id, room_id, air_rate, comfort_rate, wifi_rate, slot_rate],
+    "INSERT INTO ratings(user_id, room_id, air_rate, comfort_rate, wifi_rate, slot_rate ) VALUES($1,$2,$3,$4,$5,$6)",
+    [userId, room_id, air_rate, comfort_rate, wifi_rate, slot_rate],
     (err, result) => {
       if (!err) {
         res.status(201).send(result.rows);
@@ -133,48 +149,62 @@ export const insertRating = async (req, res) => {
   );
 };
 export const insertReservations = async (req, res) => {
-  const {
-    res_id,
-    user_id,
-    room_id,
-    date,
-    purpose,
-    description,
-    people,
-    phone1,
-    phone2,
-    cancelled,
-    status,
-  } = req.body;
-  pool.query(
-    "INSERT INTO reservations(res_id, user_id, room_id, date, purpose, description, people, phone1, phone2, cancelled, status) VALUES($1,$2,$3,$4,$5,$6, $7, $8, $9, $10, $11)",
-    [
-      res_id,
-      user_id,
+  const { room_id, date, times, details } = req.body;
+  const { userId } = req.user;
+
+  const client = await pool.connect();
+
+  try {
+    await client.query("BEGIN");
+
+    const insertReservationQuery = `
+      INSERT INTO reservations(user_id, room_id, purpose, description, people, phone1, phone2)
+      VALUES($1, $2, $3, $4, $5, $6, $7)
+      RETURNING res_id
+    `;
+    const insertReservationValues = [
+      userId,
       room_id,
-      date,
-      purpose,
-      description,
-      people,
-      phone1,
-      phone2,
-      cancelled,
-      status,
-    ],
-    (err, result) => {
-      if (!err) {
-        res.status(201).send(result.rows);
-      } else {
-        res.status(500).send(err.message);
-      }
-    }
-  );
+      details.purpose,
+      details.description,
+      details.people,
+      details.phone1,
+      details.phone2,
+    ];
+
+    const result = await client.query(
+      insertReservationQuery,
+      insertReservationValues
+    );
+    const res_id = result.rows[0].res_id;
+
+    // Prepare and execute reservation_times inserts
+    const resTimesQueries = times.map((timeElement) => {
+      return client.query(
+        "INSERT INTO reservation_times (res_id, date, time) VALUES ($1, $2, $3)",
+        [res_id, date, timeElement]
+      );
+    });
+
+    await Promise.all(resTimesQueries);
+    await client.query("COMMIT");
+
+    res.json({ res_id });
+  } catch (err) {
+    await client.query("ROLLBACK");
+    console.error("Error inserting reservation:", err.message); // Log error
+    res.status(500).send({ error: err.message }); // Send structured error response
+  } finally {
+    client.release();
+  }
 };
+
 export const insertLiked = async (req, res) => {
-  const { user_id, room_id } = req.body;
+  const { room_id } = req.body;
+  const { userId } = req.user;
   pool.query(
     "INSERT INTO liked(user_id, room_id) VALUES($1,$2)",
-    [user_id, room_id],
+    [userId, room_id],
     (err, result) => {
       if (!err) {
         res.status(201).send(result.rows);
@@ -186,12 +216,69 @@ export const insertLiked = async (req, res) => {
 };
 export const getLikedClasses = async (req, res) => {
   try {
-    const { user_id } = req.params;
+    const { userId } = req.user;
     const { rows } = await pool.query(
-      "SELECT room_id FROM liked WHERE user_id = $1",
-      [user_id]
+      "SELECT classes.* FROM liked LEFT JOIN classes ON classes.room_id = liked.room_id WHERE user_id = $1 AND delete_flag = FALSE",
+      [userId]
     );
-    res.json({ data: rows });
+    res.json({ liked_rooms: rows });
+  } catch (error) {
+    console.error("Error:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+export const getLikedClass = async (req, res) => {
+  try {
+    const { userId } = req.user;
+    const { room_id } = req.params;
+    const { rows } = await pool.query(
+      "SELECT * FROM liked WHERE user_id = $1 AND room_id = $2 AND delete_flag = FALSE",
+      [userId, room_id]
+    );
+    res.json(rows);
+  } catch (error) {
+    console.error("Error:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+export const getReservations = async (req, res) => {
+  try {
+    const { userId } = req.user;
+    const { rows: reservations } = await pool.query(
+      "SELECT reservations.*, classes.building, classes.roomno, classes.type FROM reservations LEFT JOIN classes ON classes.room_id = reservations.room_id WHERE user_id = $1 AND delete_flag = FALSE",
+      [userId]
+    );
+
+    // Iterate over each reservation to get the reservation times
+    for (let reservation of reservations) {
+      const { rows: times } = await pool.query(
+        "SELECT date, time FROM reservation_times WHERE res_id = $1",
+        [reservation.res_id]
+      );
+      reservation.times = times; // Add the times to each reservation
+    }
+
+    res.json({ reservations });
+  } catch (error) {
+    console.error("Error:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+export const cancelReservation = async (req, res) => {
+  try {
+    const { userId } = req.user;
+    const { res_id } = req.params;
+    const result = pool.query(
+      "UPDATE reservations SET delete_flag = TRUE WHERE user_id = $1 AND res_id = $2",
+      [userId, res_id]
+    );
+    if (result.rowCount == 0) {
+      res.status(404).json({ message: "No record found or already deleted" });
+    } else {
+      res.status(200).json({ message: "Record deleted" });
+    }
   } catch (error) {
     console.error("Error:", error);
     res.status(500).json({ error: "Internal Server Error" });
@@ -200,14 +287,61 @@ export const getLikedClasses = async (req, res) => {
 
 export const getTimes = async (req, res) => {
   try {
-    const { room_id, week, garag } = req.params;
+    const { room_id, date } = req.params;
     const { rows } = await pool.query(
-      "SELECT time, status FROM schedule WHERE room_id = $1 AND week_id = $2 AND garag = $3",
-      [room_id, week, garag]
+      "SELECT time, status FROM schedule WHERE room_id = $1 AND date = $2",
+      [room_id, date]
     );
-    res.json({ data: rows });
+    res.json({ times: rows });
   } catch (error) {
     console.log("Error: ", error);
     res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+export const getOneRoom = async (req, res) => {
+  const { room_id } = req.params;
+  try {
+    const { rows } = await pool.query(
+      "SELECT * FROM classes WHERE room_id = $1",
+      [room_id]
+    );
+    res.json({ room: rows });
+  } catch (error) {
+    console.log("Error: ", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+export const getRecommendedClasses = async (req, res) => {
+  try {
+    const { rows } = await pool.query(
+      "SELECT classes.*, ( AVG(air_rate) + AVG(wifi_rate) + AVG(comfort_rate) + AVG(slot_rate)) / 4 as totalRating FROM ratings LEFT JOIN classes ON classes.room_id = ratings.room_id WHERE delete_flag = FALSE GROUP BY classes.room_id ORDER BY totalRating DESC LIMIT 10"
+    );
+    res.json({ recommend: rows });
+  } catch (error) {
+    console.log("Error: ", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+export const deleteLikedClass = async (req, res) => {
+  try {
+    const { userId } = req.user;
+    const { room_id } = req.body;
+
+    const result = await pool.query(
+      "UPDATE liked SET delete_flag = TRUE WHERE user_id = $1 AND room_id = $2 AND delete_flag = FALSE",
+      [userId, room_id]
+    );
+
+    if (result.rowCount == 0) {
+      res.status(404).json({ message: "No record found or already deleted" });
+    } else {
+      res.status(200).json({ message: "Record deleted" });
+    }
+  } catch (error) {
+    console.log("Error: ", error);
+    res.status(500).json({ error: error.message });
   }
 };

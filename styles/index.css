@@ -150,7 +150,7 @@ search-bar.search-bar {
 }
 
 aside.index-aside {
-  width: 25%;
+  width: 30%;
   margin-left: auto;
   margin-top: 2rem;
 
@@ -159,20 +159,21 @@ aside.index-aside {
   border-color: var(--color-border);
   background: var(--color-background);
 }
-aside.index-aside section {
+aside.index-aside recommended-classes {
   display: grid;
-  text-align: center;
   grid-template-columns: repeat(auto-fill, minmax(16.125rem, 1fr));
   justify-content: center;
   gap: var(--gap-1);
-
   margin: 1em;
 }
-aside.index-aside section h2 {
-  font-size: var(--heading-5);
+aside.index-aside h2 {
+  font-size: var(--heading-6);
   font-weight: var(--bold);
-  margin-top: 4px;
+  margin: 0.5em;
+  color: var(--color-text);
+  text-align: center;
 }
+
 main.index-main {
   width: 75%;
   background: var(--color-background);
@@ -194,9 +195,15 @@ main {
 
 /* --------------------MEDIA-QUERIES----------------- */
 @media (max-width: 1140px) {
-  aside {
-    display: none;
+  aside.index-aside{
+    width: inherit;
+    margin: 1rem;
+    position: relative
   }
+  aside.index-aside recommended-classes {
+    grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr));
+  }
+  
   main.index-main {
     width: 100%;
     margin: 0;

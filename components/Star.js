@@ -13,9 +13,8 @@ class Star extends HTMLElement {
             name="rating"
             value=${this.value}
             />
-            <span class="star" style="color: ${this.color}"
-            >
-            &#9733;
+            <span class="star" style="color: ${this.color}">
+              &#9733;
             </span>
         </label>
     `;

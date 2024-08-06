@@ -285,18 +285,6 @@ class Calendar extends HTMLElement {
     ).innerText = `${startMonth}/${this.startDay} - ${endMonth}/${this.endDay}`;
     this.dayUpdate();
   }
-
-  disconnectedCallback() {
-    // implementation
-  }
-
-  attributeChangedCallback(name, oldVal, newVal) {
-    // implementation
-  }
-
-  adoptedCallback() {
-    // implementation
-  }
 }
 
 window.customElements.define("calendar-cm", Calendar);

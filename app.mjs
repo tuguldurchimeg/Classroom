@@ -7,8 +7,10 @@ import classRoutes from "./public/routes.mjs";
 import privateRoutes from "./private/routes.mjs";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
-import bodyParser from "express";
 import path from "path";
+import dotenv from "dotenv";
+
+dotenv.config();
 const app = express();
 
 const __filename = fileURLToPath(import.meta.url);
@@ -20,21 +22,20 @@ const port = 3000;
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json()); // req.body
-app.use(bodyParser.json());
 app.use(
   session({
-    secret: "secret",
+    secret: process.env.SECRET_KEY,
     resave: true,
     saveUninitialized: true,
   })
 );
 
-app.use(express.static(__dirname + "/styles"));
-app.use(express.static(__dirname + "/component"));
-app.use(express.static(__dirname + "/script"));
+app.use(express.static(path.join(__dirname, "styles")));
+app.use(express.static(path.join(__dirname, "components")));
+app.use(express.static(path.join(__dirname, "script")));
 
 app.use("/", classRoutes);
-app.use("/private", privateRoutes);
+app.use("/auth", privateRoutes);
 
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "index.html"));
