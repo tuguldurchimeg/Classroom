@@ -43,11 +43,7 @@ export class RenderClass {
             </ul>
           </a>
         </section>
-        <div class="cancel">
-          <button class="cancel-btn" data-id="${data.room_id}">
-            <img src="styles/assets/cancal.png" alt="cancel">
-          </button>
-        </div>
+        <btn-cancel class="cancel" res_id=${data.res_id}></btn-cancel>
       </article>
     `;
   }

@@ -7,9 +7,9 @@ class MobileNav extends HTMLElement {
     return `
     <ul>
     <li><a href="index.html"><img src="styles/assets/Logo.svg" alt="Home"></a></li>
-    <li><a href="user.html"><i class="fa-regular fa-heart" style="font-size: 1.5rem; color: var(--color-text)"></i></a></li>
-    <li><a href="user.html"><i class="fa-regular fa-file-lines" style="font-size: 1.5rem; color: var(--color-text)"></i></a></li>
-    <li><a href="user.html"><profile-btn></profile-btn></a></li>
+    <li><a href="user.html?user-menu=liked"><i class="fa-regular fa-heart" style="font-size: 1.5rem; color: var(--color-text)"></i></a></li>
+    <li><a href="user.html?user-menu=reservations"><i class="fa-regular fa-file-lines" style="font-size: 1.5rem; color: var(--color-text)"></i></a></li>
+    <li><a href="user.html?user-menu=account"><profile-btn></profile-btn></a></li>
  </ul>`;
   }
 

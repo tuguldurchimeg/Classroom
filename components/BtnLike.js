@@ -95,7 +95,7 @@ class BtnLike extends HTMLElement {
 
     try {
       const response = await fetch("http://localhost:3000/liked", {
-        method: this.liked === "checked" ? "POST" : "DELETE",
+        method: this.liked === "checked" ? "POST" : "PUT",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,

@@ -27,21 +27,21 @@ router.get(
 );
 router.post("/classes", insertClasses);
 router.post("/time_slots", insertTimeSlots);
-router.post("/liked", authenticateToken, insertLiked);
 router.post("/rating", authenticateToken, insertRating);
-router.post("/reservations", authenticateToken, insertReservations);
 
 router.get("/time_slots", getTimeSlots);
 router.get("/times/:room_id/:date", getTimes);
 
+router.post("/reservations", authenticateToken, insertReservations);
 router.get("/reservations", authenticateToken, getReservations);
-router.put("/reservations?:res_id", authenticateToken, cancelReservation);
+router.put("/reservations/:res_id", authenticateToken, cancelReservation);
 
 router.get("/classes/:room_id/:build", getSimilarClasses);
 router.get("/classes/:room_id", getOneRoom);
 router.get("/recommended", getRecommendedClasses);
 router.get("/rating/:room_id", getRating);
 
+router.post("/liked", authenticateToken, insertLiked);
 router.get("/liked", authenticateToken, getLikedClasses);
 router.get("/liked/:room_id", authenticateToken, getLikedClass);
 router.put("/liked", authenticateToken, deleteLikedClass);
