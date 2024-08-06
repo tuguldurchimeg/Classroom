@@ -38,7 +38,6 @@
 
     <script defer type="module" src="script/classPage.js"></script>
     <script type="module" src="/script/ClassRender.js"></script>
-    <script type="module" src="/script/TimeBtnRender.js"></script>
     <script type="module" src="/components/calendar.js"></script>
     <script type="module" src="/components/ReserveForm.js"></script>
     <script type="module" src="/components/MobileNav.js"></script>
@@ -47,6 +46,8 @@
     <script type="module" src="/components/PopUpRating.js"></script>
     <script type="module" src="components/ClassSection.js"></script>
     <script type="module" src="components/BtnLike.js"></script>
+    <script type="module" src="/components/TimesContainer.js"></script>
+    <script type="module" src="/components/BtnTime.js"></script>
     <script type="module" src="/components/Stars.js"></script>
     <script type="module" src="/components/Star.js"></script>
     <script type="module" src="/components/ProfileBtn.js"></script>
@@ -78,11 +79,9 @@
           <section class="tabcontent" id="day-tab">
             <div class="time-selector">
               <calendar-cm class="calendar-wrapper"></calendar-cm>
-              <ul class="day-times">
-                
-              </ul>
+              <available-times class="day-times" id="available-times"></available-times>
             </div>
-            <reserve-form class="reserve-form"></reserve-form>
+            <reserve-form></reserve-form>
           </section>
         </div>
         <div class="menu-option">
@@ -274,7 +273,7 @@
                 </ul>
               </nav>
             </section>
-            <reserve-form class="reserve-form"></reserve-form>
+            <reserve-form></reserve-form>
           </section>
         </div>
       </menu>

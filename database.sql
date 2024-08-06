@@ -14,7 +14,7 @@ CREATE TABLE  default_time_slots  (
 );
 
 CREATE TABLE  users  (
-   user_id  varchar PRIMARY KEY,
+   id  varchar PRIMARY KEY,
    username  varchar,
    password  varchar,
    phone  varchar
@@ -73,7 +73,7 @@ ALTER TABLE  reservations  ADD FOREIGN KEY ( room_id ) REFERENCES  classes  ( ro
 
 ALTER TABLE  default_time_slots  ADD FOREIGN KEY ( room_id ) REFERENCES  classes  ( room_id );
 
-ALTER TABLE  res_times  ADD FOREIGN KEY ( res_id ) REFERENCES  reservations  ( res_id );
+ALTER TABLE  reservation_times  ADD FOREIGN KEY ( res_id ) REFERENCES  reservations  ( res_id );
 
 ALTER TABLE  liked  ADD FOREIGN KEY ( user_id ) REFERENCES  users  ( id );
 
@@ -91,3 +91,8 @@ ALTER TABLE reservations ALTER COLUMN status SET DEFAULT 'waiting';
 ALTER TABLE reservations DROP COLUMN cancelled 
 ALTER TABLE reservation_times ADD COLUMN date DATE
 ALTER TABLE reservation_times ADD COLUMN garag VARCHAR
+
+alter table schedule add column date Date
+alter table schedule drop column week_id
+alter table schedule ALTER COLUMN status SET DEFAULT TRUE;
+alter table reservation_times drop column garag

@@ -32,7 +32,7 @@ router.post("/rating", authenticateToken, insertRating);
 router.post("/reservations", authenticateToken, insertReservations);
 
 router.get("/time_slots", getTimeSlots);
-router.get("/times/:room_id/:week/:garag", getTimes);
+router.get("/times/:room_id/:date", getTimes);
 
 router.get("/reservations", authenticateToken, getReservations);
 router.put("/reservations?:res_id", authenticateToken, cancelReservation);

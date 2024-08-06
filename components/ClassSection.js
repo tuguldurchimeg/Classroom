@@ -62,18 +62,8 @@ class ClassSection extends HTMLElement {
     fetch(`http://localhost:3000/rating/${this.roomID}`)
       .then((response) => response.json())
       .then((data) => {
-        let sum = 0;
-        if (Array.isArray(data) && data.length > 0) {
-          const rate = data[0];
-          const attributes = ["air", "comfort", "slot", "wifi"];
-          attributes.forEach((attr) => {
-            if (rate[attr]) {
-              sum += parseFloat(rate[attr]);
-            }
-          });
-          this.rating = Math.round(sum / attributes.length);
-          this.innerHTML = this.Render(); // Re-render with the updated rating
-        }
+        this.rating = data.avgRate;
+        this.innerHTML = this.Render(); // Re-render with the updated rating
       })
       .catch((error) => {
         console.log("Error: ", error.message);

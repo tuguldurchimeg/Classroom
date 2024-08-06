@@ -77,7 +77,7 @@ export const getFilteredClasses = async (req, res) => {
     } = req.params;
 
     const query = `
-    SELECT DISTINCT ON (sc.room_id) sc.room_id,sc.week_id,sc.garag,sc.time,cl.roomno,cl.building,cl.type,cl.capacity,cl.projector,sc.status
+    SELECT DISTINCT ON (sc.room_id) sc.room_id,sc.garag,sc.time,cl.roomno,cl.building,cl.type,cl.capacity,cl.projector,sc.status
       FROM schedule as sc
       INNER JOIN classes as cl ON sc.room_id = cl.room_id
 	    WHERE cl.building = $1
@@ -106,11 +106,27 @@ export const getFilteredClasses = async (req, res) => {
 export const getRating = async (req, res) => {
   try {
     const { room_id } = req.params;
-    const { rows } = await pool.query(
-      `SELECT AVG("air_rate") as air, AVG("comfort_rate") as comfort, AVG("wifi_rate") as wifi, AVG("slot_rate") as slot FROM ratings WHERE room_id = $1 GROUP BY room_id`,
-      [room_id]
-    );
-    res.json(rows);
+    const query = `
+      SELECT AVG("air_rate") as air, AVG("comfort_rate") as comfort, AVG("wifi_rate") as wifi, AVG("slot_rate") as slot 
+      FROM ratings 
+      WHERE room_id = $1 
+      GROUP BY room_id
+    `;
+
+    const { rows } = await pool.query(query, [room_id]);
+
+    const defaultRatings = { air: 0, comfort: 0, wifi: 0, slot: 0 };
+    const ratings = rows.length > 0 ? rows[0] : defaultRatings;
+
+    const avgRate = (
+      (parseFloat(ratings.air) +
+        parseFloat(ratings.comfort) +
+        parseFloat(ratings.wifi) +
+        parseFloat(ratings.slot)) /
+      4
+    ).toFixed(1);
+
+    res.json({ avgRate, rows: [ratings] });
   } catch (error) {
     console.error("Error:", error);
     res.status(500).json({ error: "Internal Server Error" });
@@ -134,64 +150,56 @@ export const insertRating = async (req, res) => {
   );
 };
 export const insertReservations = async (req, res) => {
-  const {
-    res_id,
-    room_id,
-    date,
-    purpose,
-    description,
-    people,
-    phone1,
-    phone2,
-    times,
-  } = req.body;
+  const { room_id, date, times, details } = req.body;
   const { userId } = req.user;
 
-  try {
-    await pool.query("BEGIN");
+  const client = await pool.connect();
 
-    // Insert into reservations table
+  try {
+    await client.query("BEGIN");
+
     const insertReservationQuery = `
-      INSERT INTO reservations(res_id, user_id, room_id, date, purpose, description, people, phone1, phone2)
-      VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9)
-      RETURNING *
+      INSERT INTO reservations(user_id, room_id, purpose, description, people, phone1, phone2)
+      VALUES($1, $2, $3, $4, $5, $6, $7)
+      RETURNING res_id
     `;
     const insertReservationValues = [
-      res_id,
       userId,
       room_id,
-      date,
-      purpose,
-      description,
-      people,
-      phone1,
-      phone2,
+      details.purpose,
+      details.description,
+      details.people,
+      details.phone1,
+      details.phone2,
     ];
 
-    const result = await pool.query(
+    const result = await client.query(
       insertReservationQuery,
       insertReservationValues
     );
+    const res_id = result.rows[0].res_id;
 
-    // Prepare the res_times data
+    // Prepare and execute reservation_times inserts
     const resTimesQueries = times.map((timeElement) => {
-      return pool.query(
-        "INSERT INTO reservation_times (res_id, time) VALUES ($1, $2)",
-        [res_id, timeElement]
+      return client.query(
+        "INSERT INTO reservation_times (res_id, date, time) VALUES ($1, $2, $3)",
+        [res_id, date, timeElement]
       );
     });
 
-    // Execute all queries concurrently
     await Promise.all(resTimesQueries);
+    await client.query("COMMIT");
 
-    await pool.query("COMMIT");
-
-    res.status(201).send(result.rows);
+    res.json({ res_id });
   } catch (err) {
-    await pool.query("ROLLBACK");
-    res.status(500).send(err.message);
+    await client.query("ROLLBACK");
+    console.error("Error inserting reservation:", err.message); // Log error
+    res.status(500).send({ error: err.message }); // Send structured error response
+  } finally {
+    client.release();
   }
 };
+
 export const insertLiked = async (req, res) => {
   const { room_id } = req.body;
   const { userId } = req.user;
@@ -246,7 +254,7 @@ export const getReservations = async (req, res) => {
     // Iterate over each reservation to get the reservation times
     for (let reservation of reservations) {
       const { rows: times } = await pool.query(
-        "SELECT date, garag, time FROM reservation_times WHERE res_id = $1",
+        "SELECT date, time FROM reservation_times WHERE res_id = $1",
         [reservation.res_id]
       );
       reservation.times = times; // Add the times to each reservation
@@ -280,12 +288,12 @@ export const cancelReservation = async (req, res) => {
 
 export const getTimes = async (req, res) => {
   try {
-    const { room_id, week, garag } = req.params;
+    const { room_id, date } = req.params;
     const { rows } = await pool.query(
-      "SELECT time, status FROM schedule WHERE room_id = $1 AND week_id = $2 AND garag = $3",
-      [room_id, week, garag]
+      "SELECT time, status FROM schedule WHERE room_id = $1 AND date = $2",
+      [room_id, date]
     );
-    res.json({ data: rows });
+    res.json({ times: rows });
   } catch (error) {
     console.log("Error: ", error);
     res.status(500).json({ error: "Internal Server Error" });

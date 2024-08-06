@@ -1,5 +1,5 @@
+import ClassFormatter from "./ClassFormatter.js";
 import ClassRen from "./ClassRender.js";
-import TimeBtn from "./TimeBtnRender.js";
 
 const usp = new URLSearchParams(document.location.search);
 const classObj = JSON.parse(usp.get("id"));
@@ -42,13 +42,7 @@ mainInfoHTML += `
 let ratingData;
 try {
   const response = await fetch(
-    `http://localhost:3000/rating/${classObj.roomID}`,
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }
+    `http://localhost:3000/rating/${classObj.roomID}`
   );
 
   if (response.ok) {
@@ -60,25 +54,19 @@ try {
   console.error("Error retrieving rating:", error);
 }
 
-const data = ratingData[0];
-let air = parseFloat(data.air) || 0,
-  comfort = parseFloat(data.comfort) || 0,
-  wifi = parseFloat(data.wifi) || 0,
-  slot = parseFloat(data.slot) || 0;
-
 ratingHTML = `
     <h6>
-      <div class="main-rate">${((air + comfort + wifi + slot) / 4).toFixed(1)}
+      <div class="main-rate">${ratingData.avgRate}
       </div>
     </h6>
     <nav class="rate-criteria">
-      <meter min="0" max="5" value="${air}" id="air-meter">
+      <meter min="0" max="5" value="${ratingData.rows[0].air}" id="air-meter">
       </meter>
-      <meter min="0" max="5" value="${comfort}" id="comfort-meter">
+      <meter min="0" max="5" value="${ratingData.rows[0].comfort}" id="comfort-meter">
       </meter>
-      <meter min="0" max="5" value="${wifi}" id="wifi-meter">
+      <meter min="0" max="5" value="${ratingData.rows[0].wifi}" id="wifi-meter">
       </meter>
-      <meter min="0" max="5" value="${slot}" id="socket-meter">
+      <meter min="0" max="5" value="${ratingData.rows[0].slot}" id="socket-meter">
       </meter>
     </nav>
     <button id="add-rating-btn">
@@ -99,21 +87,12 @@ addRatingBtn.addEventListener("click", () => {
 });
 
 // fetch similar classes from db
-let tempBuild, tempType;
-if (classObj.build == "E-lib") tempBuild = "Е-Номын сан";
-else if (classObj.build == "1") tempBuild = "Хичээлийн төв байр";
-else if (classObj.build == "Хууль")
-  tempBuild = "Улаанбаатар сургуулийн хичээлийн байр";
-else tempBuild = "Хичээлийн байр " + classObj.build;
-
-if (classObj.type == "Семинар") tempType = "Хичээлийн танхим";
-else if (classObj.type == "Лекц") tempType = "Лекцийн танхим";
-else if (classObj.type == "Лаб") tempType = "Сургалтын лаборатори";
-
+let formatter = new ClassFormatter();
+const building = formatter.reformatBuilding(classObj.build);
 const simClassResponse = await fetch(
   `http://localhost:3000/classes/${encodeURIComponent(
     classObj.roomID
-  )}/${encodeURIComponent(tempBuild)}`
+  )}/${encodeURIComponent(building)}`
 );
 if (!simClassResponse.ok) {
   throw new Error("Network response was not ok");
@@ -124,59 +103,3 @@ let simClassHTML = simClassData.data.map((classObj) => {
   return classInstance.Render();
 });
 document.getElementById("s-class-list").innerHTML = simClassHTML;
-
-// Get month day ( Get slot times by date START )
-document.addEventListener("dayChanged", async (event) => {
-  try {
-    let { startMonth, startDay } = event.detail;
-    const garag = getWeekday(startMonth, startDay);
-    const currentDate = new Date();
-    const lastDayOfWeek = new Date(
-      currentDate.getFullYear(),
-      currentDate.getMonth(),
-      currentDate.getDate() + (6 - currentDate.getDay())
-    );
-    const selectedDate = new Date(
-      currentDate.getFullYear(),
-      startMonth,
-      startDay
-    );
-
-    const week = selectedDate > lastDayOfWeek ? 2 : 1;
-    const dayResponse = await fetch(
-      `http://localhost:3000/times/${encodeURIComponent(
-        classObj.roomID
-      )}/${encodeURIComponent(`w${week}`)}/${encodeURIComponent(garag)}`
-    );
-
-    if (!dayResponse.ok) {
-      throw new Error("Network response was not ok");
-    }
-    const dayData = await dayResponse.json();
-    console.log(dayData);
-    const timeButtons = document.querySelector(".day-times");
-    const timeBtnsHTML = dayData.data.map((timeObj) => {
-      const timeInstance = new TimeBtn(timeObj);
-      return timeInstance.Render();
-    });
-    timeButtons.innerHTML = timeBtnsHTML.join("");
-  } catch (error) {
-    console.error("Error:", error);
-  }
-});
-// Get slot times by date END
-
-function getWeekday(month, day) {
-  const year = 2024;
-  const date = new Date(year, month - 1, day);
-  const weekdays = [
-    "Ням",
-    "Даваа",
-    "Мягмар",
-    "Лхагва",
-    "Пүрэв",
-    "Баасан",
-    "Бямба",
-  ];
-  return weekdays[date.getDay()];
-}

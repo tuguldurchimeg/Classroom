@@ -13,6 +13,12 @@ export default class ClassFormatter {
     if (type === "Сургалтын лаборатори") return "Лаб";
     return type;
   }
+  reformatBuilding(building) {
+    if (building === "E-lib") return "Е-Номын сан";
+    if (building === "1") return "Хичээлийн төв байр";
+    if (building === "Хууль") return "Улаанбаатар сургуулийн хичээлийн байр";
+    return "Хичээлийн байр " + building;
+  }
 
   formatDate(dateString) {
     const date = new Date(dateString);
