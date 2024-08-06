@@ -195,9 +195,15 @@ main {
 
 /* --------------------MEDIA-QUERIES----------------- */
 @media (max-width: 1140px) {
-  aside {
-    display: none;
+  aside.index-aside{
+    width: inherit;
+    margin: 1rem;
+    position: relative
   }
+  aside.index-aside recommended-classes {
+    grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr));
+  }
+  
   main.index-main {
     width: 100%;
     margin: 0;

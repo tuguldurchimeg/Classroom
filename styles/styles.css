@@ -50,10 +50,10 @@ body {
 class-section {
   padding: 0.5rem 0.2rem;
   border: 3px solid;
-  border-color: var(--color-border);
+  /* border-color: var(--color-border); */
   border-radius: 20px;
   transition: all 0.2s ease-out;
-  box-shadow: var(--shadow-1);
+  box-shadow: var(--shadow-4);
 }
 class-section:hover {
   border-color: rgba(42, 71, 28, 0.8);

@@ -134,12 +134,11 @@ export const getRating = async (req, res) => {
 };
 
 export const insertRating = async (req, res) => {
-  const { id, room_id, air_rate, comfort_rate, wifi_rate, slot_rate } =
-    req.body;
+  const { room_id, air_rate, comfort_rate, wifi_rate, slot_rate } = req.body;
   const { userId } = req.user;
   pool.query(
-    "INSERT INTO ratings(id, user_id, room_id, air_rate, comfort_rate, wifi_rate, slot_rate ) VALUES($1,$2,$3,$4,$5,$6, $7)",
-    [id, userId, room_id, air_rate, comfort_rate, wifi_rate, slot_rate],
+    "INSERT INTO ratings(user_id, room_id, air_rate, comfort_rate, wifi_rate, slot_rate ) VALUES($1,$2,$3,$4,$5,$6)",
+    [userId, room_id, air_rate, comfort_rate, wifi_rate, slot_rate],
     (err, result) => {
       if (!err) {
         res.status(201).send(result.rows);
